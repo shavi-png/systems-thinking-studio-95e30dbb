@@ -190,15 +190,14 @@ function Index() {
             </div>
           </div>
 
-          <div className="grain relative h-[38vh] w-full overflow-hidden md:h-[52vh]">
+          <div className="relative h-[42vh] w-full overflow-hidden md:h-[58vh]">
             <img
-              src={water}
-              alt="Light moving across the surface of water"
+              src={ripple.url}
+              alt="Concentric ripples spiralling across still water"
               loading="lazy"
-              width={1400}
-              height={900}
-              className="h-full w-full object-cover [filter:saturate(0.3)_contrast(0.96)]"
+              className="h-full w-full object-cover [filter:saturate(0.45)_brightness(1.06)]"
             />
+            <Spiral className="pointer-events-none absolute inset-0 m-auto h-[70%] w-[70%] opacity-60" />
           </div>
         </section>
 
@@ -206,7 +205,7 @@ function Index() {
         <Solutions />
 
         {/* ——— METHOD STATEMENT — quiet ——— */}
-        <section className="rule-thin bg-sand/35">
+        <section className="rule-thin bg-sand/50">
           <div className="mx-auto grid max-w-[1440px] gap-20 px-6 py-28 md:grid-cols-12 md:px-10 md:py-40">
             <div className="md:col-span-6">
               <Reveal>
@@ -238,12 +237,10 @@ function Index() {
             <div className="grain relative md:col-span-5 md:col-start-1 md:-mt-16">
               <div className="aspect-[4/5] overflow-hidden bg-stone">
                 <img
-                  src={fabric}
-                  alt="Folds of natural linen in warm light"
+                  src={shell.url}
+                  alt="Nautilus shell spiral resting in pale sand"
                   loading="lazy"
-                  width={1200}
-                  height={900}
-                  className="h-full w-full object-cover [filter:saturate(0.35)]"
+                  className="h-full w-full object-cover"
                 />
               </div>
             </div>
@@ -271,6 +268,21 @@ function Index() {
 
         {/* ——— FINAL — very quiet ——— */}
         <section id="final" className="rule-thin">
+          <div className="mx-auto grid max-w-[1440px] grid-cols-2 gap-4 px-6 pt-24 md:grid-cols-3 md:gap-8 md:px-10">
+            <img
+              src={seeds.url}
+              alt="Dandelion seeds drifting in pale light"
+              loading="lazy"
+              className="aspect-[3/4] w-full object-cover"
+            />
+            <img
+              src={wash.url}
+              alt="Soft olive watercolour wash"
+              loading="lazy"
+              className="aspect-[3/4] w-full object-cover md:mt-16"
+            />
+            <Spiral className="col-span-2 mx-auto aspect-square w-2/3 md:col-span-1 md:w-full" />
+          </div>
           <div className="mx-auto flex min-h-[85vh] max-w-[1440px] flex-col justify-center px-6 py-32 md:px-10">
             <Reveal>
               <p className="display-lg">

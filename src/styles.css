@@ -4,6 +4,21 @@
 
 @custom-variant dark (&:is(.dark *));
 
+@theme {
+  --font-serif-editorial: "Instrument Serif", Georgia, serif;
+  --font-sans-neutral: "Work Sans", system-ui, sans-serif;
+  --color-ivory: var(--ivory);
+  --color-paper: var(--paper);
+  --color-stone: var(--stone);
+  --color-sand: var(--sand);
+  --color-taupe: var(--taupe);
+  --color-smoke: var(--smoke);
+  --color-sage: var(--sage);
+  --color-olive: var(--olive);
+  --color-charcoal: var(--charcoal);
+  --color-line: var(--line-tone);
+}
+
 /*
  * Design system definition.
  *

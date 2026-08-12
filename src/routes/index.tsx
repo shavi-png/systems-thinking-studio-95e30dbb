@@ -180,7 +180,7 @@ function Index() {
               loading="lazy"
               width={1400}
               height={900}
-              className="h-full w-full object-cover"
+              className="h-full w-full object-cover [filter:saturate(0.3)_contrast(0.96)]"
             />
           </div>
         </section>
@@ -226,7 +226,7 @@ function Index() {
                   loading="lazy"
                   width={1200}
                   height={900}
-                  className="h-full w-full object-cover"
+                  className="h-full w-full object-cover [filter:saturate(0.35)]"
                 />
               </div>
             </div>

@@ -110,7 +110,7 @@ export function OrbitMethod({ nodes }: { nodes: string[] }) {
   const r = 210;
   return (
     <div ref={ref}>
-      <svg viewBox="0 0 600 600" className="w-full" fill="none" aria-hidden>
+      <svg viewBox="-130 -30 860 660" className="w-full" fill="none" aria-hidden>
         <circle
           cx={cx}
           cy={cy}

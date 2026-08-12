@@ -3,12 +3,15 @@ import { createFileRoute } from "@tanstack/react-router";
 import { Header } from "@/components/site/Header";
 import { Footer } from "@/components/site/Footer";
 import { Reveal } from "@/components/site/Reveal";
-import { HeroLine, SystemPath, OrbitMethod } from "@/components/site/LineArt";
+import { HeroLine, SystemPath, OrbitMethod, Spiral } from "@/components/site/LineArt";
 import { Solutions } from "@/components/site/Solutions";
 import portrait from "@/assets/vita-portrait.jpg";
 import hands from "@/assets/hands-notebook.jpg";
-import water from "@/assets/texture-water.jpg";
-import fabric from "@/assets/texture-fabric.jpg";
+import ripple from "@/assets/ripple.jpg.asset.json";
+import shell from "@/assets/shell.jpg.asset.json";
+import swans from "@/assets/swans.jpg.asset.json";
+import seeds from "@/assets/seeds.jpg.asset.json";
+import wash from "@/assets/wash.jpg.asset.json";
 
 const title = "Vita Shablii — Strategist · Founder · Advisor";
 const description =
@@ -44,6 +47,7 @@ function Index() {
         {/* ——— HERO — quiet ——— */}
         <section className="relative overflow-hidden">
           <HeroLine className="pointer-events-none absolute -right-[18%] top-0 h-[130%] w-[85%] opacity-70 md:-right-[6%] md:w-[55%]" />
+          <Spiral className="pointer-events-none absolute -left-[22%] top-[8%] hidden h-[46rem] w-[46rem] opacity-45 md:block" />
           <div className="mx-auto grid max-w-[1440px] grid-cols-1 gap-12 px-6 pb-24 pt-36 md:grid-cols-12 md:px-10 md:pb-36 md:pt-48">
             <div className="md:col-span-7 md:pt-10">
               <Reveal>
@@ -67,6 +71,11 @@ function Index() {
             </div>
 
             <div className="relative md:col-span-5 md:-mt-24">
+              <Spiral
+                accent
+                strokeWidth={0.8}
+                className="pointer-events-none absolute -left-16 -top-16 z-10 h-40 w-40 opacity-70"
+              />
               <div className="grain relative aspect-[3/4] w-full overflow-hidden bg-stone md:ml-6">
                 <img
                   src={portrait}
@@ -90,7 +99,7 @@ function Index() {
         </section>
 
         {/* ——— EXPERTISE + POINT OF VIEW + PROOF — dense ——— */}
-        <section id="about" className="rule-thin bg-paper/70">
+        <section id="about" className="rule-thin bg-paper">
           <div className="mx-auto max-w-[1440px] px-6 py-28 md:px-10 md:py-40">
             <div className="grid gap-16 md:grid-cols-12">
               <div className="md:col-span-7">
@@ -126,6 +135,14 @@ function Index() {
                     width={1200}
                     height={1500}
                     className="h-full w-full object-cover opacity-95"
+                  />
+                </div>
+                <div className="mt-6 overflow-hidden bg-stone">
+                  <img
+                    src={swans.url}
+                    alt="Two swans in soft white flight"
+                    loading="lazy"
+                    className="aspect-[4/3] w-full object-cover"
                   />
                 </div>
                 <dl className="mt-14 space-y-8">

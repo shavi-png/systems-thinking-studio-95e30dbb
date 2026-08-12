@@ -121,15 +121,15 @@ export function Solutions() {
         <div className="grid gap-24 pl-10 lg:grid-cols-12 lg:gap-y-40 lg:pl-0">
           <div className="relative lg:col-span-5 lg:col-start-1">
             <Node className="lg:hidden" />
-            <SolutionBlock s={solutions[0]} />
+            <SolutionBlock s={solutions[0]!} />
           </div>
           <div className="relative lg:col-span-6 lg:col-start-6 lg:pt-10">
             <Node accent className="lg:hidden" />
-            <SolutionBlock s={solutions[1]} />
+            <SolutionBlock s={solutions[1]!} />
           </div>
           <div className="relative lg:col-span-5 lg:col-start-2">
             <Node className="lg:hidden" />
-            <SolutionBlock s={solutions[2]} />
+            <SolutionBlock s={solutions[2]!} />
           </div>
         </div>
       </div>

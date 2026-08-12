@@ -1,24 +1,285 @@
 import { createFileRoute } from "@tanstack/react-router";
 
-// No head() here: the home route inherits title/description/og/twitter from
-// __root.tsx, and ships no og:image so serve-time hosting can inject the
-// project's social preview (explicit og:image or latest screenshot).
+import { Header } from "@/components/site/Header";
+import { Footer } from "@/components/site/Footer";
+import { Reveal } from "@/components/site/Reveal";
+import { HeroLine, SystemPath, OrbitMethod } from "@/components/site/LineArt";
+import { Solutions } from "@/components/site/Solutions";
+import portrait from "@/assets/vita-portrait.jpg";
+import hands from "@/assets/hands-notebook.jpg";
+import water from "@/assets/texture-water.jpg";
+import fabric from "@/assets/texture-fabric.jpg";
+
+const title = "Vita Shablii — Strategist · Founder · Advisor";
+const description =
+  "Clarity before complexity. Strategy, marketing, product thinking and AI — ideas turned into structure, systems and decisions.";
+
 export const Route = createFileRoute("/")({
+  head: () => ({
+    meta: [
+      { title },
+      { name: "description", content: description },
+      { property: "og:title", content: title },
+      { property: "og:description", content: description },
+      { property: "og:type", content: "website" },
+      { name: "twitter:card", content: "summary_large_image" },
+    ],
+  }),
   component: Index,
 });
 
-// IMPORTANT: Replace this placeholder. See ./README.md for routing conventions.
+const proof = [
+  { k: "13 years", v: "marketing & strategy" },
+  { k: "500+", v: "projects & events" },
+  { k: "Markets", v: "USA · Europe · China" },
+  { k: "Experience", v: "Apple · Samsung · Microsoft · Huawei · Cisco" },
+  { k: "AI", v: "integrated into marketing workflows since 2020" },
+];
+
 function Index() {
   return (
-    <div
-      className="flex min-h-screen items-center justify-center"
-      style={{ backgroundColor: "#fcfbf8" }}
-    >
-      <img
-        data-lovable-blank-page-placeholder="REMOVE_THIS"
-        src="https://cdn.gpteng.co/blank-app-v1.svg"
-        alt="Your app will live here!"
-      />
+    <div id="top" className="bg-background text-foreground">
+      <Header />
+      <main>
+        {/* ——— HERO — quiet ——— */}
+        <section className="relative overflow-hidden">
+          <HeroLine className="pointer-events-none absolute -right-[18%] top-0 h-[130%] w-[85%] opacity-70 md:-right-[6%] md:w-[55%]" />
+          <div className="mx-auto grid max-w-[1440px] grid-cols-1 gap-12 px-6 pb-24 pt-36 md:grid-cols-12 md:px-10 md:pb-36 md:pt-48">
+            <div className="md:col-span-7 md:pt-10">
+              <Reveal>
+                <p className="label-xs !text-charcoal !tracking-[0.3em]">Vita Shablii</p>
+                <p className="label-xs mt-2">Strategist · Founder · Advisor</p>
+              </Reveal>
+              <Reveal delay={120}>
+                <h1 className="display-lg mt-10 md:mt-14">
+                  Ideas do not
+                  <br />
+                  need complexity.
+                  <br />
+                  <span className="italic">They need structure.</span>
+                </h1>
+              </Reveal>
+              <Reveal delay={240}>
+                <p className="body-read mt-10 md:mt-14">
+                  From idea to product. From product to market. From chaotic marketing to a system.
+                </p>
+              </Reveal>
+            </div>
+
+            <div className="relative md:col-span-5 md:-mt-24">
+              <div className="grain relative aspect-[3/4] w-full overflow-hidden bg-stone md:ml-6">
+                <img
+                  src={portrait}
+                  alt="Portrait of Vita Shablii"
+                  width={1200}
+                  height={1600}
+                  className="h-full w-full object-cover"
+                />
+              </div>
+              <p className="label-xs mt-6 md:absolute md:-left-24 md:bottom-10 md:mt-0 md:[writing-mode:vertical-rl]">
+                Strategy × Marketing × Product Thinking × AI
+              </p>
+            </div>
+          </div>
+
+          <div className="mx-auto max-w-[1440px] px-6 pb-24 md:px-10">
+            <a href="#solutions" className="link-editorial">
+              Find your solution <span aria-hidden>↓</span>
+            </a>
+          </div>
+        </section>
+
+        {/* ——— EXPERTISE + POINT OF VIEW + PROOF — dense ——— */}
+        <section id="about" className="rule-thin bg-paper/70">
+          <div className="mx-auto max-w-[1440px] px-6 py-28 md:px-10 md:py-40">
+            <div className="grid gap-16 md:grid-cols-12">
+              <div className="md:col-span-7">
+                <p className="label-xs">Point of view</p>
+                <Reveal>
+                  <h2 className="display-md mt-8">
+                    Working at the intersection of strategy × marketing ×{" "}
+                    <span className="italic">product thinking.</span>
+                  </h2>
+                </Reveal>
+                <div className="mt-12 space-y-6">
+                  <p className="body-read">
+                    Launching a product is only part of the task. It matters far more to understand
+                    why some ideas find their place in the market and others do not.
+                  </p>
+                  <p className="body-read">
+                    The answer usually lies at the intersection of what the author wants to create,
+                    what people actually need, and what has the potential to work commercially.
+                  </p>
+                  <p className="body-read">
+                    This is where intuition, product thinking, strategy and technology meet — and
+                    assemble into one coherent system.
+                  </p>
+                </div>
+              </div>
+
+              <div className="md:col-span-4 md:col-start-9">
+                <div className="grain relative aspect-[4/5] overflow-hidden bg-stone">
+                  <img
+                    src={hands}
+                    alt="Hands resting on an open notebook"
+                    loading="lazy"
+                    width={1200}
+                    height={1500}
+                    className="h-full w-full object-cover opacity-95"
+                  />
+                </div>
+                <dl className="mt-14 space-y-8">
+                  {proof.map((p) => (
+                    <div key={p.k}>
+                      <dt className="font-serif-editorial text-2xl text-charcoal">{p.k}</dt>
+                      <dd className="label-xs mt-1 !tracking-[0.14em] normal-case">{p.v}</dd>
+                    </div>
+                  ))}
+                </dl>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        {/* ——— TRANSITION — quiet + provocative ——— */}
+        <section className="relative overflow-hidden">
+          <div className="mx-auto max-w-[1440px] px-6 pt-32 md:px-10 md:pt-52">
+            <Reveal>
+              <h2 className="statement-sans max-w-[54rem] text-charcoal">
+                Marketing
+                <br />
+                is not
+                <br />
+                the starting point.
+              </h2>
+            </Reveal>
+          </div>
+
+          <div className="mx-auto grid max-w-[1440px] gap-20 px-6 pb-32 pt-24 md:grid-cols-12 md:px-10 md:pb-48">
+            <div className="md:col-span-5 md:col-start-2">
+              <p className="body-read">
+                Most problems begin before the launch. When there is no clarity about what we are
+                creating, for whom, which problem we solve, why anyone should choose us, how to talk
+                about it and how to bring it to market —
+              </p>
+              <p className="body-read mt-6">
+                advertising, content and AI do not add clarity. They only scale what already exists,
+                faster.
+              </p>
+            </div>
+            <div className="md:col-span-5 md:col-start-8">
+              <p className="label-xs mb-10">The line becomes a system</p>
+              <SystemPath nodes={["Context", "Clarity", "Structure", "Decision", "Action"]} />
+            </div>
+          </div>
+
+          <div className="grain relative h-[38vh] w-full overflow-hidden md:h-[52vh]">
+            <img
+              src={water}
+              alt="Light moving across the surface of water"
+              loading="lazy"
+              width={1400}
+              height={900}
+              className="h-full w-full object-cover [filter:saturate(0.3)_contrast(0.96)]"
+            />
+          </div>
+        </section>
+
+        {/* ——— PRODUCT DISCOVERY — dense + interactive ——— */}
+        <Solutions />
+
+        {/* ——— METHOD STATEMENT — quiet ——— */}
+        <section className="rule-thin bg-sand/35">
+          <div className="mx-auto grid max-w-[1440px] gap-20 px-6 py-28 md:grid-cols-12 md:px-10 md:py-40">
+            <div className="md:col-span-6">
+              <Reveal>
+                <h2 className="display-md">
+                  Not every task needs another tool.
+                  <br />
+                  <span className="italic">Sometimes you need to see the whole system.</span>
+                </h2>
+              </Reveal>
+              <p className="body-read mt-12">
+                There are more marketing instruments every year, and AI has made them even more
+                accessible. But the value is less and less about how many tools you know —
+              </p>
+              <p className="body-read mt-6">
+                and more about whether you understand what your product actually needs, why, at which
+                moment, and how it connects to everything else. That is what I build my work,
+                products and systems around.
+              </p>
+            </div>
+            <div className="md:col-span-5 md:col-start-8">
+              <OrbitMethod nodes={["Idea", "Clarity", "Structure", "System", "Growth"]} />
+            </div>
+          </div>
+        </section>
+
+        {/* ——— ABOUT — human ——— */}
+        <section className="mx-auto max-w-[1440px] px-6 py-28 md:px-10 md:py-40">
+          <div className="grid gap-16 md:grid-cols-12">
+            <div className="grain relative md:col-span-5 md:col-start-1 md:-mt-16">
+              <div className="aspect-[4/5] overflow-hidden bg-stone">
+                <img
+                  src={fabric}
+                  alt="Folds of natural linen in warm light"
+                  loading="lazy"
+                  width={1200}
+                  height={900}
+                  className="h-full w-full object-cover [filter:saturate(0.35)]"
+                />
+              </div>
+            </div>
+            <div className="md:col-span-6 md:col-start-7 md:pt-24">
+              <p className="label-xs">About Vita</p>
+              <Reveal>
+                <h2 className="display-md mt-8">
+                  Behind every product,
+                  <br />
+                  I look for the <span className="italic">logic</span> first.
+                </h2>
+              </Reveal>
+              <p className="body-read mt-10">
+                Thirteen years across marketing and strategy, several markets and hundreds of
+                projects taught me one thing: the strongest work begins with understanding, not with
+                execution. I build products and systems that help people see their own structure
+                before they start scaling it.
+              </p>
+              <a href="#top" className="link-editorial mt-10">
+                About me <span aria-hidden>→</span>
+              </a>
+            </div>
+          </div>
+        </section>
+
+        {/* ——— FINAL — very quiet ——— */}
+        <section id="final" className="rule-thin">
+          <div className="mx-auto flex min-h-[85vh] max-w-[1440px] flex-col justify-center px-6 py-32 md:px-10">
+            <Reveal>
+              <p className="display-lg">
+                Clarity
+                <br />
+                before
+                <br />
+                <span className="italic">complexity.</span>
+              </p>
+            </Reveal>
+            <p className="body-read mt-14">Creating things that make sense.</p>
+            <div className="mt-14 flex flex-wrap items-center gap-x-12 gap-y-6">
+              <a href="#solutions" className="link-editorial">
+                Choose a solution <span aria-hidden>↑</span>
+              </a>
+              <a
+                href="mailto:hello@vitashablii.com"
+                className="label-xs !tracking-[0.16em] underline-offset-4 hover:underline"
+              >
+                Write to me →
+              </a>
+            </div>
+          </div>
+        </section>
+      </main>
+      <Footer />
     </div>
   );
 }

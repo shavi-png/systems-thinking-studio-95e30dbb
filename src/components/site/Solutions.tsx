@@ -44,7 +44,7 @@ function Constellation() {
     <div ref={ref} className="pointer-events-none absolute inset-0 hidden lg:block">
       <svg viewBox="0 0 1200 720" className="h-full w-full" fill="none" aria-hidden preserveAspectRatio="none">
         <path
-          d="M556 96C604 220 636 322 660 420"
+          d="M1010 90C1062 210 1070 320 1046 424"
           stroke="var(--line-tone)"
           strokeWidth="1"
           style={{
@@ -54,7 +54,7 @@ function Constellation() {
           }}
         />
         <path
-          d="M660 420C684 548 604 618 536 700"
+          d="M1046 424C1022 552 1006 630 984 706"
           stroke="var(--line-tone)"
           strokeWidth="0.7"
           opacity="0.8"
@@ -64,10 +64,10 @@ function Constellation() {
             transition: "stroke-dashoffset 3s cubic-bezier(0.22,1,0.36,1) 0.5s",
           }}
         />
-        <circle cx="660" cy="420" r="44" stroke="var(--line-tone)" strokeWidth="0.6" opacity="0.7" />
-        <circle cx="556" cy="96" r="5" fill="var(--paper)" stroke="var(--charcoal)" strokeWidth="0.9" />
-        <circle cx="660" cy="420" r="7" fill="var(--olive)" />
-        <circle cx="536" cy="700" r="5" fill="var(--paper)" stroke="var(--charcoal)" strokeWidth="0.9" />
+        <circle cx="1046" cy="424" r="44" stroke="var(--line-tone)" strokeWidth="0.6" opacity="0.7" />
+        <circle cx="1010" cy="90" r="5" fill="var(--paper)" stroke="var(--charcoal)" strokeWidth="0.9" />
+        <circle cx="1046" cy="424" r="7" fill="var(--olive)" />
+        <circle cx="984" cy="706" r="5" fill="var(--paper)" stroke="var(--charcoal)" strokeWidth="0.9" />
       </svg>
     </div>
   );

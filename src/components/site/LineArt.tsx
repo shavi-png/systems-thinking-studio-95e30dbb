@@ -1,6 +1,42 @@
 import { useReveal } from "@/hooks/use-reveal";
 
 /** The abstract line that enters the hero from outside the viewport. */
+export function Spiral({
+  className = "",
+  strokeWidth = 1,
+  accent = false,
+}: {
+  className?: string;
+  strokeWidth?: number;
+  accent?: boolean;
+}) {
+  const { ref, shown } = useReveal<HTMLDivElement>(0.15);
+  // Logarithmic (nautilus) spiral
+  const pts: string[] = [];
+  for (let t = 0; t <= 6.6 * Math.PI; t += 0.08) {
+    const r = 3.2 * Math.exp(0.245 * t);
+    pts.push(`${(300 + r * Math.cos(t)).toFixed(2)} ${(300 + r * Math.sin(t)).toFixed(2)}`);
+  }
+  return (
+    <div ref={ref} className={className}>
+      <svg viewBox="0 0 600 600" className="h-full w-full" fill="none" aria-hidden>
+        <path
+          d={`M${pts.join(" L")}`}
+          stroke={accent ? "var(--olive)" : "var(--line-tone)"}
+          strokeWidth={strokeWidth}
+          strokeLinecap="round"
+          style={{
+            strokeDasharray: 6000,
+            strokeDashoffset: shown ? 0 : 6000,
+            transition: "stroke-dashoffset 4.2s cubic-bezier(0.22,1,0.36,1)",
+          }}
+        />
+        <circle cx="300" cy="300" r="3" fill="var(--olive)" opacity={shown ? 0.8 : 0} />
+      </svg>
+    </div>
+  );
+}
+
 export function HeroLine({ className = "" }: { className?: string }) {
   return (
     <svg

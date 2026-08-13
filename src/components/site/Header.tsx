@@ -44,8 +44,12 @@ export function Header() {
       }`}
     >
       <div className="mx-auto grid max-w-[1440px] grid-cols-[minmax(0,1fr)_auto] items-center gap-6 px-6 py-5 md:px-10">
-        <a href="#top" className="label-xs min-w-0 !text-charcoal !tracking-[0.3em]">
-          Vita Shablii
+        <a
+          href="/"
+          className="inline-flex items-center text-charcoal transition-colors hover:text-olive"
+          aria-label="Vita Shablii — go to homepage"
+        >
+          <SpiralLogo className="h-8 w-8" />
         </a>
 
         <nav className="hidden items-center gap-9 lg:flex">

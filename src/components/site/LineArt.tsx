@@ -176,7 +176,7 @@ export function SpiralSystem({
 
   return (
     <div ref={ref}>
-      <svg viewBox="-90 -70 1180 1140" className="w-full" fill="none" aria-hidden>
+      <svg viewBox="0 130 880 740" className="w-full" fill="none" aria-hidden>
         <path
           d={`M${pts.join(" L")}`}
           stroke="var(--line-tone)"
@@ -190,8 +190,9 @@ export function SpiralSystem({
         />
         <circle cx={cx} cy={cy} r="6" fill="var(--olive)" opacity={shown ? 1 : 0} />
         <text
-          x={cx + 26}
-          y={cy + 8}
+          x={cx}
+          y={cy - 22}
+          textAnchor="middle"
           fill="var(--charcoal)"
           fontSize="22"
           letterSpacing="7"

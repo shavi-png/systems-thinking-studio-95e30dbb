@@ -154,7 +154,7 @@ export function SpiralSystem({
   const t0 = 2 * Math.PI;
 
   const pts: string[] = [];
-  const tMax = t0 + (nodes.length - 2) * step + lastGap + 0.5;
+  const tMax = t0 + 3 * step + lastGap + 0.5;
   const tMin = 0; // spiral begins at the center dot and expands outward
   for (let t = tMin; t <= tMax; t += 0.04) {
     const r = a * Math.exp(b * t);
@@ -164,8 +164,8 @@ export function SpiralSystem({
   const marks = nodes.map((n, i) => {
     const t =
       i === nodes.length - 1
-        ? t0 + (nodes.length - 2) * step + lastGap
-        : t0 + i * step;
+        ? t0 + 3 * step + lastGap
+        : t0 + (i + 1) * step;
     const r = a * Math.exp(b * t);
     const offset = i === 0 ? 34 : 18 + i * 2;
     return {
@@ -196,7 +196,7 @@ export function SpiralSystem({
         <circle cx={0} cy={0} r="3.5" fill="var(--smoke)" opacity={shown ? 0.8 : 0} style={{ transition: "opacity 900ms ease 300ms" }} />
         <text
           x={0}
-          y={-24}
+          y={-6}
           textAnchor="middle"
           fill="var(--smoke)"
           fontSize="15"

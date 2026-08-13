@@ -150,8 +150,8 @@ export function SpiralSystem({
   const cx = 500;
   const cy = 500;
   const a = 16;
-  const b = 0.2;
-  const step = 0.8 * Math.PI;
+  const b = 0.17;
+  const step = 0.7 * Math.PI;
   const t0 = 2 * Math.PI;
 
   const pts: string[] = [];
@@ -176,11 +176,11 @@ export function SpiralSystem({
 
   return (
     <div ref={ref}>
-      <svg viewBox="0 130 880 740" className="w-full" fill="none" aria-hidden>
+      <svg viewBox="150 320 720 400" className="w-full" fill="none" aria-hidden>
         <path
           d={`M${pts.join(" L")}`}
           stroke="var(--line-tone)"
-          strokeWidth="1.6"
+          strokeWidth="1.1"
           strokeLinecap="round"
           style={{
             strokeDasharray: 9000,
@@ -188,14 +188,14 @@ export function SpiralSystem({
             transition: "stroke-dashoffset 4s cubic-bezier(0.22,1,0.36,1)",
           }}
         />
-        <circle cx={cx} cy={cy} r="6" fill="var(--olive)" opacity={shown ? 1 : 0} />
+        <circle cx={cx} cy={cy} r="4.5" fill="var(--olive)" opacity={shown ? 1 : 0} />
         <text
           x={cx}
-          y={cy - 22}
+          y={cy - 16}
           textAnchor="middle"
           fill="var(--charcoal)"
-          fontSize="22"
-          letterSpacing="7"
+          fontSize="15"
+          letterSpacing="5"
           fontFamily="var(--font-sans-neutral)"
           style={{ opacity: shown ? 1 : 0, transition: "opacity 900ms ease 300ms" }}
         >
@@ -212,7 +212,7 @@ export function SpiralSystem({
             <circle
               cx={m.x}
               cy={m.y}
-              r="7"
+              r="5"
               fill={i === marks.length - 1 ? "var(--olive)" : "var(--paper)"}
               stroke="var(--charcoal)"
               strokeWidth="1.2"
@@ -221,8 +221,8 @@ export function SpiralSystem({
               x={m.lx}
               y={m.ly + 7}
               textAnchor={m.cos > 0.2 ? "start" : m.cos < -0.2 ? "end" : "middle"}
-              fontSize="20"
-              letterSpacing="6"
+              fontSize="14"
+              letterSpacing="4.5"
               fill="var(--charcoal)"
               fontFamily="var(--font-sans-neutral)"
             >

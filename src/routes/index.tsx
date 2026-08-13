@@ -199,7 +199,7 @@ function Index() {
                 />
               </div>
 
-              <div className="md:col-span-5 md:col-start-8 md:pt-40">
+              <div className="md:col-span-5 md:col-start-8 md:pt-28">
                 {/* mosaic marking the intentional drop */}
                 <div aria-hidden className="mb-10 grid w-28 grid-cols-4 gap-1">
                   {Array.from({ length: 12 }).map((_, i) => (

@@ -1,5 +1,24 @@
 import { useEffect, useState } from "react";
 
+function SpiralLogo({ className = "" }: { className?: string }) {
+  const pts: string[] = [];
+  for (let t = 0; t <= 4.2 * Math.PI; t += 0.18) {
+    const r = 2.4 * Math.exp(0.32 * t);
+    pts.push(`${(36 + r * Math.cos(t)).toFixed(2)} ${(36 + r * Math.sin(t)).toFixed(2)}`);
+  }
+  return (
+    <svg className={className} viewBox="0 0 72 72" fill="none" aria-hidden>
+      <path
+        d={`M${pts.join(" L")}`}
+        stroke="currentColor"
+        strokeWidth="1.5"
+        strokeLinecap="round"
+      />
+      <circle cx="36" cy="36" r="2.5" fill="currentColor" />
+    </svg>
+  );
+}
+
 const nav = [
   { label: "About", href: "#about" },
   { label: "Products", href: "#solutions" },
@@ -25,8 +44,12 @@ export function Header() {
       }`}
     >
       <div className="mx-auto grid max-w-[1440px] grid-cols-[minmax(0,1fr)_auto] items-center gap-6 px-6 py-5 md:px-10">
-        <a href="#top" className="label-xs min-w-0 !text-charcoal !tracking-[0.3em]">
-          Vita Shablii
+        <a
+          href="/"
+          className="inline-flex items-center text-charcoal transition-colors hover:text-olive"
+          aria-label="Vita Shablii — go to homepage"
+        >
+          <SpiralLogo className="h-8 w-8" />
         </a>
 
         <nav className="hidden items-center gap-9 lg:flex">

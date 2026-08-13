@@ -114,11 +114,11 @@ function Index() {
             <div className="md:col-span-7">
               <Reveal>
                 <h2 className="display-md">
-                    Working at the intersection of strategy × marketing ×{" "}
-                    <span className="italic">product thinking.</span>
-                  </h2>
-                </Reveal>
-                <div className="mt-12 space-y-6">
+                  Working at the intersection of strategy × marketing ×{" "}
+                  <span className="italic">product thinking.</span>
+                </h2>
+              </Reveal>
+              <div className="mt-12 space-y-6">
                   <p className="body-read">
                     Launching a product is only part of the task. It matters far more to understand
                     why some ideas find their place in the market and others do not.

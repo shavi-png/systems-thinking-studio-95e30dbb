@@ -180,7 +180,7 @@ export function SpiralSystem({
 
   return (
     <div ref={ref} className="rounded-sm bg-sage/8 p-4 md:p-5">
-      <svg viewBox="185 355 655 360" className="w-full" fill="none" aria-hidden>
+      <svg viewBox="185 355 655 360" className="w-full border border-red-500" fill="none" aria-hidden>
         <path
           d={`M${pts.join(" L")}`}
           stroke="var(--charcoal)"

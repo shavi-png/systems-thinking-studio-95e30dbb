@@ -111,10 +111,9 @@ function Index() {
         <section id="about" className="rule-thin bg-paper">
           <div className="mx-auto max-w-[1440px] px-6 py-28 md:px-10 md:py-40">
             <div className="grid gap-16 md:grid-cols-12">
-              <div className="md:col-span-7">
-                <p className="label-xs">Point of view</p>
-                <Reveal>
-                  <h2 className="display-md mt-8">
+            <div className="md:col-span-7">
+              <Reveal>
+                <h2 className="display-md">
                     Working at the intersection of strategy × marketing ×{" "}
                     <span className="italic">product thinking.</span>
                   </h2>
@@ -262,9 +261,8 @@ function Index() {
               </div>
             </div>
             <div className="md:col-span-6 md:col-start-7 md:pt-24">
-              <p className="label-xs">About Vita</p>
               <Reveal>
-                <h2 className="display-md mt-8">
+                <h2 className="display-md">
                   Behind every product,
                   <br />
                   I look for the <span className="italic">logic</span> first.

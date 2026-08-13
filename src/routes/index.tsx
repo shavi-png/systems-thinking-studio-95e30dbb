@@ -107,7 +107,7 @@ function Index() {
           </div>
         </section>
 
-        {/* ——— EXPERTISE + POINT OF VIEW + PROOF — dense ——— */}
+      {/* ——— EXPERTISE + POINT OF VIEW — dense ——— */}
         <section id="about" className="rule-thin bg-paper">
           <div className="mx-auto max-w-[1440px] px-6 py-28 md:px-10 md:py-40">
             <div className="grid gap-16 md:grid-cols-12">
@@ -146,23 +146,22 @@ function Index() {
                     className="h-full w-full object-cover opacity-95"
                   />
                 </div>
-                <div className="mt-6 overflow-hidden bg-stone">
-                  <img
-                    src={swans.url}
-                    alt="Two swans in soft white flight"
-                    loading="lazy"
-                    className="aspect-[4/3] w-full object-cover"
-                  />
-                </div>
-                <dl className="mt-14 space-y-8">
-                  {proof.map((p) => (
-                    <div key={p.k}>
-                      <dt className="font-serif-editorial text-2xl text-charcoal">{p.k}</dt>
-                      <dd className="label-xs mt-1 !tracking-[0.14em] normal-case">{p.v}</dd>
-                    </div>
-                  ))}
-                </dl>
               </div>
+            </div>
+
+            {/* proof ribbon */}
+            <div className="mt-16 md:mt-24">
+              <dl className="grid grid-cols-1 gap-px overflow-hidden border border-sage/30 bg-sage/25 sm:grid-cols-2 lg:grid-cols-5">
+                {proof.map((p) => (
+                  <div
+                    key={p.k}
+                    className="bg-sage/10 px-6 py-5 transition-colors hover:bg-sage/20 md:px-8 md:py-6"
+                  >
+                    <dt className="font-serif-editorial text-2xl text-charcoal">{p.k}</dt>
+                    <dd className="label-xs mt-1 !tracking-[0.14em] normal-case">{p.v}</dd>
+                  </div>
+                ))}
+              </dl>
             </div>
           </div>
         </section>

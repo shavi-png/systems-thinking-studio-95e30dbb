@@ -154,7 +154,7 @@ export function SpiralSystem({
   // and the previous word is raised slightly further from the end.
   const gaps = [0.7 * Math.PI, 0.7 * Math.PI, 0.3 * Math.PI, 0.5 * Math.PI];
   const tNodes = nodes.map((_, i) => t0 + gaps.slice(0, i + 1).reduce((acc, v) => acc + v, 0));
-  const tMax = tNodes[tNodes.length - 1] + 0.15;
+  const tMax = tNodes[tNodes.length - 1]! + 0.15;
 
   const pts: string[] = [];
   for (let t = 0; t <= tMax; t += 0.04) {
@@ -163,7 +163,7 @@ export function SpiralSystem({
   }
 
   const marks = nodes.map((n, i) => {
-    const t = tNodes[i];
+    const t = tNodes[i]!;
     const r = a * Math.exp(b * t);
     const offset = i === 0 ? 34 : 18 + i * 2;
     return {

@@ -3,7 +3,7 @@ import { createFileRoute } from "@tanstack/react-router";
 import { Header } from "@/components/site/Header";
 import { Footer } from "@/components/site/Footer";
 import { Reveal } from "@/components/site/Reveal";
-import { SystemPath, OrbitMethod, Spiral } from "@/components/site/LineArt";
+import { SpiralSystem, OrbitMethod, Spiral } from "@/components/site/LineArt";
 import { Solutions } from "@/components/site/Solutions";
 import portrait from "@/assets/vita-portrait.jpg";
 import shellHero from "@/assets/shell-hero.jpg.asset.json";
@@ -166,35 +166,62 @@ function Index() {
           </div>
         </section>
 
-        {/* ——— TRANSITION — quiet + provocative ——— */}
+        {/* ——— TRANSITION — statement + spiral ——— */}
         <section className="relative overflow-hidden">
-          <div className="mx-auto max-w-[1440px] px-6 pt-32 md:px-10 md:pt-52">
+          <div className="mx-auto max-w-[1440px] px-6 py-28 md:px-10 md:py-40">
+            {/* statement — framed, not a heading */}
             <Reveal>
-              <h2 className="statement-sans max-w-[54rem] text-charcoal">
-                Marketing
-                <br />
-                is not
-                <br />
-                the starting point.
-              </h2>
+              <figure className="relative border-y border-olive/30 bg-sage/12 px-6 py-14 md:px-12 md:py-20">
+                <span
+                  aria-hidden
+                  className="absolute left-0 top-0 h-full w-[3px] bg-olive/50"
+                />
+                <figcaption className="label-xs !tracking-[0.3em] text-olive">
+                  Statement
+                </figcaption>
+                <blockquote className="statement-sans mt-8 max-w-[54rem] text-charcoal">
+                  Marketing
+                  <br />
+                  is not
+                  <br />
+                  the starting point.
+                </blockquote>
+              </figure>
             </Reveal>
-          </div>
 
-          <div className="mx-auto grid max-w-[1440px] gap-20 px-6 pb-32 pt-24 md:grid-cols-12 md:px-10 md:pb-48">
-            <div className="md:col-span-5 md:col-start-2">
-              <p className="body-read">
-                Most problems begin before the launch. When there is no clarity about what we are
-                creating, for whom, which problem we solve, why anyone should choose us, how to talk
-                about it and how to bring it to market —
-              </p>
-              <p className="body-read mt-6">
-                advertising, content and AI do not add clarity. They only scale what already exists,
-                faster.
-              </p>
-            </div>
-            <div className="md:col-span-5 md:col-start-8">
-              <p className="label-xs mb-10">The line becomes a system</p>
-              <SystemPath nodes={["Context", "Clarity", "Structure", "Decision", "Action"]} />
+            {/* spiral left (raised) · text right (dropped) — deliberate offset */}
+            <div className="mt-20 grid gap-16 md:mt-28 md:grid-cols-12 md:gap-10">
+              <div className="md:col-span-6 md:-mt-14">
+                <p className="label-xs mb-8">The idea becomes a system</p>
+                <SpiralSystem
+                  center="Idea"
+                  nodes={["Context", "Clarity", "Structure", "Decision", "Action"]}
+                />
+              </div>
+
+              <div className="md:col-span-5 md:col-start-8 md:pt-28">
+                {/* mosaic marking the intentional drop */}
+                <div aria-hidden className="mb-10 grid w-28 grid-cols-4 gap-1">
+                  {Array.from({ length: 12 }).map((_, i) => (
+                    <span
+                      key={i}
+                      className={
+                        "aspect-square " +
+                        (i % 5 === 0 ? "bg-olive/60" : i % 3 === 0 ? "bg-sage/70" : "bg-sage/25")
+                      }
+                    />
+                  ))}
+                </div>
+                <p className="body-read">
+                  Most problems begin before the launch. When there is no clarity about what we are
+                  creating, for whom, which problem we solve, why anyone should choose us, how to talk
+                  about it and how to bring it to market —
+                </p>
+                <p className="body-read mt-6">
+                  advertising, content and AI do not add clarity. They only scale what already exists,
+                  faster.
+                </p>
+              </div>
             </div>
           </div>
 

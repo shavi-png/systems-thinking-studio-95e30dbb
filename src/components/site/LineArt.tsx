@@ -138,6 +138,103 @@ export function SystemPath({ nodes }: { nodes: string[] }) {
   );
 }
 
+/** Nautilus spiral: IDEA at the centre, the system unfolding outward. */
+export function SpiralSystem({
+  center = "Idea",
+  nodes,
+}: {
+  center?: string;
+  nodes: string[];
+}) {
+  const { ref, shown } = useReveal<HTMLDivElement>(0.2);
+  const cx = 500;
+  const cy = 500;
+  const a = 16;
+  const b = 0.17;
+  const step = 0.7 * Math.PI;
+  const t0 = 2 * Math.PI;
+
+  const pts: string[] = [];
+  const tMax = t0 + (nodes.length - 1) * step + 0.4;
+  for (let t = 0; t <= tMax; t += 0.04) {
+    const r = a * Math.exp(b * t);
+    pts.push(`${(cx + r * Math.cos(t)).toFixed(2)} ${(cy + r * Math.sin(t)).toFixed(2)}`);
+  }
+
+  const marks = nodes.map((n, i) => {
+    const t = t0 + i * step;
+    const r = a * Math.exp(b * t);
+    return {
+      n,
+      x: cx + r * Math.cos(t),
+      y: cy + r * Math.sin(t),
+      lx: cx + (r + 30) * Math.cos(t),
+      ly: cy + (r + 30) * Math.sin(t),
+      cos: Math.cos(t),
+    };
+  });
+
+  return (
+    <div ref={ref}>
+      <svg viewBox="185 355 655 360" className="w-full" fill="none" aria-hidden>
+        <path
+          d={`M${pts.join(" L")}`}
+          stroke="var(--line-tone)"
+          strokeWidth="1.1"
+          strokeLinecap="round"
+          style={{
+            strokeDasharray: 9000,
+            strokeDashoffset: shown ? 0 : 9000,
+            transition: "stroke-dashoffset 4s cubic-bezier(0.22,1,0.36,1)",
+          }}
+        />
+        <circle cx={cx} cy={cy} r="4.5" fill="var(--olive)" opacity={shown ? 1 : 0} />
+        <text
+          x={cx}
+          y={cy - 16}
+          textAnchor="middle"
+          fill="var(--charcoal)"
+          fontSize="15"
+          letterSpacing="5"
+          fontFamily="var(--font-sans-neutral)"
+          style={{ opacity: shown ? 1 : 0, transition: "opacity 900ms ease 300ms" }}
+        >
+          {center.toUpperCase()}
+        </text>
+        {marks.map((m, i) => (
+          <g
+            key={m.n}
+            style={{
+              opacity: shown ? 1 : 0,
+              transition: `opacity 900ms ease ${500 + i * 320}ms`,
+            }}
+          >
+            <circle
+              cx={m.x}
+              cy={m.y}
+              r="5"
+              fill={i === marks.length - 1 ? "var(--olive)" : "var(--paper)"}
+              stroke="var(--charcoal)"
+              strokeWidth="1.2"
+            />
+            <text
+              x={m.lx}
+              y={m.ly + 7}
+              textAnchor={m.cos > 0.2 ? "start" : m.cos < -0.2 ? "end" : "middle"}
+              fontSize="14"
+              letterSpacing="4.5"
+              fill="var(--charcoal)"
+              fontFamily="var(--font-sans-neutral)"
+            >
+              {m.n.toUpperCase()}
+            </text>
+          </g>
+        ))}
+      </svg>
+    </div>
+  );
+}
+
 /** Orbital resolution of the line: idea → growth. */
 export function OrbitMethod({ nodes }: { nodes: string[] }) {
   const { ref, shown } = useReveal<HTMLDivElement>(0.3);

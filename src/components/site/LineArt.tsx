@@ -194,7 +194,7 @@ export function SpiralSystem({
         <circle cx={0} cy={0} r="3.5" fill="var(--smoke)" opacity={shown ? 0.8 : 0} style={{ transition: "opacity 900ms ease 300ms" }} />
         <text
           x={0}
-          y={-6}
+          y={-16}
           textAnchor="middle"
           fill="var(--smoke)"
           fontSize="15"

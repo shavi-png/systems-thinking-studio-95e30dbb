@@ -177,10 +177,7 @@ function Index() {
                   className="absolute left-0 top-0 h-full w-[3px] bg-olive/50"
                 />
                 <div className="relative">
-                  <figcaption className="label-xs !tracking-[0.3em] text-olive">
-                    Statement
-                  </figcaption>
-                  <blockquote className="statement-sans mt-8 text-charcoal">
+                  <blockquote className="statement-sans text-charcoal">
                     Marketing
                     <br />
                     is not
@@ -188,24 +185,22 @@ function Index() {
                     the starting point.
                   </blockquote>
                 </div>
-                <div className="relative w-full md:max-w-[480px] md:justify-self-end">
-                  <p className="label-xs mb-6">The idea becomes a system</p>
+                <div className="relative w-full">
+                  <p className="label-xs mb-4">The context becomes a system</p>
                   <SpiralSystem
-                    center="Idea"
-                    nodes={["Context", "Clarity", "Structure", "Decision", "Action"]}
+                    center="Context"
+                    nodes={["Clarity", "Structure", "Decision", "Action"]}
                   />
                 </div>
               </figure>
             </Reveal>
 
-            {/* supporting text — kept centered for calm */}
-            <div className="mx-auto mt-20 max-w-[54rem] md:mt-28">
-              <p className="body-read text-center">
+            {/* supporting text — centered and closer to the statement */}
+            <div className="mt-16 md:mt-20">
+              <p className="body-read mx-auto !max-w-[36rem] text-center">
                 Most problems begin before the launch. When there is no clarity about what we are
                 creating, for whom, which problem we solve, why anyone should choose us, how to talk
-                about it and how to bring it to market —
-              </p>
-              <p className="body-read mt-6 text-center">
+                about it and how to bring it to market —<br />
                 advertising, content and AI do not add clarity. They only scale what already exists,
                 faster.
               </p>

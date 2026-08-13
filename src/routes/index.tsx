@@ -3,7 +3,7 @@ import { createFileRoute } from "@tanstack/react-router";
 import { Header } from "@/components/site/Header";
 import { Footer } from "@/components/site/Footer";
 import { Reveal } from "@/components/site/Reveal";
-import { HeroLine, SystemPath, OrbitMethod, Spiral } from "@/components/site/LineArt";
+import { SystemPath, OrbitMethod, Spiral } from "@/components/site/LineArt";
 import { Solutions } from "@/components/site/Solutions";
 import portrait from "@/assets/vita-portrait.jpg";
 import shellHero from "@/assets/shell-hero.jpg.asset.json";
@@ -87,7 +87,7 @@ function Index() {
               </div>
             </div>
 
-            <div className="relative flex items-start gap-6 md:col-span-6 md:col-start-7">
+            <div className="relative md:col-span-6 md:col-start-7 md:flex md:items-stretch md:gap-6">
               <p className="label-xs hidden shrink-0 self-stretch !tracking-[0.28em] md:block md:[writing-mode:vertical-rl] md:rotate-180">
                 Strategy × Marketing × Product Thinking × AI
               </p>

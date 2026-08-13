@@ -176,7 +176,7 @@ export function SpiralSystem({
 
   return (
     <div ref={ref}>
-      <svg viewBox="185 385 655 325" className="w-full" fill="none" aria-hidden>
+      <svg viewBox="185 355 655 360" className="w-full" fill="none" aria-hidden>
         <path
           d={`M${pts.join(" L")}`}
           stroke="var(--line-tone)"

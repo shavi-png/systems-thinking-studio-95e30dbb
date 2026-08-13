@@ -6,6 +6,7 @@ import { Reveal } from "@/components/site/Reveal";
 import { HeroLine, SystemPath, OrbitMethod, Spiral } from "@/components/site/LineArt";
 import { Solutions } from "@/components/site/Solutions";
 import portrait from "@/assets/vita-portrait.jpg";
+import shellHero from "@/assets/shell-hero.jpg.asset.json";
 import hands from "@/assets/hands-notebook.jpg";
 import ripple from "@/assets/ripple.jpg.asset.json";
 import shell from "@/assets/shell.jpg.asset.json";
@@ -46,16 +47,21 @@ function Index() {
       <main>
         {/* ——— HERO — quiet ——— */}
         <section className="relative overflow-hidden">
-          <HeroLine className="pointer-events-none absolute -right-[18%] top-0 h-[130%] w-[85%] opacity-70 md:-right-[6%] md:w-[55%]" />
-          <Spiral className="pointer-events-none absolute -left-[22%] top-[8%] hidden h-[46rem] w-[46rem] opacity-45 md:block" />
-          <div className="mx-auto grid max-w-[1440px] grid-cols-1 gap-12 px-6 pb-24 pt-36 md:grid-cols-12 md:px-10 md:pb-36 md:pt-48">
-            <div className="md:col-span-7 md:pt-10">
+          {/* faint nautilus silhouette behind everything */}
+          <img
+            src={shellHero.url}
+            alt=""
+            aria-hidden
+            className="pointer-events-none absolute -left-[10%] top-[4%] w-[85%] max-w-none select-none opacity-[0.16] [filter:grayscale(0.35)_brightness(1.12)] [mask-image:radial-gradient(closest-side,black,transparent)] md:left-[-6%] md:top-[-6%] md:w-[62%] md:opacity-[0.13]"
+          />
+          <div className="relative mx-auto grid max-w-[1440px] grid-cols-1 gap-12 px-6 pb-24 pt-32 md:grid-cols-12 md:px-10 md:pb-32 md:pt-40">
+            <div className="flex flex-col md:col-span-6">
               <Reveal>
                 <p className="label-xs !text-charcoal !tracking-[0.3em]">Vita Shablii</p>
                 <p className="label-xs mt-2">Strategist · Founder · Advisor</p>
               </Reveal>
               <Reveal delay={120}>
-                <h1 className="display-lg mt-10 md:mt-14">
+                <h1 className="display-lg mt-10 md:mt-12">
                   Ideas do not
                   <br />
                   need complexity.
@@ -64,19 +70,28 @@ function Index() {
                 </h1>
               </Reveal>
               <Reveal delay={240}>
-                <p className="body-read mt-10 md:mt-14">
+                <p className="body-read mt-10 md:mt-12">
                   From idea to product. From product to market. From chaotic marketing to a system.
                 </p>
               </Reveal>
+              <div className="mt-10 md:mt-auto md:pt-14">
+                <a
+                  href="#solutions"
+                  className="label-xs group inline-flex items-center gap-3 border border-charcoal/25 bg-paper/60 px-7 py-4 !tracking-[0.2em] !text-charcoal backdrop-blur-[2px] transition-colors hover:border-olive hover:bg-olive/10"
+                >
+                  Find your solution
+                  <span aria-hidden className="transition-transform group-hover:translate-y-0.5">
+                    ↓
+                  </span>
+                </a>
+              </div>
             </div>
 
-            <div className="relative md:col-span-5 md:-mt-24">
-              <Spiral
-                accent
-                strokeWidth={0.8}
-                className="pointer-events-none absolute -left-16 -top-16 z-10 h-40 w-40 opacity-70"
-              />
-              <div className="grain relative aspect-[3/4] w-full overflow-hidden bg-stone md:ml-6">
+            <div className="relative flex items-start gap-6 md:col-span-6 md:col-start-7">
+              <p className="label-xs hidden shrink-0 self-stretch !tracking-[0.28em] md:block md:[writing-mode:vertical-rl] md:rotate-180">
+                Strategy × Marketing × Product Thinking × AI
+              </p>
+              <div className="grain relative aspect-[3/4] w-full overflow-hidden bg-stone">
                 <img
                   src={portrait}
                   alt="Portrait of Vita Shablii"
@@ -85,16 +100,10 @@ function Index() {
                   className="h-full w-full object-cover"
                 />
               </div>
-              <p className="label-xs mt-6 md:absolute md:-left-24 md:bottom-10 md:mt-0 md:[writing-mode:vertical-rl]">
+              <p className="label-xs mt-6 md:hidden">
                 Strategy × Marketing × Product Thinking × AI
               </p>
             </div>
-          </div>
-
-          <div className="mx-auto max-w-[1440px] px-6 pb-24 md:px-10">
-            <a href="#solutions" className="link-editorial">
-              Find your solution <span aria-hidden>↓</span>
-            </a>
           </div>
         </section>
 

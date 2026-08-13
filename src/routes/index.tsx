@@ -186,7 +186,7 @@ function Index() {
                   </blockquote>
                 </div>
                 <div className="relative w-full">
-                  <p className="label-xs mb-2 text-center">The context becomes a system</p>
+                  <p className="label-xs mb-2 text-center">The idea becomes a system</p>
                   <SpiralSystem
                     center="Context"
                     nodes={["Clarity", "Structure", "Decision", "Action"]}

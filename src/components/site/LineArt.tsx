@@ -149,23 +149,21 @@ export function SpiralSystem({
   const { ref, shown } = useReveal<HTMLDivElement>(0.2);
   const a = 26;
   const b = 0.17;
-  const step = 0.7 * Math.PI;
-  const lastGap = 0.55 * Math.PI;
   const t0 = 2 * Math.PI;
+  // Custom spacing so the outer word stays at the end of the shell
+  // and the previous word is raised slightly further from the end.
+  const gaps = [0.7 * Math.PI, 0.7 * Math.PI, 0.3 * Math.PI, 0.5 * Math.PI];
+  const tNodes = nodes.map((_, i) => t0 + gaps.slice(0, i + 1).reduce((acc, v) => acc + v, 0));
+  const tMax = tNodes[tNodes.length - 1] + 0.15;
 
   const pts: string[] = [];
-  const tMax = t0 + 3 * step + lastGap + 0.5;
-  const tMin = 0; // spiral begins at the center dot and expands outward
-  for (let t = tMin; t <= tMax; t += 0.04) {
+  for (let t = 0; t <= tMax; t += 0.04) {
     const r = a * Math.exp(b * t);
     pts.push(`${(r * Math.cos(t)).toFixed(2)} ${(r * Math.sin(t)).toFixed(2)}`);
   }
 
   const marks = nodes.map((n, i) => {
-    const t =
-      i === nodes.length - 1
-        ? t0 + 3 * step + lastGap
-        : t0 + (i + 1) * step;
+    const t = tNodes[i];
     const r = a * Math.exp(b * t);
     const offset = i === 0 ? 34 : 18 + i * 2;
     return {

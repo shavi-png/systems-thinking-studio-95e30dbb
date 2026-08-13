@@ -155,7 +155,8 @@ export function SpiralSystem({
 
   const pts: string[] = [];
   const tMax = t0 + (nodes.length - 2) * step + lastGap + 0.5;
-  for (let t = 0; t <= tMax; t += 0.04) {
+  const tMin = -4 * Math.PI;
+  for (let t = tMin; t <= tMax; t += 0.04) {
     const r = a * Math.exp(b * t);
     pts.push(`${(r * Math.cos(t)).toFixed(2)} ${(r * Math.sin(t)).toFixed(2)}`);
   }
@@ -166,7 +167,7 @@ export function SpiralSystem({
         ? t0 + (nodes.length - 2) * step + lastGap
         : t0 + i * step;
     const r = a * Math.exp(b * t);
-    const offset = 40 + i * 4;
+    const offset = 18 + i * 2;
     return {
       n,
       x: r * Math.cos(t),
@@ -182,24 +183,24 @@ export function SpiralSystem({
       <svg viewBox="-260 -225 640 405" className="h-auto w-full" fill="none" aria-hidden>
         <path
           d={`M${pts.join(" L")}`}
-          stroke="var(--charcoal)"
-          strokeWidth="2"
+          stroke="var(--taupe)"
+          strokeWidth="1.4"
           strokeLinecap="round"
-          opacity="0.85"
+          opacity="0.55"
           style={{
             strokeDasharray: 9000,
             strokeDashoffset: shown ? 0 : 9000,
             transition: "stroke-dashoffset 4s cubic-bezier(0.22,1,0.36,1)",
           }}
         />
-        <circle cx={0} cy={0} r="5" fill="var(--olive)" opacity={shown ? 1 : 0} style={{ transition: "opacity 900ms ease 300ms" }} />
+        <circle cx={0} cy={0} r="3.5" fill="var(--olive)" opacity={shown ? 0.8 : 0} style={{ transition: "opacity 900ms ease 300ms" }} />
         <text
-          x={0}
-          y={-18}
-          textAnchor="middle"
-          fill="var(--charcoal)"
-          fontSize="18"
-          letterSpacing="5.5"
+          x={10}
+          y={-8}
+          textAnchor="start"
+          fill="var(--taupe)"
+          fontSize="15"
+          letterSpacing="4"
           fontFamily="var(--font-sans-neutral)"
           style={{ opacity: shown ? 1 : 0, transition: "opacity 900ms ease 300ms" }}
         >
@@ -216,24 +217,26 @@ export function SpiralSystem({
             <circle
               cx={m.x}
               cy={m.y}
-              r="5"
+              r="3.5"
               fill={i === marks.length - 1 ? "var(--olive)" : "var(--paper)"}
-              stroke="var(--charcoal)"
-              strokeWidth="1.2"
+              stroke="var(--taupe)"
+              strokeWidth="1"
+              opacity="0.9"
             />
             <text
               x={m.lx}
-              y={m.ly + 8}
+              y={m.ly + 6}
               textAnchor={m.cos > 0.2 ? "start" : m.cos < -0.2 ? "end" : "middle"}
               fontSize="15"
               letterSpacing="4"
-              fill="var(--charcoal)"
+              fill="var(--taupe)"
               fontFamily="var(--font-sans-neutral)"
             >
               {m.n.toUpperCase()}
             </text>
           </g>
         ))}
+
       </svg>
     </div>
   );

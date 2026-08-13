@@ -152,17 +152,21 @@ export function SpiralSystem({
   const a = 16;
   const b = 0.17;
   const step = 0.7 * Math.PI;
+  const lastGap = 0.55 * Math.PI;
   const t0 = 2 * Math.PI;
 
   const pts: string[] = [];
-  const tMax = t0 + (nodes.length - 1) * step + 0.4;
+  const tMax = t0 + (nodes.length - 2) * step + lastGap + 0.4;
   for (let t = 0; t <= tMax; t += 0.04) {
     const r = a * Math.exp(b * t);
     pts.push(`${(cx + r * Math.cos(t)).toFixed(2)} ${(cy + r * Math.sin(t)).toFixed(2)}`);
   }
 
   const marks = nodes.map((n, i) => {
-    const t = t0 + i * step;
+    const t =
+      i === nodes.length - 1
+        ? t0 + (nodes.length - 2) * step + lastGap
+        : t0 + i * step;
     const r = a * Math.exp(b * t);
     return {
       n,
@@ -175,13 +179,14 @@ export function SpiralSystem({
   });
 
   return (
-    <div ref={ref}>
+    <div ref={ref} className="rounded-sm bg-sage/8 p-4 md:p-5">
       <svg viewBox="185 355 655 360" className="w-full" fill="none" aria-hidden>
         <path
           d={`M${pts.join(" L")}`}
-          stroke="var(--line-tone)"
-          strokeWidth="1.1"
+          stroke="var(--charcoal)"
+          strokeWidth="1.8"
           strokeLinecap="round"
+          opacity="0.85"
           style={{
             strokeDasharray: 9000,
             strokeDashoffset: shown ? 0 : 9000,

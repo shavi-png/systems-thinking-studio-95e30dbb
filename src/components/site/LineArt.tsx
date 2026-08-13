@@ -138,28 +138,26 @@ export function SystemPath({ nodes }: { nodes: string[] }) {
   );
 }
 
-/** Nautilus spiral: IDEA at the centre, the system unfolding outward. */
+/** Nautilus spiral: the center word unfolds into a system. */
 export function SpiralSystem({
-  center = "Idea",
+  center = "Context",
   nodes,
 }: {
   center?: string;
   nodes: string[];
 }) {
   const { ref, shown } = useReveal<HTMLDivElement>(0.2);
-  const cx = 500;
-  const cy = 500;
-  const a = 16;
+  const a = 26;
   const b = 0.17;
   const step = 0.7 * Math.PI;
   const lastGap = 0.55 * Math.PI;
   const t0 = 2 * Math.PI;
 
   const pts: string[] = [];
-  const tMax = t0 + (nodes.length - 2) * step + lastGap + 0.4;
+  const tMax = t0 + (nodes.length - 2) * step + lastGap + 0.5;
   for (let t = 0; t <= tMax; t += 0.04) {
     const r = a * Math.exp(b * t);
-    pts.push(`${(cx + r * Math.cos(t)).toFixed(2)} ${(cy + r * Math.sin(t)).toFixed(2)}`);
+    pts.push(`${(r * Math.cos(t)).toFixed(2)} ${(r * Math.sin(t)).toFixed(2)}`);
   }
 
   const marks = nodes.map((n, i) => {
@@ -168,23 +166,24 @@ export function SpiralSystem({
         ? t0 + (nodes.length - 2) * step + lastGap
         : t0 + i * step;
     const r = a * Math.exp(b * t);
+    const offset = 40 + i * 4;
     return {
       n,
-      x: cx + r * Math.cos(t),
-      y: cy + r * Math.sin(t),
-      lx: cx + (r + 30) * Math.cos(t),
-      ly: cy + (r + 30) * Math.sin(t),
+      x: r * Math.cos(t),
+      y: r * Math.sin(t),
+      lx: (r + offset) * Math.cos(t),
+      ly: (r + offset) * Math.sin(t),
       cos: Math.cos(t),
     };
   });
 
   return (
-    <div ref={ref} className="rounded-sm bg-sage/8 p-4 md:p-5">
-      <svg viewBox="185 355 655 360" className="w-full" fill="none" aria-hidden>
+    <div ref={ref} className="relative">
+      <svg viewBox="-260 -225 640 405" className="h-auto w-full" fill="none" aria-hidden>
         <path
           d={`M${pts.join(" L")}`}
           stroke="var(--charcoal)"
-          strokeWidth="1.8"
+          strokeWidth="2"
           strokeLinecap="round"
           opacity="0.85"
           style={{
@@ -193,14 +192,14 @@ export function SpiralSystem({
             transition: "stroke-dashoffset 4s cubic-bezier(0.22,1,0.36,1)",
           }}
         />
-        <circle cx={cx} cy={cy} r="4.5" fill="var(--olive)" opacity={shown ? 1 : 0} />
+        <circle cx={0} cy={0} r="5" fill="var(--olive)" opacity={shown ? 1 : 0} style={{ transition: "opacity 900ms ease 300ms" }} />
         <text
-          x={cx}
-          y={cy - 16}
+          x={0}
+          y={-18}
           textAnchor="middle"
           fill="var(--charcoal)"
-          fontSize="15"
-          letterSpacing="5"
+          fontSize="18"
+          letterSpacing="5.5"
           fontFamily="var(--font-sans-neutral)"
           style={{ opacity: shown ? 1 : 0, transition: "opacity 900ms ease 300ms" }}
         >
@@ -224,10 +223,10 @@ export function SpiralSystem({
             />
             <text
               x={m.lx}
-              y={m.ly + 7}
+              y={m.ly + 8}
               textAnchor={m.cos > 0.2 ? "start" : m.cos < -0.2 ? "end" : "middle"}
-              fontSize="14"
-              letterSpacing="4.5"
+              fontSize="15"
+              letterSpacing="4"
               fill="var(--charcoal)"
               fontFamily="var(--font-sans-neutral)"
             >

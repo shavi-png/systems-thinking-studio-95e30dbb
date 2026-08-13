@@ -183,22 +183,22 @@ export function SpiralSystem({
       <svg viewBox="-260 -225 640 405" className="h-auto w-full" fill="none" aria-hidden>
         <path
           d={`M${pts.join(" L")}`}
-          stroke="var(--taupe)"
+          stroke="var(--smoke)"
           strokeWidth="1.4"
           strokeLinecap="round"
-          opacity="0.55"
+          opacity="0.7"
           style={{
             strokeDasharray: 9000,
             strokeDashoffset: shown ? 0 : 9000,
             transition: "stroke-dashoffset 4s cubic-bezier(0.22,1,0.36,1)",
           }}
         />
-        <circle cx={0} cy={0} r="3.5" fill="var(--olive)" opacity={shown ? 0.8 : 0} style={{ transition: "opacity 900ms ease 300ms" }} />
+        <circle cx={0} cy={0} r="3.5" fill="var(--smoke)" opacity={shown ? 0.8 : 0} style={{ transition: "opacity 900ms ease 300ms" }} />
         <text
           x={10}
           y={-8}
           textAnchor="start"
-          fill="var(--taupe)"
+          fill="var(--smoke)"
           fontSize="15"
           letterSpacing="4"
           fontFamily="var(--font-sans-neutral)"
@@ -219,7 +219,7 @@ export function SpiralSystem({
               cy={m.y}
               r="3.5"
               fill={i === marks.length - 1 ? "var(--olive)" : "var(--paper)"}
-              stroke="var(--taupe)"
+              stroke="var(--smoke)"
               strokeWidth="1"
               opacity="0.9"
             />
@@ -229,7 +229,7 @@ export function SpiralSystem({
               textAnchor={m.cos > 0.2 ? "start" : m.cos < -0.2 ? "end" : "middle"}
               fontSize="15"
               letterSpacing="4"
-              fill="var(--taupe)"
+              fill="var(--smoke)"
               fontFamily="var(--font-sans-neutral)"
             >
               {m.n.toUpperCase()}

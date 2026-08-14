@@ -307,7 +307,7 @@ function Index() {
 
           {/* ——— SELECTED EXPERIENCE — editorial proof ——— */}
           <div className="rule-thin mt-20 pt-12 md:mt-28 md:pt-16">
-            <p className="label-xs text-ink/60">Selected experience</p>
+            <p className="label-xs">Selected experience</p>
             <div className="mt-10 grid gap-10 md:grid-cols-3 md:gap-0">
               {[
                 {
@@ -327,10 +327,12 @@ function Index() {
                 },
               ].map((item, i) => (
                 <Reveal key={item.t} delay={i * 90}>
-                  <div className="md:border-l md:border-ink/12 md:px-8 md:first:border-l-0 md:first:pl-0">
-                    <p className="label-xs text-ink/55">{item.n}</p>
-                    <h3 className="display-xs mt-3">{item.t}</h3>
-                    <p className="body-read mt-4 !max-w-none text-ink/75">{item.d}</p>
+                  <div className="md:border-l md:border-line md:px-8 md:first:border-l-0 md:first:pl-0">
+                    <p className="label-xs">{item.n}</p>
+                    <h3 className="display-md mt-3 !text-[clamp(1.35rem,1.8vw,1.7rem)]">
+                      {item.t}
+                    </h3>
+                    <p className="body-read mt-4 !max-w-none !text-[0.95rem]">{item.d}</p>
                   </div>
                 </Reveal>
               ))}

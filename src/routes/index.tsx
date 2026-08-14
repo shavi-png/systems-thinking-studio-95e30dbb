@@ -50,7 +50,7 @@ function Index() {
             src={shellHero.url}
             alt=""
             aria-hidden
-            className="pointer-events-none absolute left-1/2 top-1/2 h-[115%] w-auto max-w-none -translate-x-1/2 -translate-y-1/2 select-none opacity-[0.40] [filter:sepia(0.06)_saturate(0.3)_brightness(1.22)_contrast(0.85)] [mask-image:radial-gradient(closest-side,black_55%,transparent_100%)] md:left-[42%] md:h-[128%] md:opacity-[0.34]"
+            className="pointer-events-none absolute left-1/2 top-[78%] h-[115%] w-auto max-w-none -translate-x-1/2 -translate-y-1/2 select-none opacity-[0.40] [filter:sepia(0.06)_saturate(0.3)_brightness(1.22)_contrast(0.85)] [mask-image:radial-gradient(closest-side,black_55%,transparent_100%)] md:left-[38%] md:top-[72%] md:h-[128%] md:opacity-[0.34]"
           />
           <div className="relative mx-auto grid max-w-[1440px] grid-cols-1 gap-12 px-6 pb-16 pt-24 md:grid-cols-12 md:px-10 md:pb-24 md:pt-32">
             <div className="flex flex-col md:col-span-6">
@@ -228,8 +228,8 @@ function Index() {
 
             <div className="mt-12 grid gap-10 md:mt-16 md:grid-cols-12 md:gap-8">
               {/* tall image, sits high */}
-              <figure className="grain relative md:col-span-4 md:col-start-1">
-                <div className="aspect-[3/4] overflow-hidden bg-stone">
+              <figure className="relative md:col-span-5 md:col-start-1">
+                <div className="grain aspect-[3/4] overflow-hidden bg-stone">
                   <img
                     src={seeds.url}
                     alt="Dandelion seeds drifting in pale light"
@@ -241,8 +241,8 @@ function Index() {
               </figure>
 
               {/* second image, dropped lower and smaller — the quiet counterweight */}
-              <figure className="grain relative md:col-span-3 md:col-start-5 md:mt-32">
-                <div className="aspect-square overflow-hidden bg-stone">
+              <figure className="relative md:col-span-3 md:col-start-6 md:mt-28">
+                <div className="grain aspect-square overflow-hidden bg-stone">
                   <img
                     src={ripple.url}
                     alt="Concentric ripples spreading through still water"
@@ -253,8 +253,8 @@ function Index() {
                 <figcaption className="label-xs mt-4 text-muted">One structure</figcaption>
               </figure>
 
-              {/* text column, aligned to the lower image */}
-              <div className="md:col-span-4 md:col-start-9 md:mt-32">
+              {/* text column, top-aligned with the tall image */}
+              <div className="md:col-span-4 md:col-start-10 md:mt-1">
                 <p className="body-read">
                   There are more marketing instruments every year, and AI has made them even more
                   accessible. But the value is less and less about how many tools you know —
@@ -263,6 +263,11 @@ function Index() {
                   and more about whether you understand what your product actually needs, why, at
                   which moment, and how it connects to everything else. That is what I build my
                   work, products and systems around.
+                </p>
+                <p className="font-serif-editorial mt-10 border-t border-line pt-6 text-[1.35rem] italic leading-snug text-charcoal">
+                  Fewer instruments.
+                  <br />
+                  One structure.
                 </p>
               </div>
             </div>

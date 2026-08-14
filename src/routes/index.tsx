@@ -106,7 +106,7 @@ function Index() {
         </section>
 
         {/* ——— EXPERTISE + POINT OF VIEW — dense ——— */}
-        <section id="about" className="rule-thin bg-paper">
+        <section className="rule-thin bg-paper">
           <div className="mx-auto max-w-[1440px] px-6 pb-12 pt-20 md:px-10 md:pb-20 md:pt-28">
             <div className="grid gap-16 md:grid-cols-12">
               <div className="md:col-span-7">

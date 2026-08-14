@@ -45,36 +45,31 @@ const solutions: Solution[] = [
 function Lattice() {
   const { ref, shown } = useReveal<HTMLDivElement>(0.15);
 
-  // anchors follow the three block positions in the 12-col grid
-  const A = { x: 60, y: 60 }; // 01 Product   (left, top)
-  const B = { x: 640, y: 470 }; // 02 Ecosystem (right, middle)
-  const C = { x: 190, y: 900 }; // 03 Direct    (left, bottom)
+  // primary nodes sit in the gutters beside each block, never over the text
+  const A = { x: 22, y: 38 }; // 01 Product   (left gutter, top)
+  const B = { x: 1132, y: 470 }; // 02 Ecosystem (right gutter, middle)
+  const C = { x: 118, y: 640 }; // 03 Direct    (left gutter, lower)
 
-  // secondary lattice points — the surrounding molecular structure
+  // secondary lattice points — the surrounding crystalline structure
   const aux = [
-    { x: 350, y: 250 },
-    { x: 1080, y: 210 },
-    { x: 1010, y: 700 },
-    { x: 430, y: 690 },
-    { x: 760, y: 940 },
-    { x: 120, y: 470 },
+    { x: 1146, y: 108 }, // top right
+    { x: 1152, y: 800 }, // lower right
+    { x: 470, y: 952 }, // bottom middle
+    { x: 14, y: 330 }, // left edge
+    { x: 690, y: 610 }, // inner core
   ];
 
   const bonds: Array<[{ x: number; y: number }, { x: number; y: number }, number]> = [
-    [A, B, 1],
-    [B, C, 1],
-    [C, A, 0.45],
-    [A, aux[0]!, 0.5],
-    [aux[0]!, B, 0.5],
-    [B, aux[1]!, 0.4],
-    [aux[1]!, A, 0.28],
-    [B, aux[2]!, 0.4],
-    [aux[2]!, aux[4]!, 0.3],
-    [aux[4]!, C, 0.4],
+    [A, aux[0]!, 1],
+    [aux[0]!, B, 1],
+    [B, aux[1]!, 1],
+    [aux[1]!, aux[2]!, 1],
+    [aux[2]!, C, 1],
     [C, aux[3]!, 0.5],
-    [aux[3]!, B, 0.4],
-    [A, aux[5]!, 0.4],
-    [aux[5]!, C, 0.4],
+    [aux[3]!, A, 0.5],
+    [B, aux[4]!, 0.4],
+    [aux[4]!, aux[1]!, 0.35],
+    [aux[4]!, aux[2]!, 0.35],
   ];
 
   return (
@@ -86,23 +81,17 @@ function Lattice() {
         aria-hidden
         preserveAspectRatio="none"
       >
-        {/* facet planes — the crystal body between the three primary nodes */}
+        {/* facet planes — the crystal body holding the three nodes together */}
         <polygon
-          points={`${A.x},${A.y} ${B.x},${B.y} ${C.x},${C.y}`}
+          points={`${A.x},${A.y} ${aux[0]!.x},${aux[0]!.y} ${B.x},${B.y} ${aux[1]!.x},${aux[1]!.y} ${aux[2]!.x},${aux[2]!.y} ${C.x},${C.y} ${aux[3]!.x},${aux[3]!.y}`}
           fill="var(--sage)"
-          opacity={shown ? 0.16 : 0}
-          style={{ transition: "opacity 1.8s ease 0.6s" }}
+          opacity={shown ? 0.1 : 0}
+          style={{ transition: "opacity 1.8s ease 0.8s" }}
         />
         <polygon
-          points={`${A.x},${A.y} ${aux[1]!.x},${aux[1]!.y} ${B.x},${B.y}`}
+          points={`${B.x},${B.y} ${aux[4]!.x},${aux[4]!.y} ${aux[1]!.x},${aux[1]!.y}`}
           fill="var(--sage)"
-          opacity={shown ? 0.07 : 0}
-          style={{ transition: "opacity 1.8s ease 0.9s" }}
-        />
-        <polygon
-          points={`${B.x},${B.y} ${aux[2]!.x},${aux[2]!.y} ${aux[4]!.x},${aux[4]!.y} ${C.x},${C.y}`}
-          fill="var(--sage)"
-          opacity={shown ? 0.06 : 0}
+          opacity={shown ? 0.12 : 0}
           style={{ transition: "opacity 1.8s ease 1.1s" }}
         />
 

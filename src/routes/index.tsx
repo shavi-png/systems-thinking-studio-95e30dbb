@@ -370,7 +370,7 @@ function Index() {
             src={shellHero.url}
             alt=""
             aria-hidden
-            className="pointer-events-none absolute left-1/2 top-[46%] h-auto w-[150%] max-w-none -translate-x-1/2 -translate-y-1/2 select-none opacity-[0.40] [filter:sepia(0.08)_saturate(0.25)_brightness(1.28)_contrast(0.8)] [mask-image:radial-gradient(60%_60%_at_50%_50%,black_35%,transparent_100%)] md:w-[100%] md:opacity-[0.34]"
+            className="pointer-events-none absolute left-1/2 top-[62%] h-auto w-[150%] max-w-none -translate-x-1/2 -translate-y-1/2 select-none opacity-[0.40] [filter:sepia(0.08)_saturate(0.25)_brightness(1.28)_contrast(0.8)] [mask-image:radial-gradient(60%_60%_at_50%_50%,black_35%,transparent_100%)] md:w-[100%] md:opacity-[0.34]"
           />
           <div className="relative mx-auto flex min-h-[60vh] max-w-[1440px] flex-col items-center justify-center px-6 py-16 text-center md:px-10 md:py-20">
             <Reveal>

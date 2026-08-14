@@ -291,7 +291,7 @@ function Index() {
                 {
                   n: "01 / MARKET ENTRY",
                   t: "China → Europe → USA",
-                  d: "Market entry strategy and product positioning for a Chinese tech brand expanding into the EU.",
+                  d: "Experience launching and positioning products across Europe, the US and China — adapting strategy and go-to-market decisions to different market contexts.",
                 },
                 {
                   n: "02 / PRODUCT & BRAND",

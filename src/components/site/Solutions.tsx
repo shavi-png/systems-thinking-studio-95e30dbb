@@ -135,7 +135,7 @@ function SolutionBlock({ s }: { s: Solution }) {
 
 export function Solutions() {
   return (
-    <section id="solutions" className="relative mx-auto max-w-[1440px] px-6 py-28 md:px-10 md:py-40">
+    <section id="solutions" className="relative mx-auto max-w-[1440px] px-6 py-20 md:px-10 md:py-28">
       <div className="mx-auto max-w-[46rem] text-center">
         <h2 className="display-lg mx-auto max-w-[40rem]">
           Find the point
@@ -152,7 +152,7 @@ export function Solutions() {
       </div>
 
       {/* one shell, cut open: three chambers growing from a single centre */}
-      <div className="relative mt-20 lg:mt-28">
+      <div className="relative mt-16 lg:mt-20">
         <div className="pointer-events-none absolute inset-x-0 -bottom-10 -top-10 hidden lg:block">
           <ShellField />
         </div>

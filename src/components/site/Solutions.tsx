@@ -37,18 +37,25 @@ const solutions: Solution[] = [
 ];
 
 function SolutionBlock({ s }: { s: Solution }) {
+  const shapeClasses = s.gravity
+    ? "border-olive/45 bg-sage/25 group-hover:bg-sage/35"
+    : "border-line bg-paper/70 group-hover:border-olive/40 group-hover:bg-sage/12";
+
   return (
-    <article
-      className={`group relative flex aspect-square items-center justify-center rounded-[50%] border px-10 py-14 text-center transition-colors duration-500 lg:aspect-[3/4] lg:px-14 ${
-        s.gravity
-          ? "border-olive/45 bg-sage/25 hover:bg-sage/35"
-          : "border-line bg-paper/70 hover:border-olive/40 hover:bg-sage/12"
-      }`}
-    >
-      <div className="mx-auto max-w-[17rem]">
-        <p className="label-xs">{s.label}</p>
+    <article className="group relative flex aspect-square items-center justify-center rounded-[50%] text-center lg:aspect-[3/4]">
+      {/* tilted oval — sits behind the text */}
+      <div
+        className={`absolute inset-0 rotate-[3deg] rounded-[50%] border transition-all duration-500 ${shapeClasses}`}
+      />
+
+      {/* label on top of the oval */}
+      <p className="label-xs absolute left-1/2 top-0 z-20 -translate-x-1/2 -translate-y-1/2 whitespace-nowrap">
+        {s.label}
+      </p>
+
+      <div className="relative z-10 mx-auto max-w-[17rem] px-10 py-14 lg:px-14">
         <h3
-          className={`mt-4 ${s.gravity ? "display-md" : "display-md !text-[clamp(1.7rem,2.4vw,2.4rem)]"} leading-[0.95]`}
+          className={`${s.gravity ? "display-md" : "display-md !text-[clamp(1.7rem,2.4vw,2.4rem)]"} leading-[0.95]`}
         >
           {s.title.map((t) => (
             <span key={t} className="block">
@@ -65,6 +72,7 @@ function SolutionBlock({ s }: { s: Solution }) {
     </article>
   );
 }
+
 
 export function Solutions() {
   return (

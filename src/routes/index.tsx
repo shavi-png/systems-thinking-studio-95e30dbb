@@ -3,14 +3,13 @@ import { createFileRoute } from "@tanstack/react-router";
 import { Header } from "@/components/site/Header";
 import { Footer } from "@/components/site/Footer";
 import { Reveal } from "@/components/site/Reveal";
-import { SpiralSystem, OrbitMethod, Spiral } from "@/components/site/LineArt";
+import { SpiralSystem, Spiral } from "@/components/site/LineArt";
 import { Solutions } from "@/components/site/Solutions";
 import portrait from "@/assets/vita-portrait.jpg";
 import shellHero from "@/assets/shell-hero.jpg.asset.json";
 import hands from "@/assets/hands-notebook.jpg";
 import ripple from "@/assets/ripple.jpg.asset.json";
 import shell from "@/assets/shell.jpg.asset.json";
-import swans from "@/assets/swans.jpg.asset.json";
 import seeds from "@/assets/seeds.jpg.asset.json";
 import wash from "@/assets/wash.jpg.asset.json";
 

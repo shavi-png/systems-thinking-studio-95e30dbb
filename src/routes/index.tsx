@@ -168,42 +168,39 @@ function Index() {
         {/* ——— TRANSITION — statement + spiral ——— */}
         <section className="relative overflow-hidden">
           <div className="mx-auto max-w-[1440px] px-6 py-28 md:px-10 md:py-40">
-            {/* statement — framed, with the spiral sitting inside the right side */}
             <Reveal>
-              <figure className="relative grid items-center gap-10 border-y border-olive/30 bg-sage/12 px-6 py-12 md:grid-cols-2 md:gap-12 md:px-14 md:py-20">
-                <span
-                  aria-hidden
-                  className="absolute left-0 top-0 h-full w-[3px] bg-olive/50"
-                />
-                <div className="relative">
-                  <blockquote className="statement-sans text-charcoal">
+              <div className="grid items-center gap-14 lg:grid-cols-3 lg:gap-10">
+                {/* left third — kicker + headline */}
+                <div className="lg:pr-6">
+                  <p className="label-xs mb-5">The idea becomes a system</p>
+                  <h2 className="display-lg text-charcoal">
                     Marketing
                     <br />
                     is not
                     <br />
                     the starting point.
-                  </blockquote>
+                  </h2>
                 </div>
-                <div className="relative w-full">
-                  <p className="label-xs mb-2 text-center">The idea becomes a system</p>
+
+                {/* centre third — spiral */}
+                <div className="w-full">
                   <SpiralSystem
                     center="Context"
                     nodes={["Clarity", "Structure", "Decision", "Action"]}
                   />
                 </div>
-              </figure>
-            </Reveal>
 
-            {/* supporting text — centered and closer to the statement */}
-            <div className="mt-16 md:mt-20">
-              <p className="body-read mx-auto !max-w-[36rem] text-center">
-                Most problems begin before the launch. When there is no clarity about what we are
-                creating, for whom, which problem we solve, why anyone should choose us, how to talk
-                about it and how to bring it to market —<br />
-                advertising, content and AI do not add clarity. They only scale what already exists,
-                faster.
-              </p>
-            </div>
+                {/* right third — supporting text */}
+                <div className="lg:pl-6">
+                  <p className="body-read !max-w-[26rem]">
+                    Most problems begin before the launch. When there is no clarity about what we are
+                    creating, for whom, which problem we solve, why anyone should choose us, how to
+                    talk about it and how to bring it to market — advertising, content and AI do not
+                    add clarity. They only scale what already exists, faster.
+                  </p>
+                </div>
+              </div>
+            </Reveal>
           </div>
 
           <div className="relative h-[42vh] w-full overflow-hidden md:h-[58vh]">

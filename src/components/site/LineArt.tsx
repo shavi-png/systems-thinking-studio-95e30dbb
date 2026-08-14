@@ -170,7 +170,8 @@ export function SpiralSystem({
   const marks = nodes.map((n, i) => {
     const t = tNodes[i]!;
     const r = a * Math.exp(b * t);
-    const offset = i === 0 ? 48 : i === nodes.length - 1 ? 14 : 18 + i * 2;
+    // Keep labels close to the spiral line; clarity is the first dot, so it sits very near it.
+    const offset = i === 0 ? 12 : i === nodes.length - 1 ? 14 : 18 + i * 2;
     return {
       n,
       x: r * Math.cos(t),
@@ -206,7 +207,7 @@ export function SpiralSystem({
         />
         <text
           x={-10}
-          y={-24}
+          y={-6}
           textAnchor="middle"
           fill="var(--smoke)"
           fontSize="15"

@@ -166,7 +166,7 @@ function Index() {
         </section>
 
         {/* ——— TRANSITION — statement + spiral ——— */}
-        <section className="relative overflow-hidden bg-background">
+        <section className="relative overflow-hidden bg-paper">
           <div className="mx-auto max-w-[1440px] px-6 pb-28 pt-16 md:px-10 md:pb-40 md:pt-20">
             <Reveal>
               <div className="grid items-center gap-14 lg:grid-cols-3 lg:gap-10">

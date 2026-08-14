@@ -223,8 +223,6 @@ export function SpiralSystem({
         >
           {center.toUpperCase()}
         </text>
-
-
         {marks.map((m, i) => (
           <g
             key={m.n}

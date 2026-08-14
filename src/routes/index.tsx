@@ -290,18 +290,18 @@ function Index() {
               {[
                 {
                   n: "01 / MARKET ENTRY",
-                  t: "China → Europe",
+                  t: "China → Europe → USA",
                   d: "Market entry strategy and product positioning for a Chinese tech brand expanding into the EU.",
                 },
                 {
                   n: "02 / PRODUCT & BRAND",
-                  t: "Consumer Tech",
-                  d: "Go-to-market strategy and lifecycle marketing for global product launches in CEE & CIS.",
+                  t: "CROSS-INDUSTRY",
+                  d: "Strategy, product and lifecycle marketing across consulting, IT, e-commerce, fintech and data-driven digital businesses.",
                 },
                 {
                   n: "03 / SYSTEM & TRANSFORMATION",
                   t: "Marketing Systems",
-                  d: "Built marketing systems and teams from scratch across multiple markets and industries.",
+                  d: "Built marketing functions, teams and processes from the ground up — turning disconnected activities into structured, scalable systems.",
                 },
               ].map((item, i) => (
                 <Reveal key={item.t} delay={i * 90}>

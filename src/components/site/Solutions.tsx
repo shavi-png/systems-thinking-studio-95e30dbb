@@ -37,11 +37,11 @@ const solutions: Solution[] = [
 ];
 
 /* ---- shell geometry: chambers of one nautilus ---- */
-const CX = 120;
-const CY = 470;
-const A = 5.2;
+const CX = 90;
+const CY = 500;
+const A = 118;
 const B = 0.235;
-const T_START = -1.6 * Math.PI;
+const T_START = -2.2 * Math.PI;
 const T_END = 3.05 * Math.PI;
 
 function pt(t: number) {

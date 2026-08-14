@@ -45,13 +45,22 @@ function SolutionBlock({ s }: { s: Solution }) {
     <article className="group relative flex aspect-square items-center justify-center rounded-[50%] text-center lg:aspect-[3/4]">
       {/* tilted oval — sits behind the text */}
       <div
-        className={`absolute inset-0 rotate-[3deg] rounded-[50%] border transition-all duration-500 ${shapeClasses}`}
+        className={`absolute inset-0 rotate-[33deg] rounded-[50%] border transition-all duration-500 ${shapeClasses}`}
       />
 
-      {/* label on top of the oval */}
-      <p className="label-xs absolute left-[52%] top-0 z-20 -translate-x-1/2 -translate-y-1/2 whitespace-nowrap">
-        {s.label}
-      </p>
+      {/* curved label following the tilted oval top */}
+      <svg
+        className="absolute left-1/2 top-4 z-20 h-[2.5rem] w-[70%] max-w-[14rem] -translate-x-1/2 rotate-[33deg] overflow-visible"
+        viewBox="0 0 400 50"
+        aria-hidden="true"
+      >
+        <path id={`solution-label-${s.index}`} d="M 0,45 Q 200,5 400,45" fill="none" />
+        <text className="label-xs fill-current" textAnchor="middle" dominantBaseline="middle">
+          <textPath href={`#solution-label-${s.index}`} startOffset="50%" dy="-0.5em">
+            {s.label}
+          </textPath>
+        </text>
+      </svg>
 
       <div className="relative z-10 mx-auto max-w-[17rem] px-10 py-14 lg:px-14">
         <h3

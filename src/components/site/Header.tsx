@@ -1,20 +1,31 @@
 import { useEffect, useState } from "react";
 
 function SpiralLogo({ className = "" }: { className?: string }) {
+  // same logarithmic shell as the section 3 spiral, three full turns, no labels
+  const a = 26;
+  const b = 0.17;
+  const tMax = 6 * Math.PI;
   const pts: string[] = [];
-  for (let t = 0; t <= 4.2 * Math.PI; t += 0.18) {
-    const r = 2.4 * Math.exp(0.32 * t);
-    pts.push(`${(36 + r * Math.cos(t)).toFixed(2)} ${(36 + r * Math.sin(t)).toFixed(2)}`);
+  for (let t = 0; t <= tMax; t += 0.05) {
+    const r = a * Math.exp(b * t);
+    pts.push(`${(r * Math.cos(t)).toFixed(2)} ${(r * Math.sin(t)).toFixed(2)}`);
   }
+  const rMax = a * Math.exp(b * tMax);
+  const pad = 4;
+  const size = (rMax + pad) * 2;
   return (
-    <svg className={className} viewBox="0 0 72 72" fill="none" aria-hidden>
+    <svg
+      className={className}
+      viewBox={`${-(rMax + pad)} ${-(rMax + pad)} ${size} ${size}`}
+      fill="none"
+      aria-hidden
+    >
       <path
         d={`M${pts.join(" L")}`}
         stroke="currentColor"
-        strokeWidth="1.5"
+        strokeWidth="14"
         strokeLinecap="round"
       />
-      <circle cx="36" cy="36" r="2.5" fill="currentColor" />
     </svg>
   );
 }

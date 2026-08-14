@@ -37,12 +37,12 @@ const solutions: Solution[] = [
 ];
 
 /* ---- shell geometry: chambers of one nautilus ---- */
-const CX = 620;
-const CY = 290;
-const A = 70;
+const CX = 560;
+const CY = 330;
+const A = 62;
 const B = 0.235;
 const T_START = -2.4 * Math.PI;
-const T_END = 2.6 * Math.PI;
+const T_END = 2.72 * Math.PI;
 
 function pt(t: number) {
   const r = A * Math.exp(B * t);
@@ -61,8 +61,8 @@ function spiralPath(from: number, to: number) {
   return `M${out.join(" L")}`;
 }
 
-// the septa (walls between chambers) run from the growth axis out to the shell wall
-const septaT = [0.6 * Math.PI, 1.3 * Math.PI, 2.0 * Math.PI, T_END];
+// the septa (walls between chambers): short arcs on the shell wall, not full radii
+const septaT = [0.72 * Math.PI, 1.5 * Math.PI, 2.28 * Math.PI];
 
 function ShellField() {
   return (
@@ -73,29 +73,35 @@ function ShellField() {
       preserveAspectRatio="xMidYMid slice"
       aria-hidden
     >
-      {/* the widest chamber, softly filled — the ecosystem holds the others */}
-      <path
-        d={`${spiralPath(septaT[1]!, septaT[2]!)} L ${CX} ${CY} Z`}
-        fill="var(--sage)"
-        opacity="0.16"
-      />
-      <path d={spiralPath(T_START, T_END)} stroke="var(--smoke)" strokeWidth="1.3" opacity="0.75" />
+      <defs>
+        <radialGradient id="shell-core" cx="50%" cy="50%" r="50%">
+          <stop offset="0%" stopColor="var(--sage)" stopOpacity="0.5" />
+          <stop offset="100%" stopColor="var(--sage)" stopOpacity="0" />
+        </radialGradient>
+      </defs>
+      {/* the growth centre glows softly — everything unfolds from one point */}
+      <circle cx={CX} cy={CY} r="330" fill="url(#shell-core)" />
+      <path d={spiralPath(T_START, T_END)} stroke="var(--smoke)" strokeWidth="1.1" opacity="0.45" />
+      {/* septa: short walls stepping out from the growth axis */}
       {septaT.map((t) => {
         const [x, y] = pt(t);
+        const inner = 0.62;
         return (
-          <line
-            key={t}
-            x1={CX}
-            y1={CY}
-            x2={x}
-            y2={y}
-            stroke="var(--smoke)"
-            strokeWidth="0.9"
-            opacity="0.4"
-          />
+          <g key={t}>
+            <line
+              x1={CX + (x - CX) * inner}
+              y1={CY + (y - CY) * inner}
+              x2={x}
+              y2={y}
+              stroke="var(--smoke)"
+              strokeWidth="0.8"
+              opacity="0.35"
+            />
+            <circle cx={x} cy={y} r="3.5" fill="var(--olive)" opacity="0.5" />
+          </g>
         );
       })}
-      <circle cx={CX} cy={CY} r="3" fill="var(--olive)" opacity="0.6" />
+      <circle cx={CX} cy={CY} r="2.5" fill="var(--olive)" opacity="0.6" />
     </svg>
   );
 }

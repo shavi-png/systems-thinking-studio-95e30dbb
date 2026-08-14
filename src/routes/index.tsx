@@ -293,7 +293,42 @@ function Index() {
                   I look for the <span className="italic">logic</span> first.
                 </h2>
               </Reveal>
-              <div className="mt-10 space-y-6">
+
+              {/* ——— SELECTED EXPERIENCE — editorial proof ——— */}
+              <div className="mt-10">
+                <p className="label-xs">Selected experience</p>
+                <div className="mt-8 grid gap-10 md:grid-cols-3 md:gap-0">
+                  {[
+                    {
+                      n: "01 / MARKET ENTRY",
+                      t: "China → Europe",
+                      d: "Market entry strategy and product positioning for a Chinese tech brand expanding into the EU.",
+                    },
+                    {
+                      n: "02 / PRODUCT & BRAND",
+                      t: "Consumer Tech",
+                      d: "Go-to-market strategy and lifecycle marketing for global product launches in CEE & CIS.",
+                    },
+                    {
+                      n: "03 / SYSTEM & TRANSFORMATION",
+                      t: "Marketing Systems",
+                      d: "Built marketing systems and teams from scratch across multiple markets and industries.",
+                    },
+                  ].map((item, i) => (
+                    <Reveal key={item.t} delay={i * 90}>
+                      <div className="md:border-l md:border-line md:px-5 md:first:border-l-0 md:first:pl-0">
+                        <p className="label-xs">{item.n}</p>
+                        <h3 className="display-md mt-3 !text-[clamp(1.1rem,1.5vw,1.4rem)]">
+                          {item.t}
+                        </h3>
+                        <p className="body-read mt-4 !max-w-none !text-[0.85rem]">{item.d}</p>
+                      </div>
+                    </Reveal>
+                  ))}
+                </div>
+              </div>
+
+              <div className="mt-12 space-y-6">
                 <p className="body-read">
                   Thirteen years across marketing, products and different markets have confirmed it
                   again and again: what happens before execution often determines what happens
@@ -320,40 +355,6 @@ function Index() {
               <a href="#solutions" className="link-editorial mt-10">
                 FOLLOW THE THINKING <span aria-hidden>→</span>
               </a>
-            </div>
-          </div>
-
-          {/* ——— SELECTED EXPERIENCE — editorial proof ——— */}
-          <div className="mt-16 pt-12 md:mt-20 md:pt-16">
-            <p className="label-xs">Selected experience</p>
-            <div className="mt-10 grid gap-10 md:grid-cols-3 md:gap-0">
-              {[
-                {
-                  n: "01 / MARKET ENTRY",
-                  t: "China → Europe",
-                  d: "Market entry strategy and product positioning for a Chinese tech brand expanding into the EU.",
-                },
-                {
-                  n: "02 / PRODUCT & BRAND",
-                  t: "Consumer Tech",
-                  d: "Go-to-market strategy and lifecycle marketing for global product launches in CEE & CIS.",
-                },
-                {
-                  n: "03 / SYSTEM & TRANSFORMATION",
-                  t: "Marketing Systems",
-                  d: "Built marketing systems and teams from scratch across multiple markets and industries.",
-                },
-              ].map((item, i) => (
-                <Reveal key={item.t} delay={i * 90}>
-                  <div className="md:border-l md:border-line md:px-8 md:first:border-l-0 md:first:pl-0">
-                    <p className="label-xs">{item.n}</p>
-                    <h3 className="display-md mt-3 !text-[clamp(1.35rem,1.8vw,1.7rem)]">
-                      {item.t}
-                    </h3>
-                    <p className="body-read mt-4 !max-w-none !text-[0.95rem]">{item.d}</p>
-                  </div>
-                </Reveal>
-              ))}
             </div>
           </div>
         </section>

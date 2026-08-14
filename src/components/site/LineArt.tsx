@@ -157,10 +157,14 @@ export function SpiralSystem({
   const tMax = tNodes[tNodes.length - 1]! + 0.05;
 
   const pts: string[] = [];
-  for (let t = 0; t <= tMax; t += 0.04) {
+  // start the spiral at t0 so the centre stays open for the CONTEXT label
+  for (let t = t0; t <= tMax; t += 0.04) {
     const r = a * Math.exp(b * t);
     pts.push(`${(r * Math.cos(t)).toFixed(2)} ${(r * Math.sin(t)).toFixed(2)}`);
   }
+  const startR = a * Math.exp(b * t0);
+  const startX = startR * Math.cos(t0);
+  const startY = startR * Math.sin(t0);
 
   const marks = nodes.map((n, i) => {
     const t = tNodes[i]!;
@@ -191,10 +195,17 @@ export function SpiralSystem({
             transition: "stroke-dashoffset 4s cubic-bezier(0.22,1,0.36,1)",
           }}
         />
-        <circle cx={0} cy={0} r="3.5" fill="var(--smoke)" opacity={shown ? 0.8 : 0} style={{ transition: "opacity 900ms ease 300ms" }} />
+        <circle
+          cx={startX}
+          cy={startY}
+          r="3.5"
+          fill="var(--smoke)"
+          opacity={shown ? 0.8 : 0}
+          style={{ transition: "opacity 900ms ease 300ms" }}
+        />
         <text
           x={0}
-          y={-16}
+          y={6}
           textAnchor="middle"
           fill="var(--smoke)"
           fontSize="15"

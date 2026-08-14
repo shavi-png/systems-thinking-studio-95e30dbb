@@ -291,14 +291,51 @@ function Index() {
                 </h2>
               </Reveal>
               <p className="body-read mt-10">
-                Thirteen years across marketing and strategy, several markets and hundreds of
-                projects taught me one thing: the strongest work begins with understanding, not with
-                execution. I build products and systems that help people see their own structure
-                before they start scaling it.
+                What those years changed is not how much I know, but where I start. I stopped
+                treating marketing as a set of activities and began reading it as a system: what a
+                product actually is, who it is for, and which decision is being avoided.
+              </p>
+              <p className="body-read mt-6">
+                Now the first question is never “what do we launch?” but “what do we not yet
+                understand?”. Clarity turned out to be the fastest thing I could give anyone.
               </p>
               <a href="#top" className="link-editorial mt-10">
                 About me <span aria-hidden>→</span>
               </a>
+            </div>
+          </div>
+
+          {/* ——— SELECTED EXPERIENCE — editorial proof ——— */}
+          <div className="rule-thin mt-20 pt-12 md:mt-28 md:pt-16">
+            <p className="label-xs">Selected experience</p>
+            <div className="mt-10 grid gap-10 md:grid-cols-3 md:gap-0">
+              {[
+                {
+                  n: "01 / Market entry",
+                  t: "China → Europe",
+                  d: "Market entry strategy and product positioning for a Chinese tech brand expanding into the EU.",
+                },
+                {
+                  n: "02 / Product & brand",
+                  t: "Consumer Tech",
+                  d: "Go-to-market strategy and lifecycle marketing for global product launches in CEE & CIS.",
+                },
+                {
+                  n: "03 / System & transformation",
+                  t: "Marketing Systems",
+                  d: "Built marketing systems and teams from scratch across multiple markets and industries.",
+                },
+              ].map((item, i) => (
+                <Reveal key={item.t} delay={i * 90}>
+                  <div className="md:border-l md:border-line md:px-8 md:first:border-l-0 md:first:pl-0">
+                    <p className="label-xs">{item.n}</p>
+                    <h3 className="display-md mt-3 !text-[clamp(1.35rem,1.8vw,1.7rem)]">
+                      {item.t}
+                    </h3>
+                    <p className="body-read mt-4 !max-w-none !text-[0.95rem]">{item.d}</p>
+                  </div>
+                </Reveal>
+              ))}
             </div>
           </div>
         </section>

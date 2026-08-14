@@ -136,7 +136,7 @@ function SolutionBlock({ s }: { s: Solution }) {
 export function Solutions() {
   return (
     <section id="solutions" className="relative mx-auto max-w-[1440px] px-6 py-28 md:px-10 md:py-40">
-      <div className="max-w-[46rem]">
+      <div className="mx-auto max-w-[46rem] text-center">
         <h2 className="display-lg">
           Find the point
           <br />

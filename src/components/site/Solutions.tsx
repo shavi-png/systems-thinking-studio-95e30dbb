@@ -1,5 +1,3 @@
-import { useReveal } from "@/hooks/use-reveal";
-
 type Solution = {
   index: string;
   label: string;

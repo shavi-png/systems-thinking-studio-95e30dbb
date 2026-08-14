@@ -182,11 +182,9 @@ export function SpiralSystem({
     };
   });
 
-  // Place the center word horizontally on the inner spiral so it sits on the shell line.
-  const centerT = t0 - 0.55 * Math.PI;
-  const centerR = a * Math.exp(b * centerT);
-  const centerX = centerR * Math.cos(centerT);
-  const centerY = centerR * Math.sin(centerT);
+  // Anchor the center word directly above the spiral's starting point.
+  const centerX = startX;
+  const centerY = startY - 9;
 
   return (
     <div ref={ref} className="relative">
@@ -213,7 +211,7 @@ export function SpiralSystem({
         />
         <text
           x={centerX}
-          y={centerY + 5}
+          y={centerY}
           textAnchor="middle"
           fill="var(--smoke)"
           fontSize="15"

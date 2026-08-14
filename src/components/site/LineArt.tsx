@@ -182,10 +182,19 @@ export function SpiralSystem({
     };
   });
 
+  // Place the center word on the inner spiral so it reads as part of the shell.
+  const centerT = t0 - 0.55 * Math.PI;
+  const centerR = a * Math.exp(b * centerT);
+  const centerX = centerR * Math.cos(centerT);
+  const centerY = centerR * Math.sin(centerT);
+  // Angle of the spiral tangent at this point so the text follows the curve.
+  const centerAngle = (centerT + Math.atan(1 / b)) * (180 / Math.PI);
+
   return (
     <div ref={ref} className="relative">
       <svg viewBox="-260 -225 640 405" className="h-auto w-full" fill="none" aria-hidden>
         <path
+          id="spiralPath"
           d={`M${pts.join(" L")}`}
           stroke="var(--smoke)"
           strokeWidth="1.4"
@@ -206,17 +215,19 @@ export function SpiralSystem({
           style={{ transition: "opacity 900ms ease 300ms" }}
         />
         <text
-          x={-10}
-          y={-6}
+          x={centerX}
+          y={centerY}
           textAnchor="middle"
           fill="var(--smoke)"
           fontSize="15"
           letterSpacing="4"
           fontFamily="var(--font-sans-neutral)"
+          transform={`rotate(${centerAngle - 90}, ${centerX}, ${centerY})`}
           style={{ opacity: shown ? 1 : 0, transition: "opacity 900ms ease 300ms" }}
         >
           {center.toUpperCase()}
         </text>
+
         {marks.map((m, i) => (
           <g
             key={m.n}

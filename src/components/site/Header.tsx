@@ -60,7 +60,7 @@ export function Header() {
           className="inline-flex items-center text-charcoal transition-colors hover:text-olive"
           aria-label="Vita Shablii — go to homepage"
         >
-          <SpiralLogo className="h-8 w-8" />
+          <SpiralLogo className="h-11 w-11" />
         </a>
 
         <nav className="hidden items-center gap-9 lg:flex">

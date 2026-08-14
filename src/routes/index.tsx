@@ -271,8 +271,55 @@ function Index() {
 
         {/* ——— THE THINKING BEHIND THE WORK — human ——— */}
         <section id="about" className="mx-auto max-w-[1440px] px-6 py-20 md:px-10 md:py-28">
-          <div className="grid gap-16 md:grid-cols-12">
-            <div className="grain relative md:col-span-5 md:col-start-1 md:-mt-16">
+          {/* eyebrow + headline */}
+          <Reveal>
+            <div className="max-w-4xl">
+              <p className="label-xs mb-5">THE THINKING BEHIND THE WORK</p>
+              <h2 className="display-md">
+                Behind every product,
+                <br />
+                I look for the <span className="italic">logic</span> first.
+              </h2>
+            </div>
+          </Reveal>
+
+          {/* ——— SELECTED EXPERIENCE — editorial proof ——— */}
+          <div className="mt-12 md:mt-16">
+            <p className="label-xs">Selected experience</p>
+            <div className="mt-8 grid gap-10 md:grid-cols-3 md:gap-0">
+              {[
+                {
+                  n: "01 / MARKET ENTRY",
+                  t: "China → Europe",
+                  d: "Market entry strategy and product positioning for a Chinese tech brand expanding into the EU.",
+                },
+                {
+                  n: "02 / PRODUCT & BRAND",
+                  t: "Consumer Tech",
+                  d: "Go-to-market strategy and lifecycle marketing for global product launches in CEE & CIS.",
+                },
+                {
+                  n: "03 / SYSTEM & TRANSFORMATION",
+                  t: "Marketing Systems",
+                  d: "Built marketing systems and teams from scratch across multiple markets and industries.",
+                },
+              ].map((item, i) => (
+                <Reveal key={item.t} delay={i * 90}>
+                  <div className="md:border-l md:border-line md:px-5 md:first:border-l-0 md:first:pl-0">
+                    <p className="label-xs">{item.n}</p>
+                    <h3 className="display-md mt-3 !text-[clamp(1.1rem,1.5vw,1.4rem)]">
+                      {item.t}
+                    </h3>
+                    <p className="body-read mt-4 !max-w-none !text-[0.85rem]">{item.d}</p>
+                  </div>
+                </Reveal>
+              ))}
+            </div>
+          </div>
+
+          {/* portrait + philosophy */}
+          <div className="mt-16 grid gap-12 md:mt-20 md:grid-cols-12 md:gap-10">
+            <div className="grain relative md:col-span-5 md:col-start-1">
               <div className="aspect-[4/5] overflow-hidden bg-stone">
                 <img
                   src={portrait}
@@ -284,51 +331,8 @@ function Index() {
                 />
               </div>
             </div>
-            <div className="md:col-span-6 md:col-start-7 md:pt-24">
-              <Reveal>
-                <p className="label-xs mb-5">THE THINKING BEHIND THE WORK</p>
-                <h2 className="display-md">
-                  Behind every product,
-                  <br />
-                  I look for the <span className="italic">logic</span> first.
-                </h2>
-              </Reveal>
-
-              {/* ——— SELECTED EXPERIENCE — editorial proof ——— */}
-              <div className="mt-10">
-                <p className="label-xs">Selected experience</p>
-                <div className="mt-8 grid gap-10 md:grid-cols-3 md:gap-0">
-                  {[
-                    {
-                      n: "01 / MARKET ENTRY",
-                      t: "China → Europe",
-                      d: "Market entry strategy and product positioning for a Chinese tech brand expanding into the EU.",
-                    },
-                    {
-                      n: "02 / PRODUCT & BRAND",
-                      t: "Consumer Tech",
-                      d: "Go-to-market strategy and lifecycle marketing for global product launches in CEE & CIS.",
-                    },
-                    {
-                      n: "03 / SYSTEM & TRANSFORMATION",
-                      t: "Marketing Systems",
-                      d: "Built marketing systems and teams from scratch across multiple markets and industries.",
-                    },
-                  ].map((item, i) => (
-                    <Reveal key={item.t} delay={i * 90}>
-                      <div className="md:border-l md:border-line md:px-5 md:first:border-l-0 md:first:pl-0">
-                        <p className="label-xs">{item.n}</p>
-                        <h3 className="display-md mt-3 !text-[clamp(1.1rem,1.5vw,1.4rem)]">
-                          {item.t}
-                        </h3>
-                        <p className="body-read mt-4 !max-w-none !text-[0.85rem]">{item.d}</p>
-                      </div>
-                    </Reveal>
-                  ))}
-                </div>
-              </div>
-
-              <div className="mt-12 space-y-6">
+            <div className="md:col-span-6 md:col-start-7 md:pt-10">
+              <div className="space-y-6">
                 <p className="body-read">
                   Thirteen years across marketing, products and different markets have confirmed it
                   again and again: what happens before execution often determines what happens

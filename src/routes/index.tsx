@@ -307,21 +307,6 @@ function Index() {
 
         {/* ——— FINAL — very quiet ——— */}
         <section id="final" className="rule-thin">
-          <div className="mx-auto grid max-w-[1440px] grid-cols-2 gap-4 px-6 pt-24 md:grid-cols-3 md:gap-8 md:px-10">
-            <img
-              src={seeds.url}
-              alt="Dandelion seeds drifting in pale light"
-              loading="lazy"
-              className="aspect-[3/4] w-full object-cover"
-            />
-            <img
-              src={wash.url}
-              alt="Soft olive watercolour wash"
-              loading="lazy"
-              className="aspect-[3/4] w-full object-cover md:mt-16"
-            />
-            <Spiral className="col-span-2 mx-auto aspect-square w-2/3 md:col-span-1 md:w-full" />
-          </div>
           <div className="mx-auto flex min-h-[85vh] max-w-[1440px] flex-col justify-center px-6 py-32 md:px-10">
             <Reveal>
               <p className="display-lg">

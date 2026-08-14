@@ -46,7 +46,7 @@ function Lattice() {
   const { ref, shown } = useReveal<HTMLDivElement>(0.15);
 
   // primary nodes sit in the gutters beside each block, never over the text
-  const A = { x: 22, y: 18 }; // 01 Product   (left gutter, top)
+  const A = { x: 22, y: 4 }; // 01 Product   (left gutter, top)
   const B = { x: 1132, y: 470 }; // 02 Ecosystem (right gutter, middle)
   const C = { x: 56, y: 640 }; // 03 Direct    (left gutter, lower)
 

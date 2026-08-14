@@ -38,36 +38,137 @@ const solutions: Solution[] = [
   },
 ];
 
-function Constellation() {
-  const { ref, shown } = useReveal<HTMLDivElement>(0.2);
+/**
+ * Crystal lattice — the three entry points are nodes of one lattice.
+ * Each node holds the structure together; remove one and the form changes.
+ */
+function Lattice() {
+  const { ref, shown } = useReveal<HTMLDivElement>(0.15);
+
+  // primary nodes sit in the gutters beside each block, never over the text
+  const A = { x: 22, y: 4 }; // 01 Product   (left gutter, top)
+  const B = { x: 1132, y: 470 }; // 02 Ecosystem (right gutter, middle)
+  const C = { x: 56, y: 640 }; // 03 Direct    (left gutter, lower)
+
+  // secondary lattice points — the surrounding crystalline structure
+  const aux = [
+    { x: 1146, y: 95 }, // top right
+    { x: 1152, y: 800 }, // lower right
+    { x: 470, y: 978 }, // bottom middle
+    { x: 14, y: 330 }, // left edge
+    { x: 690, y: 610 }, // inner core
+    { x: 50, y: 936 }, // lower left
+  ];
+
+  const bonds: Array<[{ x: number; y: number }, { x: number; y: number }, number]> = [
+    [A, aux[0]!, 1],
+    [aux[0]!, B, 1],
+    [B, aux[1]!, 1],
+    [aux[1]!, aux[2]!, 1],
+    [aux[2]!, aux[5]!, 1],
+    [aux[5]!, C, 1],
+    [C, aux[3]!, 0.5],
+    [aux[3]!, A, 0.5],
+    [B, aux[4]!, 0.4],
+    [aux[4]!, aux[1]!, 0.35],
+    [aux[4]!, aux[2]!, 0.35],
+  ];
+
   return (
     <div ref={ref} className="pointer-events-none absolute inset-0 hidden lg:block">
-      <svg viewBox="0 0 1200 720" className="h-full w-full" fill="none" aria-hidden preserveAspectRatio="none">
-        <path
-          d="M1010 90C1062 210 1070 320 1046 424"
-          stroke="var(--line-tone)"
-          strokeWidth="1"
-          style={{
-            strokeDasharray: 1800,
-            strokeDashoffset: shown ? 0 : 1800,
-            transition: "stroke-dashoffset 3.4s cubic-bezier(0.22,1,0.36,1)",
-          }}
+      <svg
+        viewBox="0 0 1200 1000"
+        className="h-full w-full"
+        fill="none"
+        aria-hidden
+        preserveAspectRatio="none"
+      >
+        {/* facet planes — the crystal body holding the three nodes together */}
+        <polygon
+          points={`${A.x},${A.y} ${aux[0]!.x},${aux[0]!.y} ${B.x},${B.y} ${aux[1]!.x},${aux[1]!.y} ${aux[2]!.x},${aux[2]!.y} ${aux[5]!.x},${aux[5]!.y} ${C.x},${C.y} ${aux[3]!.x},${aux[3]!.y}`}
+          fill="var(--sage)"
+          opacity={shown ? 0.1 : 0}
+          style={{ transition: "opacity 1.8s ease 0.8s" }}
         />
-        <path
-          d="M1046 424C1022 552 1006 630 984 706"
-          stroke="var(--line-tone)"
-          strokeWidth="0.7"
-          opacity="0.8"
-          style={{
-            strokeDasharray: 900,
-            strokeDashoffset: shown ? 0 : 900,
-            transition: "stroke-dashoffset 3s cubic-bezier(0.22,1,0.36,1) 0.5s",
-          }}
+        <polygon
+          points={`${B.x},${B.y} ${aux[4]!.x},${aux[4]!.y} ${aux[1]!.x},${aux[1]!.y}`}
+          fill="var(--sage)"
+          opacity={shown ? 0.12 : 0}
+          style={{ transition: "opacity 1.8s ease 1.1s" }}
         />
-        <circle cx="1046" cy="424" r="44" stroke="var(--line-tone)" strokeWidth="0.6" opacity="0.7" />
-        <circle cx="1010" cy="90" r="5" fill="var(--paper)" stroke="var(--charcoal)" strokeWidth="0.9" />
-        <circle cx="1046" cy="424" r="7" fill="var(--olive)" />
-        <circle cx="984" cy="706" r="5" fill="var(--paper)" stroke="var(--charcoal)" strokeWidth="0.9" />
+
+        {/* bonds */}
+        {bonds.map(([p, q, w], i) => {
+          const len = Math.hypot(q.x - p.x, q.y - p.y);
+          return (
+            <line
+              key={i}
+              x1={p.x}
+              y1={p.y}
+              x2={q.x}
+              y2={q.y}
+              stroke={w >= 1 ? "var(--smoke)" : "var(--line-tone)"}
+              strokeWidth={w >= 1 ? 0.9 : 0.7}
+              opacity={w >= 1 ? 0.75 : Math.max(w, 0.28)}
+              style={{
+                strokeDasharray: len,
+                strokeDashoffset: shown ? 0 : len,
+                transition: `stroke-dashoffset 2.2s cubic-bezier(0.22,1,0.36,1) ${0.15 * i}s`,
+              }}
+            />
+          );
+        })}
+
+        {/* auxiliary lattice nodes */}
+        {aux.map((p, i) => (
+          <rect
+            key={i}
+            x={p.x - 3}
+            y={p.y - 3}
+            width={6}
+            height={6}
+            transform={`rotate(45 ${p.x} ${p.y})`}
+            fill="var(--paper)"
+            stroke="var(--smoke)"
+            strokeWidth={0.7}
+            opacity={shown ? 0.6 : 0}
+            style={{ transition: `opacity 1s ease ${0.5 + 0.12 * i}s` }}
+          />
+        ))}
+
+        {/* primary nodes — the three entry points */}
+        {[A, C].map((p, i) => (
+          <rect
+            key={i}
+            x={p.x - 6}
+            y={p.y - 6}
+            width={12}
+            height={12}
+            transform={`rotate(45 ${p.x} ${p.y})`}
+            fill="var(--paper)"
+            stroke="var(--charcoal)"
+            strokeWidth={0.9}
+          />
+        ))}
+        <rect
+          x={B.x - 14}
+          y={B.y - 14}
+          width={28}
+          height={28}
+          transform={`rotate(45 ${B.x} ${B.y})`}
+          fill="none"
+          stroke="var(--olive)"
+          strokeWidth={0.7}
+          opacity={0.55}
+        />
+        <rect
+          x={B.x - 7}
+          y={B.y - 7}
+          width={14}
+          height={14}
+          transform={`rotate(45 ${B.x} ${B.y})`}
+          fill="var(--olive)"
+        />
       </svg>
     </div>
   );
@@ -108,10 +209,13 @@ export function Solutions() {
           Practical instruments and systems for working with ideas, marketing and the development of
           your own projects. Three entry points into one way of thinking.
         </p>
+        <p className="label-xs mt-8 !tracking-[0.18em]">
+          Three nodes of one lattice — each holds the structure
+        </p>
       </div>
 
       <div className="relative mt-24 lg:mt-32">
-        <Constellation />
+        <Lattice />
         {/* mobile connective line */}
         <span
           className="absolute left-[7px] top-2 bottom-2 w-px bg-line lg:hidden"
@@ -143,8 +247,8 @@ function Node({ accent = false, className = "" }: { accent?: boolean; className?
       className={`absolute -left-10 top-1.5 grid place-items-center ${className}`}
     >
       <span
-        className={`block h-3 w-3 rounded-full border border-charcoal ${
-          accent ? "bg-olive" : "bg-paper"
+        className={`block h-3 w-3 rotate-45 border ${
+          accent ? "border-olive bg-olive" : "border-charcoal bg-paper"
         }`}
       />
     </span>

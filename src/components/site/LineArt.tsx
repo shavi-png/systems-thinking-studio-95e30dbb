@@ -170,7 +170,7 @@ export function SpiralSystem({
   const marks = nodes.map((n, i) => {
     const t = tNodes[i]!;
     const r = a * Math.exp(b * t);
-    const offset = i === 0 ? 34 : i === nodes.length - 1 ? 14 : 18 + i * 2;
+    const offset = i === 0 ? 48 : i === nodes.length - 1 ? 14 : 18 + i * 2;
     return {
       n,
       x: r * Math.cos(t),
@@ -205,8 +205,8 @@ export function SpiralSystem({
           style={{ transition: "opacity 900ms ease 300ms" }}
         />
         <text
-          x={0}
-          y={-14}
+          x={-10}
+          y={-24}
           textAnchor="middle"
           fill="var(--smoke)"
           fontSize="15"

@@ -46,17 +46,18 @@ function Lattice() {
   const { ref, shown } = useReveal<HTMLDivElement>(0.15);
 
   // primary nodes sit in the gutters beside each block, never over the text
-  const A = { x: 22, y: 38 }; // 01 Product   (left gutter, top)
+  const A = { x: 22, y: 18 }; // 01 Product   (left gutter, top)
   const B = { x: 1132, y: 470 }; // 02 Ecosystem (right gutter, middle)
-  const C = { x: 118, y: 640 }; // 03 Direct    (left gutter, lower)
+  const C = { x: 56, y: 640 }; // 03 Direct    (left gutter, lower)
 
   // secondary lattice points — the surrounding crystalline structure
   const aux = [
-    { x: 1146, y: 108 }, // top right
+    { x: 1146, y: 95 }, // top right
     { x: 1152, y: 800 }, // lower right
-    { x: 470, y: 952 }, // bottom middle
+    { x: 470, y: 978 }, // bottom middle
     { x: 14, y: 330 }, // left edge
     { x: 690, y: 610 }, // inner core
+    { x: 50, y: 936 }, // lower left
   ];
 
   const bonds: Array<[{ x: number; y: number }, { x: number; y: number }, number]> = [
@@ -64,7 +65,8 @@ function Lattice() {
     [aux[0]!, B, 1],
     [B, aux[1]!, 1],
     [aux[1]!, aux[2]!, 1],
-    [aux[2]!, C, 1],
+    [aux[2]!, aux[5]!, 1],
+    [aux[5]!, C, 1],
     [C, aux[3]!, 0.5],
     [aux[3]!, A, 0.5],
     [B, aux[4]!, 0.4],

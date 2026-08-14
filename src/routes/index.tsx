@@ -244,10 +244,10 @@ function Index() {
               <figure className="grain relative md:col-span-3 md:col-start-5 md:mt-32">
                 <div className="aspect-square overflow-hidden bg-stone">
                   <img
-                    src={wash.url}
-                    alt="Soft olive watercolour wash"
+                    src={ripple.url}
+                    alt="Concentric ripples spreading through still water"
                     loading="lazy"
-                    className="h-full w-full object-cover"
+                    className="h-full w-full object-cover [filter:saturate(0.55)_brightness(1.05)]"
                   />
                 </div>
                 <figcaption className="label-xs mt-4 text-muted">One structure</figcaption>

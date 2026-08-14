@@ -182,6 +182,12 @@ export function SpiralSystem({
     };
   });
 
+  // Place the center word horizontally on the inner spiral so it sits on the shell line.
+  const centerT = t0 - 0.55 * Math.PI;
+  const centerR = a * Math.exp(b * centerT);
+  const centerX = centerR * Math.cos(centerT);
+  const centerY = centerR * Math.sin(centerT);
+
   return (
     <div ref={ref} className="relative">
       <svg viewBox="-260 -225 640 405" className="h-auto w-full" fill="none" aria-hidden>
@@ -206,8 +212,8 @@ export function SpiralSystem({
           style={{ transition: "opacity 900ms ease 300ms" }}
         />
         <text
-          x={-10}
-          y={-6}
+          x={centerX}
+          y={centerY + 5}
           textAnchor="middle"
           fill="var(--smoke)"
           fontSize="15"

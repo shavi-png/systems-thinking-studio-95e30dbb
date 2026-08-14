@@ -49,7 +49,7 @@ function SolutionBlock({ s }: { s: Solution }) {
       />
 
       {/* label on top of the oval */}
-      <p className="label-xs absolute left-[53%] top-[1%] z-20 -translate-x-1/2 -translate-y-1/2 whitespace-nowrap">
+      <p className="label-xs absolute left-[52%] top-0 z-20 -translate-x-1/2 -translate-y-1/2 whitespace-nowrap">
         {s.label}
       </p>
 

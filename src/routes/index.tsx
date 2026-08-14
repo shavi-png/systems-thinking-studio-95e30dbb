@@ -45,12 +45,12 @@ function Index() {
       <main>
         {/* ——— HERO — quiet ——— */}
         <section className="relative overflow-hidden">
-          {/* faint nautilus silhouette behind everything */}
+          {/* faint nautilus silhouette behind everything — kept very soft so the white page stays clean */}
           <img
             src={shellHero.url}
             alt=""
             aria-hidden
-            className="pointer-events-none absolute -left-[10%] top-[4%] w-[85%] max-w-none select-none opacity-[0.16] [filter:grayscale(0.35)_brightness(1.12)] [mask-image:radial-gradient(closest-side,black,transparent)] md:left-[-6%] md:top-[-6%] md:w-[62%] md:opacity-[0.13]"
+            className="pointer-events-none absolute -left-[10%] top-[4%] w-[85%] max-w-none select-none opacity-[0.12] [filter:grayscale(0.2)_brightness(1.25)_contrast(0.85)] [mask-image:radial-gradient(closest-side,black,transparent)] md:left-[-6%] md:top-[-6%] md:w-[62%] md:opacity-[0.10]"
           />
           <div className="relative mx-auto grid max-w-[1440px] grid-cols-1 gap-12 px-6 pb-16 pt-24 md:grid-cols-12 md:px-10 md:pb-24 md:pt-32">
             <div className="flex flex-col md:col-span-6">
@@ -364,8 +364,15 @@ function Index() {
         </section>
 
         {/* ——— FINAL — quiet closing statement ——— */}
-        <section id="final" className="rule-thin">
-          <div className="mx-auto flex min-h-[60vh] max-w-[1440px] flex-col justify-center px-6 py-16 md:px-10 md:py-20">
+        <section id="final" className="rule-thin relative overflow-hidden">
+          {/* centered nautilus silhouette — slightly more present than hero, still airy */}
+          <img
+            src={shellHero.url}
+            alt=""
+            aria-hidden
+            className="pointer-events-none absolute left-1/2 top-1/2 w-[72%] max-w-none -translate-x-1/2 -translate-y-1/2 select-none opacity-[0.14] [filter:grayscale(0.2)_brightness(1.25)_contrast(0.85)] [mask-image:radial-gradient(closest-side,black,transparent)] md:w-[54%] md:opacity-[0.12]"
+          />
+          <div className="relative mx-auto flex min-h-[60vh] max-w-[1440px] flex-col items-center justify-center px-6 py-16 text-center md:px-10 md:py-20">
             <Reveal>
               <p className="label-xs mb-6">The principle behind the work</p>
               <p className="display-lg">
@@ -376,10 +383,10 @@ function Index() {
                 <span className="italic">complexity.</span>
               </p>
             </Reveal>
-            <p className="body-read mt-10 max-w-[36rem]">
+            <p className="body-read mx-auto mt-10 max-w-[36rem]">
               Every product, system and decision I build starts with one question: does this make sense? If the thinking is clear, everything else follows.
             </p>
-            <div className="mt-10 flex flex-wrap items-center gap-x-12 gap-y-6">
+            <div className="mt-10 flex flex-wrap justify-center gap-x-12 gap-y-6">
               <a href="#solutions" className="link-editorial">
                 Choose a solution <span aria-hidden>↑</span>
               </a>

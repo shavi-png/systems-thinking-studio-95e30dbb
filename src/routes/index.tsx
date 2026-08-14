@@ -106,7 +106,7 @@ function Index() {
         </section>
 
         {/* ——— EXPERTISE + POINT OF VIEW — dense ——— */}
-        <section id="about" className="rule-thin bg-paper">
+        <section className="rule-thin bg-paper">
           <div className="mx-auto max-w-[1440px] px-6 pb-12 pt-20 md:px-10 md:pb-20 md:pt-28">
             <div className="grid gap-16 md:grid-cols-12">
               <div className="md:col-span-7">
@@ -269,59 +269,77 @@ function Index() {
           </div>
         </section>
 
-        {/* ——— ABOUT — human ——— */}
-        <section className="mx-auto max-w-[1440px] px-6 py-20 md:px-10 md:py-28">
+        {/* ——— THE THINKING BEHIND THE WORK — human ——— */}
+        <section id="about" className="mx-auto max-w-[1440px] px-6 py-20 md:px-10 md:py-28">
           <div className="grid gap-16 md:grid-cols-12">
             <div className="grain relative md:col-span-5 md:col-start-1 md:-mt-16">
               <div className="aspect-[4/5] overflow-hidden bg-stone">
                 <img
-                  src={shell.url}
-                  alt="Nautilus shell spiral resting in pale sand"
+                  src={portrait}
+                  alt="Portrait of Vita Shablii"
                   loading="lazy"
+                  width={1200}
+                  height={1600}
                   className="h-full w-full object-cover"
                 />
               </div>
             </div>
             <div className="md:col-span-6 md:col-start-7 md:pt-24">
               <Reveal>
+                <p className="label-xs mb-5">THE THINKING BEHIND THE WORK</p>
                 <h2 className="display-md">
                   Behind every product,
                   <br />
                   I look for the <span className="italic">logic</span> first.
                 </h2>
               </Reveal>
-              <p className="body-read mt-10">
-                What those years changed is not how much I know, but where I start. I stopped
-                treating marketing as a set of activities and began reading it as a system: what a
-                product actually is, who it is for, and which decision is being avoided.
-              </p>
-              <p className="body-read mt-6">
-                Now the first question is never “what do we launch?” but “what do we not yet
-                understand?”. Clarity turned out to be the fastest thing I could give anyone.
-              </p>
-              <a href="#top" className="link-editorial mt-10">
-                About me <span aria-hidden>→</span>
+              <div className="mt-10 space-y-6">
+                <p className="body-read">
+                  Thirteen years across marketing, products and different markets have confirmed it
+                  again and again: what happens before execution often determines what happens
+                  after.
+                </p>
+                <p className="body-read">
+                  What is the product, really?
+                  <br />
+                  Who is it for?
+                  <br />
+                  Where does its value come from?
+                  <br />
+                  What are we assuming — and what do we actually know?
+                </p>
+                <p className="body-read">
+                  The first question is rarely “What should we launch?”
+                  <br />
+                  It is “What needs to be understood before we do?”
+                </p>
+                <p className="body-read">
+                  The quality of what comes next depends on the quality of what we understand first.
+                </p>
+              </div>
+              <a href="#solutions" className="link-editorial mt-10">
+                FOLLOW THE THINKING <span aria-hidden>→</span>
               </a>
             </div>
           </div>
 
           {/* ——— SELECTED EXPERIENCE — editorial proof ——— */}
-          <div className="rule-thin mt-20 pt-12 md:mt-28 md:pt-16">
+          <div className="mt-16 pt-12 md:mt-20 md:pt-16">
             <p className="label-xs">Selected experience</p>
             <div className="mt-10 grid gap-10 md:grid-cols-3 md:gap-0">
               {[
                 {
-                  n: "01 / Market entry",
+                  n: "01 / MARKET ENTRY",
                   t: "China → Europe",
                   d: "Market entry strategy and product positioning for a Chinese tech brand expanding into the EU.",
                 },
                 {
-                  n: "02 / Product & brand",
+                  n: "02 / PRODUCT & BRAND",
                   t: "Consumer Tech",
                   d: "Go-to-market strategy and lifecycle marketing for global product launches in CEE & CIS.",
                 },
                 {
-                  n: "03 / System & transformation",
+                  n: "03 / SYSTEM & TRANSFORMATION",
                   t: "Marketing Systems",
                   d: "Built marketing systems and teams from scratch across multiple markets and industries.",
                 },

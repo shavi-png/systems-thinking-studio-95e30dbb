@@ -36,52 +36,96 @@ const solutions: Solution[] = [
   },
 ];
 
-function SolutionBlock({ s }: { s: Solution }) {
-  const shapeClasses = s.gravity
-    ? "border-olive/45 bg-sage/25 group-hover:bg-sage/35"
-    : "border-line bg-paper/70 group-hover:border-olive/40 group-hover:bg-sage/12";
+/* ---- shell geometry: chambers of one nautilus ---- */
+const CX = 120;
+const CY = 470;
+const A = 5.2;
+const B = 0.235;
+const T_START = -1.6 * Math.PI;
+const T_END = 3.05 * Math.PI;
 
+function pt(t: number) {
+  const r = A * Math.exp(B * t);
+  // rotate so the shell opens to the right and upward
+  return [CX + r * Math.cos(t - Math.PI / 2), CY + r * Math.sin(t - Math.PI / 2)] as const;
+}
+
+function spiralPath(from: number, to: number) {
+  const out: string[] = [];
+  for (let t = from; t <= to; t += 0.035) {
+    const [x, y] = pt(t);
+    out.push(`${x.toFixed(1)} ${y.toFixed(1)}`);
+  }
+  const [x, y] = pt(to);
+  out.push(`${x.toFixed(1)} ${y.toFixed(1)}`);
+  return `M${out.join(" L")}`;
+}
+
+// the septa (walls between chambers) run from the growth axis out to the shell wall
+const septaT = [0.75 * Math.PI, 1.55 * Math.PI, 2.35 * Math.PI, T_END];
+
+function ShellField() {
   return (
-    <article className="group relative flex aspect-square items-center justify-center rounded-[50%] text-center lg:aspect-[3/4]">
-      {/* tilted oval — sits behind the text */}
-      <div
-        className={`absolute inset-0 rotate-[33deg] rounded-[50%] border transition-all duration-500 ${shapeClasses}`}
+    <svg
+      viewBox="0 0 1240 520"
+      className="absolute inset-0 h-full w-full"
+      fill="none"
+      preserveAspectRatio="xMidYMid slice"
+      aria-hidden
+    >
+      {/* the widest chamber, softly filled — the ecosystem holds the others */}
+      <path
+        d={`${spiralPath(septaT[1]!, septaT[2]!)} L ${CX} ${CY} Z`}
+        fill="var(--sage)"
+        opacity="0.16"
       />
-
-      {/* curved label following the tilted oval top */}
-      <svg
-        className="absolute left-1/2 top-4 z-20 h-[2.5rem] w-[70%] max-w-[14rem] -translate-x-1/2 rotate-[33deg] overflow-visible"
-        viewBox="0 0 400 50"
-        aria-hidden="true"
-      >
-        <path id={`solution-label-${s.index}`} d="M 0,45 Q 200,5 400,45" fill="none" />
-        <text className="label-xs fill-current" textAnchor="middle" dominantBaseline="middle">
-          <textPath href={`#solution-label-${s.index}`} startOffset="50%" dy="-0.5em">
-            {s.label}
-          </textPath>
-        </text>
-      </svg>
-
-      <div className="relative z-10 mx-auto max-w-[17rem] px-10 py-14 lg:px-14">
-        <h3
-          className={`${s.gravity ? "display-md" : "display-md !text-[clamp(1.7rem,2.4vw,2.4rem)]"} leading-[0.95]`}
-        >
-          {s.title.map((t) => (
-            <span key={t} className="block">
-              {t}
-            </span>
-          ))}
-        </h3>
-        <p className="body-read mt-5 !text-[0.95rem]">{s.lede}</p>
-        <p className="mt-5 font-serif-editorial text-base italic text-charcoal/80">{s.transform}</p>
-        <a href="#final" className="link-editorial mt-7 justify-center">
-          {s.cta} <span aria-hidden>→</span>
-        </a>
-      </div>
-    </article>
+      <path d={spiralPath(T_START, T_END)} stroke="var(--smoke)" strokeWidth="1.3" opacity="0.75" />
+      {septaT.map((t) => {
+        const [x, y] = pt(t);
+        return (
+          <line
+            key={t}
+            x1={CX}
+            y1={CY}
+            x2={x}
+            y2={y}
+            stroke="var(--smoke)"
+            strokeWidth="0.9"
+            opacity="0.4"
+          />
+        );
+      })}
+      <circle cx={CX} cy={CY} r="3" fill="var(--olive)" opacity="0.6" />
+    </svg>
   );
 }
 
+function SolutionBlock({ s }: { s: Solution }) {
+  return (
+    <article className="group relative">
+      <div
+        className={`pointer-events-none absolute -left-4 top-0 h-full w-px ${s.gravity ? "bg-olive/35" : "bg-line"} lg:block`}
+      />
+      <p className="label-xs">{s.label}</p>
+      <h3
+        className={`mt-5 ${s.gravity ? "display-md" : "display-md !text-[clamp(1.7rem,2.4vw,2.4rem)]"} leading-[0.95]`}
+      >
+        {s.title.map((t) => (
+          <span key={t} className="block">
+            {t}
+          </span>
+        ))}
+      </h3>
+      <p className="body-read mt-5 max-w-[22rem] !text-[0.95rem]">{s.lede}</p>
+      <p className="mt-5 max-w-[22rem] font-serif-editorial text-base italic text-charcoal/80">
+        {s.transform}
+      </p>
+      <a href="#final" className="link-editorial mt-7">
+        {s.cta} <span aria-hidden>→</span>
+      </a>
+    </article>
+  );
+}
 
 export function Solutions() {
   return (
@@ -97,20 +141,26 @@ export function Solutions() {
           your own projects. Three entry points into one way of thinking.
         </p>
         <p className="label-xs mt-8 !tracking-[0.18em]">
-          Three forms of one thinking — separate orbits, one centre
+          Three chambers of one shell — the same thinking at a different scale
         </p>
       </div>
 
-      {/* three overlapping ovals — the entry points read as intersecting orbits */}
-      <div className="relative mt-20 flex flex-col items-center gap-12 lg:mt-28 lg:flex-row lg:items-center lg:justify-center lg:gap-0">
-        <div className="w-full max-w-[26rem] lg:w-1/3 lg:max-w-none">
-          <SolutionBlock s={solutions[0]!} />
+      {/* one shell, cut open: three chambers growing from a single centre */}
+      <div className="relative mt-20 lg:mt-28">
+        <div className="pointer-events-none absolute inset-x-0 -bottom-10 -top-10 hidden lg:block">
+          <ShellField />
         </div>
-        <div className="z-10 w-full max-w-[26rem] lg:-mx-[4%] lg:w-[36%] lg:max-w-none">
-          <SolutionBlock s={solutions[1]!} />
-        </div>
-        <div className="w-full max-w-[26rem] lg:w-1/3 lg:max-w-none">
-          <SolutionBlock s={solutions[2]!} />
+
+        <div className="relative grid gap-16 lg:grid-cols-3 lg:gap-10">
+          <div className="lg:pt-40">
+            <SolutionBlock s={solutions[0]!} />
+          </div>
+          <div className="lg:pt-20">
+            <SolutionBlock s={solutions[1]!} />
+          </div>
+          <div>
+            <SolutionBlock s={solutions[2]!} />
+          </div>
         </div>
       </div>
     </section>

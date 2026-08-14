@@ -217,29 +217,56 @@ function Index() {
         {/* ——— PRODUCT DISCOVERY — dense + interactive ——— */}
         <Solutions />
 
-        {/* ——— METHOD STATEMENT — quiet ——— */}
+        {/* ——— METHOD STATEMENT — editorial diptych ——— */}
         <section className="rule-thin bg-sand/50">
-          <div className="mx-auto grid max-w-[1440px] gap-20 px-6 py-28 md:grid-cols-12 md:px-10 md:py-40">
-            <div className="md:col-span-6">
-              <Reveal>
-                <h2 className="display-md">
-                  Not every task needs another tool.
-                  <br />
-                  <span className="italic">Sometimes you need to see the whole system.</span>
-                </h2>
-              </Reveal>
-              <p className="body-read mt-12">
-                There are more marketing instruments every year, and AI has made them even more
-                accessible. But the value is less and less about how many tools you know —
-              </p>
-              <p className="body-read mt-6">
-                and more about whether you understand what your product actually needs, why, at which
-                moment, and how it connects to everything else. That is what I build my work,
-                products and systems around.
-              </p>
-            </div>
-            <div className="md:col-span-5 md:col-start-8">
-              <OrbitMethod nodes={["Idea", "Clarity", "Structure", "System", "Growth"]} />
+          <div className="mx-auto max-w-[1440px] px-6 py-28 md:px-10 md:py-40">
+            <Reveal>
+              <h2 className="display-md max-w-[46rem]">
+                Not every task needs another tool.
+                <br />
+                <span className="italic">Sometimes you need to see the whole system.</span>
+              </h2>
+            </Reveal>
+
+            <div className="mt-16 grid gap-10 md:mt-24 md:grid-cols-12 md:gap-8">
+              {/* tall image, sits high */}
+              <figure className="grain relative md:col-span-4 md:col-start-1">
+                <div className="aspect-[3/4] overflow-hidden bg-stone">
+                  <img
+                    src={seeds.url}
+                    alt="Dandelion seeds drifting in pale light"
+                    loading="lazy"
+                    className="h-full w-full object-cover"
+                  />
+                </div>
+                <figcaption className="label-xs mt-4 text-muted">Many instruments</figcaption>
+              </figure>
+
+              {/* second image, dropped lower and smaller — the quiet counterweight */}
+              <figure className="grain relative md:col-span-3 md:col-start-5 md:mt-32">
+                <div className="aspect-square overflow-hidden bg-stone">
+                  <img
+                    src={wash.url}
+                    alt="Soft olive watercolour wash"
+                    loading="lazy"
+                    className="h-full w-full object-cover"
+                  />
+                </div>
+                <figcaption className="label-xs mt-4 text-muted">One structure</figcaption>
+              </figure>
+
+              {/* text column, aligned to the lower image */}
+              <div className="md:col-span-4 md:col-start-9 md:mt-32">
+                <p className="body-read">
+                  There are more marketing instruments every year, and AI has made them even more
+                  accessible. But the value is less and less about how many tools you know —
+                </p>
+                <p className="body-read mt-6">
+                  and more about whether you understand what your product actually needs, why, at
+                  which moment, and how it connects to everything else. That is what I build my
+                  work, products and systems around.
+                </p>
+              </div>
             </div>
           </div>
         </section>

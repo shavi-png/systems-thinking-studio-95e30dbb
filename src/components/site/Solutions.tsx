@@ -37,12 +37,12 @@ const solutions: Solution[] = [
 ];
 
 /* ---- shell geometry: chambers of one nautilus ---- */
-const CX = 90;
-const CY = 500;
-const A = 118;
+const CX = 620;
+const CY = 290;
+const A = 70;
 const B = 0.235;
-const T_START = -2.2 * Math.PI;
-const T_END = 3.05 * Math.PI;
+const T_START = -2.4 * Math.PI;
+const T_END = 2.6 * Math.PI;
 
 function pt(t: number) {
   const r = A * Math.exp(B * t);
@@ -62,7 +62,7 @@ function spiralPath(from: number, to: number) {
 }
 
 // the septa (walls between chambers) run from the growth axis out to the shell wall
-const septaT = [0.75 * Math.PI, 1.55 * Math.PI, 2.35 * Math.PI, T_END];
+const septaT = [0.6 * Math.PI, 1.3 * Math.PI, 2.0 * Math.PI, T_END];
 
 function ShellField() {
   return (

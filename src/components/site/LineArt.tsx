@@ -207,7 +207,7 @@ export function SpiralSystem({
         />
         <text
           x={-10}
-          y={-24}
+          y={-6}
           textAnchor="middle"
           fill="var(--smoke)"
           fontSize="15"

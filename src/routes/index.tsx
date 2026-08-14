@@ -50,7 +50,7 @@ function Index() {
             src={shellHero.url}
             alt=""
             aria-hidden
-            className="pointer-events-none absolute -left-[10%] top-[4%] w-[85%] max-w-none select-none opacity-[0.12] [filter:grayscale(0.2)_brightness(1.25)_contrast(0.85)] [mask-image:radial-gradient(closest-side,black,transparent)] md:left-[-6%] md:top-[-6%] md:w-[62%] md:opacity-[0.10]"
+            className="pointer-events-none absolute -left-[10%] top-[4%] w-[85%] max-w-none select-none opacity-[0.18] [filter:grayscale(0.2)_brightness(1.25)_contrast(0.85)] [mask-image:radial-gradient(closest-side,black,transparent)] md:left-[-6%] md:top-[-6%] md:w-[62%] md:opacity-[0.15]"
           />
           <div className="relative mx-auto grid max-w-[1440px] grid-cols-1 gap-12 px-6 pb-16 pt-24 md:grid-cols-12 md:px-10 md:pb-24 md:pt-32">
             <div className="flex flex-col md:col-span-6">
@@ -370,17 +370,13 @@ function Index() {
             src={shellHero.url}
             alt=""
             aria-hidden
-            className="pointer-events-none absolute left-1/2 top-1/2 w-[72%] max-w-none -translate-x-1/2 -translate-y-1/2 select-none opacity-[0.14] [filter:grayscale(0.2)_brightness(1.25)_contrast(0.85)] [mask-image:radial-gradient(closest-side,black,transparent)] md:w-[54%] md:opacity-[0.12]"
+            className="pointer-events-none absolute left-1/2 top-1/2 w-[72%] max-w-none -translate-x-1/2 -translate-y-1/2 select-none opacity-[0.20] [filter:grayscale(0.2)_brightness(1.25)_contrast(0.85)] [mask-image:radial-gradient(closest-side,black,transparent)] md:w-[54%] md:opacity-[0.16]"
           />
           <div className="relative mx-auto flex min-h-[60vh] max-w-[1440px] flex-col items-center justify-center px-6 py-16 text-center md:px-10 md:py-20">
             <Reveal>
               <p className="label-xs mb-6">The principle behind the work</p>
               <p className="display-lg">
-                Clarity
-                <br />
-                before
-                <br />
-                <span className="italic">complexity.</span>
+                Clarity before <span className="italic">complexity.</span>
               </p>
             </Reveal>
             <p className="body-read mx-auto mt-10 max-w-[36rem]">

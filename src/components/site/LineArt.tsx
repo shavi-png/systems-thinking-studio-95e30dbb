@@ -157,14 +157,15 @@ export function SpiralSystem({
   const tMax = tNodes[tNodes.length - 1]! + 0.05;
 
   const pts: string[] = [];
-  // start the spiral at t0 so the centre stays open for the CONTEXT label
-  for (let t = t0; t <= tMax; t += 0.04) {
+  // one extra inner turn so the shell reads as a nautilus, not a comma
+  const tStart = t0 - 1.9 * Math.PI;
+  for (let t = tStart; t <= tMax; t += 0.04) {
     const r = a * Math.exp(b * t);
     pts.push(`${(r * Math.cos(t)).toFixed(2)} ${(r * Math.sin(t)).toFixed(2)}`);
   }
-  const startR = a * Math.exp(b * t0);
-  const startX = startR * Math.cos(t0);
-  const startY = startR * Math.sin(t0);
+  const startR = a * Math.exp(b * tStart);
+  const startX = startR * Math.cos(tStart);
+  const startY = startR * Math.sin(tStart);
 
   const marks = nodes.map((n, i) => {
     const t = tNodes[i]!;
@@ -205,7 +206,7 @@ export function SpiralSystem({
         />
         <text
           x={0}
-          y={6}
+          y={-14}
           textAnchor="middle"
           fill="var(--smoke)"
           fontSize="15"

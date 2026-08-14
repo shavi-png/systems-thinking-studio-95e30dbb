@@ -23,7 +23,7 @@ function SpiralLogo({ className = "" }: { className?: string }) {
       <path
         d={`M${pts.join(" L")}`}
         stroke="currentColor"
-        strokeWidth="10"
+        strokeWidth="14"
         strokeLinecap="round"
       />
     </svg>

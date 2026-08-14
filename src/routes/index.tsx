@@ -79,9 +79,9 @@ function Index() {
                   href="#solutions"
                   className="label-xs group inline-flex items-center gap-3 border border-charcoal/25 bg-paper/60 px-7 py-4 !tracking-[0.2em] !text-charcoal backdrop-blur-[2px] transition-colors hover:border-olive hover:bg-olive/10"
                 >
-                  Find your solution
-                  <span aria-hidden className="transition-transform group-hover:translate-y-0.5">
-                    ↓
+                  FIND YOUR ENTRY POINT
+                  <span aria-hidden className="transition-transform group-hover:translate-x-0.5">
+                    →
                   </span>
                 </a>
               </div>

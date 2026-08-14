@@ -50,7 +50,7 @@ function Index() {
             src={shellHero.url}
             alt=""
             aria-hidden
-            className="pointer-events-none absolute -left-[10%] top-[4%] w-[85%] max-w-none select-none opacity-[0.18] [filter:grayscale(0.2)_brightness(1.25)_contrast(0.85)] [mask-image:radial-gradient(closest-side,black,transparent)] md:left-[-6%] md:top-[-6%] md:w-[62%] md:opacity-[0.15]"
+            className="pointer-events-none absolute -left-[25%] top-[2%] h-auto w-[150%] max-w-none select-none opacity-[0.38] [filter:sepia(0.12)_saturate(0.55)_brightness(1.32)_contrast(0.82)] [mask-image:radial-gradient(60%_60%_at_50%_50%,black_35%,transparent_100%)] md:-left-[12%] md:top-[-14%] md:w-[112%] md:opacity-[0.32]"
           />
           <div className="relative mx-auto grid max-w-[1440px] grid-cols-1 gap-12 px-6 pb-16 pt-24 md:grid-cols-12 md:px-10 md:pb-24 md:pt-32">
             <div className="flex flex-col md:col-span-6">
@@ -370,7 +370,7 @@ function Index() {
             src={shellHero.url}
             alt=""
             aria-hidden
-            className="pointer-events-none absolute left-1/2 top-1/2 w-[72%] max-w-none -translate-x-1/2 -translate-y-1/2 select-none opacity-[0.20] [filter:grayscale(0.2)_brightness(1.25)_contrast(0.85)] [mask-image:radial-gradient(closest-side,black,transparent)] md:w-[54%] md:opacity-[0.16]"
+            className="pointer-events-none absolute left-1/2 top-1/2 h-auto w-[150%] max-w-none -translate-x-1/2 -translate-y-1/2 select-none opacity-[0.40] [filter:sepia(0.12)_saturate(0.55)_brightness(1.32)_contrast(0.82)] [mask-image:radial-gradient(60%_60%_at_50%_50%,black_35%,transparent_100%)] md:w-[100%] md:opacity-[0.34]"
           />
           <div className="relative mx-auto flex min-h-[60vh] max-w-[1440px] flex-col items-center justify-center px-6 py-16 text-center md:px-10 md:py-20">
             <Reveal>

@@ -216,7 +216,7 @@ function Index() {
         <Solutions />
 
         {/* ——— METHOD STATEMENT — editorial diptych ——— */}
-        <section className="rule-thin bg-sand/50">
+        <section id="method" className="rule-thin bg-sand/50">
           <div className="mx-auto max-w-[1440px] px-6 py-20 md:px-10 md:py-28">
             <Reveal>
               <h2 className="display-md max-w-[46rem]">
@@ -363,10 +363,11 @@ function Index() {
           </div>
         </section>
 
-        {/* ——— FINAL — very quiet ——— */}
+        {/* ——— FINAL — quiet closing statement ——— */}
         <section id="final" className="rule-thin">
-          <div className="mx-auto flex min-h-[85vh] max-w-[1440px] flex-col justify-center px-6 py-24 md:px-10">
+          <div className="mx-auto flex min-h-[60vh] max-w-[1440px] flex-col justify-center px-6 py-16 md:px-10 md:py-20">
             <Reveal>
+              <p className="label-xs mb-6">The principle behind the work</p>
               <p className="display-lg">
                 Clarity
                 <br />
@@ -375,8 +376,10 @@ function Index() {
                 <span className="italic">complexity.</span>
               </p>
             </Reveal>
-            <p className="body-read mt-14">Creating things that make sense.</p>
-            <div className="mt-14 flex flex-wrap items-center gap-x-12 gap-y-6">
+            <p className="body-read mt-10 max-w-[36rem]">
+              Every product, system and decision I build starts with one question: does this make sense? If the thinking is clear, everything else follows.
+            </p>
+            <div className="mt-10 flex flex-wrap items-center gap-x-12 gap-y-6">
               <a href="#solutions" className="link-editorial">
                 Choose a solution <span aria-hidden>↑</span>
               </a>

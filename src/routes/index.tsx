@@ -11,7 +11,6 @@ import hands from "@/assets/hands-notebook.jpg";
 import ripple from "@/assets/ripple.jpg.asset.json";
 import shell from "@/assets/shell.jpg.asset.json";
 import seeds from "@/assets/seeds.jpg.asset.json";
-import wash from "@/assets/wash.jpg.asset.json";
 
 const title = "Vita Shablii — Strategist · Founder · Advisor";
 const description =
@@ -53,7 +52,7 @@ function Index() {
             aria-hidden
             className="pointer-events-none absolute -left-[10%] top-[4%] w-[85%] max-w-none select-none opacity-[0.16] [filter:grayscale(0.35)_brightness(1.12)] [mask-image:radial-gradient(closest-side,black,transparent)] md:left-[-6%] md:top-[-6%] md:w-[62%] md:opacity-[0.13]"
           />
-          <div className="relative mx-auto grid max-w-[1440px] grid-cols-1 gap-12 px-6 pb-24 pt-32 md:grid-cols-12 md:px-10 md:pb-32 md:pt-40">
+          <div className="relative mx-auto grid max-w-[1440px] grid-cols-1 gap-12 px-6 pb-16 pt-24 md:grid-cols-12 md:px-10 md:pb-24 md:pt-32">
             <div className="flex flex-col md:col-span-6">
               <Reveal>
                 <p className="label-xs !text-charcoal !tracking-[0.3em]">Vita Shablii</p>
@@ -108,7 +107,7 @@ function Index() {
 
         {/* ——— EXPERTISE + POINT OF VIEW — dense ——— */}
         <section id="about" className="rule-thin bg-paper">
-          <div className="mx-auto max-w-[1440px] px-6 pb-16 pt-28 md:px-10 md:pb-24 md:pt-40">
+          <div className="mx-auto max-w-[1440px] px-6 pb-12 pt-20 md:px-10 md:pb-20 md:pt-28">
             <div className="grid gap-16 md:grid-cols-12">
               <div className="md:col-span-7">
                 <Reveal>
@@ -148,7 +147,7 @@ function Index() {
             </div>
 
             {/* proof ribbon */}
-            <div className="mt-16 md:mt-24">
+            <div className="mt-12 md:mt-16">
               <dl className="grid grid-cols-1 gap-px overflow-hidden border border-sage/30 bg-sage/25 sm:grid-cols-2 lg:grid-cols-5">
                 {proof.map((p) => (
                   <div
@@ -166,7 +165,7 @@ function Index() {
 
         {/* ——— TRANSITION — statement + spiral ——— */}
         <section className="relative overflow-hidden bg-paper">
-          <div className="mx-auto max-w-[1440px] px-6 pb-28 pt-16 md:px-10 md:pb-40 md:pt-20">
+          <div className="mx-auto max-w-[1440px] px-6 pb-16 pt-12 md:px-10 md:pb-24 md:pt-16">
             <Reveal>
               <div className="grid items-center gap-14 lg:grid-cols-3 lg:gap-10">
                 {/* left third — kicker + headline */}
@@ -218,7 +217,7 @@ function Index() {
 
         {/* ——— METHOD STATEMENT — editorial diptych ——— */}
         <section className="rule-thin bg-sand/50">
-          <div className="mx-auto max-w-[1440px] px-6 py-28 md:px-10 md:py-40">
+          <div className="mx-auto max-w-[1440px] px-6 py-20 md:px-10 md:py-28">
             <Reveal>
               <h2 className="display-md max-w-[46rem]">
                 Not every task needs another tool.
@@ -227,7 +226,7 @@ function Index() {
               </h2>
             </Reveal>
 
-            <div className="mt-16 grid gap-10 md:mt-24 md:grid-cols-12 md:gap-8">
+            <div className="mt-12 grid gap-10 md:mt-16 md:grid-cols-12 md:gap-8">
               {/* tall image, sits high */}
               <figure className="grain relative md:col-span-4 md:col-start-1">
                 <div className="aspect-[3/4] overflow-hidden bg-stone">
@@ -245,10 +244,10 @@ function Index() {
               <figure className="grain relative md:col-span-3 md:col-start-5 md:mt-32">
                 <div className="aspect-square overflow-hidden bg-stone">
                   <img
-                    src={wash.url}
-                    alt="Soft olive watercolour wash"
+                    src={ripple.url}
+                    alt="Concentric ripples spreading through still water"
                     loading="lazy"
-                    className="h-full w-full object-cover"
+                    className="h-full w-full object-cover [filter:saturate(0.55)_brightness(1.05)]"
                   />
                 </div>
                 <figcaption className="label-xs mt-4 text-muted">One structure</figcaption>
@@ -271,7 +270,7 @@ function Index() {
         </section>
 
         {/* ——— ABOUT — human ——— */}
-        <section className="mx-auto max-w-[1440px] px-6 py-28 md:px-10 md:py-40">
+        <section className="mx-auto max-w-[1440px] px-6 py-20 md:px-10 md:py-28">
           <div className="grid gap-16 md:grid-cols-12">
             <div className="grain relative md:col-span-5 md:col-start-1 md:-mt-16">
               <div className="aspect-[4/5] overflow-hidden bg-stone">
@@ -306,7 +305,7 @@ function Index() {
 
         {/* ——— FINAL — very quiet ——— */}
         <section id="final" className="rule-thin">
-          <div className="mx-auto flex min-h-[85vh] max-w-[1440px] flex-col justify-center px-6 py-32 md:px-10">
+          <div className="mx-auto flex min-h-[85vh] max-w-[1440px] flex-col justify-center px-6 py-24 md:px-10">
             <Reveal>
               <p className="display-lg">
                 Clarity

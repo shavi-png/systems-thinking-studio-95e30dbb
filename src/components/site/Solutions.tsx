@@ -85,7 +85,7 @@ function Lattice() {
       >
         {/* facet planes — the crystal body holding the three nodes together */}
         <polygon
-          points={`${A.x},${A.y} ${aux[0]!.x},${aux[0]!.y} ${B.x},${B.y} ${aux[1]!.x},${aux[1]!.y} ${aux[2]!.x},${aux[2]!.y} ${C.x},${C.y} ${aux[3]!.x},${aux[3]!.y}`}
+          points={`${A.x},${A.y} ${aux[0]!.x},${aux[0]!.y} ${B.x},${B.y} ${aux[1]!.x},${aux[1]!.y} ${aux[2]!.x},${aux[2]!.y} ${aux[5]!.x},${aux[5]!.y} ${C.x},${C.y} ${aux[3]!.x},${aux[3]!.y}`}
           fill="var(--sage)"
           opacity={shown ? 0.1 : 0}
           style={{ transition: "opacity 1.8s ease 0.8s" }}

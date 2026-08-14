@@ -107,18 +107,18 @@ function Index() {
           </div>
         </section>
 
-      {/* ——— EXPERTISE + POINT OF VIEW — dense ——— */}
+        {/* ——— EXPERTISE + POINT OF VIEW — dense ——— */}
         <section id="about" className="rule-thin bg-paper">
-          <div className="mx-auto max-w-[1440px] px-6 py-28 md:px-10 md:py-40">
+          <div className="mx-auto max-w-[1440px] px-6 pb-16 pt-28 md:px-10 md:pb-24 md:pt-40">
             <div className="grid gap-16 md:grid-cols-12">
-            <div className="md:col-span-7">
-              <Reveal>
-                <h2 className="display-md">
-                  Working at the intersection of strategy × marketing ×{" "}
-                  <span className="italic">product thinking.</span>
-                </h2>
-              </Reveal>
-              <div className="mt-12 space-y-6">
+              <div className="md:col-span-7">
+                <Reveal>
+                  <h2 className="display-md">
+                    Working at the intersection of strategy × marketing ×{" "}
+                    <span className="italic">product thinking.</span>
+                  </h2>
+                </Reveal>
+                <div className="mt-12 space-y-6">
                   <p className="body-read">
                     Launching a product is only part of the task. It matters far more to understand
                     why some ideas find their place in the market and others do not.
@@ -166,8 +166,8 @@ function Index() {
         </section>
 
         {/* ——— TRANSITION — statement + spiral ——— */}
-        <section className="relative overflow-hidden">
-          <div className="mx-auto max-w-[1440px] px-6 py-28 md:px-10 md:py-40">
+        <section className="relative overflow-hidden bg-background">
+          <div className="mx-auto max-w-[1440px] px-6 pb-28 pt-16 md:px-10 md:pb-40 md:pt-20">
             <Reveal>
               <div className="grid items-center gap-14 lg:grid-cols-3 lg:gap-10">
                 {/* left third — kicker + headline */}

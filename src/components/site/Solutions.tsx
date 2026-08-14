@@ -137,16 +137,16 @@ export function Solutions() {
   return (
     <section id="solutions" className="relative mx-auto max-w-[1440px] px-6 py-28 md:px-10 md:py-40">
       <div className="mx-auto max-w-[46rem] text-center">
-        <h2 className="display-lg">
+        <h2 className="display-lg mx-auto max-w-[40rem]">
           Find the point
           <br />
           <span className="italic">you are standing on.</span>
         </h2>
-        <p className="body-read mt-8">
+        <p className="body-read mx-auto mt-8 max-w-[40rem]">
           Practical instruments and systems for working with ideas, marketing and the development of
           your own projects. Three entry points into one way of thinking.
         </p>
-        <p className="label-xs mt-8 !tracking-[0.18em]">
+        <p className="label-xs mx-auto mt-8 max-w-[40rem] !tracking-[0.18em]">
           Three chambers of one shell — the same thinking at a different scale
         </p>
       </div>

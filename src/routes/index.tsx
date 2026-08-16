@@ -368,6 +368,50 @@ function Index() {
           </div>
         </section>
 
+        {/* ——— FAQ — open questions ——— */}
+        <section id="faq" className="rule-thin bg-paper">
+          <div className="mx-auto max-w-[1440px] px-6 py-16 md:px-10 md:py-24">
+            <Reveal>
+              <p className="label-xs">FAQ</p>
+              <h2 className="display-md mt-4">What if...?</h2>
+            </Reveal>
+
+            <div className="mt-12 space-y-0 md:mt-16">
+              {[
+                {
+                  q: "What if I already have a marketing team?",
+                  a: "I work with in-house teams and founders to clarify the thinking behind the work, not to replace the people doing it.",
+                },
+                {
+                  q: "What if my product is not fully formed yet?",
+                  a: "That is often the best moment. The earlier strategy becomes part of the product, the fewer costly pivots come later.",
+                },
+                {
+                  q: "What if I need help with AI tools?",
+                  a: "We integrate AI into the parts of the workflow where it actually supports decisions — not where it adds noise.",
+                },
+                {
+                  q: "What if I do not know which market to enter first?",
+                  a: "We map your product, audience, and constraints to find the right entry point, before you start spending on channels.",
+                },
+                {
+                  q: "What if I only need clarity on one specific decision?",
+                  a: "That is exactly what a focused engagement is for. Clarity in one right place usually unlocks the rest.",
+                },
+              ].map((item, i) => (
+                <Reveal key={item.q} delay={i * 80}>
+                  <div className="grid gap-4 border-b border-line py-8 md:grid-cols-12 md:gap-10 md:py-10">
+                    <h3 className="font-serif-editorial text-xl text-charcoal md:col-span-5">
+                      {item.q}
+                    </h3>
+                    <p className="body-read md:col-span-7">{item.a}</p>
+                  </div>
+                </Reveal>
+              ))}
+            </div>
+          </div>
+        </section>
+
         {/* ——— FINAL — quiet closing statement ——— */}
         <section id="final" className="rule-thin relative overflow-hidden">
           {/* centered nautilus silhouette — slightly more present than hero, still airy */}

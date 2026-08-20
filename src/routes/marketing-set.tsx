@@ -423,7 +423,7 @@ function MarketingSetPage() {
                     src={wash.url}
                     alt="Soft watercolour wash in olive tones"
                     loading="lazy"
-                    className="mt-10 hidden w-full object-cover md:block md:h-[220px]"
+                    className="mt-10 hidden aspect-[4/3] w-full object-cover object-center md:block"
                   />
                 </Reveal>
               </div>

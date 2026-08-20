@@ -503,7 +503,7 @@ function MarketingSetPage() {
                     </Reveal>
                   ))}
                 </ul>
-                <p className="label-xs mt-8 normal-case !tracking-[0.1em]">
+                <p className="label-xs mt-8 inline-block border-l-2 border-olive bg-sage/50 px-5 py-3 normal-case !tracking-[0.1em] !text-charcoal">
                   One foundation you keep using across content, launches, funnels and future
                   decisions.
                 </p>
@@ -853,7 +853,7 @@ function MarketingSetPage() {
               </p>
             </Reveal>
             <Reveal delay={140}>
-              <div className="mt-12 flex flex-col items-center gap-6">
+              <div className="mx-auto mt-12 flex max-w-[36rem] flex-col items-center gap-6 border border-line bg-background px-8 py-12">
                 <p className="font-serif-editorial text-[2.6rem] leading-none text-charcoal">
                   589 UAH
                 </p>

@@ -6,10 +6,11 @@ import { Reveal } from "@/components/site/Reveal";
 import { SpiralSteps, Spiral } from "@/components/site/LineArt";
 import portrait from "@/assets/vita-portrait.jpg";
 import shellHero from "@/assets/shell-hero.jpg.asset.json";
-import shell from "@/assets/shell.jpg.asset.json";
-import ripple from "@/assets/ripple.jpg.asset.json";
 import ink from "@/assets/ink-layers.jpg.asset.json";
-import seeds from "@/assets/seeds.jpg.asset.json";
+import chambers from "@/assets/about-chambers.jpg";
+import mist from "@/assets/about-mist.jpg";
+import leaves from "@/assets/about-leaves.jpg";
+import light from "@/assets/about-light.jpg";
 
 const title = "The personality behind the work — Vita Shablii";
 const description =
@@ -330,12 +331,12 @@ function AboutPage() {
             </Reveal>
 
             <Reveal delay={140}>
-              <div className="mt-16 flex flex-col items-start gap-10 md:mt-20 md:flex-row md:items-end md:justify-between">
-                <p className="display-md max-w-[26em]">
+              <div className="mt-20 flex flex-col items-center gap-8 border-t border-line/60 pt-16 text-center md:mt-24">
+                <Spiral className="h-16 w-16 opacity-60" accent />
+                <p className="display-md mx-auto max-w-[34em]">
                   Eventually, marketing stopped being the category.{" "}
                   <span className="italic">Understanding the system became the work.</span>
                 </p>
-                <Spiral className="h-28 w-28 shrink-0 opacity-70 md:h-40 md:w-40" accent />
               </div>
             </Reveal>
           </div>
@@ -351,6 +352,9 @@ function AboutPage() {
                   Different contexts taught me to look for{" "}
                   <span className="italic">what remains true.</span>
                 </h2>
+                <p className="body-read mt-8">
+                  Not the tactics. Not the channels. The system underneath them.
+                </p>
               </div>
             </Reveal>
 
@@ -388,39 +392,34 @@ function AboutPage() {
               ))}
             </div>
 
-            <Reveal>
-              <p className="mt-6 border-l border-olive/40 bg-sage/25 px-7 py-5 font-serif-editorial text-2xl italic text-charcoal">
-                The system matters.
-              </p>
-            </Reveal>
           </div>
         </section>
 
         {/* ——— 04 EXPERIENCE, QUANTIFIED ——— */}
         <section className="rule-thin bg-paper">
           <div className="mx-auto max-w-[1440px] px-6 py-20 md:px-10 md:py-28">
-            <div className="grid gap-14 md:grid-cols-12">
-              <div className="md:col-span-5">
+            <div className="grid gap-14 md:grid-cols-12 md:items-stretch">
+              <div className="flex flex-col md:col-span-5">
                 <Reveal>
                   <Kicker>Selected experience</Kicker>
-                  <h2 className="display-md">
-                    Experience is useful only when it changes{" "}
-                    <span className="italic">how you see.</span>
+                  <h2 className="display-md max-w-[18em]">
+                    Experience is useful only when it{" "}
+                    <span className="italic">changes how you see.</span>
                   </h2>
                 </Reveal>
-                <Reveal delay={140}>
-                  <div className="grain relative mt-12 aspect-[4/3] overflow-hidden bg-stone">
-                    <img
-                      src={ripple.url}
-                      alt="Concentric ripples spreading across water"
-                      loading="lazy"
-                      className="h-full w-full object-cover"
-                    />
-                  </div>
-                </Reveal>
+                <div className="grain relative mt-10 min-h-[260px] flex-1 overflow-hidden bg-stone">
+                  <img
+                    src={mist}
+                    alt="Mist settling over still water"
+                    loading="lazy"
+                    width={1200}
+                    height={1504}
+                    className="absolute inset-0 h-full w-full object-cover"
+                  />
+                </div>
               </div>
 
-              <div className="md:col-span-6 md:col-start-7">
+              <div className="flex flex-col md:col-span-6 md:col-start-7">
                 <Reveal delay={100}>
                   <dl className="grid gap-px overflow-hidden border border-sage/40 bg-sage/30 sm:grid-cols-2">
                     {numbers.map((n) => (
@@ -431,16 +430,16 @@ function AboutPage() {
                     ))}
                   </dl>
                 </Reveal>
-                <div className="mt-px grid gap-px overflow-hidden border border-line/60 bg-line/40 sm:grid-cols-2">
+                <ul className="mt-10 flex-1 divide-y divide-line/60 border-t border-line/60">
                   {cases.map((c) => (
-                    <div key={c.t} className="bg-background px-6 py-7">
-                      <p className="label-xs !text-charcoal">
+                    <li key={c.t} className="flex flex-col gap-2 py-5 sm:flex-row sm:gap-8">
+                      <p className="label-xs !text-charcoal sm:w-40 sm:shrink-0">
                         {c.k} / {c.t}
                       </p>
-                      <p className="mt-3 text-sm leading-relaxed text-charcoal/70">{c.d}</p>
-                    </div>
+                      <p className="text-sm leading-relaxed text-charcoal/70">{c.d}</p>
+                    </li>
                   ))}
-                </div>
+                </ul>
               </div>
             </div>
           </div>
@@ -513,13 +512,17 @@ function AboutPage() {
                       And sometimes the thing everyone is trying to optimise is not the thing
                       creating the result at all.
                     </p>
-                    <p className="border-l border-olive/40 bg-sage/25 px-7 py-5 font-serif-editorial text-2xl italic leading-snug text-charcoal">
-                      Execution becomes much easier once the real problem has a name.
-                    </p>
                   </div>
                 </Reveal>
               </div>
             </div>
+
+            <Reveal delay={80}>
+              <p className="display-md mt-16 max-w-[30em] border-t border-line/60 pt-10">
+                Execution becomes much easier{" "}
+                <span className="italic">once the real problem has a name.</span>
+              </p>
+            </Reveal>
           </div>
         </section>
 
@@ -535,8 +538,8 @@ function AboutPage() {
               </div>
             </Reveal>
 
-            <div className="mt-16 grid gap-16 md:mt-20 md:grid-cols-12 md:items-center">
-              <div className="md:col-span-5">
+            <div className="mt-14 grid gap-16 md:mt-16 md:grid-cols-12 md:items-start">
+              <div className="md:col-span-7">
                 <Reveal>
                   <SpiralSteps
                     center="Context"
@@ -544,15 +547,18 @@ function AboutPage() {
                   />
                 </Reveal>
               </div>
-              <div className="md:col-span-6 md:col-start-7">
+              <div className="md:col-span-5 md:col-start-8">
                 <Reveal delay={120}>
-                  <ol className="grid gap-px overflow-hidden border border-line/60 bg-line/40 sm:grid-cols-2">
+                  <ol className="divide-y divide-line/60 border-y border-line/60">
                     {model.map((m, i) => (
-                      <li key={m.t} className="bg-background px-6 py-5">
-                        <p className="label-xs !text-charcoal">
-                          {String(i + 1).padStart(2, "0")} / {m.t}
-                        </p>
-                        <p className="mt-2 text-sm leading-relaxed text-charcoal/70">{m.d}</p>
+                      <li key={m.t} className="flex items-baseline gap-5 py-4">
+                        <span className="label-xs shrink-0">
+                          {String(i + 1).padStart(2, "0")}
+                        </span>
+                        <span>
+                          <span className="font-serif-editorial text-xl text-charcoal">{m.t}</span>{" "}
+                          <span className="text-sm leading-relaxed text-charcoal/60">{m.d}</span>
+                        </span>
                       </li>
                     ))}
                   </ol>
@@ -561,24 +567,17 @@ function AboutPage() {
             </div>
 
             <Reveal>
-              <div className="mt-16 grid gap-10 md:grid-cols-12">
-                <div className="space-y-5 md:col-span-6">
-                  <p className="body-read">
-                    Products evolve. Markets respond. People behave differently from our assumptions.
-                    Decisions create new information.
-                  </p>
-                  <p className="body-read">
-                    So I don't see strategy as a document created once and followed forever. I see it
-                    as a living system of connected decisions — one that becomes clearer as you move
-                    through it.
-                  </p>
-                </div>
-                <div className="md:col-span-5 md:col-start-8">
-                  <p className="border-l border-olive/40 bg-sage/25 px-7 py-6 font-serif-editorial text-2xl italic leading-snug text-charcoal">
-                    You move forward. You learn. You return to the question with more context than
-                    you had before. And the system evolves.
-                  </p>
-                </div>
+              <div className="mx-auto mt-16 max-w-[46rem] space-y-6 text-center">
+                <p className="body-read">
+                  Products evolve. Markets respond. People behave differently from our assumptions.
+                  Decisions create new information. So I don't see strategy as a document created
+                  once and followed forever — but as a living system of connected decisions that
+                  becomes clearer as you move through it.
+                </p>
+                <p className="font-serif-editorial text-2xl italic leading-snug text-charcoal md:text-[1.8rem]">
+                  You move forward. You learn. You return to the question with more context than you
+                  had before. And the system evolves.
+                </p>
               </div>
             </Reveal>
           </div>
@@ -592,9 +591,11 @@ function AboutPage() {
                 <Reveal>
                   <div className="grain relative aspect-[4/5] overflow-hidden bg-stone">
                     <img
-                      src={shell.url}
-                      alt="A nautilus shell resting in sand"
+                      src={chambers}
+                      alt="Backlit nautilus shell chambers"
                       loading="lazy"
+                      width={1200}
+                      height={1504}
                       className="h-full w-full object-cover"
                     />
                   </div>
@@ -626,7 +627,7 @@ function AboutPage() {
                       behaviour, in the economics, in the founder's intuition, in the market
                       response. The work is to see the relationships between them.
                     </p>
-                    <p className="border-l border-olive/40 bg-sage/25 px-7 py-6 font-serif-editorial text-2xl italic leading-snug text-charcoal">
+                    <p className="mt-4 border-t border-line/60 pt-8 font-serif-editorial text-2xl italic leading-snug text-charcoal md:text-[1.75rem]">
                       The goal isn't always to add more. Sometimes it is to understand the logic
                       already there — and help it take form.
                     </p>

@@ -537,3 +537,165 @@ export function OrbitMethod({ nodes }: { nodes: string[] }) {
     </div>
   );
 }
+/** Five petals forming a single whole — the Marketing Set system. */
+export function Rosette({
+  center = ["Marketing", "Set"],
+  nodes,
+  className = "",
+}: {
+  center?: string[];
+  nodes: string[];
+  className?: string;
+}) {
+  const { ref, shown } = useReveal<HTMLDivElement>(0.15);
+  const cx = 320;
+  const cy = 320;
+  const rx = 126;
+  const ry = 248;
+  const labelR = 262;
+  const n = nodes.length;
+
+  return (
+    <div ref={ref} className={className}>
+      <svg viewBox="-90 -24 820 692" className="h-auto w-full" fill="none" aria-hidden>
+        {nodes.map((label, i) => {
+          const rot = (360 / n) * i;
+          return (
+            <ellipse
+              key={`p-${label}`}
+              cx={cx}
+              cy={cy}
+              rx={rx}
+              ry={ry}
+              transform={`rotate(${rot} ${cx} ${cy})`}
+              stroke="var(--olive)"
+              strokeWidth="1"
+              opacity={shown ? 0.8 : 0}
+              style={{
+                strokeDasharray: 1200,
+                strokeDashoffset: shown ? 0 : 1200,
+                transition: `stroke-dashoffset 2.6s cubic-bezier(0.22,1,0.36,1) ${i * 180}ms, opacity 1.2s ease ${i * 180}ms`,
+              }}
+            />
+          );
+        })}
+        {nodes.map((label, i) => {
+          const a = (-90 + (360 / n) * i) * (Math.PI / 180);
+          const x = Math.round((cx + labelR * Math.cos(a)) * 100) / 100;
+          const y = Math.round((cy + labelR * Math.sin(a)) * 100) / 100;
+          const cos = Math.cos(a);
+          return (
+            <g
+              key={`l-${label}`}
+              style={{
+                opacity: shown ? 1 : 0,
+                transition: `opacity 900ms ease ${700 + i * 200}ms`,
+              }}
+            >
+              <text
+                x={x}
+                y={y + 4}
+                textAnchor={cos > 0.25 ? "start" : cos < -0.25 ? "end" : "middle"}
+                fontSize="15"
+                letterSpacing="3.4"
+                fill="var(--charcoal)"
+                fontFamily="var(--font-sans-neutral)"
+              >
+                {label.toUpperCase()}
+              </text>
+            </g>
+          );
+        })}
+        <g
+          style={{
+            opacity: shown ? 1 : 0,
+            transition: "opacity 1.2s ease 1.5s",
+          }}
+        >
+          {center.map((line, i) => (
+            <text
+              key={line}
+              x={cx}
+              y={cy + 4 + (i - (center.length - 1) / 2) * 40}
+              textAnchor="middle"
+              fontSize="38"
+              fill="var(--charcoal)"
+              fontFamily="var(--font-serif-editorial)"
+            >
+              {line}
+            </text>
+          ))}
+        </g>
+      </svg>
+    </div>
+  );
+}
+
+/** Channels converging into one action — the funnel library. */
+export function ChannelLanes({
+  lanes,
+  className = "",
+}: {
+  lanes: string[];
+  className?: string;
+}) {
+  const { ref, shown } = useReveal<HTMLDivElement>(0.2);
+  const endX = 860;
+  const endY = 150;
+  return (
+    <div ref={ref} className={className}>
+      <svg viewBox="0 0 940 300" className="h-auto w-full" fill="none" aria-hidden>
+        {lanes.map((l, i) => {
+          const y = 40 + i * ((220 - 40) / Math.max(1, lanes.length - 1));
+          const d = `M150 ${y} H520 C660 ${y} 700 ${endY} ${endX} ${endY}`;
+          return (
+            <g key={l}>
+              <text
+                x="132"
+                y={y + 4}
+                textAnchor="end"
+                fontSize="13"
+                letterSpacing="3"
+                fill="var(--smoke)"
+                fontFamily="var(--font-sans-neutral)"
+              >
+                {l.toUpperCase()}
+              </text>
+              <path
+                d={d}
+                stroke="var(--line-tone)"
+                strokeWidth="1"
+                style={{
+                  strokeDasharray: 1400,
+                  strokeDashoffset: shown ? 0 : 1400,
+                  transition: `stroke-dashoffset 2.4s cubic-bezier(0.22,1,0.36,1) ${i * 140}ms`,
+                }}
+              />
+              <circle cx="150" cy={y} r="2.6" fill="var(--taupe)" opacity={shown ? 1 : 0} />
+            </g>
+          );
+        })}
+        <circle
+          cx={endX}
+          cy={endY}
+          r="6"
+          fill="var(--olive)"
+          opacity={shown ? 0.9 : 0}
+          style={{ transition: "opacity 900ms ease 1.6s" }}
+        />
+        <text
+          x={endX}
+          y={endY - 20}
+          textAnchor="middle"
+          fontSize="13"
+          letterSpacing="3"
+          fill="var(--charcoal)"
+          fontFamily="var(--font-sans-neutral)"
+          style={{ opacity: shown ? 1 : 0, transition: "opacity 900ms ease 1.7s" }}
+        >
+          ACTION
+        </text>
+      </svg>
+    </div>
+  );
+}

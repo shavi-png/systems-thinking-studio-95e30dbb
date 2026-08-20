@@ -31,10 +31,10 @@ function SpiralLogo({ className = "" }: { className?: string }) {
 }
 
 const nav = [
-  { label: "About", href: "#about" },
-  { label: "Products", href: "#solutions" },
-  { label: "Syntez", href: "#solutions" },
-  { label: "Consulting", href: "#solutions" },
+  { label: "About", href: "/#about" },
+  { label: "Marketing Set", href: "/marketing-set" },
+  { label: "Syntez", href: "/#solutions" },
+  { label: "Consulting", href: "/#solutions" },
 ];
 
 export function Header() {
@@ -73,7 +73,7 @@ export function Header() {
               {n.label}
             </a>
           ))}
-          <a href="#solutions" className="link-editorial !text-[0.6875rem]">
+          <a href="/#solutions" className="link-editorial !text-[0.6875rem]">
             Choose a solution <span aria-hidden>→</span>
           </a>
         </nav>
@@ -105,7 +105,7 @@ export function Header() {
             ))}
           </ul>
           <a
-            href="#solutions"
+            href="/#solutions"
             onClick={() => setOpen(false)}
             className="link-editorial mt-10"
           >

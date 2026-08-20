@@ -7,7 +7,7 @@ import { Rosette, ChannelLanes } from "@/components/site/LineArt";
 import portrait from "@/assets/vita-portrait.jpg";
 import layers from "@/assets/ms-layers.jpg";
 import desk from "@/assets/ms-desk.jpg";
-import wash from "@/assets/wash.jpg.asset.json";
+import ink from "@/assets/ink-layers.jpg.asset.json";
 
 const title = "Marketing Set — AI marketing system | Vita Shablii";
 const description =
@@ -419,12 +419,17 @@ function MarketingSetPage() {
                   </h2>
                 </Reveal>
                 <Reveal delay={140}>
-                  <img
-                    src={wash.url}
-                    alt="Soft watercolour wash in olive tones"
-                    loading="lazy"
-                    className="mt-10 hidden aspect-[4/3] w-full object-cover object-center md:block"
-                  />
+                  <figure className="mt-10 hidden md:block">
+                    <img
+                      src={ink.url}
+                      alt="Layered olive ink strokes forming a single translucent shape"
+                      loading="lazy"
+                      className="aspect-square w-full object-contain"
+                    />
+                    <figcaption className="label-xs mt-3 !tracking-[0.14em]">
+                      Many layers · one shape
+                    </figcaption>
+                  </figure>
                 </Reveal>
               </div>
               <div className="md:col-span-6 md:col-start-7">
@@ -445,7 +450,7 @@ function MarketingSetPage() {
                     </Reveal>
                   ))}
                 </ul>
-                <p className="font-serif-editorial mt-10 text-[clamp(1.5rem,2.8vw,2.3rem)] leading-tight text-charcoal">
+                <p className="font-serif-editorial mt-10 border-l-2 border-olive bg-sage/40 px-7 py-6 text-[clamp(1.5rem,2.8vw,2.3rem)] leading-tight text-charcoal">
                   Not more marketing. <span className="italic">A stronger foundation</span> for
                   everything that comes next.
                 </p>

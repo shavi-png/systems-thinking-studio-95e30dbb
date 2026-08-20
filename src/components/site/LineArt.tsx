@@ -550,9 +550,9 @@ export function Rosette({
   const { ref, shown } = useReveal<HTMLDivElement>(0.15);
   const cx = 320;
   const cy = 320;
-  const rx = 108;
-  const ry = 232;
-  const labelR = 246;
+  const rx = 126;
+  const ry = 248;
+  const labelR = 262;
   const n = nodes.length;
 
   return (
@@ -569,8 +569,8 @@ export function Rosette({
               ry={ry}
               transform={`rotate(${rot} ${cx} ${cy})`}
               stroke="var(--olive)"
-              strokeWidth="0.9"
-              opacity={shown ? 0.55 : 0}
+              strokeWidth="1"
+              opacity={shown ? 0.8 : 0}
               style={{
                 strokeDasharray: 1200,
                 strokeDashoffset: shown ? 0 : 1200,

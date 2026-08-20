@@ -312,6 +312,116 @@ export function FiveForms({ className = "" }: { className?: string }) {
 }
 
 /** Schematic funnel lines — a quiet nod to the 45 frameworks. */
+export function SpiralSteps({
+  center = "Value",
+  nodes,
+}: {
+  center?: string;
+  nodes: string[];
+}) {
+  const { ref, shown } = useReveal<HTMLDivElement>(0.18);
+  const r2 = (v: number) => Math.round(v * 100) / 100;
+  const a = 16;
+  const b = 0.19;
+  const t0 = 2.2 * Math.PI;
+  const gap = 0.62 * Math.PI;
+  const tNodes = nodes.map((_, i) => t0 + gap * (i + 1));
+  const tMax = tNodes[tNodes.length - 1]! + 0.06;
+  const tStart = t0 - 2 * Math.PI;
+
+  const pts: string[] = [];
+  for (let t = tStart; t <= tMax; t += 0.04) {
+    const r = a * Math.exp(b * t);
+    pts.push(`${r2(r * Math.cos(t))} ${r2(r * Math.sin(t))}`);
+  }
+  const startR = a * Math.exp(b * tStart);
+  const startX = r2(startR * Math.cos(tStart));
+  const startY = r2(startR * Math.sin(tStart));
+
+  const marks = nodes.map((n, i) => {
+    const t = tNodes[i]!;
+    const r = a * Math.exp(b * t);
+    const off = 16;
+    const cos = Math.cos(t);
+    return {
+      n,
+      i,
+      x: r2(r * cos),
+      y: r2(r * Math.sin(t)),
+      lx: r2((r + off) * cos),
+      ly: r2((r + off) * Math.sin(t)),
+      cos,
+    };
+  });
+
+  // generous, symmetric frame so no label is ever clipped
+  const rMax = a * Math.exp(b * tMax);
+  const pad = rMax * 0.55 + 60;
+  const size = r2((rMax + pad) * 2);
+  const min = r2(-(rMax + pad));
+
+  return (
+    <div ref={ref} className="relative">
+      <svg viewBox={`${min} ${min} ${size} ${size}`} className="h-auto w-full" fill="none" aria-hidden>
+        <path
+          d={`M${pts.join(" L")}`}
+          stroke="var(--smoke)"
+          strokeWidth="1.4"
+          strokeLinecap="round"
+          opacity="0.65"
+          style={{
+            strokeDasharray: 12000,
+            strokeDashoffset: shown ? 0 : 12000,
+            transition: "stroke-dashoffset 4.2s cubic-bezier(0.22,1,0.36,1)",
+          }}
+        />
+        <circle cx={startX} cy={startY} r="3.5" fill="var(--olive)" opacity={shown ? 0.85 : 0} />
+        <text
+          x={startX}
+          y={r2(startY - 12)}
+          textAnchor="middle"
+          fill="var(--smoke)"
+          fontSize="13"
+          letterSpacing="4"
+          fontFamily="var(--font-sans-neutral)"
+          style={{ opacity: shown ? 1 : 0, transition: "opacity 900ms ease 300ms" }}
+        >
+          {center.toUpperCase()}
+        </text>
+        {marks.map((m) => (
+          <g
+            key={m.n}
+            style={{
+              opacity: shown ? 1 : 0,
+              transition: `opacity 900ms ease ${500 + m.i * 300}ms`,
+            }}
+          >
+            <circle
+              cx={m.x}
+              cy={m.y}
+              r="3.5"
+              fill={m.i === marks.length - 1 ? "var(--olive)" : "var(--paper)"}
+              stroke="var(--smoke)"
+              strokeWidth="1"
+            />
+            <text
+              x={m.lx}
+              y={r2(m.ly + 5)}
+              textAnchor={m.cos > 0.2 ? "start" : m.cos < -0.2 ? "end" : "middle"}
+              fontSize="13"
+              letterSpacing="3.5"
+              fill="var(--smoke)"
+              fontFamily="var(--font-sans-neutral)"
+            >
+              {String(m.i + 1).padStart(2, "0")} — {m.n.toUpperCase()}
+            </text>
+          </g>
+        ))}
+      </svg>
+    </div>
+  );
+}
+
 export function FunnelLines({ className = "" }: { className?: string }) {
   const { ref, shown } = useReveal<HTMLDivElement>(0.2);
   const cols = [0, 1, 2, 3, 4, 5, 6];

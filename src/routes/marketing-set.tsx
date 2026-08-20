@@ -3,7 +3,7 @@ import { createFileRoute, Link } from "@tanstack/react-router";
 import { Header } from "@/components/site/Header";
 import { Footer } from "@/components/site/Footer";
 import { Reveal } from "@/components/site/Reveal";
-import { SpiralSystem, FiveForms, FunnelLines } from "@/components/site/LineArt";
+import { SpiralSteps, FiveForms, FunnelLines } from "@/components/site/LineArt";
 import portrait from "@/assets/vita-portrait.jpg";
 import shellHero from "@/assets/shell-hero.jpg.asset.json";
 
@@ -284,7 +284,7 @@ function MarketingSetPage() {
                 ))}
               </ul>
               <div className="md:col-span-4">
-                <SpiralSystem center="Value" nodes={["Order", "Meaning", "System"]} />
+                <SpiralSteps center="Start" nodes={["Order", "Meaning", "System"]} />
               </div>
               <ul className="md:col-span-4 md:text-right">
                 <li className="label-xs mb-5">To</li>
@@ -349,7 +349,7 @@ function MarketingSetPage() {
             </Reveal>
 
             <div className="mx-auto mt-12 max-w-[46rem] md:mt-16">
-              <SpiralSystem
+              <SpiralSteps
                 center="Value"
                 nodes={["Differentiation", "Market", "People", "Brand core", "AI assistant"]}
               />

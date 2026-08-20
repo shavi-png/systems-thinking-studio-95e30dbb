@@ -641,62 +641,42 @@ function AboutPage() {
         {/* ——— 08 TECHNOLOGY & AI ——— */}
         <section className="rule-thin bg-paper">
           <div className="mx-auto max-w-[1440px] px-6 py-20 md:px-10 md:py-28">
-            <div className="grid gap-16 md:grid-cols-12">
-              <div className="md:col-span-6">
+            <div className="grid gap-14 md:grid-cols-12">
+              <div className="md:col-span-5">
                 <Reveal>
                   <Kicker>Technology / AI</Kicker>
                   <h2 className="display-md">
                     Tools change. <span className="italic">The question comes first.</span>
                   </h2>
-                  <div className="mt-10 space-y-6">
+                </Reveal>
+              </div>
+              <div className="md:col-span-6 md:col-start-7">
+                <Reveal delay={100}>
+                  <div className="space-y-6">
                     <p className="body-read">
                       I have always been interested in technology when it removes unnecessary work
                       rather than creates another layer of it. Working alongside IT teams gradually
                       moved me beyond marketing briefs and deeper into processes, automation and the
-                      logic behind digital products.
+                      logic behind digital products. AI is a continuation of that thinking for me —
+                      a way to analyse faster, connect information, challenge assumptions, generate
+                      possibilities and move from information to iteration.
                     </p>
-                    <p className="body-read">AI is a continuation of that thinking for me.</p>
+                    <p className="body-read">
+                      But speed only becomes valuable when there is direction. More output is not
+                      automatically better thinking. More automation is not automatically a better
+                      system. And a powerful tool cannot decide what matters unless we give it the
+                      right context.
+                    </p>
                   </div>
-                </Reveal>
-              </div>
-
-              <div className="md:col-span-5 md:col-start-8">
-                <Reveal delay={120}>
-                  <ul className="grid gap-px overflow-hidden border border-line/60 bg-line/40">
-                    {[
-                      "Analyse faster",
-                      "Connect information",
-                      "Challenge assumptions",
-                      "Generate possibilities",
-                      "Remove repetitive work",
-                      "Move from information to iteration",
-                    ].map((x) => (
-                      <li key={x} className="label-xs bg-background px-6 py-4 !text-charcoal">
-                        {x}
-                      </li>
-                    ))}
-                  </ul>
                 </Reveal>
               </div>
             </div>
 
             <Reveal delay={80}>
-              <div className="mt-16 grid gap-10 md:grid-cols-12 md:items-end">
-                <div className="space-y-5 md:col-span-6">
-                  <p className="body-read">
-                    But speed only becomes valuable when there is direction. More output is not
-                    automatically better thinking. More automation is not automatically a better
-                    system. And a powerful tool cannot decide what matters unless we give it the
-                    right context.
-                  </p>
-                </div>
-                <div className="md:col-span-5 md:col-start-8">
-                  <p className="border-l border-olive/40 bg-sage/25 px-7 py-6 font-serif-editorial text-2xl italic leading-snug text-charcoal">
-                    Not a substitute for strategy. A powerful layer inside a strategy that already
-                    makes sense.
-                  </p>
-                </div>
-              </div>
+              <p className="display-md mt-16 max-w-[32em] border-t border-line/60 pt-10">
+                Not a substitute for strategy.{" "}
+                <span className="italic">A layer inside a strategy that already makes sense.</span>
+              </p>
             </Reveal>
           </div>
         </section>

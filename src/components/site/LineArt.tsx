@@ -354,15 +354,24 @@ export function SpiralSteps({
     };
   });
 
-  // generous, symmetric frame so no label is ever clipped
-  const rMax = a * Math.exp(b * tMax);
-  const pad = rMax * 0.55 + 60;
-  const size = r2((rMax + pad) * 2);
-  const min = r2(-(rMax + pad));
+  // frame the drawing tightly around curve + labels so nothing is clipped
+  const xs = pts.map((s) => Number(s.split(" ")[0]));
+  const ys = pts.map((s) => Number(s.split(" ")[1]));
+  for (const m of marks) {
+    const w = (m.n.length + 6) * 8;
+    xs.push(m.cos > 0.2 ? m.lx + w : m.cos < -0.2 ? m.lx - w : m.lx);
+    xs.push(m.lx);
+    ys.push(m.ly + 12, m.ly - 12);
+  }
+  const pad = 24;
+  const minX = r2(Math.min(...xs) - pad);
+  const minY = r2(Math.min(...ys) - pad);
+  const w = r2(Math.max(...xs) - Math.min(...xs) + pad * 2);
+  const h = r2(Math.max(...ys) - Math.min(...ys) + pad * 2);
 
   return (
     <div ref={ref} className="relative">
-      <svg viewBox={`${min} ${min} ${size} ${size}`} className="h-auto w-full" fill="none" aria-hidden>
+      <svg viewBox={`${minX} ${minY} ${w} ${h}`} className="h-auto w-full" fill="none" aria-hidden>
         <path
           d={`M${pts.join(" L")}`}
           stroke="var(--smoke)"

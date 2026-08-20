@@ -710,9 +710,11 @@ function AboutPage() {
                 <Reveal delay={120}>
                   <div className="grain relative aspect-[4/3] overflow-hidden bg-stone">
                     <img
-                      src={seeds.url}
-                      alt="Dandelion seeds drifting in light"
+                      src={light}
+                      alt="Afternoon light falling across an open notebook"
                       loading="lazy"
+                      width={1408}
+                      height={1056}
                       className="h-full w-full object-cover"
                     />
                   </div>
@@ -720,49 +722,64 @@ function AboutPage() {
               </div>
             </div>
 
-            <div className="mt-16 grid gap-px overflow-hidden border border-line/60 bg-line/40 md:mt-20 md:grid-cols-2">
-              {beyond.map((b, i) => (
-                <Reveal key={b.t} delay={i * 80}>
-                  <article className="h-full bg-paper px-7 py-9">
-                    <p className="label-xs">{b.t}</p>
-                    <p className="mt-4 font-serif-editorial text-2xl leading-snug text-charcoal">
-                      {b.lead}
-                    </p>
-                    <ul className="mt-6 space-y-2">
-                      {b.items.map((x) => (
-                        <li key={x} className="text-sm leading-relaxed text-charcoal/70">
-                          {x}
-                        </li>
-                      ))}
-                    </ul>
-                    <p className="mt-6 border-t border-line/60 pt-5 text-sm italic leading-relaxed text-charcoal/70">
-                      {b.close}
-                    </p>
-                  </article>
-                </Reveal>
-              ))}
+            <div className="mt-16 space-y-16 md:mt-20 md:space-y-20">
+              {beyond.map((b, i) => {
+                const img = i === 0 ? leaves : i === 2 ? ink.url : null;
+                return (
+                  <Reveal key={b.t} delay={60}>
+                    <article className="grid gap-10 border-t border-line/60 pt-12 md:grid-cols-12 md:items-start">
+                      <div
+                        className={
+                          img
+                            ? "md:col-span-6"
+                            : "md:col-span-8 md:col-start-3"
+                        }
+                      >
+                        <p className="font-serif-editorial text-2xl leading-snug text-charcoal md:text-[1.9rem]">
+                          {b.lead}
+                        </p>
+                        <ul className="mt-7 space-y-2">
+                          {b.items.map((x) => (
+                            <li key={x} className="body-read !text-base">
+                              {x}
+                            </li>
+                          ))}
+                        </ul>
+                        <p className="mt-7 max-w-[36em] text-sm italic leading-relaxed text-charcoal/65">
+                          {b.close}
+                        </p>
+                      </div>
+                      {img ? (
+                        <div className="md:col-span-5 md:col-start-8">
+                          <div className="grain relative aspect-[4/3] overflow-hidden bg-stone">
+                            <img
+                              src={img}
+                              alt=""
+                              aria-hidden
+                              loading="lazy"
+                              className="h-full w-full object-cover"
+                            />
+                          </div>
+                        </div>
+                      ) : null}
+                    </article>
+                  </Reveal>
+                );
+              })}
             </div>
 
             <Reveal>
-              <div className="mt-16 grid gap-10 md:grid-cols-12 md:items-end">
-                <div className="space-y-5 md:col-span-6">
-                  <p className="label-xs">What I keep returning to</p>
-                  <p className="display-md">
-                    Context. <span className="italic">Always context.</span>
-                  </p>
-                  <p className="body-read">
-                    Because a brilliant solution in the wrong context is still the wrong solution.
-                    The same product can mean something different in another market. The same message
-                    can work for one audience and disappear for another. The same growth tactic can
-                    create leverage in one business and destroy margin in the next.
-                  </p>
-                </div>
-                <div className="md:col-span-5 md:col-start-8">
-                  <p className="border-l border-olive/40 bg-sage/25 px-7 py-6 font-serif-editorial text-2xl italic leading-snug text-charcoal">
-                    The question is rarely whether an instrument works. The question is where, why
-                    and for whom it makes sense.
-                  </p>
-                </div>
+              <div className="mx-auto mt-20 max-w-[46rem] space-y-6 text-center">
+                <p className="label-xs">What I keep returning to</p>
+                <p className="display-md">
+                  Context. <span className="italic">Always context.</span>
+                </p>
+                <p className="body-read">
+                  Because a brilliant solution in the wrong context is still the wrong solution. The
+                  same product can mean something different in another market. The same message can
+                  work for one audience and disappear for another. The same growth tactic can create
+                  leverage in one business and destroy margin in the next.
+                </p>
               </div>
             </Reveal>
           </div>

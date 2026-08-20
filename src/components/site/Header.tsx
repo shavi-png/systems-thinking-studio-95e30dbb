@@ -1,4 +1,5 @@
 import { useEffect, useState } from "react";
+import { Link } from "@tanstack/react-router";
 
 function SpiralLogo({ className = "" }: { className?: string }) {
   // same logarithmic shell as the section 3 spiral, three full turns, no labels
@@ -31,8 +32,8 @@ function SpiralLogo({ className = "" }: { className?: string }) {
 }
 
 const nav = [
-  { label: "About", href: "/#about" },
-  { label: "Marketing Set", href: "/marketing-set" },
+  { label: "Get to know me", href: "/about" },
+  { label: "Products", href: "/marketing-set" },
   { label: "Syntez", href: "/#solutions" },
   { label: "Consulting", href: "/#solutions" },
 ];
@@ -55,13 +56,13 @@ export function Header() {
       }`}
     >
       <div className="mx-auto grid max-w-[1440px] grid-cols-[minmax(0,1fr)_auto] items-center gap-6 px-6 py-5 md:px-10">
-        <a
-          href="/"
+        <Link
+          to="/"
           className="inline-flex items-center text-charcoal transition-colors hover:text-olive"
           aria-label="Vita Shablii — go to homepage"
         >
           <SpiralLogo className="h-11 w-11" />
-        </a>
+        </Link>
 
         <nav className="hidden items-center gap-9 lg:flex">
           {nav.map((n) => (
@@ -76,6 +77,13 @@ export function Header() {
           <a href="/#solutions" className="link-editorial !text-[0.6875rem]">
             Choose a solution <span aria-hidden>→</span>
           </a>
+          <button
+            type="button"
+            className="label-xs shrink-0 rounded-full border border-charcoal/25 px-3.5 py-1.5 !tracking-[0.18em] transition-colors hover:border-olive hover:!text-charcoal"
+            title="Ukrainian version — coming soon"
+          >
+            UA
+          </button>
         </nav>
 
         <button

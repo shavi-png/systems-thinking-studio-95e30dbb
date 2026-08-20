@@ -538,13 +538,15 @@ function AboutPage() {
               </div>
             </Reveal>
 
-            <div className="mt-14 grid gap-16 md:mt-16 md:grid-cols-12 md:items-start">
-              <div className="md:col-span-7">
+            <div className="mt-14 grid gap-14 md:mt-16 md:grid-cols-12 md:items-center">
+              <div className="md:col-span-6">
                 <Reveal>
-                  <SpiralSteps
-                    center="Context"
-                    nodes={["Observe", "Question", "Trace", "Clarify", "Decide"]}
-                  />
+                  <div className="mx-auto max-w-[520px]">
+                    <SpiralSteps
+                      center="Context"
+                      nodes={["Observe", "Question", "Trace", "Clarify", "Decide"]}
+                    />
+                  </div>
                 </Reveal>
               </div>
               <div className="md:col-span-5 md:col-start-8">

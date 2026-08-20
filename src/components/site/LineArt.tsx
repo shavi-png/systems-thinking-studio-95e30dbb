@@ -152,7 +152,8 @@ export function SpiralSystem({
   const t0 = 2 * Math.PI;
   // Custom spacing so the outer word stays at the end of the shell
   // and the previous word is raised slightly further from the end.
-  const gaps = [0.7 * Math.PI, 0.7 * Math.PI, 0.3 * Math.PI, 0.5 * Math.PI];
+  const defaultGaps = [0.7 * Math.PI, 0.7 * Math.PI, 0.3 * Math.PI, 0.5 * Math.PI];
+  const gaps = nodes.map((_, i) => defaultGaps[i] ?? 0.55 * Math.PI);
   const tNodes = nodes.map((_, i) => t0 + gaps.slice(0, i + 1).reduce((acc, v) => acc + v, 0));
   const tMax = tNodes[tNodes.length - 1]! + 0.05;
 

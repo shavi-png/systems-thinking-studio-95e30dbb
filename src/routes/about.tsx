@@ -788,37 +788,23 @@ function AboutPage() {
         {/* ——— 10 PRINCIPLES ——— */}
         <section className="rule-thin bg-paper">
           <div className="mx-auto max-w-[1440px] px-6 py-20 md:px-10 md:py-28">
-            <div className="grid gap-14 md:grid-cols-12">
-              <div className="md:col-span-4">
-                <Reveal>
-                  <Kicker>A few things I keep coming back to</Kicker>
-                  <div className="grain relative mt-8 aspect-[4/5] overflow-hidden bg-stone">
-                    <img
-                      src={ink.url}
-                      alt="Layered green ink strokes forming a single shape"
-                      loading="lazy"
-                      className="h-full w-full object-contain"
-                    />
-                  </div>
+            <Reveal>
+              <div className="mx-auto max-w-[42rem] text-center">
+                <Kicker>A few things I keep coming back to</Kicker>
+              </div>
+            </Reveal>
+            <ol className="mx-auto mt-10 max-w-[52rem] divide-y divide-line/60 border-y border-line/60">
+              {principles.map((p, i) => (
+                <Reveal key={p} delay={i * 50}>
+                  <li className="flex items-baseline gap-6 py-5">
+                    <span className="label-xs shrink-0">{String(i + 1).padStart(2, "0")}</span>
+                    <span className="font-serif-editorial text-2xl leading-snug text-charcoal md:text-[1.75rem]">
+                      {p}
+                    </span>
+                  </li>
                 </Reveal>
-              </div>
-              <div className="md:col-span-7 md:col-start-6">
-                <ol className="divide-y divide-line/60 border-y border-line/60">
-                  {principles.map((p, i) => (
-                    <Reveal key={p} delay={i * 60}>
-                      <li className="flex items-baseline gap-6 py-5">
-                        <span className="label-xs shrink-0">
-                          {String(i + 1).padStart(2, "0")}
-                        </span>
-                        <span className="font-serif-editorial text-2xl leading-snug text-charcoal md:text-[1.75rem]">
-                          {p}
-                        </span>
-                      </li>
-                    </Reveal>
-                  ))}
-                </ol>
-              </div>
-            </div>
+              ))}
+            </ol>
           </div>
         </section>
 

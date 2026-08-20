@@ -259,6 +259,101 @@ export function SpiralSystem({
 }
 
 /** Orbital resolution of the line: idea → growth. */
+export function FiveForms({ className = "" }: { className?: string }) {
+  const { ref, shown } = useReveal<HTMLDivElement>(0.15);
+  const r = 62;
+  const step = 46;
+  const cx0 = 130;
+  return (
+    <div ref={ref} className={className}>
+      <svg viewBox="0 0 520 400" className="h-auto w-full" fill="none" aria-hidden>
+        <circle
+          cx="300"
+          cy="200"
+          r="168"
+          stroke="var(--line-tone)"
+          strokeWidth="0.8"
+          opacity={shown ? 0.8 : 0}
+          style={{ transition: "opacity 1.4s ease" }}
+        />
+        {[0, 1, 2, 3, 4].map((i) => (
+          <g
+            key={i}
+            style={{
+              opacity: shown ? 1 : 0,
+              transition: `opacity 1.1s ease ${240 + i * 220}ms`,
+            }}
+          >
+            <circle
+              cx={cx0 + step * i}
+              cy="200"
+              r={r}
+              stroke="var(--smoke)"
+              strokeWidth="0.9"
+              opacity="0.75"
+            />
+            <text
+              x={cx0 + step * i}
+              y="205"
+              textAnchor="middle"
+              fontSize="12"
+              letterSpacing="2.5"
+              fill="var(--smoke)"
+              fontFamily="var(--font-sans-neutral)"
+            >
+              {String(i + 1).padStart(2, "0")}
+            </text>
+          </g>
+        ))}
+        <circle cx="378" cy="122" r="3" fill="var(--olive)" opacity={shown ? 0.85 : 0} />
+      </svg>
+    </div>
+  );
+}
+
+/** Schematic funnel lines — a quiet nod to the 45 frameworks. */
+export function FunnelLines({ className = "" }: { className?: string }) {
+  const { ref, shown } = useReveal<HTMLDivElement>(0.2);
+  const cols = [0, 1, 2, 3, 4, 5, 6];
+  return (
+    <div ref={ref} className={className}>
+      <svg viewBox="0 0 840 200" className="h-auto w-full" fill="none" aria-hidden>
+        {cols.map((i) => {
+          const x = 60 + i * 120;
+          const w = 44 - i * 1.5;
+          return (
+            <g
+              key={i}
+              style={{
+                opacity: shown ? 1 : 0,
+                transition: `opacity 1s ease ${150 + i * 140}ms`,
+              }}
+            >
+              {[0, 1, 2].map((k) => (
+                <path
+                  key={k}
+                  d={`M${x - w + k * 6} ${40 + k * 34} L${x + w - k * 6} ${40 + k * 34} L${x + w - (k + 1) * 12} ${74 + k * 34} L${x - w + (k + 1) * 12} ${74 + k * 34} Z`}
+                  stroke="var(--line-tone)"
+                  strokeWidth="0.8"
+                />
+              ))}
+              <line
+                x1={x}
+                y1="142"
+                x2={x}
+                y2="164"
+                stroke="var(--line-tone)"
+                strokeWidth="0.8"
+              />
+              <circle cx={x} cy="170" r="2.4" fill="var(--olive)" opacity="0.7" />
+            </g>
+          );
+        })}
+      </svg>
+    </div>
+  );
+}
+
 export function OrbitMethod({ nodes }: { nodes: string[] }) {
   const { ref, shown } = useReveal<HTMLDivElement>(0.3);
   const cx = 300;

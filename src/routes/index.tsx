@@ -72,7 +72,7 @@ function Index() {
                   From idea to product. From product to market. From chaotic marketing to a system.
                 </p>
               </Reveal>
-              <div className="mt-10 md:mt-auto md:pt-14">
+              <div className="mt-10 flex flex-wrap items-center gap-x-8 gap-y-5 md:mt-auto md:pt-14">
                 <a
                   href="#solutions"
                   className="label-xs group inline-flex items-center gap-3 border border-charcoal/25 bg-paper/60 px-7 py-4 !tracking-[0.2em] !text-charcoal backdrop-blur-[2px] transition-colors hover:border-olive hover:bg-olive/10"

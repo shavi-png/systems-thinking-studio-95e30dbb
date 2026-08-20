@@ -1,7 +1,8 @@
 const links = [
-  { label: "The thinking", href: "#about" },
-  { label: "Solutions", href: "#solutions" },
-  { label: "Method", href: "#method" },
+  { label: "The thinking", href: "/#about" },
+  { label: "Solutions", href: "/#solutions" },
+  { label: "Marketing Set", href: "/marketing-set" },
+  { label: "Method", href: "/#method" },
   { label: "Contact", href: "mailto:hello@vitashablii.com" },
 ];
 

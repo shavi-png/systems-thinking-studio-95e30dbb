@@ -152,7 +152,8 @@ export function SpiralSystem({
   const t0 = 2 * Math.PI;
   // Custom spacing so the outer word stays at the end of the shell
   // and the previous word is raised slightly further from the end.
-  const gaps = [0.7 * Math.PI, 0.7 * Math.PI, 0.3 * Math.PI, 0.5 * Math.PI];
+  const defaultGaps = [0.7 * Math.PI, 0.7 * Math.PI, 0.3 * Math.PI, 0.5 * Math.PI];
+  const gaps = nodes.map((_, i) => defaultGaps[i] ?? 0.55 * Math.PI);
   const tNodes = nodes.map((_, i) => t0 + gaps.slice(0, i + 1).reduce((acc, v) => acc + v, 0));
   const tMax = tNodes[tNodes.length - 1]! + 0.05;
 
@@ -258,6 +259,221 @@ export function SpiralSystem({
 }
 
 /** Orbital resolution of the line: idea → growth. */
+export function FiveForms({ className = "" }: { className?: string }) {
+  const { ref, shown } = useReveal<HTMLDivElement>(0.15);
+  const r = 62;
+  const step = 46;
+  const cx0 = 130;
+  return (
+    <div ref={ref} className={className}>
+      <svg viewBox="0 0 520 400" className="h-auto w-full" fill="none" aria-hidden>
+        <circle
+          cx="300"
+          cy="200"
+          r="168"
+          stroke="var(--line-tone)"
+          strokeWidth="0.8"
+          opacity={shown ? 0.8 : 0}
+          style={{ transition: "opacity 1.4s ease" }}
+        />
+        {[0, 1, 2, 3, 4].map((i) => (
+          <g
+            key={i}
+            style={{
+              opacity: shown ? 1 : 0,
+              transition: `opacity 1.1s ease ${240 + i * 220}ms`,
+            }}
+          >
+            <circle
+              cx={cx0 + step * i}
+              cy="200"
+              r={r}
+              stroke="var(--smoke)"
+              strokeWidth="0.9"
+              opacity="0.75"
+            />
+            <text
+              x={cx0 + step * i}
+              y="205"
+              textAnchor="middle"
+              fontSize="12"
+              letterSpacing="2.5"
+              fill="var(--smoke)"
+              fontFamily="var(--font-sans-neutral)"
+            >
+              {String(i + 1).padStart(2, "0")}
+            </text>
+          </g>
+        ))}
+        <circle cx="378" cy="122" r="3" fill="var(--olive)" opacity={shown ? 0.85 : 0} />
+      </svg>
+    </div>
+  );
+}
+
+/** Schematic funnel lines — a quiet nod to the 45 frameworks. */
+export function SpiralSteps({
+  center = "Value",
+  nodes,
+}: {
+  center?: string;
+  nodes: string[];
+}) {
+  const { ref, shown } = useReveal<HTMLDivElement>(0.18);
+  const r2 = (v: number) => Math.round(v * 100) / 100;
+  const a = 16;
+  const b = 0.19;
+  const t0 = 2.2 * Math.PI;
+  const gap = 0.62 * Math.PI;
+  const tNodes = nodes.map((_, i) => t0 + gap * (i + 1));
+  const tMax = tNodes[tNodes.length - 1]! + 0.06;
+  const tStart = t0 - 2 * Math.PI;
+
+  const pts: string[] = [];
+  for (let t = tStart; t <= tMax; t += 0.04) {
+    const r = a * Math.exp(b * t);
+    pts.push(`${r2(r * Math.cos(t))} ${r2(r * Math.sin(t))}`);
+  }
+  const startR = a * Math.exp(b * tStart);
+  const startX = r2(startR * Math.cos(tStart));
+  const startY = r2(startR * Math.sin(tStart));
+
+  const marks = nodes.map((n, i) => {
+    const t = tNodes[i]!;
+    const r = a * Math.exp(b * t);
+    const off = 16;
+    const cos = Math.cos(t);
+    return {
+      n,
+      i,
+      x: r2(r * cos),
+      y: r2(r * Math.sin(t)),
+      lx: r2((r + off) * cos),
+      ly: r2((r + off) * Math.sin(t)),
+      cos,
+    };
+  });
+
+  // frame the drawing tightly around curve + labels so nothing is clipped
+  const xs = pts.map((s) => Number(s.split(" ")[0]));
+  const ys = pts.map((s) => Number(s.split(" ")[1]));
+  for (const m of marks) {
+    const tw = (m.n.length + 7) * 11;
+    if (m.cos > 0.2) xs.push(m.lx, m.lx + tw);
+    else if (m.cos < -0.2) xs.push(m.lx, m.lx - tw);
+    else xs.push(m.lx - tw / 2, m.lx + tw / 2);
+    ys.push(m.ly + 12, m.ly - 12);
+  }
+  const pad = 24;
+  const minX = r2(Math.min(...xs) - pad);
+  const minY = r2(Math.min(...ys) - pad);
+  const w = r2(Math.max(...xs) - Math.min(...xs) + pad * 2);
+  const h = r2(Math.max(...ys) - Math.min(...ys) + pad * 2);
+
+  return (
+    <div ref={ref} className="relative">
+      <svg viewBox={`${minX} ${minY} ${w} ${h}`} className="h-auto w-full" fill="none" aria-hidden>
+        <path
+          d={`M${pts.join(" L")}`}
+          stroke="var(--smoke)"
+          strokeWidth="1.4"
+          strokeLinecap="round"
+          opacity="0.65"
+          style={{
+            strokeDasharray: 12000,
+            strokeDashoffset: shown ? 0 : 12000,
+            transition: "stroke-dashoffset 4.2s cubic-bezier(0.22,1,0.36,1)",
+          }}
+        />
+        <circle cx={startX} cy={startY} r="3.5" fill="var(--olive)" opacity={shown ? 0.85 : 0} />
+        <text
+          x={startX}
+          y={r2(startY - 12)}
+          textAnchor="middle"
+          fill="var(--smoke)"
+          fontSize="13"
+          letterSpacing="4"
+          fontFamily="var(--font-sans-neutral)"
+          style={{ opacity: shown ? 1 : 0, transition: "opacity 900ms ease 300ms" }}
+        >
+          {center.toUpperCase()}
+        </text>
+        {marks.map((m) => (
+          <g
+            key={m.n}
+            style={{
+              opacity: shown ? 1 : 0,
+              transition: `opacity 900ms ease ${500 + m.i * 300}ms`,
+            }}
+          >
+            <circle
+              cx={m.x}
+              cy={m.y}
+              r="3.5"
+              fill={m.i === marks.length - 1 ? "var(--olive)" : "var(--paper)"}
+              stroke="var(--smoke)"
+              strokeWidth="1"
+            />
+            <text
+              x={m.lx}
+              y={r2(m.ly + 5)}
+              textAnchor={m.cos > 0.2 ? "start" : m.cos < -0.2 ? "end" : "middle"}
+              fontSize="13"
+              letterSpacing="3.5"
+              fill="var(--smoke)"
+              fontFamily="var(--font-sans-neutral)"
+            >
+              {String(m.i + 1).padStart(2, "0")} — {m.n.toUpperCase()}
+            </text>
+          </g>
+        ))}
+      </svg>
+    </div>
+  );
+}
+
+export function FunnelLines({ className = "" }: { className?: string }) {
+  const { ref, shown } = useReveal<HTMLDivElement>(0.2);
+  const cols = [0, 1, 2, 3, 4, 5, 6];
+  return (
+    <div ref={ref} className={className}>
+      <svg viewBox="0 0 840 200" className="h-auto w-full" fill="none" aria-hidden>
+        {cols.map((i) => {
+          const x = 60 + i * 120;
+          const w = 44 - i * 1.5;
+          return (
+            <g
+              key={i}
+              style={{
+                opacity: shown ? 1 : 0,
+                transition: `opacity 1s ease ${150 + i * 140}ms`,
+              }}
+            >
+              {[0, 1, 2].map((k) => (
+                <path
+                  key={k}
+                  d={`M${x - w + k * 6} ${40 + k * 34} L${x + w - k * 6} ${40 + k * 34} L${x + w - (k + 1) * 12} ${74 + k * 34} L${x - w + (k + 1) * 12} ${74 + k * 34} Z`}
+                  stroke="var(--line-tone)"
+                  strokeWidth="0.8"
+                />
+              ))}
+              <line
+                x1={x}
+                y1="142"
+                x2={x}
+                y2="164"
+                stroke="var(--line-tone)"
+                strokeWidth="0.8"
+              />
+              <circle cx={x} cy="170" r="2.4" fill="var(--olive)" opacity="0.7" />
+            </g>
+          );
+        })}
+      </svg>
+    </div>
+  );
+}
+
 export function OrbitMethod({ nodes }: { nodes: string[] }) {
   const { ref, shown } = useReveal<HTMLDivElement>(0.3);
   const cx = 300;

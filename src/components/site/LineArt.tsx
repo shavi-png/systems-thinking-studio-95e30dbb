@@ -260,6 +260,10 @@ export function SpiralSystem({
 
 /** Orbital resolution of the line: idea → growth. */
 export function FiveForms({ className = "" }: { className?: string }) {
+  return <FiveFormsInner className={className} />;
+}
+
+function FiveFormsInner({ className = "" }: { className?: string }) {
   const { ref, shown } = useReveal<HTMLDivElement>(0.15);
   const r = 62;
   const step = 46;

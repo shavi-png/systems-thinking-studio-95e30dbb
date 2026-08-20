@@ -358,7 +358,7 @@ export function SpiralSteps({
   const xs = pts.map((s) => Number(s.split(" ")[0]));
   const ys = pts.map((s) => Number(s.split(" ")[1]));
   for (const m of marks) {
-    const w = (m.n.length + 6) * 8;
+    const w = (m.n.length + 7) * 11;
     xs.push(m.cos > 0.2 ? m.lx + w : m.cos < -0.2 ? m.lx - w : m.lx);
     xs.push(m.lx);
     ys.push(m.ly + 12, m.ly - 12);

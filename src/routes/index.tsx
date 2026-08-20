@@ -82,6 +82,9 @@ function Index() {
                     →
                   </span>
                 </a>
+                <a href="/about" className="link-editorial">
+                  Get to know me <span aria-hidden>→</span>
+                </a>
               </div>
             </div>
 

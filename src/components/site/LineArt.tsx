@@ -795,6 +795,18 @@ export function ChamberSet({
               opacity="0.85"
             />
             <circle cx={s.x2} cy={s.y2} r="2.6" fill="var(--olive)" />
+            {s.leader && (
+              <line
+                x1={s.x2}
+                y1={s.y2}
+                x2={s.llx}
+                y2={s.lly}
+                stroke="var(--olive)"
+                strokeWidth="0.7"
+                strokeDasharray="3 4"
+                opacity="0.55"
+              />
+            )}
             <text
               x={s.lx}
               y={r2(s.ly + 4)}

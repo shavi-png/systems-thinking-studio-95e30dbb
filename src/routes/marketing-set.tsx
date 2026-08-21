@@ -8,6 +8,8 @@ import portrait from "@/assets/vita-portrait.jpg";
 import layers from "@/assets/ms-layers.jpg";
 import desk from "@/assets/ms-desk.jpg";
 import ink from "@/assets/ink-layers.jpg.asset.json";
+import ripple from "@/assets/ripple.jpg.asset.json";
+
 
 const title = "Marketing Set — AI marketing system | Vita Shablii";
 const description =
@@ -417,7 +419,7 @@ function MarketingSetPage() {
                   </figure>
                 </Reveal>
               </div>
-              <div className="flex flex-col md:col-span-6 md:col-start-7 md:pt-16">
+              <div className="flex flex-col md:col-span-6 md:col-start-7 md:justify-between md:pt-10">
                 <ul className="border-t border-line">
                   {shift.map(([a, b], i) => (
                     <Reveal key={a} delay={i * 70}>
@@ -435,10 +437,11 @@ function MarketingSetPage() {
                     </Reveal>
                   ))}
                 </ul>
-                <p className="font-serif-editorial border-l-2 border-olive bg-sage/40 px-7 py-8 text-[clamp(1.5rem,2.8vw,2.3rem)] leading-tight text-charcoal md:mt-12">
+                <p className="font-serif-editorial mt-10 border-l-2 border-olive bg-sage/40 px-7 py-8 text-[clamp(1.5rem,2.8vw,2.3rem)] leading-tight text-charcoal md:mt-0">
                   Not more marketing. <span className="italic">A stronger foundation</span> for
                   everything that follows.
                 </p>
+
               </div>
             </div>
           </div>
@@ -761,8 +764,9 @@ function MarketingSetPage() {
                   src={portrait}
                   alt="Vita Shablii"
                   loading="lazy"
-                  className="block w-full object-cover md:h-[440px]"
+                  className="block aspect-[4/5] w-full object-cover object-top"
                 />
+
               </Reveal>
               <Reveal delay={140}>
                 <dl className="mt-8 border-t border-line">
@@ -817,9 +821,8 @@ function MarketingSetPage() {
                   Marketing Set turns that experience into a structure you can work through yourself.
                   Not my answers to your business — a better system for finding yours.
                 </p>
-                <p className="label-xs mt-8 !tracking-[0.2em] !text-charcoal">
-                  VITA SHABLII · STRATEGY × MARKETING × PRODUCT THINKING × AI
-                </p>
+
+
                 <Link to="/about" className="link-editorial mt-7 inline-flex">
                   GET TO KNOW ME <span aria-hidden>→</span>
                 </Link>
@@ -845,6 +848,20 @@ function MarketingSetPage() {
                     launches, campaigns and future decisions.
                   </p>
                 </Reveal>
+                <Reveal delay={140}>
+                  <figure className="mt-12">
+                    <img
+                      src={ripple.url}
+                      alt="Concentric ripples spreading from a single point"
+                      loading="lazy"
+                      className="block h-[150px] w-full object-cover md:h-[190px]"
+                    />
+                    <figcaption className="label-xs mt-3 !tracking-[0.14em]">
+                      One starting point · every ring after it
+                    </figcaption>
+                  </figure>
+                </Reveal>
+
               </div>
               <div className="md:col-span-5 md:col-start-8">
                 <Reveal delay={100}>

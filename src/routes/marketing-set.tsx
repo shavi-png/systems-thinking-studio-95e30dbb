@@ -3,7 +3,7 @@ import { createFileRoute, Link } from "@tanstack/react-router";
 import { Header } from "@/components/site/Header";
 import { Footer } from "@/components/site/Footer";
 import { Reveal } from "@/components/site/Reveal";
-import { Rosette, ChannelLanes } from "@/components/site/LineArt";
+import { ChamberSet, ChannelLanes } from "@/components/site/LineArt";
 import portrait from "@/assets/vita-portrait.jpg";
 import layers from "@/assets/ms-layers.jpg";
 import desk from "@/assets/ms-desk.jpg";
@@ -50,23 +50,27 @@ function SectionLabel({ children }: { children: string }) {
 const audience = [
   {
     n: "01",
-    t: "Experts & personal brands",
-    d: "You have expertise, a service or an offer — but explaining why someone should choose you still feels harder than it should. You want clearer positioning and messages that don't change with every new post.",
+    t: "Expert / personal brand",
+    d: "You know what you do. But explaining why someone should choose you still feels harder than it should.",
+    o: "Clarify value & positioning",
   },
   {
     n: "02",
-    t: "Founders & businesses",
-    d: "You already have a product, but parts of the marketing still rely on assumptions. You want to understand value, customers and competitive context before investing more into campaigns and growth.",
+    t: "Founder / business",
+    d: "You already have a product, but parts of your marketing still rely on assumptions.",
+    o: "Understand market & customers",
   },
   {
     n: "03",
-    t: "Marketers & freelancers",
-    d: "You already know the tools. What you want is a systematic way to think before executing — and a structure you can use with AI instead of starting from a blank conversation.",
+    t: "Marketer / freelancer",
+    d: "You know the tools. What you want is a more systematic way to think before executing — especially with AI.",
+    o: "Build a reusable logic",
   },
   {
     n: "04",
-    t: "Teams working with agencies",
-    d: "You already have people helping with marketing, but channels, briefs and campaigns don't work from the same strategic logic. Marketing Set creates a shared foundation for decisions.",
+    t: "Team / agency client",
+    d: "Marketing is already happening, but channels, briefs and campaigns aren't always built from the same understanding.",
+    o: "Create one shared foundation",
   },
 ];
 
@@ -74,144 +78,108 @@ const shift = [
   ["noise", "clarity"],
   ["guesswork", "positioning"],
   ["generic AI output", "market context"],
-  ["disconnected content", "customer logic"],
-  ["random experiments", "usable system"],
+  ["disconnected communication", "customer logic"],
+  ["random experiments", "connected decisions"],
 ];
 
 const outcomes = [
   {
     n: "01",
-    t: "A clear value proposition",
-    d: "Understand what makes your product, service or expertise valuable — and where your real differentiation comes from.",
+    t: "Value & differentiation",
+    d: "A clearer articulation of what makes your product, service or expertise worth choosing — and where its strongest differentiation may actually come from.",
   },
   {
     n: "02",
-    t: "A map of your market",
-    d: "See the competitive context around you, how alternatives are positioned and where a stronger position may exist.",
+    t: "Market map",
+    d: "A structured view of your competitive environment, alternatives, category patterns and potential positioning space.",
   },
   {
     n: "03",
-    t: "Customer logic",
-    d: "Understand who you speak to, what they need, what influences their decisions, which objections matter and what language resonates.",
+    t: "Customer decision map",
+    d: "Customer segments built around motivations, needs, triggers, objections and decision logic — not demographics alone.",
   },
   {
     n: "04",
-    t: "Positioning + message foundation",
-    d: "Turn analysis into a clearer position, core meanings and messages you can use across website, content, offers and campaigns.",
+    t: "Positioning & message foundation",
+    d: "Core positioning, meanings and communication directions you can translate into your website, offers, content and campaigns.",
   },
   {
     n: "05",
-    t: "Your personal AI marketing assistant",
-    d: "Connect the context you've built into an assistant that already understands your product, audience, market and strategic decisions.",
+    t: "Personal AI marketing assistant",
+    d: "An AI assistant grounded in the context you've already built — your product, market, audience and strategic decisions.",
   },
 ];
 
 const steps = [
-  {
-    n: "01",
-    t: "Differentiation",
-    q: "What makes this worth choosing?",
-    d: "Explore the strengths, value, experience and context behind what you offer. Identify what is genuinely distinctive — and what only sounds distinctive because everyone says it.",
-    o: "A clearer understanding of your value and differentiation.",
-  },
-  {
-    n: "02",
-    t: "Market",
-    q: "Where are you actually competing?",
-    d: "Analyse the market around your product or expertise: competitors, alternatives, category patterns, saturation and possible positioning opportunities.",
-    o: "A structured picture of your competitive context.",
-  },
-  {
-    n: "03",
-    t: "People",
-    q: "Who needs this — and why?",
-    d: "Move beyond demographics. Explore motivations, needs, triggers, objections, priorities, behaviours and language.",
-    o: "Customer segments and the logic behind their decisions.",
-  },
+  { n: "01", t: "Differentiation", q: "What makes this worth choosing?" },
+  { n: "02", t: "Market", q: "Where are you actually competing?" },
+  { n: "03", t: "People", q: "Who needs this — and why?" },
   {
     n: "04",
     t: "Brand core",
-    q: "How should this translate into communication?",
-    d: "Connect differentiation, market and customer insight. Turn the analysis into positioning, core meanings and communication directions.",
-    o: "A strategic foundation for your brand and messaging.",
+    q: "How should this translate into positioning and communication?",
   },
-  {
-    n: "05",
-    t: "AI assistant",
-    q: "How do you keep using everything you've learned?",
-    d: "Bring the previous work together into a personalised AI marketing assistant that works from the context you created rather than answering in isolation.",
-    o: "Your reusable AI marketing partner for future decisions.",
-  },
+  { n: "05", t: "AI assistant", q: "How do you keep using everything you've learned?" },
 ];
 
 const notPrompts = [
   {
     t: "Sequence, not random requests",
-    d: "The workflows are connected. Each step begins with the context and conclusions created before it.",
+    d: "Each workflow begins where the previous one ended.",
   },
   {
     t: "Your context, not generic output",
-    d: "The system works with your product, your competitors, your customers and your decisions. The deeper the context, the more useful AI becomes.",
+    d: "AI works with your product, competitors, customers and decisions.",
   },
   {
     t: "Strategy before content",
-    d: "You don't begin by asking AI for more posts or campaigns. You first build the logic those outputs should come from.",
+    d: "You build the logic before asking AI to produce more execution.",
   },
   {
-    t: "A system you can reuse",
-    d: "The goal is not one good conversation with AI. It's context you keep using across future marketing tasks.",
+    t: "Context that stays useful",
+    d: "Instead of starting from zero every time, you create a foundation you can return to.",
   },
 ];
 
 const how = [
-  { t: "Watch", d: "A short explanation of the task, its logic and what you are trying to understand." },
-  { t: "Copy", d: "Take the structured AI workflow for the step." },
-  { t: "Work with AI", d: "Use it with ChatGPT or Claude and add information about your own project." },
-  { t: "Save", d: "Keep the insights and outputs that form your marketing foundation." },
-  { t: "Connect", d: "Use the completed work to configure your personal AI marketing assistant." },
+  { t: "Watch", d: "Short video guidance explains the task." },
+  { t: "Copy", d: "You take the structured workflow." },
+  { t: "Work with AI", d: "Work through it using your own business context." },
+  { t: "Save", d: "Keep the conclusions that matter." },
+  { t: "Connect", d: "Connect everything into your personal AI marketing assistant." },
 ];
 
 const receive = [
+  { n: "01", t: "5 strategic AI workflows" },
+  { n: "02", t: "Step-by-step video guidance" },
+  { n: "03", t: "Personal AI assistant setup" },
+  { n: "04", t: "45 funnel frameworks" },
+  { n: "05", t: "Lifetime access" },
+];
+
+const useCases = [
   {
-    n: "01",
-    t: "5 strategic AI marketing workflows",
-    d: "A connected process covering differentiation, market, people, brand core and your AI assistant.",
+    t: "Expert",
+    q: "I know what I do. I just can't explain why it's different.",
+    o: "differentiation + positioning",
   },
   {
-    n: "02",
-    t: "Step-by-step video guidance",
-    d: "Short explanations of what each step is solving and how to work through it.",
+    t: "Business",
+    q: "We're already marketing, but every channel seems to be saying something different.",
+    o: "customer logic + shared messaging foundation",
   },
   {
-    n: "03",
-    t: "Personal AI assistant setup",
-    d: "Materials for connecting your strategic outputs into an assistant that understands your context.",
-  },
-  {
-    n: "04",
-    t: "45 funnel frameworks",
-    d: "Structures for turning strategy and communication into practical customer journeys.",
-  },
-  {
-    n: "05",
-    t: "Lifetime access",
-    d: "Return to the materials whenever your product, market or marketing changes.",
+    t: "Marketer",
+    q: "I use AI constantly, but every new task starts almost from zero.",
+    o: "reusable strategic context + AI assistant",
   },
 ];
 
-const help = [
-  {
-    t: "Expert / consultant",
-    d: "You understand your expertise but struggle to express what makes your offer different. Marketing Set moves you from broad expertise to clearer differentiation and positioning.",
-  },
-  {
-    t: "Product / business",
-    d: "You already create content or run campaigns, but different channels communicate different things. Marketing Set creates one foundation around market, customers and positioning.",
-  },
-  {
-    t: "Marketer / freelancer",
-    d: "You use AI often, but every new conversation starts almost from zero. Marketing Set helps build reusable context instead of isolated outputs.",
-  },
+const proof = [
+  { k: "13+", v: "years across marketing, strategy and products" },
+  { k: "500+", v: "projects and events delivered" },
+  { k: "15+", v: "brands built from zero" },
+  { k: "3", v: "markets: Europe, United States, China" },
 ];
 
 const included = [
@@ -236,6 +204,14 @@ const faq = [
     a: "Marketing Set can be used with ChatGPT or Claude.",
   },
   {
+    q: "How much time should I set aside?",
+    a: "You don't need to complete Marketing Set in one sitting. Each part can be approached as a focused working session, and you can return whenever your product, market or positioning changes.",
+  },
+  {
+    q: "Will AI give me the “right” strategy?",
+    a: "No — and that isn't the point. Marketing Set helps you structure the context, questions and analysis behind stronger decisions. AI helps you explore and connect that information faster. Judgment, experimentation and real market feedback still matter.",
+  },
+  {
     q: "Is Marketing Set only for personal brands?",
     a: "No. It can be used for experts, services, products, businesses and other projects where you need to understand value, audience, market and positioning.",
   },
@@ -246,10 +222,6 @@ const faq = [
   {
     q: "I already work with a marketer or agency. Is this still useful?",
     a: "Yes. Marketing Set becomes the strategic foundation you brief other people from, so everyone works from the same understanding of your product, audience, market and positioning.",
-  },
-  {
-    q: "Will Marketing Set create my marketing strategy for me?",
-    a: "It helps you build the strategic foundation behind your marketing: the questions, analysis and context needed for stronger decisions. It does not replace judgment, experimentation or real market feedback.",
   },
   {
     q: "How quickly can I start, and how long do I have access?",
@@ -276,8 +248,8 @@ function MarketingSetPage() {
               </Reveal>
               <Reveal delay={140}>
                 <p className="body-read mt-8">
-                  A structured AI-powered marketing system that helps you understand what makes your
-                  product valuable, who it is for, how to position it and what to say about it —
+                  A structured AI-powered system that helps you understand what makes your product
+                  valuable, who it is really for, how to position it and what to say about it —
                   before spending more time or money on content, ads or agencies.
                 </p>
               </Reveal>
@@ -285,7 +257,7 @@ function MarketingSetPage() {
                 <ul className="mt-9 flex flex-wrap gap-x-3 gap-y-2">
                   {[
                     "5 strategic AI workflows",
-                    "Personal AI assistant",
+                    "Personal AI marketing assistant",
                     "45 funnel frameworks",
                     "Lifetime access",
                   ].map((m) => (
@@ -309,13 +281,12 @@ function MarketingSetPage() {
             </div>
 
             <div className="md:col-span-6">
-              <Rosette
-                center={["Marketing", "Set"]}
+              <ChamberSet
                 nodes={["Differentiation", "Market", "People", "Brand core", "AI assistant"]}
                 className="w-full"
               />
               <p className="label-xs mt-2 text-center !tracking-[0.16em]">
-                Five parts · one system
+                Five chambers · one growing system
               </p>
             </div>
           </div>
@@ -348,16 +319,14 @@ function MarketingSetPage() {
               <div className="md:col-span-6 md:col-start-7">
                 <Reveal delay={80}>
                   <p className="body-read">
-                    Content, ads and AI can accelerate execution. But they cannot decide what your
-                    product really means, who should care about it, why someone should choose it, or
-                    what your marketing should be built around.
+                    Content, ads and AI can accelerate execution. But they cannot decide:
                   </p>
                   <ul className="mt-8 border-t border-line">
                     {[
-                      "what your product really means",
+                      "what your product is really valuable for",
                       "who should care about it",
                       "why someone should choose it",
-                      "what your marketing is built around",
+                      "what your communication should be built around",
                     ].map((l) => (
                       <li
                         key={l}
@@ -368,9 +337,9 @@ function MarketingSetPage() {
                     ))}
                   </ul>
                   <p className="body-read mt-8">
-                    When these answers are unclear, adding more content, tools or channels usually
-                    adds more activity — not more clarity. Marketing Set helps you build the
-                    foundation first, using your own product, audience and market as the material.
+                    When these answers are unclear, more content, tools and channels usually create
+                    more activity — not more clarity. Marketing Set helps you build the foundation
+                    first.
                   </p>
                 </Reveal>
               </div>
@@ -378,26 +347,42 @@ function MarketingSetPage() {
           </div>
         </section>
 
-        {/* ——— WHO IT'S FOR ——— */}
+        {/* ——— RECOGNITION ——— */}
         <section className="rule-thin bg-paper">
           <div className="mx-auto max-w-[1440px] px-6 py-16 md:px-10 md:py-24">
-            <Reveal>
-              <SectionLabel>Is this for me?</SectionLabel>
-              <h2 className="display-md max-w-[40rem]">
-                Built for people who already
-                <br />
-                <span className="italic">have something to build on.</span>
-              </h2>
-            </Reveal>
-            <div className="mt-12 md:mt-16">
+            <div className="grid gap-10 md:grid-cols-12 md:items-end">
+              <div className="md:col-span-7">
+                <Reveal>
+                  <SectionLabel>Is this for me?</SectionLabel>
+                  <h2 className="display-md">
+                    You already have something.
+                    <br />
+                    <span className="italic">What's missing is the structure around it.</span>
+                  </h2>
+                </Reveal>
+              </div>
+              <div className="md:col-span-4 md:col-start-9">
+                <Reveal delay={120}>
+                  <p className="body-read border-l-2 border-olive pl-6">
+                    Four starting situations. The same missing layer underneath each of them.
+                  </p>
+                </Reveal>
+              </div>
+            </div>
+
+            <div className="mt-12 grid gap-x-14 gap-y-0 md:mt-16 md:grid-cols-2">
               {audience.map((a, i) => (
                 <Reveal key={a.t} delay={i * 80}>
-                  <div className="grid gap-3 border-t border-line py-8 md:grid-cols-12 md:gap-10 md:py-10">
-                    <p className="label-xs md:col-span-1">{a.n}</p>
-                    <h3 className="font-serif-editorial text-[clamp(1.3rem,2vw,1.85rem)] text-charcoal md:col-span-4">
-                      {a.t}
-                    </h3>
-                    <p className="body-read md:col-span-7 md:!max-w-none">{a.d}</p>
+                  <div className="flex h-full flex-col border-t border-line py-8 md:py-10">
+                    <p className="label-xs !text-olive">
+                      {a.n} / {a.t}
+                    </p>
+                    <p className="font-serif-editorial mt-5 text-[clamp(1.2rem,1.8vw,1.55rem)] leading-snug text-charcoal">
+                      {a.d}
+                    </p>
+                    <p className="label-xs mt-auto pt-7 !tracking-[0.16em] !text-charcoal">
+                      → {a.o.toUpperCase()}
+                    </p>
                   </div>
                 </Reveal>
               ))}
@@ -405,7 +390,7 @@ function MarketingSetPage() {
           </div>
         </section>
 
-        {/* ——— THE SHIFT ——— */}
+        {/* ——— TRANSFORMATION ——— */}
         <section className="rule-thin bg-background">
           <div className="mx-auto max-w-[1440px] px-6 py-16 md:px-10 md:py-24">
             <div className="grid gap-12 md:grid-cols-12">
@@ -424,7 +409,7 @@ function MarketingSetPage() {
                       src={ink.url}
                       alt="Layered olive ink strokes forming a single translucent shape"
                       loading="lazy"
-                      className="aspect-square w-full object-contain"
+                      className="aspect-[4/5] w-full object-contain"
                     />
                     <figcaption className="label-xs mt-3 !tracking-[0.14em]">
                       Many layers · one shape
@@ -432,7 +417,7 @@ function MarketingSetPage() {
                   </figure>
                 </Reveal>
               </div>
-              <div className="md:col-span-6 md:col-start-7">
+              <div className="flex flex-col md:col-span-6 md:col-start-7">
                 <ul className="border-t border-line">
                   {shift.map(([a, b], i) => (
                     <Reveal key={a} delay={i * 70}>
@@ -450,30 +435,30 @@ function MarketingSetPage() {
                     </Reveal>
                   ))}
                 </ul>
-                <p className="font-serif-editorial mt-10 border-l-2 border-olive bg-sage/40 px-7 py-6 text-[clamp(1.5rem,2.8vw,2.3rem)] leading-tight text-charcoal">
+                <p className="font-serif-editorial mt-auto border-l-2 border-olive bg-sage/40 px-7 py-8 text-[clamp(1.5rem,2.8vw,2.3rem)] leading-tight text-charcoal md:mt-12">
                   Not more marketing. <span className="italic">A stronger foundation</span> for
-                  everything that comes next.
+                  everything that follows.
                 </p>
               </div>
             </div>
           </div>
         </section>
 
-        {/* ——— THE OUTCOME ——— */}
+        {/* ——— THE RESULT ——— */}
         <section className="rule-thin bg-paper">
           <div className="mx-auto max-w-[1440px] px-6 py-16 md:px-10 md:py-24">
             <div className="grid gap-12 md:grid-cols-12">
-              <div className="md:col-span-5">
+              <div className="flex flex-col md:col-span-5">
                 <Reveal>
-                  <SectionLabel>What you'll have when you're done</SectionLabel>
+                  <SectionLabel>What you build</SectionLabel>
                   <h2 className="display-md">
-                    Something you
+                    Not another document
                     <br />
-                    <span className="italic">can actually use.</span>
+                    <span className="italic">to forget in a folder.</span>
                   </h2>
                   <p className="body-read mt-7">
-                    Marketing Set is designed to leave you with a working marketing foundation — not
-                    just ideas from another AI conversation.
+                    A foundation you can use — across your website, offers, content, campaigns and
+                    every future decision.
                   </p>
                 </Reveal>
                 <Reveal delay={140}>
@@ -483,7 +468,7 @@ function MarketingSetPage() {
                     loading="lazy"
                     width={1408}
                     height={1008}
-                    className="mt-10 hidden w-full object-cover md:block md:h-[280px]"
+                    className="mt-10 hidden w-full flex-1 object-cover md:block md:min-h-[380px]"
                   />
                 </Reveal>
               </div>
@@ -503,75 +488,89 @@ function MarketingSetPage() {
                     </Reveal>
                   ))}
                 </ul>
-                <p className="label-xs mt-8 inline-block border-l-2 border-olive bg-sage/50 px-5 py-3 normal-case !tracking-[0.1em] !text-charcoal">
-                  One foundation you keep using across content, launches, funnels and future
-                  decisions.
+                <p className="font-serif-editorial mt-9 border-l-2 border-olive bg-sage/40 px-7 py-6 text-[clamp(1.25rem,2.2vw,1.8rem)] leading-snug text-charcoal">
+                  The result is not five isolated AI outputs. It's{" "}
+                  <span className="italic">one connected marketing context</span> you can keep
+                  working from.
                 </p>
               </div>
             </div>
           </div>
         </section>
 
-        {/* ——— THE SYSTEM ——— */}
+        {/* ——— THE METHOD ——— */}
         <section className="rule-thin bg-background">
           <div className="mx-auto max-w-[1440px] px-6 py-16 md:px-10 md:py-24">
-            <Reveal>
-              <div className="max-w-[42rem]">
-                <SectionLabel>How it is built</SectionLabel>
-                <h2 className="display-md">
-                  Five steps.
-                  <br />
-                  <span className="italic">One connected system.</span>
-                </h2>
-                <p className="body-read mt-7">
-                  Each step uses the result of the previous one. Instead of five disconnected AI
-                  conversations, you gradually build one marketing logic from the inside out.
-                </p>
+            <div className="grid gap-10 md:grid-cols-12 md:items-end">
+              <div className="md:col-span-6">
+                <Reveal>
+                  <SectionLabel>How you build it</SectionLabel>
+                  <h2 className="display-md">
+                    Five steps.
+                    <br />
+                    <span className="italic">Each one makes the next one smarter.</span>
+                  </h2>
+                </Reveal>
               </div>
-            </Reveal>
+              <div className="md:col-span-5 md:col-start-8">
+                <Reveal delay={120}>
+                  <p className="body-read border-l-2 border-olive pl-6">
+                    Each step carries the context forward. Nothing starts from a blank prompt.
+                  </p>
+                </Reveal>
+              </div>
+            </div>
 
-            <ol className="mt-14 border-t border-line md:mt-20">
+            <ol className="mt-14 grid gap-0 border-t border-line md:mt-20 md:grid-cols-5 md:border-t-0">
               {steps.map((s, i) => (
-                <Reveal key={s.t} delay={i * 70}>
-                  <li className="grid gap-5 border-b border-line py-10 md:grid-cols-12 md:gap-10">
-                    <div className="md:col-span-3">
-                      <p className="font-serif-editorial text-[clamp(2.2rem,4vw,3.4rem)] leading-none text-taupe">
-                        {s.n}
-                      </p>
-                      <h3 className="label-xs mt-4 !tracking-[0.18em] !text-charcoal">{s.t}</h3>
-                    </div>
-                    <div className="md:col-span-5">
-                      <p className="font-serif-editorial text-[clamp(1.25rem,2.1vw,1.8rem)] leading-snug text-charcoal">
-                        {s.q}
-                      </p>
-                      <p className="body-read mt-4 !max-w-none">{s.d}</p>
-                    </div>
-                    <div className="md:col-span-4">
-                      <p className="label-xs">Output</p>
-                      <p className="mt-3 border-l border-olive/50 bg-sage/40 px-4 py-3 text-[0.9rem] leading-relaxed text-charcoal">
-                        {s.o}
-                      </p>
-                    </div>
+                <Reveal key={s.t} delay={i * 80}>
+                  <li className="relative flex h-full flex-col border-b border-line py-8 md:border-b-0 md:border-t md:pr-8 md:pb-0">
+                    <p className="font-serif-editorial text-[clamp(2rem,3.4vw,2.9rem)] leading-none text-taupe">
+                      {s.n}
+                    </p>
+                    <h3 className="label-xs mt-4 !tracking-[0.18em] !text-olive">{s.t}</h3>
+                    <p className="font-serif-editorial mt-5 text-[clamp(1.15rem,1.6vw,1.4rem)] leading-snug text-charcoal">
+                      {s.q}
+                    </p>
+                    {i < steps.length - 1 && (
+                      <span
+                        aria-hidden
+                        className="mt-6 block text-smoke md:mt-8 md:text-right md:pr-2"
+                      >
+                        →
+                      </span>
+                    )}
                   </li>
                 </Reveal>
               ))}
             </ol>
-            <p className="label-xs mt-8 normal-case !tracking-[0.1em]">
-              Each step feeds the next. Nothing starts from a blank prompt.
-            </p>
           </div>
         </section>
 
-        {/* ——— NOT A PROMPT PACK ——— */}
+        {/* ——— WHY NOT JUST CHATGPT ——— */}
         <section className="rule-thin bg-paper">
           <div className="mx-auto max-w-[1440px] px-6 py-16 md:px-10 md:py-28">
-            <Reveal>
-              <SectionLabel>Why this works differently</SectionLabel>
-              <h2 className="display-md max-w-[44rem]">
-                You can ask AI almost anything. The harder part is knowing{" "}
-                <span className="italic">what to ask — and in what order.</span>
-              </h2>
-            </Reveal>
+            <div className="grid gap-10 md:grid-cols-12 md:items-end">
+              <div className="md:col-span-7">
+                <Reveal>
+                  <SectionLabel>Why this works differently</SectionLabel>
+                  <h2 className="display-md">
+                    You can ask AI almost anything.
+                    <br />
+                    <span className="italic">The harder part is knowing what deserves asking.</span>
+                  </h2>
+                </Reveal>
+              </div>
+              <div className="md:col-span-4 md:col-start-9">
+                <Reveal delay={120}>
+                  <p className="font-serif-editorial border-l-2 border-olive pl-6 text-[clamp(1.3rem,2.1vw,1.75rem)] leading-snug text-charcoal">
+                    AI is the interface.
+                    <br />
+                    <span className="italic">The value is in the logic.</span>
+                  </p>
+                </Reveal>
+              </div>
+            </div>
             <div className="mt-14 grid gap-10 md:mt-20 md:grid-cols-4 md:gap-0">
               {notPrompts.map((p, i) => (
                 <Reveal key={p.t} delay={i * 80}>
@@ -583,7 +582,8 @@ function MarketingSetPage() {
               ))}
             </div>
             <p className="font-serif-editorial mt-14 text-[clamp(1.6rem,3vw,2.6rem)] text-charcoal">
-              The goal isn't better prompts. <span className="italic">It's better marketing decisions.</span>
+              The goal isn't better prompts.{" "}
+              <span className="italic">It's better marketing decisions.</span>
             </p>
           </div>
         </section>
@@ -591,14 +591,29 @@ function MarketingSetPage() {
         {/* ——— HOW IT WORKS ——— */}
         <section className="rule-thin bg-background">
           <div className="mx-auto max-w-[1440px] px-6 py-16 md:px-10 md:py-24">
-            <Reveal>
-              <SectionLabel>Start today</SectionLabel>
-              <h2 className="display-md max-w-[36rem]">
-                No schedule. No cohort.
-                <br />
-                <span className="italic">No waiting.</span>
-              </h2>
-            </Reveal>
+            <div className="grid gap-10 md:grid-cols-12 md:items-end">
+              <div className="md:col-span-6">
+                <Reveal>
+                  <SectionLabel>Start today</SectionLabel>
+                  <h2 className="display-md">
+                    Less studying.
+                    <br />
+                    <span className="italic">More working on your actual business.</span>
+                  </h2>
+                </Reveal>
+              </div>
+              <div className="md:col-span-5 md:col-start-8">
+                <Reveal delay={120}>
+                  <p className="label-xs !tracking-[0.16em] !text-charcoal">
+                    WATCH → COPY → WORK WITH AI → SAVE → CONNECT
+                  </p>
+                  <p className="body-read mt-5">
+                    No cohort. No schedule. No deadline. Most steps can be completed in one focused
+                    working session.
+                  </p>
+                </Reveal>
+              </div>
+            </div>
             <ol className="mt-12 grid gap-8 md:mt-16 md:grid-cols-5 md:gap-6">
               {how.map((h, i) => (
                 <Reveal key={h.t} delay={i * 70}>
@@ -610,24 +625,20 @@ function MarketingSetPage() {
                 </Reveal>
               ))}
             </ol>
-            <p className="label-xs mt-12 normal-case !tracking-[0.1em]">
-              Most steps can be completed in one focused working session. You can move quickly or
-              return over several days.
-            </p>
           </div>
         </section>
 
-        {/* ——— FUNNEL LIBRARY ——— */}
+        {/* ——— EXECUTION LAYER ——— */}
         <section className="rule-thin bg-paper">
           <div className="mx-auto max-w-[1440px] px-6 py-16 md:px-10 md:py-24">
             <div className="grid gap-10 md:grid-cols-12">
               <div className="md:col-span-5">
                 <Reveal>
-                  <SectionLabel>Extra execution layer</SectionLabel>
+                  <SectionLabel>Also included</SectionLabel>
                   <h2 className="display-md">
-                    Strategy tells you what to say.
+                    Once you know what to say,
                     <br />
-                    <span className="italic">Funnels move it into action.</span>
+                    <span className="italic">you still need a way to move people.</span>
                   </h2>
                 </Reveal>
               </div>
@@ -642,8 +653,8 @@ function MarketingSetPage() {
                     </span>
                   </div>
                   <p className="body-read mt-6">
-                    Mono- and multi-channel structures designed to help you translate your marketing
-                    foundation into customer journeys.
+                    A library of mono- and multi-channel customer journey structures for translating
+                    your marketing foundation into execution.
                   </p>
                 </Reveal>
               </div>
@@ -651,14 +662,13 @@ function MarketingSetPage() {
 
             <Reveal delay={140}>
               <ChannelLanes
-                lanes={["Instagram", "TikTok", "YouTube", "Content", "Offers", "Lead gen"]}
+                lanes={["Instagram", "TikTok", "YouTube", "Telegram", "Landing page"]}
                 className="mx-auto mt-12 w-full max-w-[900px] md:mt-16"
               />
             </Reveal>
 
             <p className="label-xs mx-auto mt-6 max-w-[36rem] text-center normal-case !tracking-[0.1em]">
-              Use them after your strategic foundation is clear. The funnels are not the strategy —
-              they help activate it.
+              The funnels don't replace strategy. They help activate it.
             </p>
           </div>
         </section>
@@ -666,61 +676,86 @@ function MarketingSetPage() {
         {/* ——— WHAT YOU RECEIVE ——— */}
         <section className="rule-thin bg-background">
           <div className="mx-auto max-w-[1440px] px-6 py-16 md:px-10 md:py-24">
-            <Reveal>
-              <SectionLabel>Immediate access</SectionLabel>
-              <h2 className="display-md max-w-[36rem]">
-                Everything you need
-                <br />
-                <span className="italic">to start today.</span>
-              </h2>
-            </Reveal>
-            <ul className="mt-12 border-t border-line md:mt-16">
+            <div className="grid gap-10 md:grid-cols-12 md:items-end">
+              <div className="md:col-span-6">
+                <Reveal>
+                  <SectionLabel>Immediate access</SectionLabel>
+                  <h2 className="display-md">
+                    Everything you need
+                    <br />
+                    <span className="italic">to start today.</span>
+                  </h2>
+                </Reveal>
+              </div>
+              <div className="md:col-span-5 md:col-start-8">
+                <Reveal delay={120}>
+                  <p className="body-read border-l-2 border-olive pl-6">
+                    No subscription. No recurring payment. No deadline to finish. Works with ChatGPT
+                    and Claude.
+                  </p>
+                </Reveal>
+              </div>
+            </div>
+            <ul className="mt-12 grid gap-0 border-t border-line md:mt-16 md:grid-cols-5 md:border-t-0">
               {receive.map((r, i) => (
                 <Reveal key={r.t} delay={i * 70}>
-                  <li className="grid gap-2 border-b border-line py-7 md:grid-cols-12 md:gap-10">
-                    <p className="label-xs !text-olive md:col-span-1">{r.n}</p>
-                    <h3 className="font-serif-editorial text-[clamp(1.2rem,1.9vw,1.6rem)] text-charcoal md:col-span-5">
+                  <li className="flex h-full flex-col border-b border-line py-6 md:border-b-0 md:border-t md:pr-6 md:pb-0">
+                    <p className="label-xs !text-olive">{r.n}</p>
+                    <h3 className="font-serif-editorial mt-4 text-[clamp(1.15rem,1.6vw,1.4rem)] leading-snug text-charcoal">
                       {r.t}
                     </h3>
-                    <p className="body-read md:col-span-6 md:!max-w-none">{r.d}</p>
                   </li>
                 </Reveal>
               ))}
             </ul>
-            <p className="label-xs mt-8 normal-case !tracking-[0.1em]">
-              No subscription. No recurring payment. No deadline to finish.
-            </p>
           </div>
         </section>
 
-        {/* ——— WHERE THIS CAN HELP ——— */}
+        {/* ——— WHERE THIS BECOMES USEFUL ——— */}
         <section className="rule-thin bg-paper">
           <div className="mx-auto max-w-[1440px] px-6 py-16 md:px-10 md:py-24">
-            <Reveal>
-              <SectionLabel>Where this can help</SectionLabel>
-              <h2 className="display-md max-w-[38rem]">
-                Different businesses.
-                <br />
-                <span className="italic">The same underlying problem.</span>
-              </h2>
-            </Reveal>
-            <div className="mt-12 grid gap-10 md:mt-16 md:grid-cols-3 md:gap-0">
-              {help.map((h, i) => (
-                <Reveal key={h.t} delay={i * 80}>
-                  <div className="border-t border-line pt-6 md:mr-10">
-                    <h3 className="label-xs !text-charcoal">{h.t}</h3>
-                    <p className="body-read mt-4 !max-w-none !text-[0.9rem]">{h.d}</p>
-                  </div>
+            <div className="grid gap-10 md:grid-cols-12 md:items-end">
+              <div className="md:col-span-7">
+                <Reveal>
+                  <SectionLabel>Where this becomes useful</SectionLabel>
+                  <h2 className="display-md">
+                    Different businesses.
+                    <br />
+                    <span className="italic">The same underlying need for clarity.</span>
+                  </h2>
+                </Reveal>
+              </div>
+              <div className="md:col-span-4 md:col-start-9">
+                <Reveal delay={120}>
+                  <p className="body-read border-l-2 border-olive pl-6">
+                    The sentences below are the ones I hear most often before the work begins.
+                  </p>
+                </Reveal>
+              </div>
+            </div>
+
+            <div className="mt-12 grid gap-8 md:mt-16 md:grid-cols-3">
+              {useCases.map((u, i) => (
+                <Reveal key={u.t} delay={i * 90}>
+                  <figure className="flex h-full flex-col border border-line bg-background p-8 md:p-9">
+                    <p className="label-xs !text-olive">{u.t}</p>
+                    <blockquote className="font-serif-editorial mt-6 text-[clamp(1.3rem,2vw,1.7rem)] leading-snug text-charcoal">
+                      “{u.q}”
+                    </blockquote>
+                    <figcaption className="label-xs mt-auto pt-8 normal-case !tracking-[0.1em] !text-charcoal">
+                      → {u.o}
+                    </figcaption>
+                  </figure>
                 </Reveal>
               ))}
             </div>
           </div>
         </section>
 
-        {/* ——— ABOUT THE CREATOR ——— */}
+        {/* ——— BUILT FROM PRACTICE ——— */}
         <section className="rule-thin bg-background">
           <div className="mx-auto grid max-w-[1440px] gap-12 px-6 py-16 md:grid-cols-12 md:px-10 md:py-24">
-            <div className="md:col-span-4">
+            <div className="flex flex-col md:col-span-4">
               <Reveal>
                 <img
                   src={portrait}
@@ -728,6 +763,21 @@ function MarketingSetPage() {
                   loading="lazy"
                   className="block w-full object-cover md:h-[440px]"
                 />
+              </Reveal>
+              <Reveal delay={140}>
+                <dl className="mt-8 border-t border-line">
+                  {proof.map((p) => (
+                    <div
+                      key={p.k}
+                      className="flex items-baseline gap-5 border-b border-line py-4"
+                    >
+                      <dt className="font-serif-editorial min-w-[4.5rem] text-[1.7rem] leading-none text-charcoal">
+                        {p.k}
+                      </dt>
+                      <dd className="label-xs normal-case !tracking-[0.08em]">{p.v}</dd>
+                    </div>
+                  ))}
+                </dl>
               </Reveal>
             </div>
             <div className="md:col-span-7 md:col-start-6">
@@ -738,26 +788,40 @@ function MarketingSetPage() {
                   <br />
                   <span className="italic">to teach people more marketing.</span>
                 </h2>
-                <p className="label-xs mt-6 !tracking-[0.14em]">
-                  Vita Shablii · 13 years in marketing · 500+ projects & events · USA / Europe /
-                  China
+                <p className="body-read mt-8">
+                  I built it after 13+ years working across marketing, strategy and products, because
+                  I kept seeing the same pattern across very different businesses: execution starts
+                  before the fundamental questions have been answered.
                 </p>
-                <p className="body-read mt-7">
-                  I built it because, across products, companies and markets, I kept seeing the same
-                  pattern: execution often starts before the fundamental questions have been
-                  answered. Teams create content before the message is clear. Ads launch before the
-                  audience logic is understood. AI produces more output before anyone has decided
-                  what the output should be built around.
+                <ul className="mt-8 border-t border-line">
+                  {[
+                    "Content starts before positioning is clear.",
+                    "Campaigns start before customer logic is understood.",
+                    "AI generates more before anyone has decided what the output should be built around.",
+                  ].map((l) => (
+                    <li
+                      key={l}
+                      className="font-serif-editorial border-b border-line py-4 text-[clamp(1.1rem,1.7vw,1.45rem)] text-charcoal"
+                    >
+                      {l}
+                    </li>
+                  ))}
+                </ul>
+                <p className="body-read mt-8">
+                  Across 500+ projects and events, multiple industries and markets in Europe, the
+                  United States and China, the contexts changed — but this problem kept returning. I
+                  have also built 15+ brands from zero, from initial concept and market logic through
+                  positioning, communication, launch and marketing management.
                 </p>
                 <p className="body-read mt-5">
-                  Marketing Set puts those questions in a sequence — and uses AI to make the
-                  thinking faster, deeper and reusable.
+                  Marketing Set turns that experience into a structure you can work through yourself.
+                  Not my answers to your business — a better system for finding yours.
                 </p>
                 <p className="label-xs mt-8 !tracking-[0.2em] !text-charcoal">
-                  STRATEGY × MARKETING × PRODUCT THINKING × AI
+                  VITA SHABLII · STRATEGY × MARKETING × PRODUCT THINKING × AI
                 </p>
-                <Link to="/" hash="about" className="link-editorial mt-8 inline-flex">
-                  ABOUT VITA <span aria-hidden>→</span>
+                <Link to="/about" className="link-editorial mt-7 inline-flex">
+                  GET TO KNOW ME <span aria-hidden>→</span>
                 </Link>
               </Reveal>
             </div>
@@ -774,7 +838,7 @@ function MarketingSetPage() {
                   <h2 className="display-md">
                     Build the foundation
                     <br />
-                    <span className="italic">you can keep coming back to.</span>
+                    <span className="italic">before you build more marketing.</span>
                   </h2>
                   <p className="body-read mt-7">
                     One structured marketing foundation — built to be reused across content,
@@ -849,7 +913,7 @@ function MarketingSetPage() {
                 <span className="italic">Give it something worth building from.</span>
               </h2>
               <p className="body-read mx-auto mt-8 text-center">
-                Build your foundation once. Use it across everything that comes next.
+                Build the foundation once. Keep improving it as your product and market evolve.
               </p>
             </Reveal>
             <Reveal delay={140}>

@@ -435,7 +435,7 @@ function MarketingSetPage() {
                     </Reveal>
                   ))}
                 </ul>
-                <p className="font-serif-editorial mt-auto border-l-2 border-olive bg-sage/40 px-7 py-8 text-[clamp(1.5rem,2.8vw,2.3rem)] leading-tight text-charcoal md:mt-12">
+                <p className="font-serif-editorial border-l-2 border-olive bg-sage/40 px-7 py-8 text-[clamp(1.5rem,2.8vw,2.3rem)] leading-tight text-charcoal md:mt-12">
                   Not more marketing. <span className="italic">A stronger foundation</span> for
                   everything that follows.
                 </p>

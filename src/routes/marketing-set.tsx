@@ -762,8 +762,9 @@ function MarketingSetPage() {
                   src={portrait}
                   alt="Vita Shablii"
                   loading="lazy"
-                  className="block w-full object-cover md:h-[440px]"
+                  className="block aspect-[4/5] w-full object-cover object-top"
                 />
+
               </Reveal>
               <Reveal delay={140}>
                 <dl className="mt-8 border-t border-line">

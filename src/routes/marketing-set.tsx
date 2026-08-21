@@ -8,6 +8,8 @@ import portrait from "@/assets/vita-portrait.jpg";
 import layers from "@/assets/ms-layers.jpg";
 import desk from "@/assets/ms-desk.jpg";
 import ink from "@/assets/ink-layers.jpg.asset.json";
+import ripple from "@/assets/ripple.jpg.asset.json";
+
 
 const title = "Marketing Set — AI marketing system | Vita Shablii";
 const description =

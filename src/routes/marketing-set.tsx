@@ -461,14 +461,14 @@ function MarketingSetPage() {
                     every future decision.
                   </p>
                 </Reveal>
-                <Reveal delay={140}>
+                <Reveal delay={140} className="mt-10 hidden flex-1 md:block">
                   <img
                     src={desk}
                     alt="Notebook with strategy sketches beside a laptop"
                     loading="lazy"
                     width={1408}
                     height={1008}
-                    className="mt-10 hidden w-full flex-1 object-cover md:block md:min-h-[380px]"
+                    className="h-full w-full object-cover md:min-h-[520px]"
                   />
                 </Reveal>
               </div>

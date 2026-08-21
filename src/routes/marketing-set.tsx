@@ -417,7 +417,7 @@ function MarketingSetPage() {
                   </figure>
                 </Reveal>
               </div>
-              <div className="flex flex-col md:col-span-6 md:col-start-7">
+              <div className="flex flex-col md:col-span-6 md:col-start-7 md:justify-end md:pt-28">
                 <ul className="border-t border-line">
                   {shift.map(([a, b], i) => (
                     <Reveal key={a} delay={i * 70}>

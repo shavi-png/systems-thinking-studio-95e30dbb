@@ -528,7 +528,7 @@ function MarketingSetPage() {
                     {i < steps.length - 1 && (
                       <span
                         aria-hidden
-                        className="absolute -top-[0.72rem] right-1 hidden bg-paper px-1 text-xs text-smoke md:block"
+                        className="absolute -top-[0.72rem] right-1 hidden bg-background px-1 text-xs text-smoke md:block"
                       >
                         →
                       </span>

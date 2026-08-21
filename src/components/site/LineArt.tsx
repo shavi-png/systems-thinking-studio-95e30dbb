@@ -699,3 +699,112 @@ export function ChannelLanes({
     </div>
   );
 }
+
+/** Nautilus chambers: one spiral divided into five connected steps. */
+export function ChamberSet({
+  nodes,
+  className = "",
+}: {
+  nodes: string[];
+  className?: string;
+}) {
+  const { ref, shown } = useReveal<HTMLDivElement>(0.15);
+  const a = 5.4;
+  const b = 0.225;
+  const r2 = (v: number) => Math.round(v * 100) / 100;
+  const tEnd = 5.3 * Math.PI;
+  const r = (t: number) => a * Math.exp(b * t);
+
+  const pts: string[] = [];
+  for (let t = 0; t <= tEnd; t += 0.03) {
+    pts.push(`${r2(r(t) * Math.cos(t))} ${r2(r(t) * Math.sin(t))}`);
+  }
+
+  const septa = nodes.map((label, i) => {
+    const t = tEnd - (nodes.length - 1 - i) * 0.52 * Math.PI;
+    const cos = Math.cos(t);
+    const sin = Math.sin(t);
+    const rOut = r(t);
+    const rIn = r(t - 2 * Math.PI);
+    const rLab = rOut + 20;
+    return {
+      label,
+      i,
+      x1: r2(rIn * cos),
+      y1: r2(rIn * sin),
+      x2: r2(rOut * cos),
+      y2: r2(rOut * sin),
+      mx: r2(((rIn + rOut) / 2) * cos),
+      my: r2(((rIn + rOut) / 2) * sin),
+      lx: r2(rLab * cos),
+      ly: r2(rLab * sin),
+      cos,
+    };
+  });
+
+  // frame around curve + labels
+  const xs = pts.map((s) => Number(s.split(" ")[0]));
+  const ys = pts.map((s) => Number(s.split(" ")[1]));
+  for (const s of septa) {
+    const tw = (s.label.length + 4) * 10;
+    if (s.cos > 0.2) xs.push(s.lx, s.lx + tw);
+    else if (s.cos < -0.2) xs.push(s.lx, s.lx - tw);
+    else xs.push(s.lx - tw / 2, s.lx + tw / 2);
+    ys.push(s.ly + 14, s.ly - 14);
+  }
+  const pad = 18;
+  const minX = r2(Math.min(...xs) - pad);
+  const minY = r2(Math.min(...ys) - pad);
+  const w = r2(Math.max(...xs) - Math.min(...xs) + pad * 2);
+  const h = r2(Math.max(...ys) - Math.min(...ys) + pad * 2);
+
+  return (
+    <div ref={ref} className={className}>
+      <svg viewBox={`${minX} ${minY} ${w} ${h}`} className="h-auto w-full" fill="none" aria-hidden>
+        <path
+          d={`M${pts.join(" L")}`}
+          stroke="var(--charcoal)"
+          strokeWidth="1.1"
+          strokeLinecap="round"
+          opacity="0.75"
+          style={{
+            strokeDasharray: 6000,
+            strokeDashoffset: shown ? 0 : 6000,
+            transition: "stroke-dashoffset 3.6s cubic-bezier(0.22,1,0.36,1)",
+          }}
+        />
+        {septa.map((s) => (
+          <g
+            key={s.label}
+            style={{
+              opacity: shown ? 1 : 0,
+              transition: `opacity 900ms ease ${700 + s.i * 200}ms`,
+            }}
+          >
+            <line
+              x1={s.x1}
+              y1={s.y1}
+              x2={s.x2}
+              y2={s.y2}
+              stroke="var(--olive)"
+              strokeWidth="0.9"
+              opacity="0.85"
+            />
+            <circle cx={s.x2} cy={s.y2} r="2.6" fill="var(--olive)" />
+            <text
+              x={s.lx}
+              y={r2(s.ly + 4)}
+              textAnchor={s.cos > 0.2 ? "start" : s.cos < -0.2 ? "end" : "middle"}
+              fontSize="12"
+              letterSpacing="3.2"
+              fill="var(--charcoal)"
+              fontFamily="var(--font-sans-neutral)"
+            >
+              {String(s.i + 1).padStart(2, "0")} {s.label.toUpperCase()}
+            </text>
+          </g>
+        ))}
+      </svg>
+    </div>
+  );
+}

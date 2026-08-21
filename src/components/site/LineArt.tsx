@@ -710,7 +710,7 @@ export function ChamberSet({
 }) {
   const { ref, shown } = useReveal<HTMLDivElement>(0.15);
   const a = 5.4;
-  const b = 0.225;
+  const b = 0.255;
   const r2 = (v: number) => Math.round(v * 100) / 100;
   const tEnd = 5.3 * Math.PI;
   const r = (t: number) => a * Math.exp(b * t);
@@ -726,7 +726,10 @@ export function ChamberSet({
     const sin = Math.sin(t);
     const rOut = r(t);
     const rIn = r(t - 2 * Math.PI);
-    const rLab = rOut + 20;
+    // place the label just outside the OUTERMOST curve along this ray,
+    // so inner-chamber labels never get crossed by a spiral line
+    const tOuter = t + Math.floor((tEnd - t) / (2 * Math.PI)) * 2 * Math.PI;
+    const rLab = r(tOuter) + 20;
     return {
       label,
       i,
@@ -734,8 +737,9 @@ export function ChamberSet({
       y1: r2(rIn * sin),
       x2: r2(rOut * cos),
       y2: r2(rOut * sin),
-      mx: r2(((rIn + rOut) / 2) * cos),
-      my: r2(((rIn + rOut) / 2) * sin),
+      leader: tOuter > t + 1,
+      llx: r2((r(tOuter) + 6) * cos),
+      lly: r2((r(tOuter) + 6) * sin),
       lx: r2(rLab * cos),
       ly: r2(rLab * sin),
       cos,
@@ -791,6 +795,18 @@ export function ChamberSet({
               opacity="0.85"
             />
             <circle cx={s.x2} cy={s.y2} r="2.6" fill="var(--olive)" />
+            {s.leader && (
+              <line
+                x1={s.x2}
+                y1={s.y2}
+                x2={s.llx}
+                y2={s.lly}
+                stroke="var(--olive)"
+                strokeWidth="0.7"
+                strokeDasharray="3 4"
+                opacity="0.55"
+              />
+            )}
             <text
               x={s.lx}
               y={r2(s.ly + 4)}

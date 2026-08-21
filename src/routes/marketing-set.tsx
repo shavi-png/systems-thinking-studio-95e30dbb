@@ -819,9 +819,8 @@ function MarketingSetPage() {
                   Marketing Set turns that experience into a structure you can work through yourself.
                   Not my answers to your business — a better system for finding yours.
                 </p>
-                <p className="label-xs mt-8 !tracking-[0.2em] !text-charcoal">
-                  VITA SHABLII · STRATEGY × MARKETING × PRODUCT THINKING × AI
-                </p>
+
+
                 <Link to="/about" className="link-editorial mt-7 inline-flex">
                   GET TO KNOW ME <span aria-hidden>→</span>
                 </Link>

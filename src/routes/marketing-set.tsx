@@ -523,8 +523,16 @@ function MarketingSetPage() {
 
             <ol className="mt-14 grid gap-0 border-t border-line md:mt-20 md:grid-cols-5 md:border-t-0">
               {steps.map((s, i) => (
-                <Reveal key={s.t} delay={i * 80}>
-                  <li className="relative flex h-full flex-col border-b border-line py-8 md:border-b-0 md:border-t md:pr-8 md:pb-0">
+                <Reveal key={s.t} delay={i * 80} className="h-full">
+                  <li className="relative flex h-full flex-col border-b border-line py-8 md:border-b-0 md:border-t md:pr-8 md:pb-2">
+                    {i < steps.length - 1 && (
+                      <span
+                        aria-hidden
+                        className="absolute -top-[0.72rem] right-1 hidden bg-paper px-1 text-xs text-smoke md:block"
+                      >
+                        →
+                      </span>
+                    )}
                     <p className="font-serif-editorial text-[clamp(2rem,3.4vw,2.9rem)] leading-none text-taupe">
                       {s.n}
                     </p>
@@ -532,14 +540,6 @@ function MarketingSetPage() {
                     <p className="font-serif-editorial mt-5 text-[clamp(1.15rem,1.6vw,1.4rem)] leading-snug text-charcoal">
                       {s.q}
                     </p>
-                    {i < steps.length - 1 && (
-                      <span
-                        aria-hidden
-                        className="mt-6 block text-smoke md:mt-8 md:text-right md:pr-2"
-                      >
-                        →
-                      </span>
-                    )}
                   </li>
                 </Reveal>
               ))}

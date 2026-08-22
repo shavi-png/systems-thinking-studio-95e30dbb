@@ -362,20 +362,26 @@ function StrategicPartnership() {
               </h2>
             </Reveal>
 
-            <div className="mt-14 grid gap-px border-y border-line bg-line sm:grid-cols-2 lg:grid-cols-4">
+            <div className="mt-14 flex flex-wrap gap-4">
               {[
                 "A marketing problem can begin with the product.",
                 "A growth problem can be rooted in positioning.",
                 "A launch problem can actually be a question of market readiness.",
                 "And sometimes a team is executing constantly while the decisions that should guide that execution remain unresolved.",
               ].map((t, i) => (
-                <Reveal key={t} delay={i * 80}>
-                  <p className="h-full bg-paper px-6 py-8 text-[0.9rem] leading-relaxed text-charcoal/70">
+                <Reveal key={t} delay={i * 80} className="max-w-[22rem] flex-1">
+                  <p
+                    className={`h-full px-7 py-8 text-[0.95rem] leading-relaxed text-charcoal/75 ${
+                      i % 2 === 0 ? "bg-sage/40" : "bg-stone/70"
+                    }`}
+                    style={{ marginTop: `${(i % 3) * 0.9}rem` }}
+                  >
                     {t}
                   </p>
                 </Reveal>
               ))}
             </div>
+
 
             <Reveal delay={160}>
               <div className="mt-12 max-w-[38rem]">

@@ -21,7 +21,7 @@ export const Route = createFileRoute("/strategic-partnership")({
       { name: "twitter:card", content: "summary_large_image" },
     ],
   }),
-  component: StrategicPartnership;
+  component: StrategicPartnership,
 });
 
 const fields = [

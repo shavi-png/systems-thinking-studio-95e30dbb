@@ -12,6 +12,7 @@ import { Route as rootRouteImport } from './routes/__root'
 import { Route as IndexRouteImport } from './routes/index'
 import { Route as AboutRouteImport } from './routes/about'
 import { Route as MarketingSetRouteImport } from './routes/marketing-set'
+import { Route as StrategicPartnershipRouteImport } from './routes/strategic-partnership'
 
 const IndexRoute = IndexRouteImport.update({
   id: '/',
@@ -28,35 +29,44 @@ const MarketingSetRoute = MarketingSetRouteImport.update({
   path: '/marketing-set',
   getParentRoute: () => rootRouteImport,
 } as any)
+const StrategicPartnershipRoute = StrategicPartnershipRouteImport.update({
+  id: '/strategic-partnership',
+  path: '/strategic-partnership',
+  getParentRoute: () => rootRouteImport,
+} as any)
 
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
   '/about': typeof AboutRoute
   '/marketing-set': typeof MarketingSetRoute
+  '/strategic-partnership': typeof StrategicPartnershipRoute
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
   '/about': typeof AboutRoute
   '/marketing-set': typeof MarketingSetRoute
+  '/strategic-partnership': typeof StrategicPartnershipRoute
 }
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
   '/': typeof IndexRoute
   '/about': typeof AboutRoute
   '/marketing-set': typeof MarketingSetRoute
+  '/strategic-partnership': typeof StrategicPartnershipRoute
 }
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
-  fullPaths: '/' | '/about' | '/marketing-set'
+  fullPaths: '/' | '/about' | '/marketing-set' | '/strategic-partnership'
   fileRoutesByTo: FileRoutesByTo
-  to: '/' | '/about' | '/marketing-set'
-  id: '__root__' | '/' | '/about' | '/marketing-set'
+  to: '/' | '/about' | '/marketing-set' | '/strategic-partnership'
+  id: '__root__' | '/' | '/about' | '/marketing-set' | '/strategic-partnership'
   fileRoutesById: FileRoutesById
 }
 export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
   AboutRoute: typeof AboutRoute
   MarketingSetRoute: typeof MarketingSetRoute
+  StrategicPartnershipRoute: typeof StrategicPartnershipRoute
 }
 
 declare module '@tanstack/react-router' {
@@ -82,6 +92,13 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof MarketingSetRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/strategic-partnership': {
+      id: '/strategic-partnership'
+      path: '/strategic-partnership'
+      fullPath: '/strategic-partnership'
+      preLoaderRoute: typeof StrategicPartnershipRouteImport
+      parentRoute: typeof rootRouteImport
+    }
   }
 }
 
@@ -89,6 +106,7 @@ const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
   AboutRoute: AboutRoute,
   MarketingSetRoute: MarketingSetRoute,
+  StrategicPartnershipRoute: StrategicPartnershipRoute,
 }
 export const routeTree = rootRouteImport
   ._addFileChildren(rootRouteChildren)

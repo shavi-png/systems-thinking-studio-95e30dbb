@@ -29,7 +29,7 @@ const solutions: Solution[] = [
   {
     index: "03",
     label: "03 / Direct",
-    title: ["Consulting"],
+    title: ["Strategic", "Partnership"],
     lede: "Sometimes the problem is not a missing tool or framework. What is needed is a view from another point — on a specific product, market and context.",
     transform: "60 min / online",
     cta: "Work with me",

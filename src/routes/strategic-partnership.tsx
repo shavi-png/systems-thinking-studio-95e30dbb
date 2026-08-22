@@ -643,35 +643,64 @@ function StrategicPartnership() {
         </section>
 
         {/* ——— 11 CHOOSING THE FORMAT ——— */}
-        <section className="rule-thin">
-          <div className="mx-auto max-w-[1440px] px-6 py-20 md:px-10 md:py-28">
-            <Reveal>
-              <h2 className="display-md max-w-[30rem]">
-                Not sure which <span className="italic">format fits?</span>
-              </h2>
-            </Reveal>
-            <div className="mt-12 border-t border-line">
+        <section className="rule-thin relative overflow-hidden">
+          <div className="relative mx-auto max-w-[1440px] px-6 py-20 md:px-10 md:py-28">
+            <div className="grid gap-8 md:grid-cols-12 md:items-end">
+              <Reveal className="md:col-span-6">
+                <h2 className="display-md">
+                  Not sure which <span className="italic">format fits?</span>
+                </h2>
+              </Reveal>
+              <Reveal delay={100} className="md:col-span-4 md:col-start-9">
+                <p className="body-read">
+                  Start from the sentence that sounds most like your situation.
+                </p>
+              </Reveal>
+            </div>
+
+            <div className="mt-14 grid gap-6 md:grid-cols-2 lg:gap-8">
               {formats.map(([q, a, href], i) => (
-                <Reveal key={q} delay={i * 70}>
+                <Reveal key={q} delay={i * 80} className={i % 2 === 1 ? "md:mt-10" : ""}>
                   <a
                     href={href}
-                    className="group grid gap-2 border-b border-line py-7 transition-colors hover:bg-sage/20 md:grid-cols-12 md:items-baseline md:gap-8"
+                    className="group relative flex h-full flex-col justify-between overflow-hidden bg-paper px-8 py-10 transition-colors duration-700 hover:bg-sage/45 md:px-10 md:py-12"
                   >
-                    <span className="font-serif-editorial text-[clamp(1.1rem,1.9vw,1.6rem)] text-charcoal md:col-span-7">
+                    <svg
+                      aria-hidden
+                      viewBox="0 0 200 200"
+                      className="pointer-events-none absolute -bottom-16 -right-14 h-52 w-52 text-olive/25 transition-transform duration-[1200ms] ease-out group-hover:scale-110"
+                      fill="none"
+                    >
+                      {[42, 66, 90, 114].map((r) => (
+                        <circle
+                          key={r}
+                          cx="140"
+                          cy="140"
+                          r={r}
+                          stroke="currentColor"
+                          strokeWidth="0.9"
+                        />
+                      ))}
+                    </svg>
+                    <p className="font-serif-editorial relative text-[clamp(1.3rem,2.3vw,2rem)] leading-[1.15] text-charcoal">
                       {q}
-                    </span>
-                    <span className="label-xs !text-charcoal !tracking-[0.2em] md:col-span-5">
-                      <span aria-hidden className="mr-3 text-olive">
+                    </p>
+                    <p className="label-xs relative mt-10 !text-charcoal !tracking-[0.22em]">
+                      <span
+                        aria-hidden
+                        className="mr-3 inline-block text-olive transition-transform duration-500 group-hover:translate-x-1"
+                      >
                         →
                       </span>
                       {a}
-                    </span>
+                    </p>
                   </a>
                 </Reveal>
               ))}
             </div>
           </div>
         </section>
+
 
         {/* ——— 12 FINAL CTA ——— */}
         <section id="start" className="rule-thin relative overflow-hidden bg-paper">

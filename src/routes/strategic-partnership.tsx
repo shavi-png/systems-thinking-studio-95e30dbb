@@ -514,44 +514,58 @@ function StrategicPartnership() {
         {/* ——— 08 IS / ISN’T ——— */}
         <section className="rule-thin bg-paper">
           <div className="mx-auto max-w-[1440px] px-6 py-20 md:px-10 md:py-28">
-            <div className="grid gap-12 md:grid-cols-2 md:gap-16">
-              <Reveal>
-                <div className="md:pr-10">
+            <div className="grid gap-14 md:grid-cols-12 md:gap-10">
+              <div className="md:col-span-7">
+                <Reveal>
                   <p className="label-xs !text-charcoal">This works well when —</p>
-                  <ul className="mt-7 border-t border-line">
-                    {worksWhen.map((t) => (
-                      <li
-                        key={t}
-                        className="border-b border-line py-5 font-serif-editorial text-[1.05rem] leading-snug text-charcoal"
+                </Reveal>
+                <div className="mt-8 space-y-4">
+                  {worksWhen.map((t, i) => (
+                    <Reveal key={t} delay={i * 80}>
+                      <div
+                        className="bg-sage/50 px-7 py-6 transition-colors duration-700 hover:bg-sage/70"
+                        style={{
+                          marginLeft: `${i * 1.6}rem`,
+                          maxWidth: "calc(100% - 1rem)",
+                        }}
                       >
-                        {t}
-                      </li>
-                    ))}
-                  </ul>
+                        <p className="font-serif-editorial text-[clamp(1.05rem,1.5vw,1.35rem)] leading-snug text-charcoal">
+                          {t}
+                        </p>
+                      </div>
+                    </Reveal>
+                  ))}
                 </div>
-              </Reveal>
-              <Reveal delay={120}>
-                <div className="md:border-l md:border-line md:pl-16">
+              </div>
+
+              <div className="md:col-span-4 md:col-start-9 md:pt-14">
+                <Reveal delay={120}>
                   <p className="label-xs">Probably not the right fit when —</p>
-                  <ul className="mt-7 border-t border-line">
-                    {notFit.map((t) => (
-                      <li
-                        key={t}
-                        className="border-b border-line py-5 text-[0.92rem] leading-relaxed text-charcoal/60"
-                      >
-                        {t}
-                      </li>
-                    ))}
-                  </ul>
+                </Reveal>
+                <div className="mt-8 space-y-7">
+                  {notFit.map((t, i) => (
+                    <Reveal key={t} delay={140 + i * 80}>
+                      <div className="flex gap-4">
+                        <span
+                          aria-hidden
+                          className="font-serif-editorial mt-[-0.15rem] shrink-0 text-[1.1rem] text-taupe"
+                        >
+                          ×
+                        </span>
+                        <p className="text-[0.9rem] leading-relaxed text-charcoal/55">{t}</p>
+                      </div>
+                    </Reveal>
+                  ))}
                 </div>
-              </Reveal>
+              </div>
             </div>
-            <p className="font-serif-editorial mt-14 max-w-[42rem] text-[clamp(1.15rem,1.9vw,1.6rem)] italic leading-snug text-charcoal">
+            <p className="font-serif-editorial mt-16 max-w-[42rem] text-[clamp(1.15rem,1.9vw,1.6rem)] italic leading-snug text-charcoal">
               Good strategic work requires enough openness to discover that the original question may
               not be the right one.
             </p>
           </div>
         </section>
+
 
         {/* ——— 09 WHO ——— */}
         <section className="rule-thin">

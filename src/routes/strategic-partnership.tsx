@@ -250,10 +250,10 @@ function StrategicPartnership() {
           </div>
         </section>
 
-        {/* ——— 04 LEVEL OF INVOLVEMENT ——— */}
+        {/* ——— 04 THE THREE SERVICES, IN DETAIL ——— */}
         <section id="involvement" className="rule-thin bg-paper">
-          <div className="mx-auto max-w-[1440px] px-6 py-20 md:px-10 md:py-28">
-            <div className="grid gap-12 md:grid-cols-12">
+          <div className="mx-auto max-w-[1440px] px-6 pb-4 pt-20 md:px-10 md:pt-28">
+            <div className="grid gap-10 md:grid-cols-12">
               <div className="md:col-span-6">
                 <Reveal>
                   <p className="label-xs">Level of involvement</p>
@@ -276,192 +276,13 @@ function StrategicPartnership() {
                 </Reveal>
               </div>
             </div>
-
-            {/* 01 — Strategic advisory */}
-            <div id="advisory" className="mt-20 grid gap-12 border-t border-line pt-12 md:grid-cols-12">
-              <div className="md:col-span-5">
-                <Reveal>
-                  <p className="label-xs">01 — Strategic advisory</p>
-                  <h3 className="display-md mt-5 !text-[clamp(1.8rem,3.2vw,2.9rem)]">
-                    See the situation from another <span className="italic">angle.</span>
-                  </h3>
-                  <p className="body-read mt-8">
-                    For a specific decision, challenge or moment of uncertainty. Strategic Advisory
-                    is the most focused way to work together.
-                  </p>
-                  <p className="body-read mt-5">
-                    You bring the context — a product, launch, market, positioning question, growth
-                    challenge or strategic decision — and we work through what is actually happening
-                    beneath the surface.
-                  </p>
-                  <p className="body-read mt-5">
-                    Rather than jumping directly to solutions, we clarify the situation, identify
-                    the decisions that matter and define the most useful way forward.
-                  </p>
-                </Reveal>
-              </div>
-
-              <div className="md:col-span-6 md:col-start-7">
-                <Reveal delay={120}>
-                  <p className="label-xs">This may be right for you if</p>
-                  <ul className="mt-6 border-t border-line">
-                    {advisoryFit.map((t) => (
-                      <li
-                        key={t}
-                        className="border-b border-line py-4 text-[0.92rem] leading-relaxed text-charcoal/75"
-                      >
-                        {t}
-                      </li>
-                    ))}
-                  </ul>
-                  <div className="mt-8 border-l-2 border-olive bg-sage/35 px-7 py-7">
-                    <p className="label-xs !tracking-[0.2em]">What you leave with</p>
-                    <p className="font-serif-editorial mt-3 text-[clamp(1.15rem,1.9vw,1.6rem)] leading-snug text-charcoal">
-                      A clearer understanding of the situation, the decisions that matter and what
-                      should happen next.
-                    </p>
-                  </div>
-                  <a href="#start" className="link-editorial mt-9">
-                    Discuss your context <span aria-hidden>→</span>
-                  </a>
-                </Reveal>
-              </div>
-            </div>
           </div>
         </section>
 
-        {/* ——— 05 STRATEGY DEVELOPMENT ——— */}
-        <section id="strategy" className="rule-thin">
-          <div className="mx-auto max-w-[1440px] px-6 py-20 md:px-10 md:py-28">
-            <Reveal>
-              <p className="label-xs">02 — Strategy development</p>
-              <h2 className="display-lg mt-6 max-w-[42rem]">
-                When clarity needs to become a <span className="italic">strategy.</span>
-              </h2>
-            </Reveal>
+        {services.map((s, i) => (
+          <ServiceDetail key={s.id} s={s} i={i} />
+        ))}
 
-            <div className="mt-14 grid gap-12 md:grid-cols-12">
-              <div className="md:col-span-5">
-                <Reveal delay={100}>
-                  <p className="body-read">
-                    Some situations cannot be resolved in one conversation. They require looking
-                    deeper into the product, customer, market, competition, positioning and existing
-                    marketing system — and turning what we learn into a coherent direction.
-                  </p>
-                  <p className="body-read mt-5">
-                    In these engagements, I don’t simply advise on the strategy.
-                  </p>
-                  <p className="font-serif-editorial mt-3 text-[clamp(1.3rem,2.2vw,1.9rem)] italic text-charcoal">
-                    I develop it with you.
-                  </p>
-                </Reveal>
-              </div>
-
-              <div className="md:col-span-6 md:col-start-7">
-                <Reveal delay={160}>
-                  <p className="label-xs">The work may include</p>
-                  <ol className="mt-6 grid gap-px border border-line bg-line sm:grid-cols-2">
-                    {strategyScope.map((s, i) => (
-                      <li
-                        key={s}
-                        className="flex items-baseline gap-3 bg-background px-5 py-4 text-[0.82rem] uppercase leading-relaxed tracking-[0.12em] text-charcoal/75"
-                      >
-                        <span className="label-xs !tracking-[0.1em] text-olive">
-                          {String(i + 1).padStart(2, "0")}
-                        </span>
-                        {s}
-                      </li>
-                    ))}
-                  </ol>
-                </Reveal>
-              </div>
-            </div>
-
-            <Reveal delay={120}>
-              <div className="mt-16 grid gap-10 border-t border-line pt-12 md:grid-cols-12">
-                <h3 className="display-md md:col-span-6 !text-[clamp(1.7rem,3vw,2.7rem)]">
-                  Not a strategy made for the presentation.
-                  <br />
-                  <span className="italic">A strategy made for decisions.</span>
-                </h3>
-                <div className="md:col-span-5 md:col-start-8">
-                  <p className="body-read">
-                    The outcome is a working strategic system: something leadership and teams can use
-                    to understand priorities, evaluate opportunities and make better decisions after
-                    our work together is complete.
-                  </p>
-                  <a href="#start" className="link-editorial mt-9">
-                    Explore a strategy project <span aria-hidden>→</span>
-                  </a>
-                </div>
-              </div>
-            </Reveal>
-          </div>
-        </section>
-
-        {/* ——— 06 FRACTIONAL CMO ——— */}
-        <section id="fractional" className="rule-thin bg-sand/50">
-          <div className="mx-auto max-w-[1440px] px-6 py-20 md:px-10 md:py-28">
-            <div className="grid gap-12 md:grid-cols-12">
-              <div className="md:col-span-6">
-                <Reveal>
-                  <p className="label-xs">03 / Fractional CMO</p>
-                  <h2 className="display-md mt-6">
-                    Senior marketing leadership.
-                    <br />
-                    <span className="italic">Without another full-time hire.</span>
-                  </h2>
-                </Reveal>
-              </div>
-              <div className="md:col-span-5 md:col-start-8 md:pt-4">
-                <Reveal delay={120}>
-                  <p className="body-read">
-                    For businesses that need more than strategic recommendations — they need someone
-                    to help make the strategy work inside the company.
-                  </p>
-                  <p className="body-read mt-5">
-                    As a Fractional CMO, I work alongside founders and leadership teams as a senior
-                    marketing partner. The role sits between strategy and execution: setting
-                    direction, creating priorities, connecting marketing with product and commercial
-                    decisions, strengthening the team and building the systems required for
-                    marketing to operate coherently.
-                  </p>
-                </Reveal>
-              </div>
-            </div>
-
-            <div className="mt-16 grid gap-px border border-line bg-line md:grid-cols-3">
-              {cmoScope.map(([k, v], i) => (
-                <Reveal key={k} delay={i * 70}>
-                  <div className="h-full bg-background px-7 py-8">
-                    <p className="label-xs !text-charcoal !tracking-[0.2em]">{k}</p>
-                    <p className="mt-4 text-[0.9rem] leading-relaxed text-charcoal/70">{v}</p>
-                  </div>
-                </Reveal>
-              ))}
-            </div>
-
-            <Reveal delay={120}>
-              <div className="mt-16 grid gap-10 border-t border-line pt-12 md:grid-cols-12">
-                <h3 className="display-md md:col-span-6 !text-[clamp(1.7rem,3vw,2.7rem)]">
-                  I am not an outsourced
-                  <br />
-                  <span className="italic">marketing department.</span>
-                </h3>
-                <div className="md:col-span-5 md:col-start-8">
-                  <p className="body-read">
-                    My role is not to replace the people doing the work. It is to create the
-                    direction, structure and decision-making environment that helps them do better
-                    work together.
-                  </p>
-                  <a href="#start" className="link-editorial mt-9">
-                    Discuss fractional leadership <span aria-hidden>→</span>
-                  </a>
-                </div>
-              </div>
-            </Reveal>
-          </div>
-        </section>
 
         {/* ——— 07 HOW I WORK ——— */}
         <section className="rule-thin">

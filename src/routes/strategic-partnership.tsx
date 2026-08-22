@@ -130,29 +130,8 @@ const services: Service[] = [
   },
 ];
 
-function ServiceCard({ s }: { s: Service }) {
-  return (
-    <a href={`#${s.id}`} className="group block">
-      <p className="label-xs !tracking-[0.24em] text-olive">{s.n}</p>
-      <h3 className="display-md mt-4 !text-[clamp(1.6rem,2.3vw,2.1rem)]">{s.name}</h3>
-      <p className="mt-4 font-serif-editorial text-[1.05rem] italic leading-snug text-charcoal/80">
-        {s.tagline}
-      </p>
-      <p className="label-xs mt-5 !tracking-[0.16em]">{s.best}</p>
-      <div className="relative mt-8 overflow-hidden bg-stone">
-        <img
-          src={s.img}
-          alt=""
-          loading="lazy"
-          className="aspect-[5/4] w-full object-cover transition-transform duration-[1200ms] ease-out group-hover:scale-[1.04]"
-        />
-      </div>
-      <span className="link-editorial mt-7">
-        See how it works <span aria-hidden>→</span>
-      </span>
-    </a>
-  );
-}
+
+
 
 
 function ServiceDetail({ s, i }: { s: Service; i: number }) {
@@ -346,33 +325,6 @@ function StrategicPartnership() {
         </section>
 
 
-        {/* ——— 01b THREE WAYS TO WORK TOGETHER ——— */}
-        <section className="rule-thin">
-          <div className="mx-auto max-w-[1440px] px-6 py-20 md:px-10 md:py-24">
-            <div className="grid gap-8 md:grid-cols-12 md:items-end">
-              <Reveal className="md:col-span-7">
-                <h2 className="display-md">
-                  Three ways to <span className="italic">work together.</span>
-                </h2>
-              </Reveal>
-              <Reveal delay={100} className="md:col-span-4 md:col-start-9">
-                <p className="body-read">
-                  The same thinking at three levels of proximity — one decision, a full strategy, or
-                  ongoing senior leadership inside your company.
-                </p>
-              </Reveal>
-            </div>
-
-
-            <div className="mt-16 grid gap-14 md:grid-cols-3 md:gap-10">
-              {services.map((s, i) => (
-                <Reveal key={s.id} delay={i * 100}>
-                  <ServiceCard s={s} />
-                </Reveal>
-              ))}
-            </div>
-          </div>
-        </section>
 
 
 
@@ -476,23 +428,40 @@ function StrategicPartnership() {
                 <Reveal>
                   <p className="label-xs">Level of involvement</p>
                   <h2 className="display-md mt-6">
-                    Different questions require different levels of{" "}
-                    <span className="italic">proximity.</span>
+                    Three ways to <span className="italic">work together.</span>
                   </h2>
                 </Reveal>
               </div>
               <div className="md:col-span-5 md:col-start-8 md:pt-4">
                 <Reveal delay={120}>
                   <p className="body-read">
-                    Some decisions need an experienced outside perspective. Others require deeper
-                    research and strategic development. And some businesses need senior marketing
-                    leadership embedded in the company for a period of time.
+                    The same thinking at three levels of proximity. Some decisions need an
+                    experienced outside perspective. Others require deeper research and strategic
+                    development. And some businesses need senior marketing leadership embedded in
+                    the company for a period of time.
                   </p>
                   <p className="font-serif-editorial mt-6 text-[1.35rem] italic text-charcoal">
                     I work across all three.
                   </p>
                 </Reveal>
               </div>
+              <div className="md:col-span-12">
+                <Reveal delay={180}>
+                  <ul className="mt-12 flex flex-wrap gap-x-10 gap-y-3">
+                    {services.map((s) => (
+                      <li key={s.id}>
+                        <a href={`#${s.id}`} className="group flex items-baseline gap-3">
+                          <span className="label-xs !tracking-[0.24em] text-olive">{s.n}</span>
+                          <span className="font-serif-editorial text-[clamp(1.15rem,1.8vw,1.5rem)] text-charcoal transition-colors group-hover:text-olive">
+                            {s.name}
+                          </span>
+                        </a>
+                      </li>
+                    ))}
+                  </ul>
+                </Reveal>
+              </div>
+
             </div>
           </div>
         </section>

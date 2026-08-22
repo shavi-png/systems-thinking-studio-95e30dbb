@@ -840,17 +840,31 @@ export function ProcessOrbit({
     return `M${pts.join("L")}`;
   })();
 
-  // steps spread evenly around the outer turn so labels never collide
-  const nodes = steps.map((s, i) => {
+  // steps spread evenly around the outer turn
+  const raw = steps.map((s, i) => {
     const t = tMax - Math.PI * 2 + (i * Math.PI * 2) / steps.length;
     const p = pt(t);
-    const right = p.x >= -4;
-    return { ...s, ...p, right };
+    return { ...s, ...p, right: p.x >= -4 };
   });
+
+  // label slots: evenly distributed vertically per side so text never collides
+  const VB_W = 500;
+  const VB_H = 430;
+  const slot = (side: typeof raw) =>
+    side
+      .slice()
+      .sort((p, q) => p.y - q.y)
+      .map((n, i, arr) => {
+        const span = 300; // vertical range in viewBox units
+        const ly = arr.length === 1 ? 0 : -span / 2 + (span * i) / (arr.length - 1);
+        return { ...n, ly, lx: n.right ? 200 : -200 };
+      });
+
+  const nodes = [...slot(raw.filter((n) => n.right)), ...slot(raw.filter((n) => !n.right))];
 
   return (
     <div ref={ref} className="relative mx-auto w-full max-w-[46rem]">
-      <div className="relative aspect-[7/6] w-full">
+      <div className="relative aspect-square w-full lg:aspect-[7/6]">
         <div
           aria-hidden
           className="pointer-events-none absolute left-1/2 top-1/2 aspect-square w-[62%] -translate-x-1/2 -translate-y-1/2 rounded-full blur-2xl"
@@ -886,60 +900,46 @@ export function ProcessOrbit({
             }}
           />
 
-          {/* back-and-forth motion, drawn into the composition */}
-          <path
-            d="M -228 150 C -196 176 -156 176 -124 152"
-            stroke="var(--charcoal)"
-            strokeWidth="0.8"
-            strokeDasharray="3 5"
-            opacity={shown ? 0.4 : 0}
-            style={{ transition: "opacity 1.2s ease 1.3s" }}
-          />
-          <path
-            d="M -124 152 l -9 5 m 9 -5 l -7 -8"
-            stroke="var(--charcoal)"
-            strokeWidth="0.9"
-            opacity={shown ? 0.45 : 0}
-            style={{ transition: "opacity 1.2s ease 1.5s" }}
-          />
-          <path
-            d="M -228 150 l 9 5 m -9 -5 l 7 -8"
-            stroke="var(--charcoal)"
-            strokeWidth="0.9"
-            opacity={shown ? 0.45 : 0}
-            style={{ transition: "opacity 1.2s ease 1.5s" }}
-          />
-
           {nodes.map((n, i) => (
             <g
               key={n.label}
               opacity={shown ? 1 : 0}
               style={{ transition: `opacity 900ms ease ${700 + i * 150}ms` }}
             >
-              <line
-                x1={n.x}
-                y1={n.y}
-                x2={n.x + (n.right ? 26 : -26)}
-                y2={n.y}
+              <polyline
+                className="hidden lg:block"
+                points={`${n.x},${n.y} ${n.right ? n.x + 24 : n.x - 24},${n.y} ${n.lx},${n.ly}`}
                 stroke="var(--olive)"
                 strokeWidth="0.7"
-                opacity="0.55"
+                opacity="0.4"
+                fill="none"
               />
               <circle cx={n.x} cy={n.y} r="4.4" fill="var(--background)" />
               <circle cx={n.x} cy={n.y} r="2.9" fill="var(--olive)" />
+              <text
+                x={n.x + (n.right ? 11 : -11)}
+                y={n.y + 4}
+                textAnchor={n.right ? "start" : "end"}
+                className="lg:hidden"
+                fill="var(--charcoal)"
+                style={{ fontSize: 13, letterSpacing: "0.06em" }}
+              >
+                {n.n}
+              </text>
             </g>
           ))}
 
           <circle cx="0" cy="0" r="3.4" fill="var(--charcoal)" opacity={shown ? 0.85 : 0} />
         </svg>
 
+        {/* desktop: labels parked in tidy vertical slots */}
         {nodes.map((n, i) => (
           <div
             key={n.label}
-            className={`absolute w-[8.5rem] sm:w-[10.5rem] ${n.right ? "text-left" : "text-right"}`}
+            className={`absolute hidden w-[10.5rem] lg:block ${n.right ? "text-left" : "text-right"}`}
             style={{
-              left: `calc(50% + ${(((n.x + (n.right ? 30 : -30)) / 500) * 100).toFixed(2)}%)`,
-              top: `calc(50% + ${((n.y / 430) * 100).toFixed(2)}% - 1.1rem)`,
+              left: `calc(50% + ${(((n.lx + (n.right ? 6 : -6)) / VB_W) * 100).toFixed(2)}%)`,
+              top: `calc(50% + ${((n.ly / VB_H) * 100).toFixed(2)}% - 1.1rem)`,
               transform: n.right ? "none" : "translateX(-100%)",
               opacity: shown ? 1 : 0,
               transition: `opacity 900ms ease ${800 + i * 150}ms`,
@@ -951,16 +951,30 @@ export function ProcessOrbit({
             <p className="mt-1 text-[0.7rem] leading-snug text-charcoal/55">{n.note}</p>
           </div>
         ))}
-
-        <p
-          className="font-serif-editorial absolute left-[1%] bottom-[3%] w-[10rem] text-[0.95rem] italic leading-snug text-charcoal/70"
-          style={{ opacity: shown ? 1 : 0, transition: "opacity 1.2s ease 1.7s" }}
-        >
-          The process can move back and forth.
-        </p>
       </div>
+
+      {/* mobile / tablet: readable legend under the drawing */}
+      <ol className="mt-8 grid gap-x-8 gap-y-4 sm:grid-cols-2 lg:hidden">
+        {steps.map((s) => (
+          <li key={s.label} className="flex gap-3">
+            <span className="label-xs mt-[0.15rem] !tracking-[0.2em] text-olive">{s.n}</span>
+            <span>
+              <span className="label-xs !tracking-[0.18em] !text-charcoal">{s.label}</span>
+              <span className="mt-1 block text-[0.8rem] leading-snug text-charcoal/60">
+                {s.note}
+              </span>
+            </span>
+          </li>
+        ))}
+      </ol>
+
+      <p className="font-serif-editorial mt-8 text-[0.95rem] italic leading-snug text-charcoal/70">
+        The process can move back and forth.
+      </p>
     </div>
   );
 }
+
+
 
 

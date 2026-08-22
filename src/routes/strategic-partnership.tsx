@@ -449,23 +449,40 @@ function StrategicPartnership() {
                 <Reveal>
                   <p className="label-xs">Level of involvement</p>
                   <h2 className="display-md mt-6">
-                    Different questions require different levels of{" "}
-                    <span className="italic">proximity.</span>
+                    Three ways to <span className="italic">work together.</span>
                   </h2>
                 </Reveal>
               </div>
               <div className="md:col-span-5 md:col-start-8 md:pt-4">
                 <Reveal delay={120}>
                   <p className="body-read">
-                    Some decisions need an experienced outside perspective. Others require deeper
-                    research and strategic development. And some businesses need senior marketing
-                    leadership embedded in the company for a period of time.
+                    The same thinking at three levels of proximity. Some decisions need an
+                    experienced outside perspective. Others require deeper research and strategic
+                    development. And some businesses need senior marketing leadership embedded in
+                    the company for a period of time.
                   </p>
                   <p className="font-serif-editorial mt-6 text-[1.35rem] italic text-charcoal">
                     I work across all three.
                   </p>
                 </Reveal>
               </div>
+              <div className="md:col-span-12">
+                <Reveal delay={180}>
+                  <ul className="mt-12 flex flex-wrap gap-x-10 gap-y-3">
+                    {services.map((s) => (
+                      <li key={s.id}>
+                        <a href={`#${s.id}`} className="group flex items-baseline gap-3">
+                          <span className="label-xs !tracking-[0.24em] text-olive">{s.n}</span>
+                          <span className="font-serif-editorial text-[clamp(1.15rem,1.8vw,1.5rem)] text-charcoal transition-colors group-hover:text-olive">
+                            {s.name}
+                          </span>
+                        </a>
+                      </li>
+                    ))}
+                  </ul>
+                </Reveal>
+              </div>
+
             </div>
           </div>
         </section>

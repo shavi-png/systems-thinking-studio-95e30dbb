@@ -389,34 +389,52 @@ function StrategicPartnership() {
         </section>
 
         {/* ——— 03 WHERE I WORK ——— */}
-        <section className="rule-thin">
-          <div className="mx-auto max-w-[1440px] px-6 py-20 md:px-10 md:py-28">
+        <section className="rule-thin relative overflow-hidden">
+          <img
+            src={shellHero.url}
+            alt=""
+            aria-hidden
+            className="pointer-events-none absolute left-[-14%] top-1/2 h-[130%] w-auto max-w-none -translate-y-1/2 select-none opacity-[0.18] [filter:sepia(0.05)_saturate(0.3)_brightness(1.3)_contrast(0.8)] [mask-image:radial-gradient(closest-side,black_45%,transparent_100%)]"
+          />
+          <div className="relative mx-auto max-w-[1440px] px-6 py-20 md:px-10 md:py-28">
             <Reveal>
               <h2 className="display-md max-w-[36rem]">
                 I work where several <span className="italic">decisions meet.</span>
               </h2>
             </Reveal>
 
-            <dl className="mt-14 border-t border-line">
-              {fields.map(([k, v], i) => (
-                <Reveal key={k} delay={i * 60}>
-                  <div className="grid gap-2 border-b border-line py-7 md:grid-cols-12 md:items-baseline md:gap-8">
-                    <dt className="label-xs !text-charcoal !tracking-[0.24em] md:col-span-3">
-                      {k}
-                    </dt>
-                    <dd className="font-serif-editorial text-[clamp(1.15rem,2vw,1.75rem)] leading-snug text-charcoal/85 md:col-span-9">
-                      {v}
-                    </dd>
-                  </div>
-                </Reveal>
-              ))}
-            </dl>
+            <div className="mt-16 grid gap-5 sm:grid-cols-2 lg:grid-cols-3 lg:gap-6">
+              {fields.map(([k, v], i) => {
+                const tint =
+                  i % 3 === 0 ? "bg-sage/45" : i % 3 === 1 ? "bg-paper" : "bg-stone/70";
+                const lift = ["lg:mt-0", "lg:mt-10", "lg:mt-20"][i % 3];
+                return (
+                  <Reveal key={k} delay={i * 70} className={lift}>
+                    <div
+                      className={`group relative h-full overflow-hidden ${tint} px-8 py-10 transition-colors duration-700 hover:bg-sage/60`}
+                    >
+                      <span
+                        aria-hidden
+                        className="font-serif-editorial pointer-events-none absolute -right-2 -top-6 text-[6rem] leading-none text-charcoal/[0.06]"
+                      >
+                        0{i + 1}
+                      </span>
+                      <p className="label-xs !text-charcoal !tracking-[0.26em]">{k}</p>
+                      <p className="font-serif-editorial relative mt-6 text-[clamp(1.15rem,1.6vw,1.5rem)] leading-snug text-charcoal">
+                        {v}
+                      </p>
+                    </div>
+                  </Reveal>
+                );
+              })}
+            </div>
 
-            <p className="label-xs mt-8 !tracking-[0.16em]">
+            <p className="font-serif-editorial mt-14 max-w-[34rem] text-[clamp(1.05rem,1.7vw,1.45rem)] italic leading-snug text-charcoal/80">
               The work rarely stays inside one box. That’s the point.
             </p>
           </div>
         </section>
+
 
         {/* ——— 04 THE THREE SERVICES, IN DETAIL ——— */}
         <section id="involvement" className="rule-thin bg-paper">

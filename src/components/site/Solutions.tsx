@@ -5,6 +5,7 @@ type Solution = {
   lede: string;
   transform: string;
   cta: string;
+  href?: string;
   gravity?: boolean;
 };
 
@@ -16,6 +17,7 @@ const solutions: Solution[] = [
     lede: "For people who already have a product or project, but whose marketing consists of disconnected actions.",
     transform: "chaotic marketing → an understandable system",
     cta: "View Marketing Set",
+    href: "/marketing-set",
   },
   {
     index: "02",
@@ -29,10 +31,11 @@ const solutions: Solution[] = [
   {
     index: "03",
     label: "03 / Direct",
-    title: ["Consulting"],
+    title: ["Strategic", "Partnership"],
     lede: "Sometimes the problem is not a missing tool or framework. What is needed is a view from another point — on a specific product, market and context.",
     transform: "60 min / online",
     cta: "Work with me",
+    href: "/strategic-partnership",
   },
 ];
 
@@ -126,7 +129,7 @@ function SolutionBlock({ s }: { s: Solution }) {
       <p className="mt-5 max-w-[22rem] font-serif-editorial text-base italic text-charcoal/80">
         {s.transform}
       </p>
-      <a href="#final" className="link-editorial mt-7">
+      <a href={s.href ?? "#final"} className="link-editorial mt-7">
         {s.cta} <span aria-hidden>→</span>
       </a>
     </article>

@@ -35,7 +35,7 @@ const nav = [
   { label: "Get to know me", href: "/about" },
   { label: "Products", href: "/marketing-set" },
   { label: "Syntez", href: "/#solutions" },
-  { label: "Consulting", href: "/#solutions" },
+  { label: "Strategic Partnership", href: "/strategic-partnership" },
 ];
 
 export function Header() {

@@ -653,10 +653,10 @@ function StrategicPartnership() {
             <div className="grid gap-12 md:grid-cols-12 md:gap-10">
               <div className="md:col-span-5">
                 <Reveal>
-                  <div className="relative">
+                  <div className="relative isolate">
                     <div
                       aria-hidden
-                      className="absolute -left-4 -top-4 hidden h-32 w-32 bg-sage/60 md:block"
+                      className="absolute -left-4 -top-4 -z-10 hidden h-32 w-32 bg-sage/60 md:block"
                     />
                     <img
                       src={portraitImg}
@@ -666,7 +666,7 @@ function StrategicPartnership() {
                     />
                     <div
                       aria-hidden
-                      className="absolute -bottom-5 -right-4 hidden h-24 w-24 bg-clay/60 md:block"
+                      className="absolute -bottom-5 -right-4 -z-10 hidden h-24 w-24 bg-clay/60 md:block"
                     />
                   </div>
                 </Reveal>

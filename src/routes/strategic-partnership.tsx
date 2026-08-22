@@ -133,27 +133,27 @@ const services: Service[] = [
 function ServiceCard({ s }: { s: Service }) {
   return (
     <a href={`#${s.id}`} className="group block">
-      <div className="relative overflow-hidden bg-stone">
+      <p className="label-xs !tracking-[0.24em] text-olive">{s.n}</p>
+      <h3 className="display-md mt-4 !text-[clamp(1.6rem,2.3vw,2.1rem)]">{s.name}</h3>
+      <p className="mt-4 font-serif-editorial text-[1.05rem] italic leading-snug text-charcoal/80">
+        {s.tagline}
+      </p>
+      <p className="label-xs mt-5 !tracking-[0.16em]">{s.best}</p>
+      <div className="relative mt-8 overflow-hidden bg-stone">
         <img
           src={s.img}
           alt=""
           loading="lazy"
-          className="aspect-[4/5] w-full object-cover transition-transform duration-[1200ms] ease-out group-hover:scale-[1.04]"
+          className="aspect-[5/4] w-full object-cover transition-transform duration-[1200ms] ease-out group-hover:scale-[1.04]"
         />
       </div>
-      <p className="label-xs mt-6 !tracking-[0.24em] text-olive">
-        {s.n} — {s.best}
-      </p>
-      <h3 className="display-md mt-3 !text-[clamp(1.5rem,2.2vw,2rem)]">{s.name}</h3>
-      <p className="mt-3 font-serif-editorial text-[1.05rem] italic leading-snug text-charcoal/80">
-        {s.tagline}
-      </p>
-      <span className="link-editorial mt-6">
+      <span className="link-editorial mt-7">
         See how it works <span aria-hidden>→</span>
       </span>
     </a>
   );
 }
+
 
 function ServiceDetail({ s, i }: { s: Service; i: number }) {
   const flip = i % 2 === 1;
@@ -270,17 +270,25 @@ function StrategicPartnership() {
       <main>
         {/* ——— 01 HERO ——— */}
         <section className="relative overflow-hidden">
+          <div
+            aria-hidden
+            className="pointer-events-none absolute -left-32 top-10 h-[26rem] w-[26rem] rounded-full bg-sky/45 blur-3xl"
+          />
+          <div
+            aria-hidden
+            className="pointer-events-none absolute right-[18%] top-[58%] h-[20rem] w-[20rem] rounded-full bg-sage/50 blur-3xl"
+          />
           <img
             src={shellHero.url}
             alt=""
             aria-hidden
-            className="pointer-events-none absolute right-[-18%] top-[46%] h-[120%] w-auto max-w-none -translate-y-1/2 select-none opacity-[0.34] [filter:sepia(0.05)_saturate(0.28)_brightness(1.24)_contrast(0.84)] [mask-image:radial-gradient(closest-side,black_52%,transparent_100%)] md:right-[-6%] md:h-[128%] md:opacity-[0.3]"
+            className="pointer-events-none absolute left-[-22%] bottom-[-30%] h-[95%] w-auto max-w-none select-none opacity-[0.22] [filter:sepia(0.05)_saturate(0.3)_brightness(1.28)_contrast(0.82)] [mask-image:radial-gradient(closest-side,black_50%,transparent_100%)]"
           />
-          <div className="relative mx-auto grid max-w-[1440px] grid-cols-1 gap-12 px-6 pb-20 pt-28 md:grid-cols-12 md:px-10 md:pb-28 md:pt-36">
+          <div className="relative mx-auto grid max-w-[1440px] grid-cols-1 items-start gap-12 px-6 pb-20 pt-24 md:grid-cols-12 md:gap-10 md:px-10 md:pb-28 md:pt-32">
             <div className="md:col-span-7">
               <Reveal>
                 <p className="label-xs !tracking-[0.3em]">Strategic Partnership</p>
-                <h1 className="display-lg mt-8">
+                <h1 className="display-lg mt-7 !text-[clamp(2.4rem,5.4vw,4.7rem)]">
                   Sometimes you don’t need
                   <br />
                   another framework.
@@ -291,36 +299,52 @@ function StrategicPartnership() {
                 </h1>
               </Reveal>
               <Reveal delay={140}>
-                <p className="font-serif-editorial mt-10 max-w-[34rem] text-[clamp(1.1rem,1.7vw,1.5rem)] leading-snug text-charcoal">
+                <p className="font-serif-editorial mt-9 max-w-[32rem] text-[clamp(1.1rem,1.7vw,1.45rem)] leading-snug text-charcoal">
                   Senior strategic support for founders, leaders and teams navigating product,
                   marketing, growth and change.
                 </p>
+                <p className="body-read mt-7 max-w-[30rem]">
+                  I work alongside businesses when the challenge goes beyond a single marketing task
+                  — when product, market, positioning, growth and execution need to be considered as
+                  one connected system.
+                </p>
+                <div className="mt-9 flex flex-wrap items-center gap-x-8 gap-y-4">
+                  <a href="#involvement" className="link-editorial">
+                    Explore working together <span aria-hidden>↓</span>
+                  </a>
+                  <p className="label-xs !tracking-[0.18em]">
+                    Advisory · Strategy · Fractional CMO
+                  </p>
+                </div>
               </Reveal>
             </div>
 
-            <div className="md:col-span-4 md:col-start-9 md:pt-6">
+            <div className="md:col-span-5 md:col-start-8">
               <Reveal delay={220}>
-                <div className="space-y-6 border-t border-line pt-8">
-                  <p className="body-read">
-                    I work alongside businesses when the challenge goes beyond a single marketing
-                    task — when product, market, positioning, growth and execution need to be
-                    considered as one connected system.
-                  </p>
-                  <p className="body-read">
-                    The engagement can be focused or ongoing: from working through one strategic
-                    decision to developing the strategy itself or stepping in as a Fractional CMO.
-                  </p>
+                <div className="relative isolate ml-auto max-w-[26rem] md:max-w-none">
+                  <span
+                    aria-hidden
+                    className="absolute -left-6 -top-6 -z-10 hidden h-40 w-40 rounded-full bg-sky/70 md:block"
+                  />
+                  <img
+                    src={portraitImg}
+                    alt="Vita Shablii"
+                    className="relative aspect-[4/5] w-full object-cover"
+                  />
+                  <span
+                    aria-hidden
+                    className="absolute -bottom-8 -right-6 -z-10 hidden h-28 w-28 rounded-full bg-clay/70 md:block"
+                  />
                 </div>
-                <a href="#involvement" className="link-editorial mt-10">
-                  Explore working together <span aria-hidden>↓</span>
-                </a>
-                <p className="label-xs mt-8 !tracking-[0.18em]">
-                  Advisory · Strategy development · Fractional CMO
+                <p className="font-serif-editorial mt-8 max-w-[22rem] text-[1.05rem] italic leading-snug text-charcoal/75 md:ml-auto">
+                  The engagement can be focused or ongoing — one strategic decision, the strategy
+                  itself, or stepping in as a Fractional CMO.
                 </p>
               </Reveal>
             </div>
           </div>
         </section>
+
 
         {/* ——— 01b THREE WAYS TO WORK TOGETHER ——— */}
         <section className="rule-thin">
@@ -410,31 +434,32 @@ function StrategicPartnership() {
               </h2>
             </Reveal>
 
-            <div className="mt-16 grid gap-5 sm:grid-cols-2 lg:grid-cols-3 lg:gap-6">
-              {fields.map(([k, v], i) => {
-                const tint =
-                  i % 3 === 0 ? "bg-sage/45" : i % 3 === 1 ? "bg-paper" : "bg-stone/70";
-                const lift = ["lg:mt-0", "lg:mt-10", "lg:mt-20"][i % 3] ?? "";
-                return (
-                  <Reveal key={k} delay={i * 70} className={lift}>
-                    <div
-                      className={`group relative h-full overflow-hidden ${tint} px-8 py-10 transition-colors duration-700 hover:bg-sage/60`}
-                    >
-                      <span
-                        aria-hidden
-                        className="font-serif-editorial pointer-events-none absolute -right-2 -top-6 text-[6rem] leading-none text-charcoal/[0.06]"
-                      >
-                        0{i + 1}
-                      </span>
+            <div className="mt-16 grid gap-x-16 gap-y-12 md:grid-cols-2">
+              {fields.map(([k, v], i) => (
+                <Reveal key={k} delay={i * 70}>
+                  <div
+                    className="group flex gap-6"
+                    style={{ marginLeft: `${i % 2 === 1 ? 2 : 0}rem` }}
+                  >
+                    <span
+                      aria-hidden
+                      className={`mt-[0.7rem] h-3 w-3 shrink-0 rounded-full ${
+                        ["bg-olive/70", "bg-sky", "bg-clay", "bg-sage", "bg-blush", "bg-taupe"][
+                          i % 6
+                        ]
+                      }`}
+                    />
+                    <div className="min-w-0">
                       <p className="label-xs !text-charcoal !tracking-[0.26em]">{k}</p>
-                      <p className="font-serif-editorial relative mt-6 text-[clamp(1.15rem,1.6vw,1.5rem)] leading-snug text-charcoal">
+                      <p className="font-serif-editorial mt-4 max-w-[24rem] text-[clamp(1.15rem,1.8vw,1.6rem)] leading-snug text-charcoal">
                         {v}
                       </p>
                     </div>
-                  </Reveal>
-                );
-              })}
+                  </div>
+                </Reveal>
+              ))}
             </div>
+
 
             <p className="font-serif-editorial mt-14 max-w-[34rem] text-[clamp(1.05rem,1.7vw,1.45rem)] italic leading-snug text-charcoal/80">
               The work rarely stays inside one box. That’s the point.
@@ -478,80 +503,73 @@ function StrategicPartnership() {
 
 
         {/* ——— 07 HOW I WORK ——— */}
-        <section className="rule-thin">
-          <div className="mx-auto max-w-[1440px] px-6 py-20 md:px-10 md:py-28">
-            <div className="grid items-center gap-14 lg:grid-cols-12 lg:gap-8">
-              <div className="lg:col-span-3">
+        <section className="rule-thin relative overflow-hidden">
+          <div
+            aria-hidden
+            className="pointer-events-none absolute right-[-10%] top-[10%] h-[24rem] w-[24rem] rounded-full bg-sky/35 blur-3xl"
+          />
+          <div className="relative mx-auto max-w-[1440px] px-6 py-20 md:px-10 md:py-28">
+            <div className="grid gap-10 lg:grid-cols-12">
+              <div className="lg:col-span-4">
                 <Reveal>
                   <p className="label-xs">The working principle</p>
-                  <h2 className="display-md mt-5 !text-[clamp(1.9rem,3.2vw,2.8rem)]">
+                  <h2 className="display-md mt-5 !text-[clamp(1.9rem,3.2vw,2.9rem)]">
                     Context <span className="italic">first.</span>
                     <br />
                     Format <span className="italic">second.</span>
                   </h2>
-                  <p className="body-read mt-8 !text-[0.9rem]">
+                  <p className="body-read mt-8">
                     I don’t begin with a predetermined methodology or try to fit every company into
                     the same framework. I begin by understanding the business: what exists, what has
                     changed, where the tension is and which decisions are currently difficult to
                     make.
                   </p>
-                  <p className="body-read mt-4 !text-[0.9rem]">
-                    Then we determine what the work actually requires.
-                  </p>
-                </Reveal>
-              </div>
-
-              <div className="lg:col-span-6">
-                <ProcessOrbit steps={process} />
-              </div>
-
-              <div className="lg:col-span-3 lg:pl-4">
-                <Reveal delay={140}>
-                  <p className="body-read !text-[0.9rem]">The process can move back and forth.</p>
-                  <p className="font-serif-editorial mt-4 text-[1.2rem] italic leading-snug text-charcoal">
+                  <p className="font-serif-editorial mt-7 max-w-[24rem] text-[clamp(1.1rem,1.7vw,1.45rem)] italic leading-snug text-charcoal">
                     Strategy is not a straight line — new information changes the decisions that
                     follow.
                   </p>
                 </Reveal>
               </div>
+
+              <div className="lg:col-span-8">
+                <ProcessOrbit steps={process} />
+              </div>
             </div>
           </div>
         </section>
 
+
         {/* ——— 08 IS / ISN’T ——— */}
-        <section className="rule-thin bg-paper">
-          <div className="mx-auto max-w-[1440px] px-6 py-20 md:px-10 md:py-28">
-            <div className="grid gap-10 lg:grid-cols-12 lg:gap-8">
+        <section className="rule-thin relative overflow-hidden bg-paper">
+          <div
+            aria-hidden
+            className="pointer-events-none absolute -left-24 top-1/4 h-[30rem] w-[30rem] rounded-full bg-sage/45 blur-3xl"
+          />
+          <div
+            aria-hidden
+            className="pointer-events-none absolute -right-24 bottom-0 h-[24rem] w-[24rem] rounded-full bg-blush/40 blur-3xl"
+          />
+          <div className="relative mx-auto max-w-[1440px] px-6 py-20 md:px-10 md:py-28">
+            <div className="grid gap-16 lg:grid-cols-12 lg:gap-10">
               {/* fit */}
               <div className="lg:col-span-7">
                 <Reveal>
                   <p className="label-xs !text-charcoal">This works well when —</p>
                 </Reveal>
-                <div className="mt-8 grid gap-px overflow-hidden bg-line/40 sm:grid-cols-2">
+                <div className="mt-10 space-y-9">
                   {worksWhen.map((t, i) => (
-                    <Reveal
-                      key={t}
-                      delay={i * 70}
-                      className={i === 0 ? "sm:col-span-2" : ""}
-                    >
+                    <Reveal key={t} delay={i * 70}>
                       <div
-                        className={`group flex h-full items-start gap-5 px-7 py-8 transition-colors duration-500 md:px-8 md:py-9 ${
-                          [
-                            "bg-sage/70",
-                            "bg-sky/60",
-                            "bg-clay/50",
-                            "bg-stone",
-                            "bg-blush/50",
-                          ][i % 5]
-                        }`}
+                        className="flex gap-6"
+                        style={{ marginLeft: `${[0, 2.5, 1.2, 3.4, 0.8][i % 5]}rem` }}
                       >
                         <span
                           aria-hidden
-                          className="font-serif-editorial mt-1 shrink-0 text-[0.9rem] tabular-nums text-charcoal/40"
+                          className="font-serif-editorial mt-2 shrink-0 text-[0.85rem] tabular-nums text-olive"
                         >
                           0{i + 1}
                         </span>
-                        <p className="font-serif-editorial min-w-0 text-[clamp(1.05rem,1.4vw,1.3rem)] leading-snug text-charcoal">
+                        <p className="font-serif-editorial min-w-0 max-w-[26rem] text-[clamp(1.2rem,1.9vw,1.7rem)] leading-[1.25] text-charcoal">
                           {t}
                         </p>
                       </div>
@@ -561,35 +579,32 @@ function StrategicPartnership() {
               </div>
 
               {/* not fit */}
-              <div className="lg:col-span-5">
+              <div className="lg:col-span-4 lg:col-start-9 lg:pt-16">
                 <Reveal delay={120}>
                   <p className="label-xs">Probably not the right fit when —</p>
-                </Reveal>
-                <Reveal delay={180}>
-                  <div className="mt-8 h-[calc(100%-3.5rem)] bg-charcoal px-7 py-9 md:px-9 md:py-10">
-                    <ul className="space-y-6">
-                      {notFit.map((t) => (
-                        <li key={t} className="flex gap-4">
-                          <span aria-hidden className="mt-[0.15rem] shrink-0 text-clay">
-                            ×
-                          </span>
-                          <p className="text-[0.9rem] leading-relaxed text-ivory/70">{t}</p>
-                        </li>
-                      ))}
-                    </ul>
-                  </div>
+                  <ul className="mt-9 space-y-7">
+                    {notFit.map((t) => (
+                      <li key={t} className="flex gap-4">
+                        <span aria-hidden className="mt-[0.3rem] shrink-0 text-[0.8rem] text-clay">
+                          ×
+                        </span>
+                        <p className="text-[0.9rem] leading-relaxed text-charcoal/50">{t}</p>
+                      </li>
+                    ))}
+                  </ul>
                 </Reveal>
               </div>
             </div>
 
             <Reveal>
-              <p className="font-serif-editorial mt-14 max-w-[46rem] text-[clamp(1.15rem,1.9vw,1.6rem)] italic leading-snug text-charcoal">
+              <p className="font-serif-editorial mt-20 max-w-[44rem] text-[clamp(1.2rem,2.1vw,1.8rem)] italic leading-snug text-charcoal">
                 Good strategic work requires enough openness to discover that the original question
                 may not be the right one.
               </p>
             </Reveal>
           </div>
         </section>
+
 
         {/* ——— 09 WHO ——— */}
         <section className="rule-thin">
@@ -614,34 +629,34 @@ function StrategicPartnership() {
                 <Reveal delay={100}>
                   <p className="label-xs">That might be because the company is</p>
                 </Reveal>
-                <div className="mt-8 grid gap-4 sm:grid-cols-2 xl:grid-cols-3">
+                <div className="mt-9 flex flex-wrap items-center gap-x-4 gap-y-5">
                   {moments.map((m, i) => (
                     <Reveal key={m} delay={100 + i * 60}>
-                      <div
-                        className={`group relative flex h-full min-h-[8.5rem] flex-col justify-between overflow-hidden px-6 py-6 transition-transform duration-500 hover:-translate-y-1 ${
+                      <span
+                        className={`font-serif-editorial inline-flex items-baseline gap-3 rounded-full px-6 py-3 text-[clamp(1rem,1.35vw,1.3rem)] leading-snug text-charcoal transition-transform duration-500 hover:-translate-y-1 ${
                           [
                             "bg-sage/70",
                             "bg-sky/55",
-                            "bg-clay/50",
+                            "bg-clay/45",
                             "bg-stone",
-                            "bg-blush/50",
+                            "bg-blush/45",
                             "bg-sage/45",
                           ][i % 6]
-                        } ${i === moments.length - 1 ? "sm:col-span-2 xl:col-span-1" : ""}`}
+                        }`}
+                        style={{ marginTop: `${[0, 0.9, 0.3, 1.2][i % 4]}rem` }}
                       >
                         <span
                           aria-hidden
-                          className="font-serif-editorial absolute -bottom-4 right-2 text-[4.5rem] leading-none text-charcoal/[0.07]"
+                          className="text-[0.7rem] tabular-nums text-charcoal/35"
                         >
                           {i + 1}
                         </span>
-                        <p className="font-serif-editorial relative text-[clamp(1.05rem,1.35vw,1.3rem)] leading-snug text-charcoal">
-                          {m}
-                        </p>
-                      </div>
+                        {m}
+                      </span>
                     </Reveal>
                   ))}
                 </div>
+
               </div>
             </div>
           </div>
@@ -671,20 +686,24 @@ function StrategicPartnership() {
                   </div>
                 </Reveal>
                 <Reveal delay={120}>
-                  <div className="mt-10 grid grid-cols-3 gap-px bg-line/40">
+                  <div className="mt-10 flex flex-wrap items-center gap-4">
                     {[
-                      ["13+", "years"],
-                      ["3", "continents"],
-                      ["5+", "industries"],
-                    ].map(([n, l]) => (
-                      <div key={l} className="bg-sky/45 px-4 py-5 text-center">
-                        <p className="font-serif-editorial text-[1.6rem] leading-none text-charcoal">
+                      ["13+", "years", "bg-sky/55"],
+                      ["3", "continents", "bg-sage/65"],
+                      ["5+", "industries", "bg-clay/50"],
+                    ].map(([n, l, tint]) => (
+                      <span
+                        key={l}
+                        className={`inline-flex items-baseline gap-3 rounded-full px-6 py-3 ${tint}`}
+                      >
+                        <span className="font-serif-editorial text-[1.5rem] leading-none text-charcoal">
                           {n}
-                        </p>
-                        <p className="label-xs mt-2 !text-charcoal/60">{l}</p>
-                      </div>
+                        </span>
+                        <span className="label-xs !text-charcoal/60">{l}</span>
+                      </span>
                     ))}
                   </div>
+
                 </Reveal>
               </div>
 
@@ -736,51 +755,41 @@ function StrategicPartnership() {
               </Reveal>
             </div>
 
-            <div className="mt-14 grid gap-px bg-line/40 md:grid-cols-2">
+            <div className="mt-16 space-y-14 md:space-y-16">
               {formats.map(([q, a, href], i) => (
                 <Reveal key={q} delay={i * 80}>
                   <a
                     href={href}
-                    className={`group relative flex h-full min-h-[15rem] flex-col justify-between overflow-hidden px-8 py-10 md:min-h-[17rem] md:px-10 md:py-12 ${
-                      ["bg-sage/65", "bg-sky/50", "bg-clay/45", "bg-stone"][i % 4]
-                    }`}
+                    className="group flex flex-col gap-5 md:flex-row md:items-center md:gap-12"
+                    style={{ marginLeft: `${[0, 3.5, 1.5, 5][i % 4]}rem` }}
                   >
-                    <svg
+                    <span
                       aria-hidden
-                      viewBox="0 0 200 200"
-                      className="pointer-events-none absolute -bottom-14 -right-12 h-52 w-52 text-charcoal/15 transition-transform duration-[1200ms] ease-out group-hover:scale-110"
-                      fill="none"
+                      className={`font-serif-editorial grid h-16 w-16 shrink-0 place-items-center rounded-full text-[1.1rem] text-charcoal/60 transition-transform duration-700 group-hover:scale-110 ${
+                        ["bg-sage/70", "bg-sky/60", "bg-clay/50", "bg-blush/50"][i % 4]
+                      }`}
                     >
-                      {[42, 66, 90, 114].map((r) => (
-                        <circle
-                          key={r}
-                          cx="140"
-                          cy="140"
-                          r={r}
-                          stroke="currentColor"
-                          strokeWidth="0.9"
-                        />
-                      ))}
-                    </svg>
-                    <div className="relative">
-                      <span className="label-xs !text-charcoal/50">0{i + 1}</span>
-                      <p className="font-serif-editorial mt-5 text-[clamp(1.3rem,2.1vw,1.9rem)] leading-[1.15] text-charcoal">
+                      0{i + 1}
+                    </span>
+                    <div className="min-w-0">
+                      <p className="font-serif-editorial max-w-[30rem] text-[clamp(1.4rem,2.6vw,2.3rem)] leading-[1.12] text-charcoal">
                         {q}
                       </p>
+                      <p className="label-xs mt-4 !text-charcoal !tracking-[0.22em]">
+                        <span
+                          aria-hidden
+                          className="mr-3 inline-block transition-transform duration-500 group-hover:translate-x-1"
+                        >
+                          →
+                        </span>
+                        {a}
+                      </p>
                     </div>
-                    <p className="label-xs relative mt-10 !text-charcoal !tracking-[0.22em]">
-                      <span
-                        aria-hidden
-                        className="mr-3 inline-block transition-transform duration-500 group-hover:translate-x-1"
-                      >
-                        →
-                      </span>
-                      {a}
-                    </p>
                   </a>
                 </Reveal>
               ))}
             </div>
+
           </div>
         </section>
 

@@ -362,20 +362,26 @@ function StrategicPartnership() {
               </h2>
             </Reveal>
 
-            <div className="mt-14 grid gap-px border-y border-line bg-line sm:grid-cols-2 lg:grid-cols-4">
+            <div className="mt-14 flex flex-wrap gap-4">
               {[
                 "A marketing problem can begin with the product.",
                 "A growth problem can be rooted in positioning.",
                 "A launch problem can actually be a question of market readiness.",
                 "And sometimes a team is executing constantly while the decisions that should guide that execution remain unresolved.",
               ].map((t, i) => (
-                <Reveal key={t} delay={i * 80}>
-                  <p className="h-full bg-paper px-6 py-8 text-[0.9rem] leading-relaxed text-charcoal/70">
+                <Reveal key={t} delay={i * 80} className="max-w-[22rem] flex-1">
+                  <p
+                    className={`h-full px-7 py-8 text-[0.95rem] leading-relaxed text-charcoal/75 ${
+                      i % 2 === 0 ? "bg-sage/40" : "bg-stone/70"
+                    }`}
+                    style={{ marginTop: `${(i % 3) * 0.9}rem` }}
+                  >
                     {t}
                   </p>
                 </Reveal>
               ))}
             </div>
+
 
             <Reveal delay={160}>
               <div className="mt-12 max-w-[38rem]">
@@ -389,34 +395,52 @@ function StrategicPartnership() {
         </section>
 
         {/* ——— 03 WHERE I WORK ——— */}
-        <section className="rule-thin">
-          <div className="mx-auto max-w-[1440px] px-6 py-20 md:px-10 md:py-28">
+        <section className="rule-thin relative overflow-hidden">
+          <img
+            src={shellHero.url}
+            alt=""
+            aria-hidden
+            className="pointer-events-none absolute left-[-14%] top-1/2 h-[130%] w-auto max-w-none -translate-y-1/2 select-none opacity-[0.18] [filter:sepia(0.05)_saturate(0.3)_brightness(1.3)_contrast(0.8)] [mask-image:radial-gradient(closest-side,black_45%,transparent_100%)]"
+          />
+          <div className="relative mx-auto max-w-[1440px] px-6 py-20 md:px-10 md:py-28">
             <Reveal>
               <h2 className="display-md max-w-[36rem]">
                 I work where several <span className="italic">decisions meet.</span>
               </h2>
             </Reveal>
 
-            <dl className="mt-14 border-t border-line">
-              {fields.map(([k, v], i) => (
-                <Reveal key={k} delay={i * 60}>
-                  <div className="grid gap-2 border-b border-line py-7 md:grid-cols-12 md:items-baseline md:gap-8">
-                    <dt className="label-xs !text-charcoal !tracking-[0.24em] md:col-span-3">
-                      {k}
-                    </dt>
-                    <dd className="font-serif-editorial text-[clamp(1.15rem,2vw,1.75rem)] leading-snug text-charcoal/85 md:col-span-9">
-                      {v}
-                    </dd>
-                  </div>
-                </Reveal>
-              ))}
-            </dl>
+            <div className="mt-16 grid gap-5 sm:grid-cols-2 lg:grid-cols-3 lg:gap-6">
+              {fields.map(([k, v], i) => {
+                const tint =
+                  i % 3 === 0 ? "bg-sage/45" : i % 3 === 1 ? "bg-paper" : "bg-stone/70";
+                const lift = ["lg:mt-0", "lg:mt-10", "lg:mt-20"][i % 3] ?? "";
+                return (
+                  <Reveal key={k} delay={i * 70} className={lift}>
+                    <div
+                      className={`group relative h-full overflow-hidden ${tint} px-8 py-10 transition-colors duration-700 hover:bg-sage/60`}
+                    >
+                      <span
+                        aria-hidden
+                        className="font-serif-editorial pointer-events-none absolute -right-2 -top-6 text-[6rem] leading-none text-charcoal/[0.06]"
+                      >
+                        0{i + 1}
+                      </span>
+                      <p className="label-xs !text-charcoal !tracking-[0.26em]">{k}</p>
+                      <p className="font-serif-editorial relative mt-6 text-[clamp(1.15rem,1.6vw,1.5rem)] leading-snug text-charcoal">
+                        {v}
+                      </p>
+                    </div>
+                  </Reveal>
+                );
+              })}
+            </div>
 
-            <p className="label-xs mt-8 !tracking-[0.16em]">
+            <p className="font-serif-editorial mt-14 max-w-[34rem] text-[clamp(1.05rem,1.7vw,1.45rem)] italic leading-snug text-charcoal/80">
               The work rarely stays inside one box. That’s the point.
             </p>
           </div>
         </section>
+
 
         {/* ——— 04 THE THREE SERVICES, IN DETAIL ——— */}
         <section id="involvement" className="rule-thin bg-paper">
@@ -496,44 +520,58 @@ function StrategicPartnership() {
         {/* ——— 08 IS / ISN’T ——— */}
         <section className="rule-thin bg-paper">
           <div className="mx-auto max-w-[1440px] px-6 py-20 md:px-10 md:py-28">
-            <div className="grid gap-12 md:grid-cols-2 md:gap-16">
-              <Reveal>
-                <div className="md:pr-10">
+            <div className="grid gap-14 md:grid-cols-12 md:gap-10">
+              <div className="md:col-span-7">
+                <Reveal>
                   <p className="label-xs !text-charcoal">This works well when —</p>
-                  <ul className="mt-7 border-t border-line">
-                    {worksWhen.map((t) => (
-                      <li
-                        key={t}
-                        className="border-b border-line py-5 font-serif-editorial text-[1.05rem] leading-snug text-charcoal"
+                </Reveal>
+                <div className="mt-8 space-y-4">
+                  {worksWhen.map((t, i) => (
+                    <Reveal key={t} delay={i * 80}>
+                      <div
+                        className="bg-sage/50 px-7 py-6 transition-colors duration-700 hover:bg-sage/70"
+                        style={{
+                          marginLeft: `${i * 1.6}rem`,
+                          maxWidth: "calc(100% - 1rem)",
+                        }}
                       >
-                        {t}
-                      </li>
-                    ))}
-                  </ul>
+                        <p className="font-serif-editorial text-[clamp(1.05rem,1.5vw,1.35rem)] leading-snug text-charcoal">
+                          {t}
+                        </p>
+                      </div>
+                    </Reveal>
+                  ))}
                 </div>
-              </Reveal>
-              <Reveal delay={120}>
-                <div className="md:border-l md:border-line md:pl-16">
+              </div>
+
+              <div className="md:col-span-4 md:col-start-9 md:pt-14">
+                <Reveal delay={120}>
                   <p className="label-xs">Probably not the right fit when —</p>
-                  <ul className="mt-7 border-t border-line">
-                    {notFit.map((t) => (
-                      <li
-                        key={t}
-                        className="border-b border-line py-5 text-[0.92rem] leading-relaxed text-charcoal/60"
-                      >
-                        {t}
-                      </li>
-                    ))}
-                  </ul>
+                </Reveal>
+                <div className="mt-8 space-y-7">
+                  {notFit.map((t, i) => (
+                    <Reveal key={t} delay={140 + i * 80}>
+                      <div className="flex gap-4">
+                        <span
+                          aria-hidden
+                          className="font-serif-editorial mt-[-0.15rem] shrink-0 text-[1.1rem] text-taupe"
+                        >
+                          ×
+                        </span>
+                        <p className="text-[0.9rem] leading-relaxed text-charcoal/55">{t}</p>
+                      </div>
+                    </Reveal>
+                  ))}
                 </div>
-              </Reveal>
+              </div>
             </div>
-            <p className="font-serif-editorial mt-14 max-w-[42rem] text-[clamp(1.15rem,1.9vw,1.6rem)] italic leading-snug text-charcoal">
+            <p className="font-serif-editorial mt-16 max-w-[42rem] text-[clamp(1.15rem,1.9vw,1.6rem)] italic leading-snug text-charcoal">
               Good strategic work requires enough openness to discover that the original question may
               not be the right one.
             </p>
           </div>
         </section>
+
 
         {/* ——— 09 WHO ——— */}
         <section className="rule-thin">
@@ -611,35 +649,64 @@ function StrategicPartnership() {
         </section>
 
         {/* ——— 11 CHOOSING THE FORMAT ——— */}
-        <section className="rule-thin">
-          <div className="mx-auto max-w-[1440px] px-6 py-20 md:px-10 md:py-28">
-            <Reveal>
-              <h2 className="display-md max-w-[30rem]">
-                Not sure which <span className="italic">format fits?</span>
-              </h2>
-            </Reveal>
-            <div className="mt-12 border-t border-line">
+        <section className="rule-thin relative overflow-hidden">
+          <div className="relative mx-auto max-w-[1440px] px-6 py-20 md:px-10 md:py-28">
+            <div className="grid gap-8 md:grid-cols-12 md:items-end">
+              <Reveal className="md:col-span-6">
+                <h2 className="display-md">
+                  Not sure which <span className="italic">format fits?</span>
+                </h2>
+              </Reveal>
+              <Reveal delay={100} className="md:col-span-4 md:col-start-9">
+                <p className="body-read">
+                  Start from the sentence that sounds most like your situation.
+                </p>
+              </Reveal>
+            </div>
+
+            <div className="mt-14 grid gap-6 md:grid-cols-2 lg:gap-8">
               {formats.map(([q, a, href], i) => (
-                <Reveal key={q} delay={i * 70}>
+                <Reveal key={q} delay={i * 80} className={i % 2 === 1 ? "md:mt-10" : ""}>
                   <a
                     href={href}
-                    className="group grid gap-2 border-b border-line py-7 transition-colors hover:bg-sage/20 md:grid-cols-12 md:items-baseline md:gap-8"
+                    className={`group relative flex h-full flex-col justify-between overflow-hidden px-8 py-10 transition-colors duration-700 hover:bg-sage/60 md:px-10 md:py-12 ${i % 2 === 0 ? "bg-sage/40" : "bg-stone/70"}`}
                   >
-                    <span className="font-serif-editorial text-[clamp(1.1rem,1.9vw,1.6rem)] text-charcoal md:col-span-7">
+                    <svg
+                      aria-hidden
+                      viewBox="0 0 200 200"
+                      className="pointer-events-none absolute -bottom-16 -right-14 h-52 w-52 text-olive/25 transition-transform duration-[1200ms] ease-out group-hover:scale-110"
+                      fill="none"
+                    >
+                      {[42, 66, 90, 114].map((r) => (
+                        <circle
+                          key={r}
+                          cx="140"
+                          cy="140"
+                          r={r}
+                          stroke="currentColor"
+                          strokeWidth="0.9"
+                        />
+                      ))}
+                    </svg>
+                    <p className="font-serif-editorial relative text-[clamp(1.3rem,2.3vw,2rem)] leading-[1.15] text-charcoal">
                       {q}
-                    </span>
-                    <span className="label-xs !text-charcoal !tracking-[0.2em] md:col-span-5">
-                      <span aria-hidden className="mr-3 text-olive">
+                    </p>
+                    <p className="label-xs relative mt-10 !text-charcoal !tracking-[0.22em]">
+                      <span
+                        aria-hidden
+                        className="mr-3 inline-block text-olive transition-transform duration-500 group-hover:translate-x-1"
+                      >
                         →
                       </span>
                       {a}
-                    </span>
+                    </p>
                   </a>
                 </Reveal>
               ))}
             </div>
           </div>
         </section>
+
 
         {/* ——— 12 FINAL CTA ——— */}
         <section id="start" className="rule-thin relative overflow-hidden bg-paper">

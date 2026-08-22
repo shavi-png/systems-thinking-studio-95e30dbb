@@ -818,20 +818,55 @@ export function ProcessOrbit({
 
   // label anchor positions (percent of box) — loosely orbital, kept clear of the rings
   const spots = [
-    { left: "2%", top: "0%" },
-    { left: "64%", top: "0%" },
-    { left: "76%", top: "44%" },
-    { left: "60%", top: "84%" },
-    { left: "10%", top: "84%" },
-    { left: "0%", top: "42%" },
+    { left: "1%", top: "-2%" },
+    { left: "63%", top: "-2%" },
+    { left: "78%", top: "43%" },
+    { left: "60%", top: "85%" },
+    { left: "8%", top: "85%" },
+    { left: "-1%", top: "42%" },
   ];
 
   const rings = [34, 66, 98, 130];
 
+  // logarithmic spiral through the chambers
+  const spiral = (() => {
+    const pts: string[] = [];
+    for (let i = 0; i <= 220; i++) {
+      const t = (i / 220) * (Math.PI * 4.4);
+      const r = 7 * Math.exp(0.3 * t) * 0.85;
+      if (r > 131) break;
+      pts.push(`${(r * Math.cos(t)).toFixed(2)},${(r * 0.7 * Math.sin(t)).toFixed(2)}`);
+    }
+    return `M${pts.join("L")}`;
+  })();
+
   return (
     <div ref={ref} className="relative mx-auto w-full max-w-[42rem]">
+      {/* soft sage halo */}
+      <div
+        aria-hidden
+        className="pointer-events-none absolute left-1/2 top-1/2 aspect-square w-[96%] -translate-x-1/2 -translate-y-1/2 rounded-full"
+        style={{
+          background:
+            "radial-gradient(closest-side, color-mix(in oklab, var(--olive) 26%, var(--sage)), color-mix(in oklab, var(--sage) 70%, transparent) 55%, transparent 78%)",
+          opacity: shown ? 1 : 0,
+          transition: "opacity 1.6s ease 120ms",
+        }}
+      />
       <div className="relative aspect-[5/4] w-full">
-        <svg viewBox="-230 -184 460 368" className="absolute inset-0 h-full w-full" fill="none" aria-hidden>
+        <svg
+          viewBox="-230 -184 460 368"
+          className="absolute inset-0 h-full w-full"
+          fill="none"
+          aria-hidden
+        >
+          <defs>
+            <linearGradient id="orbitFade" x1="0" y1="0" x2="1" y2="1">
+              <stop offset="0%" stopColor="var(--olive)" stopOpacity="0.15" />
+              <stop offset="45%" stopColor="var(--olive)" stopOpacity="0.9" />
+              <stop offset="100%" stopColor="var(--olive)" stopOpacity="0.9" />
+            </linearGradient>
+          </defs>
           {rings.map((r, i) => (
             <ellipse
               key={r}
@@ -839,12 +874,26 @@ export function ProcessOrbit({
               cy="0"
               rx={r}
               ry={r * 0.7}
-              stroke="var(--smoke)"
+              stroke="var(--olive)"
               strokeWidth="0.7"
-              opacity={shown ? 0.45 - i * 0.06 : 0}
+              opacity={shown ? 0.42 - i * 0.06 : 0}
               style={{ transition: `opacity 1.2s ease ${i * 180}ms` }}
             />
           ))}
+
+          <path
+            d={spiral}
+            stroke="url(#orbitFade)"
+            strokeWidth="1.1"
+            strokeLinecap="round"
+            opacity="0.75"
+            style={{
+              strokeDasharray: 1400,
+              strokeDashoffset: shown ? 0 : 1400,
+              transition: "stroke-dashoffset 2.6s cubic-bezier(0.22,1,0.36,1) 200ms",
+            }}
+          />
+
           {rings.map((r, i) => {
             const t = -Math.PI / 2 + (i * 2 * Math.PI) / 4 + 0.5;
             return (
@@ -852,21 +901,35 @@ export function ProcessOrbit({
                 key={`d${r}`}
                 cx={r * Math.cos(t)}
                 cy={r * 0.7 * Math.sin(t)}
-                r="2.6"
+                r="3.2"
                 fill="var(--olive)"
-                opacity={shown ? 0.65 : 0}
+                opacity={shown ? 0.8 : 0}
                 style={{ transition: `opacity 900ms ease ${400 + i * 200}ms` }}
               />
             );
           })}
-          <circle cx="0" cy="0" r="14" fill="var(--sage)" opacity={shown ? 0.7 : 0} style={{ transition: "opacity 1s ease 200ms" }} />
-          <circle cx="0" cy="0" r="4" fill="var(--olive)" opacity={shown ? 0.9 : 0} style={{ transition: "opacity 1s ease 300ms" }} />
+          <circle
+            cx="0"
+            cy="0"
+            r="18"
+            fill="var(--paper)"
+            opacity={shown ? 0.9 : 0}
+            style={{ transition: "opacity 1s ease 200ms" }}
+          />
+          <circle
+            cx="0"
+            cy="0"
+            r="4.5"
+            fill="var(--olive)"
+            opacity={shown ? 0.95 : 0}
+            style={{ transition: "opacity 1s ease 300ms" }}
+          />
         </svg>
 
         {steps.map((s, i) => (
           <div
             key={s.label}
-            className="absolute max-w-[8.75rem]"
+            className="absolute max-w-[9.5rem] bg-paper/70 px-3 py-2 backdrop-blur-[2px]"
             style={{
               left: spots[i]?.left,
               top: spots[i]?.top,
@@ -875,7 +938,7 @@ export function ProcessOrbit({
               transition: `opacity 900ms ease ${500 + i * 160}ms, transform 900ms ease ${500 + i * 160}ms`,
             }}
           >
-            <p className="label-xs !tracking-[0.2em]">
+            <p className="label-xs !tracking-[0.2em] !text-charcoal">
               <span className="text-olive">{s.n}</span> {s.label}
             </p>
             <p className="mt-1.5 text-[0.72rem] leading-relaxed text-charcoal/60">{s.note}</p>
@@ -885,3 +948,4 @@ export function ProcessOrbit({
     </div>
   );
 }
+

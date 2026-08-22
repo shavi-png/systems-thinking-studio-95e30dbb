@@ -132,7 +132,7 @@ const services: Service[] = [
 function ServiceCard({ s }: { s: Service }) {
   return (
     <a href={`#${s.id}`} className="group block">
-      <div className="relative overflow-hidden rounded-[50%] bg-stone">
+      <div className="relative overflow-hidden bg-stone">
         <img
           src={s.img}
           alt=""

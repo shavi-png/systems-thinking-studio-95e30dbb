@@ -407,7 +407,7 @@ function StrategicPartnership() {
               {fields.map(([k, v], i) => {
                 const tint =
                   i % 3 === 0 ? "bg-sage/45" : i % 3 === 1 ? "bg-paper" : "bg-stone/70";
-                const lift = ["lg:mt-0", "lg:mt-10", "lg:mt-20"][i % 3];
+                const lift = ["lg:mt-0", "lg:mt-10", "lg:mt-20"][i % 3] ?? "";
                 return (
                   <Reveal key={k} delay={i * 70} className={lift}>
                     <div

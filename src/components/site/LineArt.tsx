@@ -816,136 +816,151 @@ export function ProcessOrbit({
 }) {
   const { ref, shown } = useReveal<HTMLDivElement>(0.2);
 
-  // label anchor positions (percent of box) — loosely orbital, kept clear of the rings
-  const spots = [
-    { left: "1%", top: "-2%" },
-    { left: "63%", top: "-2%" },
-    { left: "78%", top: "43%" },
-    { left: "60%", top: "85%" },
-    { left: "8%", top: "85%" },
-    { left: "-1%", top: "42%" },
-  ];
+  // One continuous nautilus spiral; each step sits on it, outward from the centre.
+  const a = 6;
+  const turns = 2.6;
+  const tMax = Math.PI * 2 * turns;
+  const b = Math.log(175 / a) / tMax;
 
-  const rings = [34, 66, 98, 130];
 
-  // logarithmic spiral through the chambers
-  const spiral = (() => {
+  const pt = (t: number) => {
+    const r = a * Math.exp(b * t);
+    return {
+      x: Number((r * Math.cos(t - Math.PI / 2)).toFixed(2)),
+      y: Number((r * 0.82 * Math.sin(t - Math.PI / 2)).toFixed(2)),
+    };
+  };
+
+  const path = (() => {
     const pts: string[] = [];
-    for (let i = 0; i <= 220; i++) {
-      const t = (i / 220) * (Math.PI * 4.4);
-      const r = 7 * Math.exp(0.3 * t) * 0.85;
-      if (r > 131) break;
-      pts.push(`${(r * Math.cos(t)).toFixed(2)},${(r * 0.7 * Math.sin(t)).toFixed(2)}`);
+    for (let i = 0; i <= 460; i++) {
+      const { x, y } = pt((i / 460) * tMax);
+      pts.push(`${x.toFixed(2)},${y.toFixed(2)}`);
     }
     return `M${pts.join("L")}`;
   })();
 
+  // steps spread evenly around the outer turn so labels never collide
+  const nodes = steps.map((s, i) => {
+    const t = tMax - Math.PI * 2 + (i * Math.PI * 2) / steps.length;
+    const p = pt(t);
+    const right = p.x >= -4;
+    return { ...s, ...p, right };
+  });
+
   return (
-    <div ref={ref} className="relative mx-auto w-full max-w-[42rem]">
-      {/* soft sage halo */}
-      <div
-        aria-hidden
-        className="pointer-events-none absolute left-1/2 top-1/2 aspect-square w-[96%] -translate-x-1/2 -translate-y-1/2 rounded-full"
-        style={{
-          background:
-            "radial-gradient(closest-side, color-mix(in oklab, var(--olive) 26%, var(--sage)), color-mix(in oklab, var(--sage) 70%, transparent) 55%, transparent 78%)",
-          opacity: shown ? 1 : 0,
-          transition: "opacity 1.6s ease 120ms",
-        }}
-      />
-      <div className="relative aspect-[5/4] w-full">
-        <svg
-          viewBox="-230 -184 460 368"
-          className="absolute inset-0 h-full w-full"
-          fill="none"
+    <div ref={ref} className="relative mx-auto w-full max-w-[46rem]">
+      <div className="relative aspect-[7/6] w-full">
+        <div
           aria-hidden
+          className="pointer-events-none absolute left-1/2 top-1/2 aspect-square w-[62%] -translate-x-1/2 -translate-y-1/2 rounded-full blur-2xl"
+          style={{
+            background:
+              "radial-gradient(closest-side, color-mix(in oklab, var(--sage) 82%, transparent), transparent 72%)",
+            opacity: shown ? 0.9 : 0,
+            transition: "opacity 1.8s ease 150ms",
+          }}
+        />
+        <svg
+          viewBox="-250 -215 500 430"
+          className="absolute inset-0 h-full w-full overflow-visible"
+          fill="none"
         >
           <defs>
-            <linearGradient id="orbitFade" x1="0" y1="0" x2="1" y2="1">
-              <stop offset="0%" stopColor="var(--olive)" stopOpacity="0.15" />
-              <stop offset="45%" stopColor="var(--olive)" stopOpacity="0.9" />
-              <stop offset="100%" stopColor="var(--olive)" stopOpacity="0.9" />
+            <linearGradient id="orbitInk" x1="0" y1="1" x2="1" y2="0">
+              <stop offset="0%" stopColor="var(--olive)" stopOpacity="0.25" />
+              <stop offset="55%" stopColor="var(--olive)" stopOpacity="0.95" />
+              <stop offset="100%" stopColor="var(--charcoal)" stopOpacity="0.75" />
             </linearGradient>
           </defs>
-          {rings.map((r, i) => (
-            <ellipse
-              key={r}
-              cx="0"
-              cy="0"
-              rx={r}
-              ry={r * 0.7}
-              stroke="var(--olive)"
-              strokeWidth="0.7"
-              opacity={shown ? 0.42 - i * 0.06 : 0}
-              style={{ transition: `opacity 1.2s ease ${i * 180}ms` }}
-            />
-          ))}
 
           <path
-            d={spiral}
-            stroke="url(#orbitFade)"
-            strokeWidth="1.1"
+            d={path}
+            stroke="url(#orbitInk)"
+            strokeWidth="1.4"
             strokeLinecap="round"
-            opacity="0.75"
             style={{
-              strokeDasharray: 1400,
-              strokeDashoffset: shown ? 0 : 1400,
-              transition: "stroke-dashoffset 2.6s cubic-bezier(0.22,1,0.36,1) 200ms",
+              strokeDasharray: 3200,
+              strokeDashoffset: shown ? 0 : 3200,
+              transition: "stroke-dashoffset 3s cubic-bezier(0.22,1,0.36,1) 150ms",
             }}
           />
 
-          {rings.map((r, i) => {
-            const t = -Math.PI / 2 + (i * 2 * Math.PI) / 4 + 0.5;
-            return (
-              <circle
-                key={`d${r}`}
-                cx={r * Math.cos(t)}
-                cy={r * 0.7 * Math.sin(t)}
-                r="3.2"
-                fill="var(--olive)"
-                opacity={shown ? 0.8 : 0}
-                style={{ transition: `opacity 900ms ease ${400 + i * 200}ms` }}
+          {/* back-and-forth motion, drawn into the composition */}
+          <path
+            d="M -238 -150 C -208 -126 -178 -126 -150 -148"
+            stroke="var(--charcoal)"
+            strokeWidth="0.8"
+            strokeDasharray="3 5"
+            opacity={shown ? 0.4 : 0}
+            style={{ transition: "opacity 1.2s ease 1.3s" }}
+          />
+          <path
+            d="M -150 -148 l -9 5 m 9 -5 l -7 -8"
+            stroke="var(--charcoal)"
+            strokeWidth="0.9"
+            opacity={shown ? 0.45 : 0}
+            style={{ transition: "opacity 1.2s ease 1.5s" }}
+          />
+          <path
+            d="M -238 -150 l 9 5 m -9 -5 l 7 -8"
+            stroke="var(--charcoal)"
+            strokeWidth="0.9"
+            opacity={shown ? 0.45 : 0}
+            style={{ transition: "opacity 1.2s ease 1.5s" }}
+          />
+
+          {nodes.map((n, i) => (
+            <g
+              key={n.label}
+              opacity={shown ? 1 : 0}
+              style={{ transition: `opacity 900ms ease ${700 + i * 150}ms` }}
+            >
+              <line
+                x1={n.x}
+                y1={n.y}
+                x2={n.x + (n.right ? 26 : -26)}
+                y2={n.y}
+                stroke="var(--olive)"
+                strokeWidth="0.7"
+                opacity="0.55"
               />
-            );
-          })}
-          <circle
-            cx="0"
-            cy="0"
-            r="18"
-            fill="var(--paper)"
-            opacity={shown ? 0.9 : 0}
-            style={{ transition: "opacity 1s ease 200ms" }}
-          />
-          <circle
-            cx="0"
-            cy="0"
-            r="4.5"
-            fill="var(--olive)"
-            opacity={shown ? 0.95 : 0}
-            style={{ transition: "opacity 1s ease 300ms" }}
-          />
+              <circle cx={n.x} cy={n.y} r="4.4" fill="var(--background)" />
+              <circle cx={n.x} cy={n.y} r="2.9" fill="var(--olive)" />
+            </g>
+          ))}
+
+          <circle cx="0" cy="0" r="3.4" fill="var(--charcoal)" opacity={shown ? 0.85 : 0} />
         </svg>
 
-        {steps.map((s, i) => (
+        {nodes.map((n, i) => (
           <div
-            key={s.label}
-            className="absolute max-w-[9.5rem] bg-paper/70 px-3 py-2 backdrop-blur-[2px]"
+            key={n.label}
+            className={`absolute w-[8.5rem] sm:w-[10.5rem] ${n.right ? "text-left" : "text-right"}`}
             style={{
-              left: spots[i]?.left,
-              top: spots[i]?.top,
+              left: `calc(50% + ${(((n.x + (n.right ? 30 : -30)) / 500) * 100).toFixed(2)}%)`,
+              top: `calc(50% + ${((n.y / 430) * 100).toFixed(2)}% - 1.1rem)`,
+              transform: n.right ? "none" : "translateX(-100%)",
               opacity: shown ? 1 : 0,
-              transform: shown ? "none" : "translateY(8px)",
-              transition: `opacity 900ms ease ${500 + i * 160}ms, transform 900ms ease ${500 + i * 160}ms`,
+              transition: `opacity 900ms ease ${800 + i * 150}ms`,
             }}
           >
             <p className="label-xs !tracking-[0.2em] !text-charcoal">
-              <span className="text-olive">{s.n}</span> {s.label}
+              <span className="text-olive">{n.n}</span> {n.label}
             </p>
-            <p className="mt-1.5 text-[0.72rem] leading-relaxed text-charcoal/60">{s.note}</p>
+            <p className="mt-1 text-[0.7rem] leading-snug text-charcoal/55">{n.note}</p>
           </div>
         ))}
+
+        <p
+          className="font-serif-editorial absolute left-[2%] top-[13%] w-[11rem] text-[0.95rem] italic leading-snug text-charcoal/70"
+          style={{ opacity: shown ? 1 : 0, transition: "opacity 1.2s ease 1.7s" }}
+        >
+          The process can move back and forth.
+        </p>
       </div>
     </div>
   );
 }
+
 

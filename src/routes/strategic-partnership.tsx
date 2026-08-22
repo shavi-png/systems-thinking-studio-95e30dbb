@@ -8,6 +8,7 @@ import shellHero from "@/assets/shell-hero.jpg.asset.json";
 import advisoryImg from "@/assets/sp-advisory.jpg";
 import strategyImg from "@/assets/sp-strategy.jpg";
 import cmoImg from "@/assets/sp-cmo.jpg";
+import portraitImg from "@/assets/vita-portrait.jpg";
 
 const title = "Strategic Partnership — Vita Shablii";
 const description =
@@ -531,7 +532,7 @@ function StrategicPartnership() {
                     <Reveal
                       key={t}
                       delay={i * 70}
-                      className={i === 0 ? "sm:col-span-2" : undefined}
+                      className={i === 0 ? "sm:col-span-2" : ""}
                     >
                       <div
                         className={`group flex h-full items-start gap-5 px-7 py-8 transition-colors duration-500 md:px-8 md:py-9 ${

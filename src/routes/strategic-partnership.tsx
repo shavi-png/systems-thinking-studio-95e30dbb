@@ -162,7 +162,7 @@ function ServiceDetail({ s, i }: { s: Service; i: number }) {
         <div className="grid items-center gap-12 lg:grid-cols-12 lg:gap-16">
           <div className={`lg:col-span-5 ${flip ? "lg:order-2 lg:col-start-8" : ""}`}>
             <Reveal>
-              <div className="overflow-hidden rounded-[50%] bg-stone">
+              <div className="overflow-hidden bg-stone">
                 <img
                   src={s.img}
                   alt=""

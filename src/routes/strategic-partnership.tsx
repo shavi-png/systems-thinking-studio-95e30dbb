@@ -130,29 +130,8 @@ const services: Service[] = [
   },
 ];
 
-function ServiceCard({ s }: { s: Service }) {
-  return (
-    <a href={`#${s.id}`} className="group block">
-      <p className="label-xs !tracking-[0.24em] text-olive">{s.n}</p>
-      <h3 className="display-md mt-4 !text-[clamp(1.6rem,2.3vw,2.1rem)]">{s.name}</h3>
-      <p className="mt-4 font-serif-editorial text-[1.05rem] italic leading-snug text-charcoal/80">
-        {s.tagline}
-      </p>
-      <p className="label-xs mt-5 !tracking-[0.16em]">{s.best}</p>
-      <div className="relative mt-8 overflow-hidden bg-stone">
-        <img
-          src={s.img}
-          alt=""
-          loading="lazy"
-          className="aspect-[5/4] w-full object-cover transition-transform duration-[1200ms] ease-out group-hover:scale-[1.04]"
-        />
-      </div>
-      <span className="link-editorial mt-7">
-        See how it works <span aria-hidden>→</span>
-      </span>
-    </a>
-  );
-}
+
+
 
 
 function ServiceDetail({ s, i }: { s: Service; i: number }) {

@@ -807,3 +807,81 @@ export function ChamberSet({
     </div>
   );
 }
+
+/** Concentric process orbit — the strategy cycle, six stations around one core. */
+export function ProcessOrbit({
+  steps,
+}: {
+  steps: { n: string; label: string; note: string }[];
+}) {
+  const { ref, shown } = useReveal<HTMLDivElement>(0.2);
+
+  // label anchor positions (percent of box) — loosely orbital, kept clear of the rings
+  const spots = [
+    { left: "1%", top: "6%" },
+    { left: "62%", top: "6%" },
+    { left: "68%", top: "56%" },
+    { left: "44%", top: "84%" },
+    { left: "6%", top: "82%" },
+    { left: "0%", top: "44%" },
+  ];
+
+  const rings = [46, 92, 138, 186];
+
+  return (
+    <div ref={ref} className="relative mx-auto w-full max-w-[42rem]">
+      <div className="relative aspect-[4/3] w-full">
+        <svg viewBox="-230 -172 460 344" className="absolute inset-0 h-full w-full" fill="none" aria-hidden>
+          {rings.map((r, i) => (
+            <ellipse
+              key={r}
+              cx="0"
+              cy="0"
+              rx={r}
+              ry={r * 0.74}
+              stroke="var(--smoke)"
+              strokeWidth="0.7"
+              opacity={shown ? 0.45 - i * 0.06 : 0}
+              style={{ transition: `opacity 1.2s ease ${i * 180}ms` }}
+            />
+          ))}
+          {rings.map((r, i) => {
+            const t = -Math.PI / 2 + (i * 2 * Math.PI) / 4 + 0.5;
+            return (
+              <circle
+                key={`d${r}`}
+                cx={r * Math.cos(t)}
+                cy={r * 0.74 * Math.sin(t)}
+                r="2.6"
+                fill="var(--olive)"
+                opacity={shown ? 0.65 : 0}
+                style={{ transition: `opacity 900ms ease ${400 + i * 200}ms` }}
+              />
+            );
+          })}
+          <circle cx="0" cy="0" r="14" fill="var(--sage)" opacity={shown ? 0.7 : 0} style={{ transition: "opacity 1s ease 200ms" }} />
+          <circle cx="0" cy="0" r="4" fill="var(--olive)" opacity={shown ? 0.9 : 0} style={{ transition: "opacity 1s ease 300ms" }} />
+        </svg>
+
+        {steps.map((s, i) => (
+          <div
+            key={s.label}
+            className="absolute max-w-[9.5rem]"
+            style={{
+              left: spots[i]?.left,
+              top: spots[i]?.top,
+              opacity: shown ? 1 : 0,
+              transform: shown ? "none" : "translateY(8px)",
+              transition: `opacity 900ms ease ${500 + i * 160}ms, transform 900ms ease ${500 + i * 160}ms`,
+            }}
+          >
+            <p className="label-xs !tracking-[0.2em]">
+              <span className="text-olive">{s.n}</span> {s.label}
+            </p>
+            <p className="mt-1.5 text-[0.72rem] leading-relaxed text-charcoal/60">{s.note}</p>
+          </div>
+        ))}
+      </div>
+    </div>
+  );
+}

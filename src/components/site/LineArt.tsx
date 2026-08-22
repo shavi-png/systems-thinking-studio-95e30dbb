@@ -818,27 +818,27 @@ export function ProcessOrbit({
 
   // label anchor positions (percent of box) — loosely orbital, kept clear of the rings
   const spots = [
-    { left: "1%", top: "6%" },
-    { left: "62%", top: "6%" },
-    { left: "68%", top: "56%" },
-    { left: "44%", top: "84%" },
-    { left: "6%", top: "82%" },
-    { left: "0%", top: "44%" },
+    { left: "2%", top: "0%" },
+    { left: "64%", top: "0%" },
+    { left: "76%", top: "44%" },
+    { left: "60%", top: "84%" },
+    { left: "10%", top: "84%" },
+    { left: "0%", top: "42%" },
   ];
 
-  const rings = [46, 92, 138, 186];
+  const rings = [40, 78, 116, 152];
 
   return (
     <div ref={ref} className="relative mx-auto w-full max-w-[42rem]">
-      <div className="relative aspect-[4/3] w-full">
-        <svg viewBox="-230 -172 460 344" className="absolute inset-0 h-full w-full" fill="none" aria-hidden>
+      <div className="relative aspect-[5/4] w-full">
+        <svg viewBox="-230 -184 460 368" className="absolute inset-0 h-full w-full" fill="none" aria-hidden>
           {rings.map((r, i) => (
             <ellipse
               key={r}
               cx="0"
               cy="0"
               rx={r}
-              ry={r * 0.74}
+              ry={r * 0.7}
               stroke="var(--smoke)"
               strokeWidth="0.7"
               opacity={shown ? 0.45 - i * 0.06 : 0}
@@ -851,7 +851,7 @@ export function ProcessOrbit({
               <circle
                 key={`d${r}`}
                 cx={r * Math.cos(t)}
-                cy={r * 0.74 * Math.sin(t)}
+                cy={r * 0.7 * Math.sin(t)}
                 r="2.6"
                 fill="var(--olive)"
                 opacity={shown ? 0.65 : 0}
@@ -866,7 +866,7 @@ export function ProcessOrbit({
         {steps.map((s, i) => (
           <div
             key={s.label}
-            className="absolute max-w-[9.5rem]"
+            className="absolute max-w-[8.75rem]"
             style={{
               left: spots[i]?.left,
               top: spots[i]?.top,

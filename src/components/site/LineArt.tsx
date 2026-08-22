@@ -848,7 +848,7 @@ export function ProcessOrbit({
         className="pointer-events-none absolute left-1/2 top-1/2 aspect-square w-[96%] -translate-x-1/2 -translate-y-1/2 rounded-full"
         style={{
           background:
-            "radial-gradient(closest-side, var(--sage), color-mix(in oklab, var(--sage) 45%, transparent) 58%, transparent 78%)",
+            "radial-gradient(closest-side, color-mix(in oklab, var(--olive) 26%, var(--sage)), color-mix(in oklab, var(--sage) 70%, transparent) 55%, transparent 78%)",
           opacity: shown ? 1 : 0,
           transition: "opacity 1.6s ease 120ms",
         }}

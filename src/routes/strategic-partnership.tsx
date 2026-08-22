@@ -33,54 +33,189 @@ const fields = [
   ["Organisation", "What people, processes and decisions need to support it?"],
 ] as const;
 
-const advisoryFit = [
-  "You are deciding how to position or reposition a product.",
-  "You are preparing for a launch or market entry.",
-  "Growth has slowed and the reason isn’t obvious.",
-  "Your marketing has become fragmented.",
-  "You are considering a significant change in direction.",
-  "Or you simply need a senior strategic perspective before making an important decision.",
+type Service = {
+  id: string;
+  n: string;
+  name: string;
+  tagline: string;
+  best: string;
+  img: string;
+  lede: string[];
+  listLabel: string;
+  list: string[];
+  outcomeLabel: string;
+  outcome: string;
+  cta: string;
+};
+
+const services: Service[] = [
+  {
+    id: "advisory",
+    n: "01",
+    name: "Strategic Advisory",
+    tagline: "See the situation from another angle.",
+    best: "One decision · focused engagement",
+    img: advisoryImg,
+    lede: [
+      "For a specific decision, challenge or moment of uncertainty. You bring the context — a product, launch, market, positioning question or growth challenge — and we work through what is actually happening beneath the surface.",
+      "Rather than jumping directly to solutions, we clarify the situation, identify the decisions that matter and define the most useful way forward.",
+    ],
+    listLabel: "Right for you if",
+    list: [
+      "You are deciding how to position or reposition a product.",
+      "You are preparing for a launch or market entry.",
+      "Growth has slowed and the reason isn’t obvious.",
+      "Your marketing has become fragmented.",
+      "You are considering a significant change in direction.",
+    ],
+    outcomeLabel: "What you leave with",
+    outcome:
+      "A clearer understanding of the situation, the decisions that matter and what should happen next.",
+    cta: "Discuss your context",
+  },
+  {
+    id: "strategy",
+    n: "02",
+    name: "Strategy Development",
+    tagline: "When clarity needs to become a strategy.",
+    best: "Project · built together",
+    img: strategyImg,
+    lede: [
+      "Some situations cannot be resolved in one conversation. They require looking deeper into the product, customer, market, competition, positioning and existing marketing system — and turning what we learn into a coherent direction.",
+      "In these engagements, I don’t simply advise on the strategy. I develop it with you.",
+    ],
+    listLabel: "The work may include",
+    list: [
+      "Business, product & market logic",
+      "Positioning & value proposition",
+      "Go-to-market",
+      "Marketing architecture",
+      "Customer journey & lifecycle",
+      "Channels, priorities & measurement",
+      "AI & automation opportunities",
+    ],
+    outcomeLabel: "The outcome",
+    outcome:
+      "A working strategic system leadership and teams can use to set priorities, evaluate opportunities and make better decisions.",
+    cta: "Explore a strategy project",
+  },
+  {
+    id: "fractional",
+    n: "03",
+    name: "Fractional CMO",
+    tagline: "Senior marketing leadership without another full-time hire.",
+    best: "Ongoing · embedded partner",
+    img: cmoImg,
+    lede: [
+      "For businesses that need more than strategic recommendations — they need someone to help make the strategy work inside the company.",
+      "The role sits between strategy and execution: setting direction, creating priorities, connecting marketing with product and commercial decisions, strengthening the team and building the systems marketing needs to operate coherently.",
+    ],
+    listLabel: "What I take on",
+    list: [
+      "Strategic direction & priorities",
+      "Marketing architecture",
+      "Team structure & capability",
+      "Leadership & decision-making",
+      "Execution oversight",
+      "Technology, AI & automation",
+    ],
+    outcomeLabel: "My role",
+    outcome:
+      "Not an outsourced marketing department — the direction, structure and decision-making environment that helps your people do better work.",
+    cta: "Discuss fractional leadership",
+  },
 ];
 
-const strategyScope = [
-  "Business & product context",
-  "Customer & market logic",
-  "Positioning & value proposition",
-  "Go-to-market",
-  "Marketing architecture",
-  "Customer journey & lifecycle",
-  "Channel & communication logic",
-  "Priorities & roadmap",
-  "Measurement",
-  "AI & automation opportunities",
-];
+function ServiceCard({ s }: { s: Service }) {
+  return (
+    <a href={`#${s.id}`} className="group block">
+      <div className="relative overflow-hidden rounded-[50%] bg-stone">
+        <img
+          src={s.img}
+          alt=""
+          loading="lazy"
+          className="aspect-[4/5] w-full object-cover transition-transform duration-[1200ms] ease-out group-hover:scale-[1.04]"
+        />
+      </div>
+      <p className="label-xs mt-6 !tracking-[0.24em] text-olive">
+        {s.n} — {s.best}
+      </p>
+      <h3 className="display-md mt-3 !text-[clamp(1.5rem,2.2vw,2rem)]">{s.name}</h3>
+      <p className="mt-3 font-serif-editorial text-[1.05rem] italic leading-snug text-charcoal/80">
+        {s.tagline}
+      </p>
+      <span className="link-editorial mt-6">
+        See how it works <span aria-hidden>→</span>
+      </span>
+    </a>
+  );
+}
 
-const cmoScope = [
-  [
-    "Strategic direction",
-    "Defining what marketing should accomplish and where the business should focus.",
-  ],
-  [
-    "Marketing architecture",
-    "Connecting positioning, acquisition, lifecycle, content, brand and customer experience into one system.",
-  ],
-  [
-    "Team & capability",
-    "Structuring the marketing function, defining roles, identifying capability gaps and helping the team operate more effectively.",
-  ],
-  [
-    "Leadership & decision-making",
-    "Working with founders and management on priorities, budgets, launches and growth decisions.",
-  ],
-  [
-    "Execution oversight",
-    "Guiding internal teams, agencies and partners without becoming another layer of micromanagement.",
-  ],
-  [
-    "Technology, AI & automation",
-    "Identifying where technology can remove repetitive work, improve decision-making or create leverage.",
-  ],
-] as const;
+function ServiceDetail({ s, i }: { s: Service; i: number }) {
+  const flip = i % 2 === 1;
+  return (
+    <section id={s.id} className={`rule-thin ${i % 2 === 1 ? "bg-paper" : ""}`}>
+      <div className="mx-auto max-w-[1440px] px-6 py-20 md:px-10 md:py-24">
+        <div className="grid items-center gap-12 lg:grid-cols-12 lg:gap-16">
+          <div className={`lg:col-span-5 ${flip ? "lg:order-2 lg:col-start-8" : ""}`}>
+            <Reveal>
+              <div className="overflow-hidden rounded-[50%] bg-stone">
+                <img
+                  src={s.img}
+                  alt=""
+                  loading="lazy"
+                  className="aspect-[4/5] w-full object-cover"
+                />
+              </div>
+            </Reveal>
+          </div>
+
+          <div className={`lg:col-span-6 ${flip ? "lg:order-1 lg:col-start-1" : "lg:col-start-7"}`}>
+            <Reveal delay={100}>
+              <p className="label-xs !tracking-[0.26em] text-olive">
+                {s.n} — {s.best}
+              </p>
+              <h2 className="display-md mt-5 !text-[clamp(1.9rem,3.4vw,3rem)]">{s.name}</h2>
+              <p className="mt-5 font-serif-editorial text-[clamp(1.2rem,2vw,1.7rem)] italic leading-snug text-charcoal">
+                {s.tagline}
+              </p>
+              {s.lede.map((p) => (
+                <p key={p} className="body-read mt-5">
+                  {p}
+                </p>
+              ))}
+
+              <p className="label-xs mt-10">{s.listLabel}</p>
+              <ul className="mt-4 grid gap-x-8 gap-y-2 sm:grid-cols-2">
+                {s.list.map((t) => (
+                  <li
+                    key={t}
+                    className="flex gap-3 py-1.5 text-[0.9rem] leading-relaxed text-charcoal/75"
+                  >
+                    <span aria-hidden className="mt-[0.55rem] h-1.5 w-1.5 shrink-0 bg-olive" />
+                    {t}
+                  </li>
+                ))}
+              </ul>
+
+              <div className="mt-9 border-l-2 border-olive bg-sage/35 px-7 py-6">
+                <p className="label-xs !tracking-[0.2em]">{s.outcomeLabel}</p>
+                <p className="mt-3 font-serif-editorial text-[clamp(1.1rem,1.8vw,1.5rem)] leading-snug text-charcoal">
+                  {s.outcome}
+                </p>
+              </div>
+
+              <a href="#start" className="link-editorial mt-8">
+                {s.cta} <span aria-hidden>→</span>
+              </a>
+            </Reveal>
+          </div>
+        </div>
+      </div>
+    </section>
+  );
+}
+
 
 const worksWhen = [
   "You want someone who will question the brief, not simply execute it.",

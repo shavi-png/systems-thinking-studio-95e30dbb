@@ -834,7 +834,7 @@ export function ProcessOrbit({
     for (let i = 0; i <= 220; i++) {
       const t = (i / 220) * (Math.PI * 4.4);
       const r = 7 * Math.exp(0.3 * t) * 0.85;
-      if (r > 145) break;
+      if (r > 131) break;
       pts.push(`${(r * Math.cos(t)).toFixed(2)},${(r * 0.7 * Math.sin(t)).toFixed(2)}`);
     }
     return `M${pts.join("L")}`;
@@ -860,6 +860,13 @@ export function ProcessOrbit({
           fill="none"
           aria-hidden
         >
+          <defs>
+            <linearGradient id="orbitFade" x1="0" y1="0" x2="1" y2="1">
+              <stop offset="0%" stopColor="var(--olive)" stopOpacity="0.15" />
+              <stop offset="45%" stopColor="var(--olive)" stopOpacity="0.9" />
+              <stop offset="100%" stopColor="var(--olive)" stopOpacity="0.9" />
+            </linearGradient>
+          </defs>
           {rings.map((r, i) => (
             <ellipse
               key={r}
@@ -876,7 +883,7 @@ export function ProcessOrbit({
 
           <path
             d={spiral}
-            stroke="var(--olive)"
+            stroke="url(#orbitFade)"
             strokeWidth="1.1"
             strokeLinecap="round"
             opacity="0.75"

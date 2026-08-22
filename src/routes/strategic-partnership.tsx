@@ -8,6 +8,7 @@ import shellHero from "@/assets/shell-hero.jpg.asset.json";
 import advisoryImg from "@/assets/sp-advisory.jpg";
 import strategyImg from "@/assets/sp-strategy.jpg";
 import cmoImg from "@/assets/sp-cmo.jpg";
+import portraitImg from "@/assets/vita-portrait.jpg";
 
 const title = "Strategic Partnership — Vita Shablii";
 const description =
@@ -520,22 +521,37 @@ function StrategicPartnership() {
         {/* ——— 08 IS / ISN’T ——— */}
         <section className="rule-thin bg-paper">
           <div className="mx-auto max-w-[1440px] px-6 py-20 md:px-10 md:py-28">
-            <div className="grid gap-14 md:grid-cols-12 md:gap-10">
-              <div className="md:col-span-7">
+            <div className="grid gap-10 lg:grid-cols-12 lg:gap-8">
+              {/* fit */}
+              <div className="lg:col-span-7">
                 <Reveal>
                   <p className="label-xs !text-charcoal">This works well when —</p>
                 </Reveal>
-                <div className="mt-8 space-y-4">
+                <div className="mt-8 grid gap-px overflow-hidden bg-line/40 sm:grid-cols-2">
                   {worksWhen.map((t, i) => (
-                    <Reveal key={t} delay={i * 80}>
+                    <Reveal
+                      key={t}
+                      delay={i * 70}
+                      className={i === 0 ? "sm:col-span-2" : ""}
+                    >
                       <div
-                        className="bg-sage/50 px-7 py-6 transition-colors duration-700 hover:bg-sage/70"
-                        style={{
-                          marginLeft: `${i * 1.6}rem`,
-                          maxWidth: "calc(100% - 1rem)",
-                        }}
+                        className={`group flex h-full items-start gap-5 px-7 py-8 transition-colors duration-500 md:px-8 md:py-9 ${
+                          [
+                            "bg-sage/70",
+                            "bg-sky/60",
+                            "bg-clay/50",
+                            "bg-stone",
+                            "bg-blush/50",
+                          ][i % 5]
+                        }`}
                       >
-                        <p className="font-serif-editorial text-[clamp(1.05rem,1.5vw,1.35rem)] leading-snug text-charcoal">
+                        <span
+                          aria-hidden
+                          className="font-serif-editorial mt-1 shrink-0 text-[0.9rem] tabular-nums text-charcoal/40"
+                        >
+                          0{i + 1}
+                        </span>
+                        <p className="font-serif-editorial min-w-0 text-[clamp(1.05rem,1.4vw,1.3rem)] leading-snug text-charcoal">
                           {t}
                         </p>
                       </div>
@@ -544,40 +560,42 @@ function StrategicPartnership() {
                 </div>
               </div>
 
-              <div className="md:col-span-4 md:col-start-9 md:pt-14">
+              {/* not fit */}
+              <div className="lg:col-span-5">
                 <Reveal delay={120}>
                   <p className="label-xs">Probably not the right fit when —</p>
                 </Reveal>
-                <div className="mt-8 space-y-7">
-                  {notFit.map((t, i) => (
-                    <Reveal key={t} delay={140 + i * 80}>
-                      <div className="flex gap-4">
-                        <span
-                          aria-hidden
-                          className="font-serif-editorial mt-[-0.15rem] shrink-0 text-[1.1rem] text-taupe"
-                        >
-                          ×
-                        </span>
-                        <p className="text-[0.9rem] leading-relaxed text-charcoal/55">{t}</p>
-                      </div>
-                    </Reveal>
-                  ))}
-                </div>
+                <Reveal delay={180}>
+                  <div className="mt-8 h-[calc(100%-3.5rem)] bg-charcoal px-7 py-9 md:px-9 md:py-10">
+                    <ul className="space-y-6">
+                      {notFit.map((t) => (
+                        <li key={t} className="flex gap-4">
+                          <span aria-hidden className="mt-[0.15rem] shrink-0 text-clay">
+                            ×
+                          </span>
+                          <p className="text-[0.9rem] leading-relaxed text-ivory/70">{t}</p>
+                        </li>
+                      ))}
+                    </ul>
+                  </div>
+                </Reveal>
               </div>
             </div>
-            <p className="font-serif-editorial mt-16 max-w-[42rem] text-[clamp(1.15rem,1.9vw,1.6rem)] italic leading-snug text-charcoal">
-              Good strategic work requires enough openness to discover that the original question may
-              not be the right one.
-            </p>
+
+            <Reveal>
+              <p className="font-serif-editorial mt-14 max-w-[46rem] text-[clamp(1.15rem,1.9vw,1.6rem)] italic leading-snug text-charcoal">
+                Good strategic work requires enough openness to discover that the original question
+                may not be the right one.
+              </p>
+            </Reveal>
           </div>
         </section>
-
 
         {/* ——— 09 WHO ——— */}
         <section className="rule-thin">
           <div className="mx-auto max-w-[1440px] px-6 py-20 md:px-10 md:py-28">
             <div className="grid gap-12 md:grid-cols-12">
-              <div className="md:col-span-6">
+              <div className="md:col-span-5">
                 <Reveal>
                   <h2 className="display-md">
                     Usually, there is already something real to{" "}
@@ -591,20 +609,39 @@ function StrategicPartnership() {
                   </p>
                 </Reveal>
               </div>
-              <div className="md:col-span-5 md:col-start-8">
-                <Reveal delay={120}>
+
+              <div className="md:col-span-7">
+                <Reveal delay={100}>
                   <p className="label-xs">That might be because the company is</p>
-                  <ul className="mt-6 flex flex-wrap gap-2">
-                    {moments.map((m) => (
-                      <li
-                        key={m}
-                        className="border border-line px-4 py-2 text-[0.8rem] text-charcoal/70"
-                      >
-                        {m}
-                      </li>
-                    ))}
-                  </ul>
                 </Reveal>
+                <div className="mt-8 grid gap-4 sm:grid-cols-2 xl:grid-cols-3">
+                  {moments.map((m, i) => (
+                    <Reveal key={m} delay={100 + i * 60}>
+                      <div
+                        className={`group relative flex h-full min-h-[8.5rem] flex-col justify-between overflow-hidden px-6 py-6 transition-transform duration-500 hover:-translate-y-1 ${
+                          [
+                            "bg-sage/70",
+                            "bg-sky/55",
+                            "bg-clay/50",
+                            "bg-stone",
+                            "bg-blush/50",
+                            "bg-sage/45",
+                          ][i % 6]
+                        } ${i === moments.length - 1 ? "sm:col-span-2 xl:col-span-1" : ""}`}
+                      >
+                        <span
+                          aria-hidden
+                          className="font-serif-editorial absolute -bottom-4 right-2 text-[4.5rem] leading-none text-charcoal/[0.07]"
+                        >
+                          {i + 1}
+                        </span>
+                        <p className="font-serif-editorial relative text-[clamp(1.05rem,1.35vw,1.3rem)] leading-snug text-charcoal">
+                          {m}
+                        </p>
+                      </div>
+                    </Reveal>
+                  ))}
+                </div>
               </div>
             </div>
           </div>
@@ -613,8 +650,45 @@ function StrategicPartnership() {
         {/* ——— 10 EXPERIENCE ——— */}
         <section className="rule-thin bg-paper">
           <div className="mx-auto max-w-[1440px] px-6 py-20 md:px-10 md:py-28">
-            <div className="grid gap-12 md:grid-cols-12">
+            <div className="grid gap-12 md:grid-cols-12 md:gap-10">
               <div className="md:col-span-5">
+                <Reveal>
+                  <div className="relative isolate">
+                    <div
+                      aria-hidden
+                      className="absolute -left-4 -top-4 -z-10 hidden h-32 w-32 bg-sage/60 md:block"
+                    />
+                    <img
+                      src={portraitImg}
+                      alt="Vita Shablii"
+                      className="relative aspect-[4/5] w-full object-cover"
+                      loading="lazy"
+                    />
+                    <div
+                      aria-hidden
+                      className="absolute -bottom-5 -right-4 -z-10 hidden h-24 w-24 bg-clay/60 md:block"
+                    />
+                  </div>
+                </Reveal>
+                <Reveal delay={120}>
+                  <div className="mt-10 grid grid-cols-3 gap-px bg-line/40">
+                    {[
+                      ["13+", "years"],
+                      ["3", "continents"],
+                      ["5+", "industries"],
+                    ].map(([n, l]) => (
+                      <div key={l} className="bg-sky/45 px-4 py-5 text-center">
+                        <p className="font-serif-editorial text-[1.6rem] leading-none text-charcoal">
+                          {n}
+                        </p>
+                        <p className="label-xs mt-2 !text-charcoal/60">{l}</p>
+                      </div>
+                    ))}
+                  </div>
+                </Reveal>
+              </div>
+
+              <div className="md:col-span-6 md:col-start-7">
                 <Reveal>
                   <p className="label-xs">Experience behind the work</p>
                   <h2 className="display-md mt-6 !text-[clamp(1.9rem,3.2vw,2.8rem)]">
@@ -622,10 +696,8 @@ function StrategicPartnership() {
                     <span className="italic">built things.</span>
                   </h2>
                 </Reveal>
-              </div>
-              <div className="md:col-span-6 md:col-start-7">
                 <Reveal delay={120}>
-                  <p className="body-read">
+                  <p className="body-read mt-8">
                     13+ years across marketing, strategy and product work, with experience spanning
                     Europe, the US and China and businesses across consulting, IT, e-commerce,
                     fintech and data-driven digital products.
@@ -635,7 +707,7 @@ function StrategicPartnership() {
                     launches and market expansion, developed positioning and go-to-market strategies
                     and worked alongside technology and product teams.
                   </p>
-                  <p className="font-serif-editorial mt-8 border-t border-line pt-6 text-[clamp(1.1rem,1.8vw,1.5rem)] italic leading-snug text-charcoal">
+                  <p className="font-serif-editorial mt-8 bg-sage/55 px-7 py-8 text-[clamp(1.1rem,1.8vw,1.5rem)] italic leading-snug text-charcoal">
                     The value of that experience isn’t the number of things I’ve done. It’s the
                     ability to recognise what kind of problem I’m looking at.
                   </p>
@@ -664,17 +736,19 @@ function StrategicPartnership() {
               </Reveal>
             </div>
 
-            <div className="mt-14 grid gap-6 md:grid-cols-2 lg:gap-8">
+            <div className="mt-14 grid gap-px bg-line/40 md:grid-cols-2">
               {formats.map(([q, a, href], i) => (
-                <Reveal key={q} delay={i * 80} className={i % 2 === 1 ? "md:mt-10" : ""}>
+                <Reveal key={q} delay={i * 80}>
                   <a
                     href={href}
-                    className={`group relative flex h-full flex-col justify-between overflow-hidden px-8 py-10 transition-colors duration-700 hover:bg-sage/60 md:px-10 md:py-12 ${i % 2 === 0 ? "bg-sage/40" : "bg-stone/70"}`}
+                    className={`group relative flex h-full min-h-[15rem] flex-col justify-between overflow-hidden px-8 py-10 md:min-h-[17rem] md:px-10 md:py-12 ${
+                      ["bg-sage/65", "bg-sky/50", "bg-clay/45", "bg-stone"][i % 4]
+                    }`}
                   >
                     <svg
                       aria-hidden
                       viewBox="0 0 200 200"
-                      className="pointer-events-none absolute -bottom-16 -right-14 h-52 w-52 text-olive/25 transition-transform duration-[1200ms] ease-out group-hover:scale-110"
+                      className="pointer-events-none absolute -bottom-14 -right-12 h-52 w-52 text-charcoal/15 transition-transform duration-[1200ms] ease-out group-hover:scale-110"
                       fill="none"
                     >
                       {[42, 66, 90, 114].map((r) => (
@@ -688,13 +762,16 @@ function StrategicPartnership() {
                         />
                       ))}
                     </svg>
-                    <p className="font-serif-editorial relative text-[clamp(1.3rem,2.3vw,2rem)] leading-[1.15] text-charcoal">
-                      {q}
-                    </p>
+                    <div className="relative">
+                      <span className="label-xs !text-charcoal/50">0{i + 1}</span>
+                      <p className="font-serif-editorial mt-5 text-[clamp(1.3rem,2.1vw,1.9rem)] leading-[1.15] text-charcoal">
+                        {q}
+                      </p>
+                    </div>
                     <p className="label-xs relative mt-10 !text-charcoal !tracking-[0.22em]">
                       <span
                         aria-hidden
-                        className="mr-3 inline-block text-olive transition-transform duration-500 group-hover:translate-x-1"
+                        className="mr-3 inline-block transition-transform duration-500 group-hover:translate-x-1"
                       >
                         →
                       </span>
@@ -706,6 +783,7 @@ function StrategicPartnership() {
             </div>
           </div>
         </section>
+
 
 
         {/* ——— 12 FINAL CTA ——— */}

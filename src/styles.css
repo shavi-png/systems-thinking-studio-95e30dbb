@@ -15,9 +15,13 @@
   --color-smoke: var(--smoke);
   --color-sage: var(--sage);
   --color-olive: var(--olive);
+  --color-clay: var(--clay);
+  --color-sky: var(--sky);
+  --color-blush: var(--blush);
   --color-charcoal: var(--charcoal);
   --color-line: var(--line-tone);
 }
+
 
 /*
  * Design system definition.
@@ -167,7 +171,11 @@
   --smoke: oklch(0.635 0.01 130);
   --sage: oklch(0.9 0.028 128);
   --olive: oklch(0.605 0.055 122);
+  --clay: oklch(0.845 0.048 55);
+  --sky: oklch(0.895 0.036 225);
+  --blush: oklch(0.905 0.032 25);
   --charcoal: oklch(0.255 0.012 140);
+
   --line-tone: oklch(0.855 0.014 128);
 
   --background: var(--ivory);

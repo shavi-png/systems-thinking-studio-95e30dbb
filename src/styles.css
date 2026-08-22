@@ -15,9 +15,13 @@
   --color-smoke: var(--smoke);
   --color-sage: var(--sage);
   --color-olive: var(--olive);
+  --color-clay: var(--clay);
+  --color-sky: var(--sky);
+  --color-blush: var(--blush);
   --color-charcoal: var(--charcoal);
   --color-line: var(--line-tone);
 }
+
 
 /*
  * Design system definition.

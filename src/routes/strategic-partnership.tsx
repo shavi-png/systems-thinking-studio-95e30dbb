@@ -325,18 +325,19 @@ function StrategicPartnership() {
         <section className="rule-thin">
           <div className="mx-auto max-w-[1440px] px-6 py-20 md:px-10 md:py-24">
             <div className="grid gap-8 md:grid-cols-12 md:items-end">
-              <Reveal>
-                <h2 className="display-md md:col-span-7">
+              <Reveal className="md:col-span-7">
+                <h2 className="display-md">
                   Three ways to <span className="italic">work together.</span>
                 </h2>
               </Reveal>
-              <Reveal delay={100}>
-                <p className="body-read md:col-span-4 md:col-start-9">
+              <Reveal delay={100} className="md:col-span-4 md:col-start-9">
+                <p className="body-read">
                   The same thinking at three levels of proximity — one decision, a full strategy, or
                   ongoing senior leadership inside your company.
                 </p>
               </Reveal>
             </div>
+
 
             <div className="mt-16 grid gap-14 md:grid-cols-3 md:gap-10">
               {services.map((s, i) => (

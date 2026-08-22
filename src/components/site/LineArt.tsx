@@ -826,7 +826,7 @@ export function ProcessOrbit({
     { left: "0%", top: "42%" },
   ];
 
-  const rings = [40, 78, 116, 152];
+  const rings = [34, 66, 98, 130];
 
   return (
     <div ref={ref} className="relative mx-auto w-full max-w-[42rem]">

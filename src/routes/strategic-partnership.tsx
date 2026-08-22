@@ -669,7 +669,7 @@ function StrategicPartnership() {
                 <Reveal key={q} delay={i * 80} className={i % 2 === 1 ? "md:mt-10" : ""}>
                   <a
                     href={href}
-                    className="group relative flex h-full flex-col justify-between overflow-hidden bg-paper px-8 py-10 transition-colors duration-700 hover:bg-sage/45 md:px-10 md:py-12"
+                    className={`group relative flex h-full flex-col justify-between overflow-hidden px-8 py-10 transition-colors duration-700 hover:bg-sage/60 md:px-10 md:py-12 ${i % 2 === 0 ? "bg-sage/40" : "bg-stone/70"}`}
                   >
                     <svg
                       aria-hidden

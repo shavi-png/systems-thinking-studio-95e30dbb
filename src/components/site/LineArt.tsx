@@ -832,8 +832,8 @@ export function ProcessOrbit({
   const spiral = (() => {
     const pts: string[] = [];
     for (let i = 0; i <= 220; i++) {
-      const t = (i / 220) * (Math.PI * 3.6);
-      const r = 8 * Math.exp(0.26 * t) * 0.42;
+      const t = (i / 220) * (Math.PI * 4.4);
+      const r = 7 * Math.exp(0.3 * t) * 0.85;
       if (r > 145) break;
       pts.push(`${(r * Math.cos(t)).toFixed(2)},${(r * 0.7 * Math.sin(t)).toFixed(2)}`);
     }
@@ -845,11 +845,11 @@ export function ProcessOrbit({
       {/* soft sage halo */}
       <div
         aria-hidden
-        className="pointer-events-none absolute left-1/2 top-1/2 aspect-square w-[86%] -translate-x-1/2 -translate-y-1/2 rounded-full"
+        className="pointer-events-none absolute left-1/2 top-1/2 aspect-square w-[96%] -translate-x-1/2 -translate-y-1/2 rounded-full"
         style={{
           background:
-            "radial-gradient(closest-side, color-mix(in oklab, var(--sage) 78%, transparent), transparent 72%)",
-          opacity: shown ? 0.75 : 0,
+            "radial-gradient(closest-side, var(--sage), color-mix(in oklab, var(--sage) 45%, transparent) 58%, transparent 78%)",
+          opacity: shown ? 1 : 0,
           transition: "opacity 1.6s ease 120ms",
         }}
       />

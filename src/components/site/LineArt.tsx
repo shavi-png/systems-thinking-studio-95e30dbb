@@ -888,7 +888,7 @@ export function ProcessOrbit({
 
           {/* back-and-forth motion, drawn into the composition */}
           <path
-            d="M -238 -150 C -208 -126 -178 -126 -150 -148"
+            d="M -228 150 C -196 176 -156 176 -124 152"
             stroke="var(--charcoal)"
             strokeWidth="0.8"
             strokeDasharray="3 5"
@@ -896,14 +896,14 @@ export function ProcessOrbit({
             style={{ transition: "opacity 1.2s ease 1.3s" }}
           />
           <path
-            d="M -150 -148 l -9 5 m 9 -5 l -7 -8"
+            d="M -124 152 l -9 5 m 9 -5 l -7 -8"
             stroke="var(--charcoal)"
             strokeWidth="0.9"
             opacity={shown ? 0.45 : 0}
             style={{ transition: "opacity 1.2s ease 1.5s" }}
           />
           <path
-            d="M -238 -150 l 9 5 m -9 -5 l 7 -8"
+            d="M -228 150 l 9 5 m -9 -5 l 7 -8"
             stroke="var(--charcoal)"
             strokeWidth="0.9"
             opacity={shown ? 0.45 : 0}
@@ -953,7 +953,7 @@ export function ProcessOrbit({
         ))}
 
         <p
-          className="font-serif-editorial absolute left-[2%] top-[13%] w-[11rem] text-[0.95rem] italic leading-snug text-charcoal/70"
+          className="font-serif-editorial absolute left-[1%] bottom-[3%] w-[10rem] text-[0.95rem] italic leading-snug text-charcoal/70"
           style={{ opacity: shown ? 1 : 0, transition: "opacity 1.2s ease 1.7s" }}
         >
           The process can move back and forth.

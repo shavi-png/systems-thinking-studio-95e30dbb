@@ -612,47 +612,61 @@ function StrategicPartnership() {
                 </Reveal>
               </div>
 
-              <div className="md:col-span-6 md:col-start-7">
-                <Reveal>
-                  <p className="label-xs">Experience behind the work</p>
-                  <h2 className="display-md mt-6 !text-[clamp(1.9rem,3.2vw,2.8rem)]">
-                    Strategy grounded in having actually{" "}
-                    <span className="italic">built things.</span>
-                  </h2>
-                </Reveal>
-                <Reveal delay={120}>
-                  <p className="body-read mt-8">
-                    The work has crossed marketing, strategy and product roles — building
-                    functions and teams from scratch, launching products, expanding into new markets,
-                    developing positioning and go-to-market strategy, and working alongside
-                    technology and product teams.
-                  </p>
-                  <p className="body-read mt-5">
-                    What stays the same across every context is the attempt to understand what is
-                    actually happening underneath the surface before deciding what to do next.
-                  </p>
-                  <div className="mt-10 grid grid-cols-3 gap-6 border-y border-line/60 py-7 md:gap-8">
-                    {[
-                      ["13+", "years in marketing & strategy"],
-                      ["3", "continents of experience"],
-                      ["5+", "industries in cases"],
-                    ].map(([n, l]) => (
-                      <div key={l}>
-                        <span className="font-serif-editorial text-[clamp(1.4rem,2.2vw,1.8rem)] leading-none text-charcoal">
-                          {n}
-                        </span>
-                        <p className="label-xs mt-2 !text-charcoal/60 !leading-tight">{l}</p>
-                      </div>
-                    ))}
+              <div className="md:col-span-7">
+                <div className="grid gap-12 lg:grid-cols-12 lg:gap-10">
+                  <div className="lg:col-span-7">
+                    <Reveal>
+                      <p className="label-xs">Experience behind the work</p>
+                      <h2 className="display-md mt-6 !text-[clamp(1.9rem,3.2vw,2.8rem)]">
+                        Strategy grounded in having actually{" "}
+                        <span className="italic">built things.</span>
+                      </h2>
+                    </Reveal>
+                    <Reveal delay={120}>
+                      <p className="body-read mt-8">
+                        The work has crossed marketing, strategy and product roles — building
+                        functions and teams from scratch, launching products, expanding into new markets,
+                        developing positioning and go-to-market strategy, and working alongside
+                        technology and product teams.
+                      </p>
+                      <p className="body-read mt-5">
+                        What stays the same across every context is the attempt to understand what is
+                        actually happening underneath the surface before deciding what to do next.
+                      </p>
+                      <p className="font-serif-editorial mt-10 bg-sage/55 px-7 py-8 text-[clamp(1.1rem,1.8vw,1.5rem)] italic leading-snug text-charcoal">
+                        The value of that experience isn’t the number of things I’ve done. It’s the
+                        ability to recognise what kind of problem I’m looking at.
+                      </p>
+                      <a href="/about" className="link-editorial mt-9">
+                        The personality behind the work <span aria-hidden>→</span>
+                      </a>
+                    </Reveal>
                   </div>
-                  <p className="font-serif-editorial mt-10 bg-sage/55 px-7 py-8 text-[clamp(1.1rem,1.8vw,1.5rem)] italic leading-snug text-charcoal">
-                    The value of that experience isn’t the number of things I’ve done. It’s the
-                    ability to recognise what kind of problem I’m looking at.
-                  </p>
-                  <a href="/about" className="link-editorial mt-9">
-                    The personality behind the work <span aria-hidden>→</span>
-                  </a>
-                </Reveal>
+
+                  <div className="lg:col-span-4 lg:col-start-9">
+                    <Reveal delay={160}>
+                      <div className="border-l border-line/60 pl-8">
+                        {[
+                          ["13+", "years in marketing & strategy"],
+                          ["3", "continents of experience"],
+                          ["5+", "industries in cases"],
+                        ].map(([n, l], i) => (
+                          <div
+                            key={l}
+                            className={`${i > 0 ? "border-t border-line/60 pt-7" : "pt-1"} pb-7`}
+                          >
+                            <span className="font-serif-editorial text-[clamp(2.2rem,3.6vw,2.8rem)] leading-none text-charcoal">
+                              {n}
+                            </span>
+                            <p className="label-xs mt-2 !text-charcoal/60 !leading-tight">
+                              {l}
+                            </p>
+                          </div>
+                        ))}
+                      </div>
+                    </Reveal>
+                  </div>
+                </div>
               </div>
             </div>
           </div>

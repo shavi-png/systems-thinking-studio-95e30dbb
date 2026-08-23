@@ -371,6 +371,7 @@ function Index() {
         <section id="faq" className="rule-thin bg-paper">
           <div className="mx-auto max-w-[1440px] px-6 py-16 md:px-10 md:py-24">
             <Reveal>
+              <p className="section-num mb-6">06 / Open questions</p>
               <h2 className="display-md">What if...?</h2>
             </Reveal>
 

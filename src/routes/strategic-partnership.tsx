@@ -661,7 +661,8 @@ function StrategicPartnership() {
         {/* ——— 11 CHOOSING THE FORMAT ——— */}
         <section className="rule-thin relative overflow-hidden">
           <div className="relative mx-auto max-w-[1440px] px-6 py-20 md:px-10 md:py-28">
-            <div className="grid gap-12 md:grid-cols-12">
+            <div className="grid items-start gap-12 md:grid-cols-12 md:gap-x-12">
+              {/* Left column: heading, intro, questions */}
               <div className="md:col-span-7">
                 <Reveal>
                   <h2 className="display-md">
@@ -671,18 +672,37 @@ function StrategicPartnership() {
                     Start from the sentence that sounds most like your situation.
                   </p>
                 </Reveal>
+
+                <div className="mt-14 space-y-10">
+                  {formats.map(([q, a, href], i) => (
+                    <Reveal key={q} delay={i * 80}>
+                      <div className="flex gap-6 md:gap-8">
+                        <span
+                          aria-hidden
+                          className="font-serif-editorial mt-[0.55rem] shrink-0 text-[0.9rem] tabular-nums text-olive"
+                        >
+                          0{i + 1}
+                        </span>
+                        <p className="font-serif-editorial text-[clamp(1.35rem,2.4vw,2.1rem)] leading-[1.15] text-charcoal">
+                          {q}
+                        </p>
+                      </div>
+                    </Reveal>
+                  ))}
+                </div>
               </div>
 
+              {/* Right column: leads-to index */}
               <div className="md:col-span-4 md:col-start-9">
                 <Reveal>
                   <div className="border-l border-line pl-8">
                     <p className="label-xs">Leads to —</p>
-                    <div className="mt-6 space-y-6">
-                      {formats.map(([q, a, href], i) => (
+                    <div className="mt-5 space-y-5">
+                      {formats.map(([q, a, href]) => (
                         <a
                           key={q}
                           href={href}
-                          className="group flex items-baseline justify-between gap-4"
+                          className="group flex items-baseline justify-between gap-3"
                         >
                           <span className="font-serif-editorial text-[clamp(1.25rem,2vw,1.7rem)] italic leading-[1.15] text-charcoal transition-colors group-hover:text-olive">
                             {a}
@@ -699,26 +719,6 @@ function StrategicPartnership() {
                   </div>
                 </Reveal>
               </div>
-            </div>
-
-            <div className="mt-14 grid gap-x-12 gap-y-10 md:grid-cols-12">
-              {formats.map(([q, a, href], i) => (
-                <div key={q} className="contents">
-                  <Reveal delay={i * 80} className="md:col-span-7">
-                    <div className="flex gap-6 md:gap-8">
-                      <span
-                        aria-hidden
-                        className="font-serif-editorial mt-[0.55rem] shrink-0 text-[0.9rem] tabular-nums text-olive"
-                      >
-                        0{i + 1}
-                      </span>
-                      <p className="font-serif-editorial text-[clamp(1.35rem,2.4vw,2.1rem)] leading-[1.15] text-charcoal">
-                        {q}
-                      </p>
-                    </div>
-                  </Reveal>
-                </div>
-              ))}
             </div>
           </div>
         </section>

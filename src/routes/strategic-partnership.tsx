@@ -269,8 +269,8 @@ function StrategicPartnership() {
             aria-hidden
             className="pointer-events-none absolute left-[-22%] bottom-[-30%] h-[95%] w-auto max-w-none select-none opacity-[0.22] [filter:sepia(0.05)_saturate(0.3)_brightness(1.28)_contrast(0.82)] [mask-image:radial-gradient(closest-side,black_50%,transparent_100%)]"
           />
-          <div className="relative mx-auto grid max-w-[1440px] grid-cols-1 items-start gap-12 px-6 pb-20 pt-24 md:grid-cols-12 md:gap-10 md:px-10 md:pb-28 md:pt-32">
-            <div className="md:col-span-7">
+          <div className="relative mx-auto grid max-w-[1440px] grid-cols-1 items-stretch gap-12 px-6 pb-20 pt-24 md:grid-cols-12 md:gap-10 md:px-10 md:pb-28 md:pt-32">
+            <div className="flex flex-col md:col-span-7">
               <Reveal>
                 <p className="label-xs !tracking-[0.3em]">Strategic Partnership</p>
                 <h1 className="display-lg mt-7 !text-[clamp(2.4rem,5.4vw,4.7rem)]">
@@ -293,41 +293,31 @@ function StrategicPartnership() {
                   — when product, market, positioning, growth and execution need to be considered as
                   one connected system.
                 </p>
-                <div className="mt-9 flex flex-wrap items-center gap-x-8 gap-y-4">
-                  <a href="#involvement" className="link-editorial">
-                    Explore working together <span aria-hidden>↓</span>
-                  </a>
-                  <p className="label-xs !tracking-[0.18em]">
-                    Advisory · Strategy · Fractional CMO
-                  </p>
-                </div>
+                <p className="body-read mt-5 max-w-[30rem]">
+                  The engagement can be focused or ongoing — one strategic decision, the strategy
+                  itself, or stepping in as a Fractional CMO.
+                </p>
+              </Reveal>
+              <Reveal delay={200} className="mt-10 md:mt-auto md:pt-10">
+                <a href="#involvement" className="link-editorial">
+                  Explore working together <span aria-hidden>↓</span>
+                </a>
               </Reveal>
             </div>
 
             <div className="md:col-span-5 md:col-start-8">
               <Reveal delay={220}>
-                <div className="relative isolate ml-auto max-w-[26rem] md:max-w-none">
-                  <span
-                    aria-hidden
-                    className="absolute -left-6 -top-6 -z-10 hidden h-40 w-40 rounded-full bg-sky/70 md:block"
-                  />
+                <div className="ml-auto max-w-[26rem] md:max-w-none">
                   <img
                     src={portraitImg}
                     alt="Vita Shablii"
-                    className="relative aspect-[4/5] w-full object-cover"
-                  />
-                  <span
-                    aria-hidden
-                    className="absolute -bottom-8 -right-6 -z-10 hidden h-28 w-28 rounded-full bg-clay/70 md:block"
+                    className="aspect-[4/5] w-full object-cover"
                   />
                 </div>
-                <p className="font-serif-editorial mt-8 max-w-[22rem] text-[1.05rem] italic leading-snug text-charcoal/75 md:ml-auto">
-                  The engagement can be focused or ongoing — one strategic decision, the strategy
-                  itself, or stepping in as a Fractional CMO.
-                </p>
               </Reveal>
             </div>
           </div>
+
         </section>
 
 

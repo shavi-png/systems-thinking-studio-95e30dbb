@@ -463,7 +463,7 @@ function StrategicPartnership() {
               </div>
               <div className="md:col-span-12">
                 <Reveal delay={180}>
-                  <ul className="mt-12 flex flex-wrap gap-x-10 gap-y-3">
+                  <ul className="mt-2 flex flex-wrap gap-x-10 gap-y-3 md:mt-8">
                     {services.map((s) => (
                       <li key={s.id}>
                         <a href={`#${s.id}`} className="group flex items-baseline gap-3">

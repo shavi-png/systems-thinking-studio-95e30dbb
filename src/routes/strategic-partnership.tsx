@@ -661,47 +661,61 @@ function StrategicPartnership() {
         {/* ——— 11 CHOOSING THE FORMAT ——— */}
         <section className="rule-thin relative overflow-hidden">
           <div className="relative mx-auto max-w-[1440px] px-6 py-20 md:px-10 md:py-28">
-            <div className="max-w-[46rem]">
-              <Reveal>
-                <h2 className="display-md">
-                  Not sure which <span className="italic">format fits?</span>
-                </h2>
-                <p className="body-read mt-6">
-                  Start from the sentence that sounds most like your situation.
-                </p>
-              </Reveal>
+            <div className="grid gap-12 md:grid-cols-12">
+              <div className="md:col-span-7">
+                <Reveal>
+                  <h2 className="display-md">
+                    Not sure which <span className="italic">format fits?</span>
+                  </h2>
+                  <p className="body-read mt-6">
+                    Start from the sentence that sounds most like your situation.
+                  </p>
+                </Reveal>
+              </div>
+
+              <div className="relative md:col-span-4 md:col-start-9">
+                <div
+                  aria-hidden
+                  className="absolute left-0 top-0 hidden h-full w-px bg-line md:block"
+                />
+                <Reveal>
+                  <p className="label-xs pl-8">Leads to —</p>
+                </Reveal>
+              </div>
             </div>
 
-            <div className="mt-14 max-w-[52rem] space-y-10">
+            <div className="mt-14 grid gap-x-12 gap-y-10 md:grid-cols-12">
               {formats.map(([q, a, href], i) => (
-                <Reveal key={q} delay={i * 80}>
-                  <a href={href} className="group flex gap-6 md:gap-8">
-                    <span
-                      aria-hidden
-                      className="font-serif-editorial mt-[0.55rem] shrink-0 text-[0.9rem] tabular-nums text-olive"
-                    >
-                      0{i + 1}
-                    </span>
-                    <div className="min-w-0">
+                <div key={q} className="contents">
+                  <Reveal delay={i * 80} className="md:col-span-7">
+                    <div className="flex gap-6 md:gap-8">
+                      <span
+                        aria-hidden
+                        className="font-serif-editorial mt-[0.55rem] shrink-0 text-[0.9rem] tabular-nums text-olive"
+                      >
+                        0{i + 1}
+                      </span>
                       <p className="font-serif-editorial text-[clamp(1.35rem,2.4vw,2.1rem)] leading-[1.15] text-charcoal">
                         {q}
                       </p>
-                      <p className="label-xs mt-3 !text-charcoal !tracking-[0.22em]">
-                        <span
-                          aria-hidden
-                          className="mr-3 inline-block transition-transform duration-500 group-hover:translate-x-1"
-                        >
-                          →
-                        </span>
+                    </div>
+                  </Reveal>
+                  <Reveal delay={i * 80 + 40} className="md:col-span-4 md:col-start-9">
+                    <a href={href} className="group block pl-8">
+                      <p className="font-serif-editorial text-[clamp(1.25rem,2vw,1.7rem)] italic leading-[1.15] text-charcoal transition-colors group-hover:text-olive">
                         {a}
                       </p>
-                    </div>
-                  </a>
-                </Reveal>
+                      <span
+                        aria-hidden
+                        className="mt-3 inline-block text-olive transition-transform duration-500 group-hover:translate-x-1"
+                      >
+                        →
+                      </span>
+                    </a>
+                  </Reveal>
+                </div>
               ))}
             </div>
-
-
           </div>
         </section>
 

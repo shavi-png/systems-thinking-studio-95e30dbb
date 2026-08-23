@@ -59,7 +59,7 @@ function Index() {
                 <p className="label-xs mt-2">Strategist · Founder · Advisor</p>
               </Reveal>
               <Reveal delay={120}>
-                <h1 className="display-xl mt-10 md:mt-12">
+                <h1 className="display-xl mt-10 !text-[clamp(2.6rem,5.1vw,4.7rem)] md:mt-12">
                   Ideas do not
                   <br />
                   need complexity.
@@ -225,10 +225,11 @@ function Index() {
         {/* ——— PRODUCT DISCOVERY — dense + interactive ——— */}
         <Solutions />
 
-        {/* ——— METHOD STATEMENT — editorial diptych ——— */}
-        <section id="method" className="rule-thin bg-sand/50">
+        {/* ——— METHOD STATEMENT — one image owns the section ——— */}
+        <section id="method" className="rule-thin bg-cream">
           <div className="mx-auto max-w-[1440px] px-6 py-20 md:px-10 md:py-28">
             <Reveal>
+              <p className="section-num mb-8">04 / The method</p>
               <h2 className="display-md max-w-[46rem]">
                 Not every task needs another tool.
                 <br />
@@ -236,48 +237,36 @@ function Index() {
               </h2>
             </Reveal>
 
-            <div className="mt-12 grid gap-10 md:mt-16 md:grid-cols-12 md:gap-8">
-              {/* tall image, sits high */}
-              <figure className="relative md:col-span-5 md:col-start-1">
-                <div className="grain aspect-[3/4] overflow-hidden bg-stone">
-                  <img
-                    src={seeds.url}
-                    alt="Dandelion seeds drifting in pale light"
-                    loading="lazy"
-                    className="h-full w-full object-cover"
-                  />
-                </div>
-                <figcaption className="label-xs mt-4 text-muted">Many instruments</figcaption>
-              </figure>
+            {/* one large, quiet image — the counterweight to the type */}
+            <figure className="mt-14 md:mt-20">
+              <div className="grain relative aspect-[16/9] overflow-hidden bg-stone md:aspect-[21/9]">
+                <img
+                  src={seeds.url}
+                  alt="Dandelion seeds drifting in pale light"
+                  loading="lazy"
+                  className="h-full w-full object-cover"
+                />
+              </div>
+              <figcaption className="label-xs mt-4">Many instruments — one structure</figcaption>
+            </figure>
 
-              {/* second image, dropped lower and smaller — the quiet counterweight */}
-              <figure className="relative md:col-span-3 md:col-start-6 md:mt-28">
-                <div className="grain aspect-square overflow-hidden bg-stone">
-                  <img
-                    src={ripple.url}
-                    alt="Concentric ripples spreading through still water"
-                    loading="lazy"
-                    className="h-full w-full object-cover [filter:saturate(0.55)_brightness(1.05)]"
-                  />
-                </div>
-                <figcaption className="label-xs mt-4 text-muted">One structure</figcaption>
-              </figure>
-
-              {/* text column, top-aligned with the tall image */}
-              <div className="md:col-span-4 md:col-start-10 md:mt-1">
-                <p className="body-read">
-                  There are more marketing instruments every year, and AI has made them even more
-                  accessible. But the value is less and less about how many tools you know —
-                </p>
-                <p className="body-read mt-6">
-                  and more about whether you understand what your product actually needs, why, at
-                  which moment, and how it connects to everything else. That is what I build my
-                  work, products and systems around.
-                </p>
-                <p className="font-serif-editorial mt-10 border-t border-line pt-6 text-[1.35rem] italic leading-snug text-charcoal">
+            <div className="mt-14 grid gap-10 md:mt-16 md:grid-cols-12 md:gap-8">
+              <div className="md:col-span-4">
+                <p className="font-serif-editorial text-[1.6rem] italic leading-snug text-charcoal">
                   Fewer instruments.
                   <br />
                   One structure.
+                </p>
+              </div>
+              <div className="md:col-span-7 md:col-start-6">
+                <p className="body-read !max-w-none">
+                  There are more marketing instruments every year, and AI has made them even more
+                  accessible. But the value is less and less about how many tools you know —
+                </p>
+                <p className="body-read mt-6 !max-w-none">
+                  and more about whether you understand what your product actually needs, why, at
+                  which moment, and how it connects to everything else. That is what I build my work,
+                  products and systems around.
                 </p>
               </div>
             </div>
@@ -289,7 +278,7 @@ function Index() {
           {/* eyebrow + headline */}
           <Reveal>
             <div className="max-w-4xl">
-              <p className="label-xs mb-5">THE THINKING BEHIND THE WORK</p>
+              <p className="section-num mb-6">05 / The thinking behind the work</p>
               <h2 className="display-md">
                 Behind every product,
                 <br />
@@ -382,6 +371,7 @@ function Index() {
         <section id="faq" className="rule-thin bg-paper">
           <div className="mx-auto max-w-[1440px] px-6 py-16 md:px-10 md:py-24">
             <Reveal>
+              <p className="section-num mb-6">06 / Open questions</p>
               <h2 className="display-md">What if...?</h2>
             </Reveal>
 
@@ -421,37 +411,40 @@ function Index() {
           </div>
         </section>
 
-        {/* ——— FINAL — quiet closing statement ——— */}
-        <section id="final" className="rule-thin relative overflow-hidden">
-          {/* centered nautilus silhouette — slightly more present than hero, still airy */}
+        {/* ——— FINAL — the closing dark room ——— */}
+        <section id="final" className="dark-room relative overflow-hidden">
+          {/* the shell, larger and more confident, now reading as light on ink */}
           <img
             src={shellHero.url}
             alt=""
             aria-hidden
-            className="pointer-events-none absolute left-1/2 top-1/2 h-[105%] w-auto max-w-none -translate-x-1/2 -translate-y-1/2 select-none opacity-[0.42] [filter:sepia(0.06)_saturate(0.3)_brightness(1.22)_contrast(0.85)] [mask-image:radial-gradient(closest-side,black_55%,transparent_100%)] md:h-[118%] md:opacity-[0.36]"
+            className="pointer-events-none absolute left-[68%] top-1/2 h-[100%] w-auto max-w-none -translate-x-1/2 -translate-y-1/2 select-none opacity-[0.16] [filter:grayscale(1)_brightness(1.5)_contrast(0.85)] [mask-image:radial-gradient(closest-side,black_40%,transparent_92%)] md:h-[115%] md:opacity-[0.18]"
           />
-          <div className="relative mx-auto flex min-h-[60vh] max-w-[1440px] flex-col items-center justify-center px-6 py-16 text-center md:px-10 md:py-20">
-            <Reveal>
-              <p className="label-xs mb-6">The principle behind the work</p>
-              <p className="display-lg">
-                Clarity before <span className="italic">complexity.</span>
+          <div className="relative mx-auto grid min-h-[58vh] max-w-[1440px] content-center gap-12 px-6 py-20 md:grid-cols-12 md:px-10 md:py-28">
+            <div className="md:col-span-7">
+              <Reveal>
+                <p className="section-num mb-8">07 / The principle behind the work</p>
+                <p className="display-xl">
+                  Clarity before <span className="italic">complexity.</span>
+                </p>
+              </Reveal>
+            </div>
+            <div className="md:col-span-4 md:col-start-9 md:self-end">
+              <p className="body-read !max-w-none">
+                Every product, system and decision I build starts with one question: does this make
+                sense? If the thinking is clear, everything else follows.
               </p>
-            </Reveal>
-            <p className="body-read mx-auto mt-10 max-w-[36rem]">
-              Every product, system and decision I build starts with one question: does this make sense? If the thinking is clear, everything else follows.
-            </p>
-            <div className="mt-10 flex flex-wrap justify-center gap-x-12 gap-y-6">
-              <a href="#solutions" className="link-editorial">
-                Choose a solution <span aria-hidden>↑</span>
-              </a>
-              <a
-                href="mailto:hello@vitashablii.com"
-                className="label-xs !tracking-[0.16em] underline-offset-4 hover:underline"
-              >
-                Write to me →
-              </a>
+              <div className="mt-10 flex flex-col items-start gap-5">
+                <a href="#solutions" className="link-editorial">
+                  Choose a solution <span aria-hidden>↑</span>
+                </a>
+                <a href="mailto:hello@vitashablii.com" className="link-editorial">
+                  Write to me <span aria-hidden>→</span>
+                </a>
+              </div>
             </div>
           </div>
+
         </section>
       </main>
       <Footer />

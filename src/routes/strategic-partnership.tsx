@@ -727,40 +727,32 @@ function StrategicPartnership() {
         {/* ——— 11 CHOOSING THE FORMAT ——— */}
         <section className="rule-thin relative overflow-hidden">
           <div className="relative mx-auto max-w-[1440px] px-6 py-20 md:px-10 md:py-28">
-            <div className="grid gap-8 md:grid-cols-12 md:items-end">
-              <Reveal className="md:col-span-6">
+            <div className="max-w-[46rem]">
+              <Reveal>
                 <h2 className="display-md">
                   Not sure which <span className="italic">format fits?</span>
                 </h2>
-              </Reveal>
-              <Reveal delay={100} className="md:col-span-4 md:col-start-9">
-                <p className="body-read">
+                <p className="body-read mt-6">
                   Start from the sentence that sounds most like your situation.
                 </p>
               </Reveal>
             </div>
 
-            <div className="mt-16 space-y-14 md:space-y-16">
+            <div className="mt-14 max-w-[52rem] space-y-10">
               {formats.map(([q, a, href], i) => (
                 <Reveal key={q} delay={i * 80}>
-                  <a
-                    href={href}
-                    className="group flex flex-col gap-5 md:flex-row md:items-center md:gap-12"
-                    style={{ marginLeft: `${[0, 3.5, 1.5, 5][i % 4]}rem` }}
-                  >
+                  <a href={href} className="group flex gap-6 md:gap-8">
                     <span
                       aria-hidden
-                      className={`font-serif-editorial grid h-16 w-16 shrink-0 place-items-center rounded-full text-[1.1rem] text-charcoal/60 transition-transform duration-700 group-hover:scale-110 ${
-                        ["bg-sage/70", "bg-sky/60", "bg-clay/50", "bg-blush/50"][i % 4]
-                      }`}
+                      className="font-serif-editorial mt-[0.55rem] shrink-0 text-[0.9rem] tabular-nums text-olive"
                     >
                       0{i + 1}
                     </span>
                     <div className="min-w-0">
-                      <p className="font-serif-editorial max-w-[30rem] text-[clamp(1.4rem,2.6vw,2.3rem)] leading-[1.12] text-charcoal">
+                      <p className="font-serif-editorial text-[clamp(1.35rem,2.4vw,2.1rem)] leading-[1.15] text-charcoal">
                         {q}
                       </p>
-                      <p className="label-xs mt-4 !text-charcoal !tracking-[0.22em]">
+                      <p className="label-xs mt-3 !text-charcoal !tracking-[0.22em]">
                         <span
                           aria-hidden
                           className="mr-3 inline-block transition-transform duration-500 group-hover:translate-x-1"
@@ -774,6 +766,7 @@ function StrategicPartnership() {
                 </Reveal>
               ))}
             </div>
+
 
           </div>
         </section>

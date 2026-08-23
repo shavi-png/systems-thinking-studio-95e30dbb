@@ -244,7 +244,7 @@ function AboutPage() {
                   ].map((q) => (
                     <li
                       key={q}
-                      className="font-serif-editorial text-xl leading-relaxed text-charcoal md:text-[1.4rem]"
+                      className="quote-serif text-xl text-charcoal md:"
                     >
                       {q}
                     </li>
@@ -576,7 +576,7 @@ function AboutPage() {
                   once and followed forever — but as a living system of connected decisions that
                   becomes clearer as you move through it.
                 </p>
-                <p className="font-serif-editorial text-2xl italic leading-snug text-charcoal md:text-[1.8rem]">
+                <p className="quote-serif text-2xl italic text-charcoal md:">
                   You move forward. You learn. You return to the question with more context than you
                   had before. And the system evolves.
                 </p>
@@ -587,7 +587,7 @@ function AboutPage() {
 
         {/* ——— 07 THE SHELL ——— */}
         <section className="blue-room rule-thin">
-          <div className="mx-auto max-w-[1440px] px-6 py-24 md:px-10 md:py-32">
+          <div className="mx-auto max-w-[1440px] px-6 py-20 md:px-10 md:py-28">
             <div className="grid gap-16 md:grid-cols-12 md:items-center">
               <div className="md:col-span-5">
                 <Reveal>
@@ -629,7 +629,7 @@ function AboutPage() {
                       behaviour, in the economics, in the founder's intuition, in the market
                       response. The work is to see the relationships between them.
                     </p>
-                    <p className="mt-4 border-t border-line/60 pt-8 font-serif-editorial text-2xl italic leading-snug text-charcoal md:text-[1.75rem]">
+                    <p className="mt-4 border-t border-line/60 pt-8 quote-serif text-2xl italic text-charcoal md:">
                       The goal isn't always to add more. Sometimes it is to understand the logic
                       already there — and help it take form.
                     </p>
@@ -737,7 +737,7 @@ function AboutPage() {
                             : "md:col-span-8 md:col-start-3"
                         }
                       >
-                        <p className="font-serif-editorial text-2xl leading-snug text-charcoal md:text-[1.9rem]">
+                        <p className="quote-serif text-2xl text-charcoal md:">
                           {b.lead}
                         </p>
                         <ul className="mt-7 space-y-2">
@@ -800,7 +800,7 @@ function AboutPage() {
                 <Reveal key={p} delay={i * 50}>
                   <li className="flex items-baseline gap-6 py-5">
                     <span className="label-xs shrink-0">{String(i + 1).padStart(2, "0")}</span>
-                    <span className="font-serif-editorial text-2xl leading-snug text-charcoal md:text-[1.75rem]">
+                    <span className="quote-serif text-2xl text-charcoal md:">
                       {p}
                     </span>
                   </li>
@@ -832,7 +832,7 @@ function AboutPage() {
                 <Reveal key={p.t} delay={i * 100}>
                   <article className="flex h-full flex-col bg-paper px-7 py-10">
                     <p className="label-xs">{p.meta}</p>
-                    <h3 className="display-md mt-4 !text-[2rem]">{p.t}</h3>
+                    <h3 className="display-sm mt-4">{p.t}</h3>
                     <p className="body-read mt-6 flex-1">{p.d}</p>
                     {p.href.startsWith("/") ? (
                       <Link to={p.href} className="link-editorial mt-8 self-start">

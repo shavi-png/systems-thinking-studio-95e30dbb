@@ -300,7 +300,7 @@ function MarketingSetPage() {
 
         {/* ——— THE PROBLEM ——— */}
         <section className="rule-thin bg-background">
-          <div className="mx-auto max-w-[1440px] px-6 py-16 md:px-10 md:py-24">
+          <div className="mx-auto max-w-[1440px] px-6 py-20 md:px-10 md:py-28">
             <div className="grid gap-12 md:grid-cols-12">
               <div className="md:col-span-5">
                 <Reveal>
@@ -336,7 +336,7 @@ function MarketingSetPage() {
                     ].map((l) => (
                       <li
                         key={l}
-                        className="font-serif-editorial border-b border-line py-4 text-[clamp(1.15rem,1.9vw,1.6rem)] text-charcoal"
+                        className="lead-serif border-b border-line py-4 text-charcoal"
                       >
                         {l}
                       </li>
@@ -355,7 +355,7 @@ function MarketingSetPage() {
 
         {/* ——— RECOGNITION ——— */}
         <section className="rule-thin bg-paper">
-          <div className="mx-auto max-w-[1440px] px-6 py-16 md:px-10 md:py-24">
+          <div className="mx-auto max-w-[1440px] px-6 py-20 md:px-10 md:py-28">
             <div className="grid gap-10 md:grid-cols-12 md:items-end">
               <div className="md:col-span-7">
                 <Reveal>
@@ -383,7 +383,7 @@ function MarketingSetPage() {
                     <p className="label-xs !text-olive">
                       {a.n} / {a.t}
                     </p>
-                    <p className="font-serif-editorial mt-5 text-[clamp(1.2rem,1.8vw,1.55rem)] leading-snug text-charcoal">
+                    <p className="lead-serif mt-5 text-charcoal">
                       {a.d}
                     </p>
                     <p className="label-xs mt-auto pt-7 !tracking-[0.16em] !text-charcoal">
@@ -398,7 +398,7 @@ function MarketingSetPage() {
 
         {/* ——— TRANSFORMATION ——— */}
         <section className="rule-thin bg-background">
-          <div className="mx-auto max-w-[1440px] px-6 py-16 md:px-10 md:py-24">
+          <div className="mx-auto max-w-[1440px] px-6 py-20 md:px-10 md:py-28">
             <div className="grid gap-12 md:grid-cols-12">
               <div className="md:col-span-5">
                 <Reveal>
@@ -428,20 +428,20 @@ function MarketingSetPage() {
                   {shift.map(([a, b], i) => (
                     <Reveal key={a} delay={i * 70}>
                       <li className="flex flex-wrap items-baseline gap-x-5 gap-y-1 border-b border-line py-5">
-                        <span className="font-serif-editorial text-[clamp(1.2rem,2vw,1.7rem)] text-charcoal/40 line-through decoration-taupe">
+                        <span className="lead-serif text-charcoal/40 line-through decoration-taupe">
                           {a}
                         </span>
                         <span aria-hidden className="text-smoke">
                           →
                         </span>
-                        <span className="font-serif-editorial text-[clamp(1.3rem,2.3vw,2rem)] text-charcoal">
+                        <span className="quote-serif text-charcoal">
                           {b}
                         </span>
                       </li>
                     </Reveal>
                   ))}
                 </ul>
-                <p className="font-serif-editorial mt-10 border-l-2 border-olive bg-sage/40 px-7 py-8 text-[clamp(1.5rem,2.8vw,2.3rem)] leading-tight text-charcoal md:mt-0">
+                <p className="quote-serif mt-10 border-l-2 border-olive bg-sage/40 px-7 py-8 text-charcoal md:mt-0">
                   Not more marketing. <span className="italic">A stronger foundation</span> for
                   everything that follows.
                 </p>
@@ -453,7 +453,7 @@ function MarketingSetPage() {
 
         {/* ——— THE RESULT ——— */}
         <section className="rule-thin bg-paper">
-          <div className="mx-auto max-w-[1440px] px-6 py-16 md:px-10 md:py-24">
+          <div className="mx-auto max-w-[1440px] px-6 py-20 md:px-10 md:py-28">
             <div className="grid gap-12 md:grid-cols-12">
               <div className="flex flex-col md:col-span-5">
                 <Reveal>
@@ -486,7 +486,7 @@ function MarketingSetPage() {
                       <li className="grid gap-2 border-b border-line py-7 md:grid-cols-12 md:gap-6">
                         <p className="label-xs !text-olive md:col-span-1">{o.n}</p>
                         <div className="md:col-span-11">
-                          <h3 className="font-serif-editorial text-[clamp(1.2rem,1.9vw,1.6rem)] text-charcoal">
+                          <h3 className="lead-serif text-charcoal">
                             {o.t}
                           </h3>
                           <p className="body-read mt-2 !max-w-none">{o.d}</p>
@@ -495,7 +495,7 @@ function MarketingSetPage() {
                     </Reveal>
                   ))}
                 </ul>
-                <p className="font-serif-editorial mt-9 border-l-2 border-olive bg-sage/40 px-7 py-6 text-[clamp(1.25rem,2.2vw,1.8rem)] leading-snug text-charcoal">
+                <p className="lead-serif mt-9 border-l-2 border-olive bg-sage/40 px-7 py-6 text-charcoal">
                   The result is not five isolated AI outputs. It's{" "}
                   <span className="italic">one connected marketing context</span> you can keep
                   working from.
@@ -507,7 +507,7 @@ function MarketingSetPage() {
 
         {/* ——— THE METHOD ——— */}
         <section className="rule-thin bg-background">
-          <div className="mx-auto max-w-[1440px] px-6 py-16 md:px-10 md:py-24">
+          <div className="mx-auto max-w-[1440px] px-6 py-20 md:px-10 md:py-28">
             <div className="grid gap-10 md:grid-cols-12 md:items-end">
               <div className="md:col-span-6">
                 <Reveal>
@@ -540,11 +540,11 @@ function MarketingSetPage() {
                         →
                       </span>
                     )}
-                    <p className="font-serif-editorial text-[clamp(2rem,3.4vw,2.9rem)] leading-none text-taupe">
+                    <p className="quote-serif text-taupe">
                       {s.n}
                     </p>
                     <h3 className="label-xs mt-4 !tracking-[0.18em] !text-olive">{s.t}</h3>
-                    <p className="font-serif-editorial mt-5 text-[clamp(1.15rem,1.6vw,1.4rem)] leading-snug text-charcoal">
+                    <p className="lead-serif mt-5 text-charcoal">
                       {s.q}
                     </p>
                   </li>
@@ -556,7 +556,7 @@ function MarketingSetPage() {
 
         {/* ——— WHY NOT JUST CHATGPT ——— */}
         <section className="rule-thin bg-paper">
-          <div className="mx-auto max-w-[1440px] px-6 py-16 md:px-10 md:py-28">
+          <div className="mx-auto max-w-[1440px] px-6 py-20 md:px-10 md:py-28">
             <div className="grid gap-10 md:grid-cols-12 md:items-end">
               <div className="md:col-span-7">
                 <Reveal>
@@ -570,7 +570,7 @@ function MarketingSetPage() {
               </div>
               <div className="md:col-span-4 md:col-start-9">
                 <Reveal delay={120}>
-                  <p className="font-serif-editorial border-l-2 border-olive pl-6 text-[clamp(1.3rem,2.1vw,1.75rem)] leading-snug text-charcoal">
+                  <p className="quote-serif border-l-2 border-olive pl-6 text-charcoal">
                     AI is the interface.
                     <br />
                     <span className="italic">The value is in the logic.</span>
@@ -588,7 +588,7 @@ function MarketingSetPage() {
                 </Reveal>
               ))}
             </div>
-            <p className="font-serif-editorial mt-14 text-[clamp(1.6rem,3vw,2.6rem)] text-charcoal">
+            <p className="quote-serif mt-14 text-charcoal">
               The goal isn't better prompts.{" "}
               <span className="italic">It's better marketing decisions.</span>
             </p>
@@ -597,7 +597,7 @@ function MarketingSetPage() {
 
         {/* ——— HOW IT WORKS ——— */}
         <section className="rule-thin bg-background">
-          <div className="mx-auto max-w-[1440px] px-6 py-16 md:px-10 md:py-24">
+          <div className="mx-auto max-w-[1440px] px-6 py-20 md:px-10 md:py-28">
             <div className="grid gap-10 md:grid-cols-12 md:items-end">
               <div className="md:col-span-6">
                 <Reveal>
@@ -626,8 +626,8 @@ function MarketingSetPage() {
                 <Reveal key={h.t} delay={i * 70}>
                   <li className="border-t border-line pt-6">
                     <p className="label-xs !text-olive">{String(i + 1).padStart(2, "0")}</p>
-                    <h3 className="font-serif-editorial mt-3 text-[1.35rem] text-charcoal">{h.t}</h3>
-                    <p className="body-read mt-2 !max-w-none !text-[0.85rem]">{h.d}</p>
+                    <h3 className="quote-serif mt-3 text-charcoal">{h.t}</h3>
+                    <p className="body-read mt-2 !max-w-none !text-[0.9rem]">{h.d}</p>
                   </li>
                 </Reveal>
               ))}
@@ -637,7 +637,7 @@ function MarketingSetPage() {
 
         {/* ——— EXECUTION LAYER ——— */}
         <section className="rule-thin bg-paper">
-          <div className="mx-auto max-w-[1440px] px-6 py-16 md:px-10 md:py-24">
+          <div className="mx-auto max-w-[1440px] px-6 py-20 md:px-10 md:py-28">
             <div className="grid gap-10 md:grid-cols-12">
               <div className="md:col-span-5">
                 <Reveal>
@@ -652,10 +652,10 @@ function MarketingSetPage() {
               <div className="md:col-span-6 md:col-start-7 md:pt-4">
                 <Reveal delay={90}>
                   <div className="flex items-baseline gap-5">
-                    <span className="font-serif-editorial text-[clamp(3.5rem,7vw,6rem)] leading-none text-charcoal">
+                    <span className="quote-serif text-charcoal">
                       45
                     </span>
-                    <span className="font-serif-editorial text-[clamp(1.3rem,2.4vw,2rem)] italic text-charcoal">
+                    <span className="quote-serif italic text-charcoal">
                       funnel frameworks
                     </span>
                   </div>
@@ -682,7 +682,7 @@ function MarketingSetPage() {
 
         {/* ——— WHAT YOU RECEIVE ——— */}
         <section className="rule-thin bg-background">
-          <div className="mx-auto max-w-[1440px] px-6 py-16 md:px-10 md:py-24">
+          <div className="mx-auto max-w-[1440px] px-6 py-20 md:px-10 md:py-28">
             <div className="grid gap-10 md:grid-cols-12 md:items-end">
               <div className="md:col-span-6">
                 <Reveal>
@@ -708,7 +708,7 @@ function MarketingSetPage() {
                 <Reveal key={r.t} delay={i * 70}>
                   <li className="flex h-full flex-col border-b border-line py-6 md:border-b-0 md:border-t md:pr-6 md:pb-0">
                     <p className="label-xs !text-olive">{r.n}</p>
-                    <h3 className="font-serif-editorial mt-4 text-[clamp(1.15rem,1.6vw,1.4rem)] leading-snug text-charcoal">
+                    <h3 className="lead-serif mt-4 text-charcoal">
                       {r.t}
                     </h3>
                   </li>
@@ -746,7 +746,7 @@ function MarketingSetPage() {
                 <Reveal key={u.t} delay={i * 90}>
                   <figure className="flex h-full flex-col border-t border-line pt-7">
                     <p className="label-xs">{u.t}</p>
-                    <blockquote className="font-serif-editorial mt-6 text-[clamp(1.3rem,2vw,1.7rem)] leading-snug text-charcoal">
+                    <blockquote className="quote-serif mt-6 text-charcoal">
                       “{u.q}”
                     </blockquote>
                     <figcaption className="label-xs mt-auto pt-8 normal-case !tracking-[0.1em] !text-charcoal">
@@ -779,7 +779,7 @@ function MarketingSetPage() {
                       key={p.k}
                       className="flex items-baseline gap-5 border-b border-line py-4"
                     >
-                      <dt className="font-serif-editorial min-w-[4.5rem] text-[1.7rem] leading-none text-charcoal">
+                      <dt className="quote-serif min-w-[4.5rem] text-charcoal">
                         {p.k}
                       </dt>
                       <dd className="label-xs normal-case !tracking-[0.08em]">{p.v}</dd>
@@ -809,7 +809,7 @@ function MarketingSetPage() {
                   ].map((l) => (
                     <li
                       key={l}
-                      className="font-serif-editorial border-b border-line py-4 text-[clamp(1.1rem,1.7vw,1.45rem)] text-charcoal"
+                      className="lead-serif border-b border-line py-4 text-charcoal"
                     >
                       {l}
                     </li>
@@ -837,7 +837,7 @@ function MarketingSetPage() {
 
         {/* ——— THE OFFER ——— */}
         <section className="rule-thin bg-paper">
-          <div className="mx-auto max-w-[1440px] px-6 py-16 md:px-10 md:py-24">
+          <div className="mx-auto max-w-[1440px] px-6 py-20 md:px-10 md:py-28">
             <div className="grid gap-12 md:grid-cols-12">
               <div className="md:col-span-6">
                 <Reveal>
@@ -881,7 +881,7 @@ function MarketingSetPage() {
                         </li>
                       ))}
                     </ul>
-                    <p className="font-serif-editorial mt-8 text-[3rem] leading-none text-charcoal">
+                    <p className="quote-serif mt-8 text-charcoal">
                       589 UAH
                     </p>
                     <p className="label-xs mt-3 normal-case !tracking-[0.1em]">
@@ -900,7 +900,7 @@ function MarketingSetPage() {
 
         {/* ——— FAQ ——— */}
         <section className="rule-thin bg-background">
-          <div className="mx-auto max-w-[1440px] px-6 py-16 md:px-10 md:py-24">
+          <div className="mx-auto max-w-[1440px] px-6 py-20 md:px-10 md:py-28">
             <Reveal>
               <h2 className="display-md max-w-[30rem]">
                 Before
@@ -912,7 +912,7 @@ function MarketingSetPage() {
               {faq.map((f, i) => (
                 <Reveal key={f.q} delay={i * 50}>
                   <div className="grid gap-3 border-b border-line py-8 md:grid-cols-12 md:gap-10">
-                    <dt className="font-serif-editorial text-[clamp(1.2rem,1.9vw,1.6rem)] text-charcoal md:col-span-5">
+                    <dt className="lead-serif text-charcoal md:col-span-5">
                       {f.q}
                     </dt>
                     <dd className="body-read md:col-span-7 md:!max-w-none">{f.a}</dd>
@@ -939,7 +939,7 @@ function MarketingSetPage() {
             </Reveal>
             <Reveal delay={140}>
               <div className="mx-auto mt-12 flex max-w-[36rem] flex-col items-center gap-6 px-8 py-12">
-                <p className="font-serif-editorial text-[2.6rem] leading-none text-charcoal">
+                <p className="quote-serif text-charcoal">
                   589 UAH
                 </p>
                 <p className="label-xs !tracking-[0.14em]">

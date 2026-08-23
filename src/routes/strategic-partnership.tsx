@@ -137,15 +137,15 @@ const services: Service[] = [
 function ServiceDetail({ s, i }: { s: Service; i: number }) {
   return (
     <div id={s.id} className={i > 0 ? "rule-thin" : ""}>
-      <div className="mx-auto max-w-[1440px] px-6 py-20 md:px-10 md:py-24">
+      <div className="mx-auto max-w-[1440px] px-6 py-20 md:px-10 md:py-28">
         {/* header always leads: number, name, tagline */}
         <Reveal>
           <div>
             <p className="label-xs !tracking-[0.26em] text-olive">
               {s.n} — {s.best}
             </p>
-            <h2 className="display-md mt-5 !text-[clamp(1.9rem,3.4vw,3rem)]">{s.name}</h2>
-            <p className="mt-5 font-serif-editorial text-[clamp(1.2rem,2vw,1.7rem)] italic leading-snug text-charcoal">
+            <h2 className="display-md mt-5">{s.name}</h2>
+            <p className="mt-5 lead-serif italic text-charcoal">
               {s.tagline}
             </p>
           </div>
@@ -188,7 +188,7 @@ function ServiceDetail({ s, i }: { s: Service; i: number }) {
 
               <div className="mt-9 border-l-2 border-olive bg-sage/35 px-7 py-6">
                 <p className="label-xs !tracking-[0.2em]">{s.outcomeLabel}</p>
-                <p className="mt-3 font-serif-editorial text-[clamp(1.1rem,1.8vw,1.5rem)] leading-snug text-charcoal">
+                <p className="mt-3 lead-serif text-charcoal">
                   {s.outcome}
                 </p>
               </div>
@@ -273,7 +273,7 @@ function StrategicPartnership() {
             <div className="flex flex-col md:col-span-7">
               <Reveal>
                 <p className="label-xs !tracking-[0.3em]">Strategic Partnership</p>
-                <h1 className="display-lg mt-7 !text-[clamp(2.4rem,5.4vw,4.7rem)]">
+                <h1 className="display-lg mt-7">
                   Sometimes you don’t need
                   <br />
                   another framework.
@@ -284,7 +284,7 @@ function StrategicPartnership() {
                 </h1>
               </Reveal>
               <Reveal delay={140}>
-                <p className="font-serif-editorial mt-9 max-w-[32rem] text-[clamp(1.1rem,1.7vw,1.45rem)] leading-snug text-charcoal">
+                <p className="lead-serif mt-9 max-w-[32rem] text-charcoal">
                   Senior strategic support for founders, leaders and teams navigating product,
                   marketing, growth and change.
                 </p>
@@ -356,7 +356,7 @@ function StrategicPartnership() {
             <Reveal delay={160}>
               <div className="mt-12 max-w-[38rem]">
                 <p className="body-read">This is where I tend to be most useful.</p>
-                <p className="font-serif-editorial mt-3 text-[clamp(1.2rem,2.1vw,1.8rem)] italic leading-snug text-charcoal">
+                <p className="lead-serif mt-3 italic text-charcoal">
                   I look across the system before deciding where to intervene.
                 </p>
               </div>
@@ -396,7 +396,7 @@ function StrategicPartnership() {
                     />
                     <div className="min-w-0">
                       <p className="label-xs !text-charcoal !tracking-[0.26em]">{k}</p>
-                      <p className="font-serif-editorial mt-4 max-w-[24rem] text-[clamp(1.15rem,1.8vw,1.6rem)] leading-snug text-charcoal">
+                      <p className="lead-serif mt-4 max-w-[24rem] text-charcoal">
                         {v}
                       </p>
                     </div>
@@ -406,7 +406,7 @@ function StrategicPartnership() {
             </div>
 
 
-            <p className="font-serif-editorial mt-14 max-w-[34rem] text-[clamp(1.05rem,1.7vw,1.45rem)] italic leading-snug text-charcoal/80">
+            <p className="lead-serif mt-14 max-w-[34rem] italic text-charcoal/80">
               The work rarely stays inside one box. That’s the point.
             </p>
           </div>
@@ -433,7 +433,7 @@ function StrategicPartnership() {
                     development. And some businesses need senior marketing leadership embedded in
                     the company for a period of time.
                   </p>
-                  <p className="font-serif-editorial mt-6 text-[1.35rem] italic text-charcoal">
+                  <p className="quote-serif mt-6 italic text-charcoal">
                     I work across all three.
                   </p>
                 </Reveal>
@@ -459,7 +459,7 @@ function StrategicPartnership() {
               <div className="lg:col-span-4">
                 <Reveal>
                   <p className="label-xs">The working principle</p>
-                  <h2 className="display-md mt-5 !text-[clamp(1.9rem,3.2vw,2.9rem)]">
+                  <h2 className="display-md mt-5">
                     Context <span className="italic">first.</span>
                     <br />
                     Format <span className="italic">second.</span>
@@ -470,7 +470,7 @@ function StrategicPartnership() {
                     changed, where the tension is and which decisions are currently difficult to
                     make.
                   </p>
-                  <p className="font-serif-editorial mt-7 max-w-[24rem] text-[clamp(1.1rem,1.7vw,1.45rem)] italic leading-snug text-charcoal">
+                  <p className="lead-serif mt-7 max-w-[24rem] italic text-charcoal">
                     Strategy is not a straight line — new information changes the decisions that
                     follow.
                   </p>
@@ -511,11 +511,11 @@ function StrategicPartnership() {
                       >
                         <span
                           aria-hidden
-                          className="font-serif-editorial mt-2 shrink-0 text-[0.85rem] tabular-nums text-olive"
+                          className="lead-serif mt-2 shrink-0 tabular-nums text-olive"
                         >
                           0{i + 1}
                         </span>
-                        <p className="font-serif-editorial min-w-0 max-w-[26rem] text-[clamp(1.2rem,1.9vw,1.7rem)] leading-[1.25] text-charcoal">
+                        <p className="lead-serif min-w-0 max-w-[26rem] text-charcoal">
                           {t}
                         </p>
                       </div>
@@ -543,7 +543,7 @@ function StrategicPartnership() {
             </div>
 
             <Reveal>
-              <p className="font-serif-editorial mt-20 max-w-[44rem] text-[clamp(1.2rem,2.1vw,1.8rem)] italic leading-snug text-charcoal">
+              <p className="lead-serif mt-20 max-w-[44rem] italic text-charcoal">
                 Good strategic work requires enough openness to discover that the original question
                 may not be the right one.
               </p>
@@ -583,7 +583,7 @@ function StrategicPartnership() {
                           aria-hidden
                           className="mt-[0.85rem] h-1.5 w-1.5 shrink-0 rounded-full bg-olive/60"
                         />
-                        <span className="font-serif-editorial text-[clamp(1.05rem,1.45vw,1.35rem)] leading-snug text-charcoal">
+                        <span className="lead-serif text-charcoal">
                           {m}
                         </span>
                       </div>
@@ -599,7 +599,7 @@ function StrategicPartnership() {
 
         {/* ——— 10 EXPERIENCE ——— */}
         <section className="blue-room rule-thin">
-          <div className="mx-auto max-w-[1440px] px-6 py-24 md:px-10 md:py-32">
+          <div className="mx-auto max-w-[1440px] px-6 py-20 md:px-10 md:py-28">
             <div className="grid gap-12 md:grid-cols-12 md:gap-10">
               <div className="md:col-span-5">
                 <Reveal>
@@ -615,7 +615,7 @@ function StrategicPartnership() {
               <div className="md:col-span-6 md:col-start-7">
                 <Reveal>
                   <p className="label-xs">Experience behind the work</p>
-                  <h2 className="display-md mt-6 !text-[clamp(1.9rem,3.2vw,2.8rem)]">
+                  <h2 className="display-md mt-6">
                     Strategy grounded in having actually{" "}
                     <span className="italic">built things.</span>
                   </h2>
@@ -638,14 +638,14 @@ function StrategicPartnership() {
                       ["5+", "industries in cases"],
                     ].map(([n, l]) => (
                       <div key={l}>
-                        <span className="font-serif-editorial text-[clamp(1.4rem,2.2vw,1.8rem)] leading-none text-charcoal">
+                        <span className="quote-serif text-charcoal">
                           {n}
                         </span>
                         <p className="label-xs mt-2 !leading-tight">{l}</p>
                       </div>
                     ))}
                   </div>
-                  <p className="font-serif-editorial mt-10 border-l border-line pl-7 text-[clamp(1.1rem,1.8vw,1.5rem)] italic leading-snug text-charcoal">
+                  <p className="lead-serif mt-10 border-l border-line pl-7 italic text-charcoal">
                     The value of that experience isn’t the number of things I’ve done. It’s the
                     ability to recognise what kind of problem I’m looking at.
                   </p>
@@ -679,11 +679,11 @@ function StrategicPartnership() {
                       <div className="flex gap-6 md:gap-8">
                         <span
                           aria-hidden
-                          className="font-serif-editorial mt-[0.55rem] shrink-0 text-[0.9rem] tabular-nums text-olive"
+                          className="lead-serif mt-[0.55rem] shrink-0 tabular-nums text-olive"
                         >
                           0{i + 1}
                         </span>
-                        <p className="font-serif-editorial text-[clamp(1.35rem,2.4vw,2.1rem)] leading-[1.15] text-charcoal">
+                        <p className="quote-serif text-charcoal">
                           {q}
                         </p>
                       </div>
@@ -704,7 +704,7 @@ function StrategicPartnership() {
                           href={href}
                           className="group flex items-baseline gap-1"
                         >
-                          <span className="font-serif-editorial text-[clamp(1.25rem,2vw,1.7rem)] italic leading-[1.15] text-charcoal transition-colors group-hover:text-olive">
+                          <span className="lead-serif italic text-charcoal transition-colors group-hover:text-olive">
                             {a}
                           </span>
                           <span

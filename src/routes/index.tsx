@@ -59,7 +59,7 @@ function Index() {
                 <p className="label-xs mt-2">Strategist · Founder · Advisor</p>
               </Reveal>
               <Reveal delay={120}>
-                <h1 className="display-xl mt-10 !text-[clamp(2.6rem,5.1vw,4.7rem)] md:mt-12">
+                <h1 className="display-lg mt-10 md:mt-12">
                   Ideas do not
                   <br />
                   need complexity.
@@ -158,7 +158,7 @@ function Index() {
                     key={p.k}
                     className="border-b border-line py-6 pr-6 lg:border-b-0 lg:border-l lg:border-line lg:pl-6 lg:first:border-l-0 lg:first:pl-0"
                   >
-                    <dt className="font-serif-editorial text-[1.6rem] leading-none text-charcoal">
+                    <dt className="quote-serif text-charcoal">
                       {p.k}
                     </dt>
                     <dd className="label-xs mt-3 !tracking-[0.14em] normal-case">{p.v}</dd>
@@ -177,7 +177,7 @@ function Index() {
               <div className="grid items-end gap-12 lg:grid-cols-12 lg:gap-10">
                 {/* the single biggest voice in this room */}
                 <div className="lg:col-span-7">
-                  <h2 className="display-xl !text-[clamp(2.6rem,6.4vw,5.6rem)]">
+                  <h2 className="display-xl">
                     Marketing is not
                     <br />
                     <span className="italic">the starting point.</span>
@@ -253,7 +253,7 @@ function Index() {
 
             <div className="mt-14 grid gap-10 md:mt-16 md:grid-cols-12 md:gap-8">
               <div className="md:col-span-4">
-                <p className="font-serif-editorial text-[1.6rem] italic leading-snug text-charcoal">
+                <p className="quote-serif italic text-charcoal">
                   Fewer instruments.
                   <br />
                   One structure.
@@ -312,10 +312,10 @@ function Index() {
                 <Reveal key={item.t} delay={i * 90}>
                   <div className="md:border-l md:border-line md:px-5 md:first:border-l-0 md:first:pl-0">
                     <p className="label-xs">{item.n}</p>
-                    <h3 className="display-md mt-3 !text-[clamp(1.1rem,1.5vw,1.4rem)]">
+                    <h3 className="display-sm mt-3">
                       {item.t}
                     </h3>
-                    <p className="body-read mt-4 !max-w-none !text-[0.85rem]">{item.d}</p>
+                    <p className="body-read mt-4 !max-w-none !text-[0.9rem]">{item.d}</p>
                   </div>
                 </Reveal>
               ))}
@@ -370,7 +370,7 @@ function Index() {
 
         {/* ——— FAQ — open questions ——— */}
         <section id="faq" className="rule-thin bg-paper">
-          <div className="mx-auto max-w-[1440px] px-6 py-16 md:px-10 md:py-24">
+          <div className="mx-auto max-w-[1440px] px-6 py-20 md:px-10 md:py-28">
             <Reveal>
               <p className="section-num mb-6">06 / Open questions</p>
               <h2 className="display-md">What if...?</h2>

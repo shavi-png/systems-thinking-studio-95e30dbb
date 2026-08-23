@@ -673,13 +673,30 @@ function StrategicPartnership() {
                 </Reveal>
               </div>
 
-              <div className="relative md:col-span-4 md:col-start-9">
-                <div
-                  aria-hidden
-                  className="absolute left-0 top-0 hidden h-full w-px bg-line md:block"
-                />
+              <div className="md:col-span-4 md:col-start-9">
                 <Reveal>
-                  <p className="label-xs pl-8">Leads to —</p>
+                  <div className="border-l border-line pl-8">
+                    <p className="label-xs">Leads to —</p>
+                    <div className="mt-6 space-y-6">
+                      {formats.map(([q, a, href], i) => (
+                        <a
+                          key={q}
+                          href={href}
+                          className="group flex items-baseline justify-between gap-4"
+                        >
+                          <span className="font-serif-editorial text-[clamp(1.25rem,2vw,1.7rem)] italic leading-[1.15] text-charcoal transition-colors group-hover:text-olive">
+                            {a}
+                          </span>
+                          <span
+                            aria-hidden
+                            className="shrink-0 text-olive transition-transform duration-500 group-hover:translate-x-1"
+                          >
+                            →
+                          </span>
+                        </a>
+                      ))}
+                    </div>
+                  </div>
                 </Reveal>
               </div>
             </div>
@@ -699,19 +716,6 @@ function StrategicPartnership() {
                         {q}
                       </p>
                     </div>
-                  </Reveal>
-                  <Reveal delay={i * 80 + 40} className="md:col-span-4 md:col-start-9">
-                    <a href={href} className="group block pl-8">
-                      <p className="font-serif-editorial text-[clamp(1.25rem,2vw,1.7rem)] italic leading-[1.15] text-charcoal transition-colors group-hover:text-olive">
-                        {a}
-                      </p>
-                      <span
-                        aria-hidden
-                        className="mt-3 inline-block text-olive transition-transform duration-500 group-hover:translate-x-1"
-                      >
-                        →
-                      </span>
-                    </a>
                   </Reveal>
                 </div>
               ))}

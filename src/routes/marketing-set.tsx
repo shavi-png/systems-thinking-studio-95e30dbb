@@ -31,11 +31,15 @@ export const Route = createFileRoute("/marketing-set")({
 
 const CTA_HREF = "mailto:hello@vitashablii.com?subject=Marketing%20Set";
 
-function Cta({ className = "" }: { className?: string }) {
+function Cta({ className = "", invert = false }: { className?: string; invert?: boolean }) {
   return (
     <a
       href={CTA_HREF}
-      className={`label-xs group inline-flex items-center gap-3 border border-charcoal bg-charcoal px-8 py-4 !tracking-[0.2em] !text-ivory transition-colors hover:bg-olive hover:border-olive ${className}`}
+      className={`label-xs group inline-flex items-center gap-3 border px-8 py-4 !tracking-[0.2em] transition-colors ${
+        invert
+          ? "border-ivory bg-ivory !text-slate-deep hover:border-slate hover:bg-slate hover:!text-ivory"
+          : "border-charcoal bg-charcoal !text-ivory hover:border-slate-deep hover:bg-slate-deep"
+      } ${className}`}
     >
       GET MARKETING SET
       <span aria-hidden className="transition-transform group-hover:translate-x-1">
@@ -715,8 +719,8 @@ function MarketingSetPage() {
         </section>
 
         {/* ——— WHERE THIS BECOMES USEFUL ——— */}
-        <section className="rule-thin bg-paper">
-          <div className="mx-auto max-w-[1440px] px-6 py-16 md:px-10 md:py-24">
+        <section className="blue-room rule-thin">
+          <div className="mx-auto max-w-[1440px] px-6 py-20 md:px-10 md:py-28">
             <div className="grid gap-10 md:grid-cols-12 md:items-end">
               <div className="md:col-span-7">
                 <Reveal>
@@ -730,7 +734,7 @@ function MarketingSetPage() {
               </div>
               <div className="md:col-span-4 md:col-start-9">
                 <Reveal delay={120}>
-                  <p className="body-read border-l-2 border-olive pl-6">
+                  <p className="body-read border-l border-line pl-6">
                     The sentences below are the ones I hear most often before the work begins.
                   </p>
                 </Reveal>
@@ -740,8 +744,8 @@ function MarketingSetPage() {
             <div className="mt-12 grid gap-8 md:mt-16 md:grid-cols-3">
               {useCases.map((u, i) => (
                 <Reveal key={u.t} delay={i * 90}>
-                  <figure className="flex h-full flex-col border border-line bg-background p-8 md:p-9">
-                    <p className="label-xs !text-olive">{u.t}</p>
+                  <figure className="flex h-full flex-col border-t border-line pt-7">
+                    <p className="label-xs">{u.t}</p>
                     <blockquote className="font-serif-editorial mt-6 text-[clamp(1.3rem,2vw,1.7rem)] leading-snug text-charcoal">
                       “{u.q}”
                     </blockquote>
@@ -865,7 +869,7 @@ function MarketingSetPage() {
               </div>
               <div className="md:col-span-5 md:col-start-8">
                 <Reveal delay={100}>
-                  <div className="border border-line bg-background p-8 md:p-10">
+                  <div className="bg-sky/35 p-8 md:p-10">
                     <p className="label-xs">Included</p>
                     <ul className="mt-5 border-t border-line">
                       {included.map((i) => (
@@ -920,8 +924,8 @@ function MarketingSetPage() {
         </section>
 
         {/* ——— FINAL CTA ——— */}
-        <section className="rule-thin bg-paper">
-          <div className="mx-auto max-w-[1440px] px-6 py-20 text-center md:px-10 md:py-32">
+        <section className="dark-room rule-thin">
+          <div className="mx-auto max-w-[1440px] px-6 py-24 text-center md:px-10 md:py-36">
             <Reveal>
               <SectionLabel>One better starting point</SectionLabel>
               <h2 className="display-lg mx-auto max-w-[46rem]">
@@ -934,7 +938,7 @@ function MarketingSetPage() {
               </p>
             </Reveal>
             <Reveal delay={140}>
-              <div className="mx-auto mt-12 flex max-w-[36rem] flex-col items-center gap-6 border border-line bg-background px-8 py-12">
+              <div className="mx-auto mt-12 flex max-w-[36rem] flex-col items-center gap-6 px-8 py-12">
                 <p className="font-serif-editorial text-[2.6rem] leading-none text-charcoal">
                   589 UAH
                 </p>
@@ -942,7 +946,7 @@ function MarketingSetPage() {
                   5 strategic AI workflows · Personal AI assistant · 45 funnel frameworks · Lifetime
                   access
                 </p>
-                <Cta />
+                <Cta invert />
                 <p className="label-xs mt-6 normal-case !tracking-[0.1em]">
                   Less noise. More context. Better marketing decisions.
                 </p>

@@ -312,7 +312,7 @@ function AboutPage() {
             </div>
 
             <Reveal delay={80}>
-              <ul className="mt-16 grid gap-px overflow-hidden border border-line/60 bg-line/40 sm:grid-cols-2 lg:grid-cols-5">
+              <ul className="mt-16 grid gap-8 sm:grid-cols-2 lg:grid-cols-5">
                 {[
                   "Why does this product work?",
                   "Why isn't this one growing?",
@@ -322,7 +322,7 @@ function AboutPage() {
                 ].map((q) => (
                   <li
                     key={q}
-                    className="bg-background px-6 py-7 font-serif-editorial text-lg leading-snug text-charcoal transition-colors hover:bg-sage/20"
+                    className="border-t border-slate-deep/25 pt-5 font-serif-editorial text-lg leading-snug text-charcoal"
                   >
                     {q}
                   </li>
@@ -421,9 +421,9 @@ function AboutPage() {
 
               <div className="flex flex-col md:col-span-6 md:col-start-7">
                 <Reveal delay={100}>
-                  <dl className="grid gap-px overflow-hidden border border-sage/40 bg-sage/30 sm:grid-cols-2">
+                  <dl className="grid gap-x-10 gap-y-8 sm:grid-cols-2">
                     {numbers.map((n) => (
-                      <div key={n.k} className="bg-sage/10 px-6 py-7">
+                      <div key={n.k} className="border-t border-slate-deep/30 pt-5">
                         <dt className="font-serif-editorial text-3xl text-charcoal">{n.k}</dt>
                         <dd className="mt-2 text-sm leading-relaxed text-charcoal/70">{n.v}</dd>
                       </div>
@@ -586,19 +586,19 @@ function AboutPage() {
         </section>
 
         {/* ——— 07 THE SHELL ——— */}
-        <section className="rule-thin bg-background">
-          <div className="mx-auto max-w-[1440px] px-6 py-20 md:px-10 md:py-28">
+        <section className="blue-room rule-thin">
+          <div className="mx-auto max-w-[1440px] px-6 py-24 md:px-10 md:py-32">
             <div className="grid gap-16 md:grid-cols-12 md:items-center">
               <div className="md:col-span-5">
                 <Reveal>
-                  <div className="grain relative aspect-[4/5] overflow-hidden bg-stone">
+                  <div className="relative aspect-[4/5] overflow-hidden bg-slate-deep/40">
                     <img
                       src={chambers}
                       alt="Backlit nautilus shell chambers"
                       loading="lazy"
                       width={1200}
                       height={1504}
-                      className="h-full w-full object-cover"
+                      className="h-full w-full object-cover [filter:grayscale(0.55)_contrast(1.05)_brightness(1.02)]"
                     />
                   </div>
                 </Reveal>
@@ -851,12 +851,12 @@ function AboutPage() {
         </section>
 
         {/* ——— 12 FINAL ——— */}
-        <section className="rule-thin relative overflow-hidden bg-paper">
+        <section className="dark-room rule-thin relative overflow-hidden">
           <img
             src={shellHero.url}
             alt=""
             aria-hidden
-            className="pointer-events-none absolute left-1/2 top-1/2 h-[105%] w-auto max-w-none -translate-x-1/2 -translate-y-1/2 select-none opacity-[0.28] [filter:sepia(0.06)_saturate(0.3)_brightness(1.24)_contrast(0.85)] [mask-image:radial-gradient(closest-side,black_48%,transparent_100%)]"
+            className="pointer-events-none absolute left-1/2 top-1/2 h-[112%] w-auto max-w-none -translate-x-1/2 -translate-y-1/2 select-none opacity-[0.22] [filter:sepia(0.2)_saturate(0.35)_brightness(1.5)_contrast(0.8)] [mask-image:radial-gradient(closest-side,black_46%,transparent_100%)]"
           />
           <div className="relative mx-auto max-w-[1440px] px-6 py-20 md:px-10 md:py-28">
             <Reveal>
@@ -872,7 +872,7 @@ function AboutPage() {
                 <div className="mt-12 flex flex-col items-center justify-center gap-4 sm:flex-row">
                   <a
                     href="/#solutions"
-                    className="label-xs group inline-flex items-center gap-3 border border-charcoal bg-charcoal px-8 py-4 !tracking-[0.2em] !text-ivory transition-colors hover:border-olive hover:bg-olive"
+                    className="label-xs group inline-flex items-center gap-3 border border-ivory bg-ivory px-8 py-4 !tracking-[0.2em] !text-ink transition-colors hover:bg-slate hover:border-slate hover:!text-ivory"
                   >
                     EXPLORE THE PRODUCTS
                     <span aria-hidden className="transition-transform group-hover:translate-x-1">
@@ -881,7 +881,7 @@ function AboutPage() {
                   </a>
                   <a
                     href="mailto:hello@vitashablii.com?subject=Work%20with%20Vita"
-                    className="label-xs group inline-flex items-center gap-3 border border-charcoal/25 bg-background px-8 py-4 !tracking-[0.2em] !text-charcoal transition-colors hover:border-olive hover:bg-olive/10"
+                    className="label-xs group inline-flex items-center gap-3 border border-ivory/45 px-8 py-4 !tracking-[0.2em] !text-ivory transition-colors hover:border-ivory hover:bg-ivory/10"
                   >
                     WORK WITH ME
                     <span aria-hidden className="transition-transform group-hover:translate-x-1">

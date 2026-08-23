@@ -864,7 +864,7 @@ export function ProcessOrbit({
 
   return (
     <div ref={ref} className="relative mx-auto w-full max-w-[46rem]">
-      <div className="relative aspect-square w-full lg:aspect-[7/6]">
+      <div className="relative hidden w-full lg:block lg:aspect-[7/6]">
         <div
           aria-hidden
           className="pointer-events-none absolute left-1/2 top-1/2 aspect-square w-[62%] -translate-x-1/2 -translate-y-1/2 rounded-full blur-2xl"

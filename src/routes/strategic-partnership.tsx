@@ -702,7 +702,7 @@ function StrategicPartnership() {
                         <a
                           key={q}
                           href={href}
-                          className="group flex items-baseline justify-between gap-3"
+                          className="group flex items-baseline gap-3"
                         >
                           <span className="font-serif-editorial text-[clamp(1.25rem,2vw,1.7rem)] italic leading-[1.15] text-charcoal transition-colors group-hover:text-olive">
                             {a}

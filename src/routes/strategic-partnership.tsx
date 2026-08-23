@@ -139,7 +139,20 @@ function ServiceDetail({ s, i }: { s: Service; i: number }) {
   return (
     <section id={s.id} className={`rule-thin ${i % 2 === 1 ? "bg-paper" : ""}`}>
       <div className="mx-auto max-w-[1440px] px-6 py-20 md:px-10 md:py-24">
-        <div className="grid items-center gap-12 lg:grid-cols-12 lg:gap-16">
+        {/* mobile: name and tagline lead, image follows */}
+        <Reveal>
+          <div className="lg:hidden">
+            <p className="label-xs !tracking-[0.26em] text-olive">
+              {s.n} — {s.best}
+            </p>
+            <h2 className="display-md mt-5 !text-[clamp(1.9rem,3.4vw,3rem)]">{s.name}</h2>
+            <p className="mt-5 font-serif-editorial text-[clamp(1.2rem,2vw,1.7rem)] italic leading-snug text-charcoal">
+              {s.tagline}
+            </p>
+          </div>
+        </Reveal>
+
+        <div className="mt-8 grid items-center gap-12 lg:mt-0 lg:grid-cols-12 lg:gap-16">
           <div className={`lg:col-span-5 ${flip ? "lg:order-2 lg:col-start-8" : ""}`}>
             <Reveal>
               <div className="overflow-hidden bg-stone">
@@ -155,13 +168,16 @@ function ServiceDetail({ s, i }: { s: Service; i: number }) {
 
           <div className={`lg:col-span-6 ${flip ? "lg:order-1 lg:col-start-1" : "lg:col-start-7"}`}>
             <Reveal delay={100}>
-              <p className="label-xs !tracking-[0.26em] text-olive">
-                {s.n} — {s.best}
-              </p>
-              <h2 className="display-md mt-5 !text-[clamp(1.9rem,3.4vw,3rem)]">{s.name}</h2>
-              <p className="mt-5 font-serif-editorial text-[clamp(1.2rem,2vw,1.7rem)] italic leading-snug text-charcoal">
-                {s.tagline}
-              </p>
+              <div className="hidden lg:block">
+                <p className="label-xs !tracking-[0.26em] text-olive">
+                  {s.n} — {s.best}
+                </p>
+                <h2 className="display-md mt-5 !text-[clamp(1.9rem,3.4vw,3rem)]">{s.name}</h2>
+                <p className="mt-5 font-serif-editorial text-[clamp(1.2rem,2vw,1.7rem)] italic leading-snug text-charcoal">
+                  {s.tagline}
+                </p>
+              </div>
+
               {s.lede.map((p) => (
                 <p key={p} className="body-read mt-5">
                   {p}

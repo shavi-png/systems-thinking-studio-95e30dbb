@@ -135,13 +135,12 @@ const services: Service[] = [
 
 
 function ServiceDetail({ s, i }: { s: Service; i: number }) {
-  const flip = i % 2 === 1;
   return (
-    <section id={s.id} className={`rule-thin ${i % 2 === 1 ? "bg-paper" : ""}`}>
+    <div id={s.id} className={i > 0 ? "rule-thin" : ""}>
       <div className="mx-auto max-w-[1440px] px-6 py-20 md:px-10 md:py-24">
-        {/* mobile: name and tagline lead, image follows */}
+        {/* header always leads: number, name, tagline */}
         <Reveal>
-          <div className="lg:hidden">
+          <div>
             <p className="label-xs !tracking-[0.26em] text-olive">
               {s.n} — {s.best}
             </p>
@@ -152,8 +151,8 @@ function ServiceDetail({ s, i }: { s: Service; i: number }) {
           </div>
         </Reveal>
 
-        <div className="mt-8 grid items-center gap-12 lg:mt-0 lg:grid-cols-12 lg:gap-16">
-          <div className={`lg:col-span-5 ${flip ? "lg:order-2 lg:col-start-8" : ""}`}>
+        <div className="mt-10 grid items-start gap-12 lg:grid-cols-12 lg:gap-16">
+          <div className="lg:col-span-5">
             <Reveal>
               <div className="overflow-hidden bg-stone">
                 <img
@@ -166,20 +165,10 @@ function ServiceDetail({ s, i }: { s: Service; i: number }) {
             </Reveal>
           </div>
 
-          <div className={`lg:col-span-6 ${flip ? "lg:order-1 lg:col-start-1" : "lg:col-start-7"}`}>
+          <div className="lg:col-span-6 lg:col-start-7">
             <Reveal delay={100}>
-              <div className="hidden lg:block">
-                <p className="label-xs !tracking-[0.26em] text-olive">
-                  {s.n} — {s.best}
-                </p>
-                <h2 className="display-md mt-5 !text-[clamp(1.9rem,3.4vw,3rem)]">{s.name}</h2>
-                <p className="mt-5 font-serif-editorial text-[clamp(1.2rem,2vw,1.7rem)] italic leading-snug text-charcoal">
-                  {s.tagline}
-                </p>
-              </div>
-
-              {s.lede.map((p) => (
-                <p key={p} className="body-read mt-5">
+              {s.lede.map((p, k) => (
+                <p key={p} className={k === 0 ? "body-read" : "body-read mt-5"}>
                   {p}
                 </p>
               ))}
@@ -211,9 +200,10 @@ function ServiceDetail({ s, i }: { s: Service; i: number }) {
           </div>
         </div>
       </div>
-    </section>
+    </div>
   );
 }
+
 
 
 const worksWhen = [

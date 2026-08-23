@@ -953,20 +953,46 @@ export function ProcessOrbit({
         ))}
       </div>
 
-      {/* mobile / tablet: readable legend under the drawing */}
-      <ol className="mt-8 grid gap-x-8 gap-y-4 sm:grid-cols-2 lg:hidden">
-        {steps.map((s) => (
-          <li key={s.label} className="flex gap-3">
-            <span className="label-xs mt-[0.15rem] !tracking-[0.2em] text-olive">{s.n}</span>
-            <span>
-              <span className="label-xs !tracking-[0.18em] !text-charcoal">{s.label}</span>
-              <span className="mt-1 block text-[0.8rem] leading-snug text-charcoal/60">
-                {s.note}
-              </span>
-            </span>
-          </li>
-        ))}
+      {/* mobile / tablet: the spiral unrolls vertically, text sits inside its curve */}
+      <ol className="lg:hidden">
+        {steps.map((s, i) => {
+          const bulge = i % 2 === 0; // alternate side so the line reads as a coil
+          const grow = 34 + i * 8; // curve opens up as it moves outward
+          return (
+            <li key={s.label} className="relative grid grid-cols-[3.25rem_minmax(0,1fr)] gap-4">
+              <div className="relative min-h-[5.5rem]">
+                <svg
+                  viewBox="0 0 100 100"
+                  preserveAspectRatio="none"
+                  className="absolute inset-0 h-full w-full overflow-visible"
+                  fill="none"
+                  aria-hidden
+                >
+                  <path
+                    d={`M50,0 C${bulge ? 50 + grow : 50 - grow},33 ${bulge ? 50 + grow : 50 - grow},67 50,100`}
+                    stroke="var(--olive)"
+                    strokeWidth="1"
+                    vectorEffect="non-scaling-stroke"
+                    opacity={shown ? 0.55 : 0}
+                    style={{ transition: `opacity 700ms ease ${i * 120}ms` }}
+                  />
+                </svg>
+                <span
+                  className="label-xs absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 bg-background px-1.5 !tracking-[0.16em] text-olive"
+                  style={{ opacity: shown ? 1 : 0, transition: `opacity 700ms ease ${i * 120}ms` }}
+                >
+                  {s.n}
+                </span>
+              </div>
+              <div className="py-6">
+                <p className="label-xs !tracking-[0.2em] !text-charcoal">{s.label}</p>
+                <p className="mt-1.5 text-[0.85rem] leading-snug text-charcoal/60">{s.note}</p>
+              </div>
+            </li>
+          );
+        })}
       </ol>
+
 
       <p className="font-serif-editorial mt-8 text-[0.95rem] italic leading-snug text-charcoal/70">
         The process can move back and forth.

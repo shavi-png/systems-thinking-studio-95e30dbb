@@ -436,9 +436,9 @@ function StrategicPartnership() {
         </section>
 
 
-        {/* ——— 04 THE THREE SERVICES, IN DETAIL ——— */}
+        {/* ——— 04 LEVEL OF INVOLVEMENT + THE THREE SERVICES ——— */}
         <section id="involvement" className="rule-thin bg-paper">
-          <div className="mx-auto max-w-[1440px] px-6 pb-4 pt-20 md:px-10 md:pt-28">
+          <div className="mx-auto max-w-[1440px] px-6 pt-20 md:px-10 md:pt-28">
             <div className="grid gap-10 md:grid-cols-12">
               <div className="md:col-span-6">
                 <Reveal>
@@ -461,30 +461,14 @@ function StrategicPartnership() {
                   </p>
                 </Reveal>
               </div>
-              <div className="md:col-span-12">
-                <Reveal delay={180}>
-                  <ul className="mt-2 flex flex-wrap gap-x-10 gap-y-3 md:mt-8">
-                    {services.map((s) => (
-                      <li key={s.id}>
-                        <a href={`#${s.id}`} className="group flex items-baseline gap-3">
-                          <span className="label-xs !tracking-[0.24em] text-olive">{s.n}</span>
-                          <span className="font-serif-editorial text-[clamp(1.15rem,1.8vw,1.5rem)] text-charcoal transition-colors group-hover:text-olive">
-                            {s.name}
-                          </span>
-                        </a>
-                      </li>
-                    ))}
-                  </ul>
-                </Reveal>
-              </div>
-
             </div>
           </div>
+
+          {services.map((s, i) => (
+            <ServiceDetail key={s.id} s={s} i={i} />
+          ))}
         </section>
 
-        {services.map((s, i) => (
-          <ServiceDetail key={s.id} s={s} i={i} />
-        ))}
 
 
         {/* ——— 07 HOW I WORK ——— */}

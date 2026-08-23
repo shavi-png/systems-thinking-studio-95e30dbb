@@ -270,12 +270,13 @@
    type utilities read correctly on deep ink backgrounds. */
 @utility dark-room {
   background-color: var(--ink);
-  --charcoal: oklch(0.975 0.004 120);
-  --smoke: oklch(0.755 0.012 128);
-  --body-tone: oklch(0.845 0.008 120);
-  --line-tone: oklch(1 0 0 / 18%);
-  color: oklch(0.975 0.004 120);
+  --charcoal: oklch(0.985 0.014 92);
+  --smoke: oklch(0.885 0.022 88);
+  --body-tone: oklch(0.945 0.018 90);
+  --line-tone: oklch(1 0 0 / 32%);
+  color: oklch(0.985 0.014 92);
 }
+
 
 /* One clearly biggest display moment per page. */
 @utility display-xl {

@@ -671,24 +671,6 @@ function StrategicPartnership() {
                     Start from the sentence that sounds most like your situation.
                   </p>
                 </Reveal>
-
-                <div className="mt-14 space-y-10">
-                  {formats.map(([q], i) => (
-                    <Reveal key={q} delay={i * 80}>
-                      <div className="flex gap-6 md:gap-8">
-                        <span
-                          aria-hidden
-                          className="font-serif-editorial mt-[0.55rem] shrink-0 text-[0.9rem] tabular-nums text-olive"
-                        >
-                          0{i + 1}
-                        </span>
-                        <p className="font-serif-editorial text-[clamp(1.35rem,2.4vw,2.1rem)] leading-[1.15] text-charcoal">
-                          {q}
-                        </p>
-                      </div>
-                    </Reveal>
-                  ))}
-                </div>
               </div>
 
               <div className="relative md:col-span-4 md:col-start-9">
@@ -699,24 +681,40 @@ function StrategicPartnership() {
                 <Reveal>
                   <p className="label-xs pl-8">Leads to —</p>
                 </Reveal>
-                <div className="mt-10 space-y-10 pl-8">
-                  {formats.map(([_, a, href], i) => (
-                    <Reveal key={a} delay={i * 80 + 40}>
-                      <a href={href} className="group block">
-                        <p className="font-serif-editorial text-[clamp(1.25rem,2vw,1.7rem)] italic leading-[1.15] text-charcoal transition-colors group-hover:text-olive">
-                          {a}
-                        </p>
-                        <span
-                          aria-hidden
-                          className="mt-3 inline-block text-olive transition-transform duration-500 group-hover:translate-x-1"
-                        >
-                          →
-                        </span>
-                      </a>
-                    </Reveal>
-                  ))}
-                </div>
               </div>
+            </div>
+
+            <div className="mt-14 grid gap-x-12 gap-y-10 md:grid-cols-12">
+              {formats.map(([q, a, href], i) => (
+                <div key={q} className="contents">
+                  <Reveal delay={i * 80} className="md:col-span-7">
+                    <div className="flex gap-6 md:gap-8">
+                      <span
+                        aria-hidden
+                        className="font-serif-editorial mt-[0.55rem] shrink-0 text-[0.9rem] tabular-nums text-olive"
+                      >
+                        0{i + 1}
+                      </span>
+                      <p className="font-serif-editorial text-[clamp(1.35rem,2.4vw,2.1rem)] leading-[1.15] text-charcoal">
+                        {q}
+                      </p>
+                    </div>
+                  </Reveal>
+                  <Reveal delay={i * 80 + 40} className="md:col-span-4 md:col-start-9">
+                    <a href={href} className="group block pl-8">
+                      <p className="font-serif-editorial text-[clamp(1.25rem,2vw,1.7rem)] italic leading-[1.15] text-charcoal transition-colors group-hover:text-olive">
+                        {a}
+                      </p>
+                      <span
+                        aria-hidden
+                        className="mt-3 inline-block text-olive transition-transform duration-500 group-hover:translate-x-1"
+                      >
+                        →
+                      </span>
+                    </a>
+                  </Reveal>
+                </div>
+              ))}
             </div>
           </div>
         </section>

@@ -213,12 +213,13 @@ function Index() {
               src={ripple.url}
               alt="Concentric ripples spiralling across still water"
               loading="lazy"
-              className="h-full w-full object-cover [filter:grayscale(0.85)_sepia(0.18)_brightness(1.02)_contrast(1.02)]"
+              className="h-full w-full object-cover [filter:grayscale(0.8)_sepia(0.2)_brightness(0.86)_contrast(1.04)]"
             />
-            <Spiral className="pointer-events-none absolute inset-0 m-auto h-[62%] w-[62%] text-ivory opacity-50" />
-            <p className="label-xs absolute bottom-6 left-6 !text-ivory/70 md:bottom-10 md:left-10">
+            <Spiral className="pointer-events-none absolute inset-0 m-auto h-[62%] w-[62%] text-ivory opacity-40" />
+            <p className="label-xs absolute bottom-6 left-6 !text-ivory md:bottom-10 md:left-10">
               One structure, unfolding
             </p>
+
           </div>
         </section>
 

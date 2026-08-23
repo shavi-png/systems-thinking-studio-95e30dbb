@@ -213,12 +213,13 @@ function Index() {
               src={ripple.url}
               alt="Concentric ripples spiralling across still water"
               loading="lazy"
-              className="h-full w-full object-cover [filter:grayscale(0.9)_brightness(0.62)_contrast(1.08)]"
+              className="h-full w-full object-cover [filter:grayscale(0.8)_sepia(0.2)_brightness(0.86)_contrast(1.04)]"
             />
-            <Spiral className="pointer-events-none absolute inset-0 m-auto h-[62%] w-[62%] text-ivory opacity-50" />
-            <p className="label-xs absolute bottom-6 left-6 !text-ivory/70 md:bottom-10 md:left-10">
+            <Spiral className="pointer-events-none absolute inset-0 m-auto h-[62%] w-[62%] text-ivory opacity-40" />
+            <p className="label-xs absolute bottom-6 left-6 !text-ivory md:bottom-10 md:left-10">
               One structure, unfolding
             </p>
+
           </div>
         </section>
 
@@ -418,7 +419,7 @@ function Index() {
             src={shellHero.url}
             alt=""
             aria-hidden
-            className="pointer-events-none absolute left-[68%] top-1/2 h-[100%] w-auto max-w-none -translate-x-1/2 -translate-y-1/2 select-none opacity-[0.16] [filter:grayscale(1)_brightness(1.5)_contrast(0.85)] [mask-image:radial-gradient(closest-side,black_40%,transparent_92%)] md:h-[115%] md:opacity-[0.18]"
+            className="pointer-events-none absolute left-[68%] top-1/2 h-[100%] w-auto max-w-none -translate-x-1/2 -translate-y-1/2 select-none opacity-[0.28] [filter:grayscale(1)_brightness(1.6)_contrast(0.8)] [mask-image:radial-gradient(closest-side,black_42%,transparent_92%)] md:h-[115%] md:opacity-[0.3]"
           />
           <div className="relative mx-auto grid min-h-[58vh] max-w-[1440px] content-center gap-12 px-6 py-20 md:grid-cols-12 md:px-10 md:py-28">
             <div className="md:col-span-7">

@@ -170,7 +170,7 @@
   --paper: oklch(1 0 0);
   --stone: oklch(0.955 0.004 130);
   --sand: oklch(0.966 0.012 125);
-  --cream: oklch(0.958 0.017 92);
+  --cream: oklch(0.955 0.019 88);
   --taupe: oklch(0.855 0.016 125);
   --smoke: oklch(0.635 0.01 130);
   --sage: oklch(0.9 0.028 128);
@@ -179,8 +179,10 @@
   --sky: oklch(0.895 0.036 225);
   --blush: oklch(0.905 0.032 25);
   --charcoal: oklch(0.255 0.012 140);
-  --ink: oklch(0.208 0.014 145);
-  --ink-soft: oklch(0.275 0.014 145);
+  /* warm sand-taupe "rooms" instead of graphite — shell, sun, beach */
+  --ink: oklch(0.545 0.026 62);
+  --ink-soft: oklch(0.63 0.026 62);
+
 
   --line-tone: oklch(0.855 0.014 128);
 
@@ -268,12 +270,13 @@
    type utilities read correctly on deep ink backgrounds. */
 @utility dark-room {
   background-color: var(--ink);
-  --charcoal: oklch(0.975 0.004 120);
-  --smoke: oklch(0.755 0.012 128);
-  --body-tone: oklch(0.845 0.008 120);
-  --line-tone: oklch(1 0 0 / 18%);
-  color: oklch(0.975 0.004 120);
+  --charcoal: oklch(0.985 0.014 92);
+  --smoke: oklch(0.885 0.022 88);
+  --body-tone: oklch(0.945 0.018 90);
+  --line-tone: oklch(1 0 0 / 32%);
+  color: oklch(0.985 0.014 92);
 }
+
 
 /* One clearly biggest display moment per page. */
 @utility display-xl {

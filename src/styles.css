@@ -11,6 +11,7 @@
   --color-paper: var(--paper);
   --color-stone: var(--stone);
   --color-sand: var(--sand);
+  --color-cream: var(--cream);
   --color-taupe: var(--taupe);
   --color-smoke: var(--smoke);
   --color-sage: var(--sage);
@@ -19,6 +20,8 @@
   --color-sky: var(--sky);
   --color-blush: var(--blush);
   --color-charcoal: var(--charcoal);
+  --color-ink: var(--ink);
+  --color-ink-soft: var(--ink-soft);
   --color-line: var(--line-tone);
 }
 
@@ -167,6 +170,7 @@
   --paper: oklch(1 0 0);
   --stone: oklch(0.955 0.004 130);
   --sand: oklch(0.966 0.012 125);
+  --cream: oklch(0.958 0.017 92);
   --taupe: oklch(0.855 0.016 125);
   --smoke: oklch(0.635 0.01 130);
   --sage: oklch(0.9 0.028 128);
@@ -175,8 +179,11 @@
   --sky: oklch(0.895 0.036 225);
   --blush: oklch(0.905 0.032 25);
   --charcoal: oklch(0.255 0.012 140);
+  --ink: oklch(0.208 0.014 145);
+  --ink-soft: oklch(0.275 0.014 145);
 
   --line-tone: oklch(0.855 0.014 128);
+
 
   --background: var(--ivory);
   --foreground: var(--charcoal);
@@ -253,9 +260,48 @@
 @utility body-read {
   font-size: clamp(0.95rem, 1.05vw, 1.0625rem);
   line-height: 1.72;
-  color: oklch(0.4 0.01 70);
+  color: var(--body-tone, oklch(0.4 0.01 70));
   max-width: 34em;
 }
+
+/* A "dark room": inverts the editorial tokens locally so all existing
+   type utilities read correctly on deep ink backgrounds. */
+@utility dark-room {
+  background-color: var(--ink);
+  --charcoal: oklch(0.975 0.004 120);
+  --smoke: oklch(0.755 0.012 128);
+  --body-tone: oklch(0.845 0.008 120);
+  --line-tone: oklch(1 0 0 / 18%);
+  color: oklch(0.975 0.004 120);
+}
+
+/* One clearly biggest display moment per page. */
+@utility display-xl {
+  font-family: var(--font-serif-editorial);
+  font-weight: 400;
+  font-size: clamp(3rem, 9vw, 8.5rem);
+  line-height: 0.9;
+  letter-spacing: -0.03em;
+  color: var(--charcoal);
+}
+
+/* Consistent 01 / 02 / 03 numbering system across sections. */
+@utility section-num {
+  font-family: var(--font-serif-editorial);
+  font-size: 0.9rem;
+  letter-spacing: 0.16em;
+  color: var(--smoke);
+  display: inline-flex;
+  align-items: center;
+  gap: 0.75rem;
+  &::after {
+    content: "";
+    width: 2.5rem;
+    height: 1px;
+    background: var(--line-tone);
+  }
+}
+
 
 @utility grain {
   position: relative;

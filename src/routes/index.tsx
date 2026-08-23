@@ -59,7 +59,7 @@ function Index() {
                 <p className="label-xs mt-2">Strategist · Founder · Advisor</p>
               </Reveal>
               <Reveal delay={120}>
-                <h1 className="display-lg mt-10 md:mt-12">
+                <h1 className="display-xl mt-10 md:mt-12">
                   Ideas do not
                   <br />
                   need complexity.
@@ -114,6 +114,7 @@ function Index() {
             <div className="grid gap-16 md:grid-cols-12">
               <div className="md:col-span-7">
                 <Reveal>
+                  <p className="section-num mb-6">01 / Point of view</p>
                   <h2 className="display-md">
                     Working at the intersection of strategy × marketing ×{" "}
                     <span className="italic">product thinking.</span>
@@ -149,16 +150,18 @@ function Index() {
               </div>
             </div>
 
-            {/* proof ribbon */}
-            <div className="mt-12 md:mt-16">
-              <dl className="grid grid-cols-1 gap-px overflow-hidden border border-sage/30 bg-sage/25 sm:grid-cols-2 lg:grid-cols-5">
+            {/* proof ribbon — restrained cream band, sage only as an accent rule */}
+            <div className="mt-14 md:mt-20">
+              <dl className="grid grid-cols-1 border-t border-line sm:grid-cols-2 lg:grid-cols-5">
                 {proof.map((p) => (
                   <div
                     key={p.k}
-                    className="bg-sage/10 px-6 py-5 transition-colors hover:bg-sage/20 md:px-8 md:py-6"
+                    className="border-b border-line py-6 pr-6 lg:border-b-0 lg:border-l lg:border-line lg:pl-6 lg:first:border-l-0 lg:first:pl-0"
                   >
-                    <dt className="font-serif-editorial text-2xl text-charcoal">{p.k}</dt>
-                    <dd className="label-xs mt-1 !tracking-[0.14em] normal-case">{p.v}</dd>
+                    <dt className="font-serif-editorial text-[1.6rem] leading-none text-charcoal">
+                      {p.k}
+                    </dt>
+                    <dd className="label-xs mt-3 !tracking-[0.14em] normal-case">{p.v}</dd>
                   </div>
                 ))}
               </dl>
@@ -166,34 +169,24 @@ function Index() {
           </div>
         </section>
 
-        {/* ——— TRANSITION — statement + spiral ——— */}
-        <section className="relative overflow-hidden bg-paper">
-          <div className="mx-auto max-w-[1440px] px-6 pb-16 pt-12 md:px-10 md:pb-24 md:pt-16">
+        {/* ——— TRANSITION — the first dark room ——— */}
+        <section className="dark-room relative overflow-hidden">
+          <div className="mx-auto max-w-[1440px] px-6 pb-20 pt-20 md:px-10 md:pb-28 md:pt-28">
             <Reveal>
-              <div className="grid items-center gap-14 lg:grid-cols-3 lg:gap-10">
-                {/* left third — kicker + headline */}
-                <div className="lg:pr-6">
-                  <p className="label-xs mb-5">The idea becomes a system</p>
-                  <h2 className="display-lg text-charcoal">
-                    Marketing
+              <p className="section-num mb-8">02 / The idea becomes a system</p>
+              <div className="grid items-end gap-12 lg:grid-cols-12 lg:gap-10">
+                {/* the single biggest voice in this room */}
+                <div className="lg:col-span-7">
+                  <h2 className="display-xl !text-[clamp(2.6rem,6.4vw,5.6rem)]">
+                    Marketing is not
                     <br />
-                    is not
-                    <br />
-                    the starting point.
+                    <span className="italic">the starting point.</span>
                   </h2>
                 </div>
 
-                {/* centre third — spiral */}
-                <div className="w-full">
-                  <SpiralSystem
-                    center="Context"
-                    nodes={["Clarity", "Structure", "Decision", "Action"]}
-                  />
-                </div>
-
-                {/* right third — supporting text */}
-                <div className="lg:pl-6">
-                  <p className="body-read !max-w-[26rem]">
+                {/* restrained supporting text, strictly aligned to the grid */}
+                <div className="lg:col-span-4 lg:col-start-9">
+                  <p className="body-read !max-w-none">
                     Most problems begin before the launch. When there is no clarity about what we are
                     creating, for whom, which problem we solve, why anyone should choose us, how to
                     talk about it and how to bring it to market — advertising, content and AI do not
@@ -202,16 +195,30 @@ function Index() {
                 </div>
               </div>
             </Reveal>
+
+            {/* the shell motif, larger and cleaner, owning its own band */}
+            <div className="mt-16 border-t border-line pt-12 md:mt-20 md:pt-16">
+              <div className="mx-auto max-w-[54rem]">
+                <SpiralSystem
+                  center="Context"
+                  nodes={["Clarity", "Structure", "Decision", "Action"]}
+                />
+              </div>
+            </div>
           </div>
 
-          <div className="relative h-[42vh] w-full overflow-hidden md:h-[58vh]">
+          {/* full-bleed image moment — the visual event, not decoration */}
+          <div className="relative h-[52vh] w-full overflow-hidden md:h-[76vh]">
             <img
               src={ripple.url}
               alt="Concentric ripples spiralling across still water"
               loading="lazy"
-              className="h-full w-full object-cover [filter:saturate(0.45)_brightness(1.06)]"
+              className="h-full w-full object-cover [filter:grayscale(0.9)_brightness(0.62)_contrast(1.08)]"
             />
-            <Spiral className="pointer-events-none absolute inset-0 m-auto h-[70%] w-[70%] opacity-60" />
+            <Spiral className="pointer-events-none absolute inset-0 m-auto h-[62%] w-[62%] text-ivory opacity-50" />
+            <p className="label-xs absolute bottom-6 left-6 !text-ivory/70 md:bottom-10 md:left-10">
+              One structure, unfolding
+            </p>
           </div>
         </section>
 

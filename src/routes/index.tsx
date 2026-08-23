@@ -150,16 +150,18 @@ function Index() {
               </div>
             </div>
 
-            {/* proof ribbon */}
-            <div className="mt-12 md:mt-16">
-              <dl className="grid grid-cols-1 gap-px overflow-hidden border border-sage/30 bg-sage/25 sm:grid-cols-2 lg:grid-cols-5">
+            {/* proof ribbon — restrained cream band, sage only as an accent rule */}
+            <div className="mt-14 md:mt-20">
+              <dl className="grid grid-cols-1 border-t border-line sm:grid-cols-2 lg:grid-cols-5">
                 {proof.map((p) => (
                   <div
                     key={p.k}
-                    className="bg-sage/10 px-6 py-5 transition-colors hover:bg-sage/20 md:px-8 md:py-6"
+                    className="border-b border-line py-6 pr-6 lg:border-b-0 lg:border-l lg:border-line lg:pl-6 lg:first:border-l-0 lg:first:pl-0"
                   >
-                    <dt className="font-serif-editorial text-2xl text-charcoal">{p.k}</dt>
-                    <dd className="label-xs mt-1 !tracking-[0.14em] normal-case">{p.v}</dd>
+                    <dt className="font-serif-editorial text-[1.6rem] leading-none text-charcoal">
+                      {p.k}
+                    </dt>
+                    <dd className="label-xs mt-3 !tracking-[0.14em] normal-case">{p.v}</dd>
                   </div>
                 ))}
               </dl>

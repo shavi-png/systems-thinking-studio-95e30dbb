@@ -114,6 +114,7 @@ function Index() {
             <div className="grid gap-16 md:grid-cols-12">
               <div className="md:col-span-7">
                 <Reveal>
+                  <p className="section-num mb-6">01 / Point of view</p>
                   <h2 className="display-md">
                     Working at the intersection of strategy × marketing ×{" "}
                     <span className="italic">product thinking.</span>

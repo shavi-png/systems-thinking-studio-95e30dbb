@@ -278,7 +278,7 @@ function Index() {
           {/* eyebrow + headline */}
           <Reveal>
             <div className="max-w-4xl">
-              <p className="label-xs mb-5">THE THINKING BEHIND THE WORK</p>
+              <p className="section-num mb-6">05 / The thinking behind the work</p>
               <h2 className="display-md">
                 Behind every product,
                 <br />

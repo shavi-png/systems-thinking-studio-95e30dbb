@@ -135,13 +135,12 @@ const services: Service[] = [
 
 
 function ServiceDetail({ s, i }: { s: Service; i: number }) {
-  const flip = i % 2 === 1;
   return (
-    <section id={s.id} className={`rule-thin ${i % 2 === 1 ? "bg-paper" : ""}`}>
+    <div id={s.id} className={i > 0 ? "rule-thin" : ""}>
       <div className="mx-auto max-w-[1440px] px-6 py-20 md:px-10 md:py-24">
-        {/* mobile: name and tagline lead, image follows */}
+        {/* header always leads: number, name, tagline */}
         <Reveal>
-          <div className="lg:hidden">
+          <div>
             <p className="label-xs !tracking-[0.26em] text-olive">
               {s.n} — {s.best}
             </p>
@@ -152,8 +151,8 @@ function ServiceDetail({ s, i }: { s: Service; i: number }) {
           </div>
         </Reveal>
 
-        <div className="mt-8 grid items-center gap-12 lg:mt-0 lg:grid-cols-12 lg:gap-16">
-          <div className={`lg:col-span-5 ${flip ? "lg:order-2 lg:col-start-8" : ""}`}>
+        <div className="mt-10 grid items-start gap-12 lg:grid-cols-12 lg:gap-16">
+          <div className="lg:col-span-5">
             <Reveal>
               <div className="overflow-hidden bg-stone">
                 <img
@@ -166,20 +165,10 @@ function ServiceDetail({ s, i }: { s: Service; i: number }) {
             </Reveal>
           </div>
 
-          <div className={`lg:col-span-6 ${flip ? "lg:order-1 lg:col-start-1" : "lg:col-start-7"}`}>
+          <div className="lg:col-span-6 lg:col-start-7">
             <Reveal delay={100}>
-              <div className="hidden lg:block">
-                <p className="label-xs !tracking-[0.26em] text-olive">
-                  {s.n} — {s.best}
-                </p>
-                <h2 className="display-md mt-5 !text-[clamp(1.9rem,3.4vw,3rem)]">{s.name}</h2>
-                <p className="mt-5 font-serif-editorial text-[clamp(1.2rem,2vw,1.7rem)] italic leading-snug text-charcoal">
-                  {s.tagline}
-                </p>
-              </div>
-
-              {s.lede.map((p) => (
-                <p key={p} className="body-read mt-5">
+              {s.lede.map((p, k) => (
+                <p key={p} className={k === 0 ? "body-read" : "body-read mt-5"}>
                   {p}
                 </p>
               ))}
@@ -211,9 +200,10 @@ function ServiceDetail({ s, i }: { s: Service; i: number }) {
           </div>
         </div>
       </div>
-    </section>
+    </div>
   );
 }
+
 
 
 const worksWhen = [
@@ -279,8 +269,8 @@ function StrategicPartnership() {
             aria-hidden
             className="pointer-events-none absolute left-[-22%] bottom-[-30%] h-[95%] w-auto max-w-none select-none opacity-[0.22] [filter:sepia(0.05)_saturate(0.3)_brightness(1.28)_contrast(0.82)] [mask-image:radial-gradient(closest-side,black_50%,transparent_100%)]"
           />
-          <div className="relative mx-auto grid max-w-[1440px] grid-cols-1 items-start gap-12 px-6 pb-20 pt-24 md:grid-cols-12 md:gap-10 md:px-10 md:pb-28 md:pt-32">
-            <div className="md:col-span-7">
+          <div className="relative mx-auto grid max-w-[1440px] grid-cols-1 items-stretch gap-12 px-6 pb-20 pt-24 md:grid-cols-12 md:gap-10 md:px-10 md:pb-28 md:pt-32">
+            <div className="flex flex-col md:col-span-7">
               <Reveal>
                 <p className="label-xs !tracking-[0.3em]">Strategic Partnership</p>
                 <h1 className="display-lg mt-7 !text-[clamp(2.4rem,5.4vw,4.7rem)]">
@@ -303,41 +293,31 @@ function StrategicPartnership() {
                   — when product, market, positioning, growth and execution need to be considered as
                   one connected system.
                 </p>
-                <div className="mt-9 flex flex-wrap items-center gap-x-8 gap-y-4">
-                  <a href="#involvement" className="link-editorial">
-                    Explore working together <span aria-hidden>↓</span>
-                  </a>
-                  <p className="label-xs !tracking-[0.18em]">
-                    Advisory · Strategy · Fractional CMO
-                  </p>
-                </div>
+                <p className="body-read mt-5 max-w-[30rem]">
+                  The engagement can be focused or ongoing — one strategic decision, the strategy
+                  itself, or stepping in as a Fractional CMO.
+                </p>
+              </Reveal>
+              <Reveal delay={200} className="mt-10 md:mt-auto md:pt-10">
+                <a href="#involvement" className="link-editorial">
+                  Explore working together <span aria-hidden>↓</span>
+                </a>
               </Reveal>
             </div>
 
             <div className="md:col-span-5 md:col-start-8">
               <Reveal delay={220}>
-                <div className="relative isolate ml-auto max-w-[26rem] md:max-w-none">
-                  <span
-                    aria-hidden
-                    className="absolute -left-6 -top-6 -z-10 hidden h-40 w-40 rounded-full bg-sky/70 md:block"
-                  />
+                <div className="ml-auto max-w-[26rem] md:max-w-none">
                   <img
                     src={portraitImg}
                     alt="Vita Shablii"
-                    className="relative aspect-[4/5] w-full object-cover"
-                  />
-                  <span
-                    aria-hidden
-                    className="absolute -bottom-8 -right-6 -z-10 hidden h-28 w-28 rounded-full bg-clay/70 md:block"
+                    className="aspect-[4/5] w-full object-cover"
                   />
                 </div>
-                <p className="font-serif-editorial mt-8 max-w-[22rem] text-[1.05rem] italic leading-snug text-charcoal/75 md:ml-auto">
-                  The engagement can be focused or ongoing — one strategic decision, the strategy
-                  itself, or stepping in as a Fractional CMO.
-                </p>
               </Reveal>
             </div>
           </div>
+
         </section>
 
 
@@ -355,25 +335,22 @@ function StrategicPartnership() {
               </h2>
             </Reveal>
 
-            <div className="mt-14 flex flex-wrap gap-4">
+            <div className="mt-14 grid gap-x-10 gap-y-10 sm:grid-cols-2 lg:grid-cols-4">
               {[
                 "A marketing problem can begin with the product.",
                 "A growth problem can be rooted in positioning.",
                 "A launch problem can actually be a question of market readiness.",
                 "And sometimes a team is executing constantly while the decisions that should guide that execution remain unresolved.",
               ].map((t, i) => (
-                <Reveal key={t} delay={i * 80} className="max-w-[22rem] flex-1">
-                  <p
-                    className={`h-full px-7 py-8 text-[0.95rem] leading-relaxed text-charcoal/75 ${
-                      i % 2 === 0 ? "bg-sage/40" : "bg-stone/70"
-                    }`}
-                    style={{ marginTop: `${(i % 3) * 0.9}rem` }}
-                  >
-                    {t}
-                  </p>
+                <Reveal key={t} delay={i * 80}>
+                  <div className="rule-thin h-full pt-6">
+                    <p className="label-xs !tracking-[0.24em] text-olive">0{i + 1}</p>
+                    <p className="mt-4 text-[0.95rem] leading-relaxed text-charcoal/75">{t}</p>
+                  </div>
                 </Reveal>
               ))}
             </div>
+
 
 
             <Reveal delay={160}>
@@ -436,9 +413,9 @@ function StrategicPartnership() {
         </section>
 
 
-        {/* ——— 04 THE THREE SERVICES, IN DETAIL ——— */}
+        {/* ——— 04 LEVEL OF INVOLVEMENT + THE THREE SERVICES ——— */}
         <section id="involvement" className="rule-thin bg-paper">
-          <div className="mx-auto max-w-[1440px] px-6 pb-4 pt-20 md:px-10 md:pt-28">
+          <div className="mx-auto max-w-[1440px] px-6 pt-20 md:px-10 md:pt-28">
             <div className="grid gap-10 md:grid-cols-12">
               <div className="md:col-span-6">
                 <Reveal>
@@ -461,30 +438,14 @@ function StrategicPartnership() {
                   </p>
                 </Reveal>
               </div>
-              <div className="md:col-span-12">
-                <Reveal delay={180}>
-                  <ul className="mt-2 flex flex-wrap gap-x-10 gap-y-3 md:mt-8">
-                    {services.map((s) => (
-                      <li key={s.id}>
-                        <a href={`#${s.id}`} className="group flex items-baseline gap-3">
-                          <span className="label-xs !tracking-[0.24em] text-olive">{s.n}</span>
-                          <span className="font-serif-editorial text-[clamp(1.15rem,1.8vw,1.5rem)] text-charcoal transition-colors group-hover:text-olive">
-                            {s.name}
-                          </span>
-                        </a>
-                      </li>
-                    ))}
-                  </ul>
-                </Reveal>
-              </div>
-
             </div>
           </div>
+
+          {services.map((s, i) => (
+            <ServiceDetail key={s.id} s={s} i={i} />
+          ))}
         </section>
 
-        {services.map((s, i) => (
-          <ServiceDetail key={s.id} s={s} i={i} />
-        ))}
 
 
         {/* ——— 07 HOW I WORK ——— */}
@@ -614,33 +575,22 @@ function StrategicPartnership() {
                 <Reveal delay={100}>
                   <p className="label-xs">That might be because the company is</p>
                 </Reveal>
-                <div className="mt-9 flex flex-wrap items-center gap-x-4 gap-y-5">
+                <div className="mt-9 grid gap-x-12 gap-y-5 sm:grid-cols-2">
                   {moments.map((m, i) => (
-                    <Reveal key={m} delay={100 + i * 60}>
-                      <span
-                        className={`font-serif-editorial inline-flex items-baseline gap-3 rounded-full px-6 py-3 text-[clamp(1rem,1.35vw,1.3rem)] leading-snug text-charcoal transition-transform duration-500 hover:-translate-y-1 ${
-                          [
-                            "bg-sage/70",
-                            "bg-sky/55",
-                            "bg-clay/45",
-                            "bg-stone",
-                            "bg-blush/45",
-                            "bg-sage/45",
-                          ][i % 6]
-                        }`}
-                        style={{ marginTop: `${[0, 0.9, 0.3, 1.2][i % 4]}rem` }}
-                      >
+                    <Reveal key={m} delay={100 + i * 50}>
+                      <div className="flex gap-4">
                         <span
                           aria-hidden
-                          className="text-[0.7rem] tabular-nums text-charcoal/35"
-                        >
-                          {i + 1}
+                          className="mt-[0.85rem] h-1.5 w-1.5 shrink-0 rounded-full bg-olive/60"
+                        />
+                        <span className="font-serif-editorial text-[clamp(1.05rem,1.45vw,1.35rem)] leading-snug text-charcoal">
+                          {m}
                         </span>
-                        {m}
-                      </span>
+                      </div>
                     </Reveal>
                   ))}
                 </div>
+
 
               </div>
             </div>
@@ -727,40 +677,32 @@ function StrategicPartnership() {
         {/* ——— 11 CHOOSING THE FORMAT ——— */}
         <section className="rule-thin relative overflow-hidden">
           <div className="relative mx-auto max-w-[1440px] px-6 py-20 md:px-10 md:py-28">
-            <div className="grid gap-8 md:grid-cols-12 md:items-end">
-              <Reveal className="md:col-span-6">
+            <div className="max-w-[46rem]">
+              <Reveal>
                 <h2 className="display-md">
                   Not sure which <span className="italic">format fits?</span>
                 </h2>
-              </Reveal>
-              <Reveal delay={100} className="md:col-span-4 md:col-start-9">
-                <p className="body-read">
+                <p className="body-read mt-6">
                   Start from the sentence that sounds most like your situation.
                 </p>
               </Reveal>
             </div>
 
-            <div className="mt-16 space-y-14 md:space-y-16">
+            <div className="mt-14 max-w-[52rem] space-y-10">
               {formats.map(([q, a, href], i) => (
                 <Reveal key={q} delay={i * 80}>
-                  <a
-                    href={href}
-                    className="group flex flex-col gap-5 md:flex-row md:items-center md:gap-12"
-                    style={{ marginLeft: `${[0, 3.5, 1.5, 5][i % 4]}rem` }}
-                  >
+                  <a href={href} className="group flex gap-6 md:gap-8">
                     <span
                       aria-hidden
-                      className={`font-serif-editorial grid h-16 w-16 shrink-0 place-items-center rounded-full text-[1.1rem] text-charcoal/60 transition-transform duration-700 group-hover:scale-110 ${
-                        ["bg-sage/70", "bg-sky/60", "bg-clay/50", "bg-blush/50"][i % 4]
-                      }`}
+                      className="font-serif-editorial mt-[0.55rem] shrink-0 text-[0.9rem] tabular-nums text-olive"
                     >
                       0{i + 1}
                     </span>
                     <div className="min-w-0">
-                      <p className="font-serif-editorial max-w-[30rem] text-[clamp(1.4rem,2.6vw,2.3rem)] leading-[1.12] text-charcoal">
+                      <p className="font-serif-editorial text-[clamp(1.35rem,2.4vw,2.1rem)] leading-[1.15] text-charcoal">
                         {q}
                       </p>
-                      <p className="label-xs mt-4 !text-charcoal !tracking-[0.22em]">
+                      <p className="label-xs mt-3 !text-charcoal !tracking-[0.22em]">
                         <span
                           aria-hidden
                           className="mr-3 inline-block transition-transform duration-500 group-hover:translate-x-1"
@@ -774,6 +716,7 @@ function StrategicPartnership() {
                 </Reveal>
               ))}
             </div>
+
 
           </div>
         </section>

@@ -418,7 +418,7 @@ function Index() {
             src={shellHero.url}
             alt=""
             aria-hidden
-            className="pointer-events-none absolute left-[68%] top-1/2 h-[100%] w-auto max-w-none -translate-x-1/2 -translate-y-1/2 select-none opacity-[0.16] [filter:grayscale(1)_brightness(1.5)_contrast(0.85)] [mask-image:radial-gradient(closest-side,black_40%,transparent_92%)] md:h-[115%] md:opacity-[0.18]"
+            className="pointer-events-none absolute left-[68%] top-1/2 h-[100%] w-auto max-w-none -translate-x-1/2 -translate-y-1/2 select-none opacity-[0.28] [filter:grayscale(1)_brightness(1.6)_contrast(0.8)] [mask-image:radial-gradient(closest-side,black_42%,transparent_92%)] md:h-[115%] md:opacity-[0.3]"
           />
           <div className="relative mx-auto grid min-h-[58vh] max-w-[1440px] content-center gap-12 px-6 py-20 md:grid-cols-12 md:px-10 md:py-28">
             <div className="md:col-span-7">

@@ -277,6 +277,19 @@
   color: oklch(0.985 0.014 92);
 }
 
+/* A "blue room": muted slate-blue band from the reference deck.
+   Lighter than dark-room, so type stays charcoal-warm but reads on blue. */
+@utility blue-room {
+  background-color: var(--slate);
+  --charcoal: oklch(0.995 0.005 90);
+  --smoke: oklch(0.93 0.012 220);
+  --body-tone: oklch(0.965 0.008 220);
+  --line-tone: oklch(1 0 0 / 34%);
+  color: oklch(0.995 0.005 90);
+}
+
+
+
 
 /* One clearly biggest display moment per page. */
 @utility display-xl {

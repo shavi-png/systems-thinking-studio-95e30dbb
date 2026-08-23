@@ -411,7 +411,6 @@ function Index() {
           </div>
         </section>
 
-        {/* ——— FINAL — quiet closing statement ——— */}
         {/* ——— FINAL — the closing dark room ——— */}
         <section id="final" className="dark-room relative overflow-hidden">
           {/* the shell, larger and more confident, now reading as light on ink */}
@@ -419,10 +418,10 @@ function Index() {
             src={shellHero.url}
             alt=""
             aria-hidden
-            className="pointer-events-none absolute left-1/2 top-1/2 h-[130%] w-auto max-w-none -translate-x-1/2 -translate-y-1/2 select-none opacity-[0.22] [filter:grayscale(1)_brightness(1.35)_contrast(0.9)] [mask-image:radial-gradient(closest-side,black_45%,transparent_100%)] [mix-blend-mode:screen] md:h-[150%] md:opacity-[0.26]"
+            className="pointer-events-none absolute left-[68%] top-1/2 h-[100%] w-auto max-w-none -translate-x-1/2 -translate-y-1/2 select-none opacity-[0.16] [filter:grayscale(1)_brightness(1.5)_contrast(0.85)] [mask-image:radial-gradient(closest-side,black_40%,transparent_92%)] md:h-[115%] md:opacity-[0.18]"
           />
-          <div className="relative mx-auto grid min-h-[78vh] max-w-[1440px] content-center gap-10 px-6 py-24 md:grid-cols-12 md:px-10 md:py-32">
-            <div className="md:col-span-8">
+          <div className="relative mx-auto grid min-h-[58vh] max-w-[1440px] content-center gap-12 px-6 py-20 md:grid-cols-12 md:px-10 md:py-28">
+            <div className="md:col-span-7">
               <Reveal>
                 <p className="section-num mb-8">07 / The principle behind the work</p>
                 <p className="display-xl">
@@ -435,19 +434,17 @@ function Index() {
                 Every product, system and decision I build starts with one question: does this make
                 sense? If the thinking is clear, everything else follows.
               </p>
-              <div className="mt-10 flex flex-wrap items-center gap-x-10 gap-y-5">
+              <div className="mt-10 flex flex-col items-start gap-5">
                 <a href="#solutions" className="link-editorial">
                   Choose a solution <span aria-hidden>↑</span>
                 </a>
-                <a
-                  href="mailto:hello@vitashablii.com"
-                  className="label-xs !tracking-[0.16em] !text-charcoal underline-offset-4 hover:underline"
-                >
-                  Write to me →
+                <a href="mailto:hello@vitashablii.com" className="link-editorial">
+                  Write to me <span aria-hidden>→</span>
                 </a>
               </div>
             </div>
           </div>
+
         </section>
       </main>
       <Footer />

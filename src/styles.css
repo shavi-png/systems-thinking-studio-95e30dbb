@@ -275,6 +275,9 @@
    type utilities read correctly on deep ink backgrounds. */
 @utility dark-room {
   background-color: var(--ink);
+  --color-charcoal: oklch(0.985 0.014 92);
+  --color-smoke: oklch(0.885 0.022 88);
+  --color-line: oklch(1 0 0 / 32%);
   --charcoal: oklch(0.985 0.014 92);
   --smoke: oklch(0.885 0.022 88);
   --body-tone: oklch(0.945 0.018 90);
@@ -286,6 +289,9 @@
    Lighter than dark-room, so type stays charcoal-warm but reads on blue. */
 @utility blue-room {
   background-color: var(--slate);
+  --color-charcoal: oklch(0.995 0.005 90);
+  --color-smoke: oklch(0.93 0.012 220);
+  --color-line: oklch(1 0 0 / 34%);
   --charcoal: oklch(0.995 0.005 90);
   --smoke: oklch(0.93 0.012 220);
   --body-tone: oklch(0.965 0.008 220);

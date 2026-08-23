@@ -942,7 +942,7 @@ function MarketingSetPage() {
                   5 strategic AI workflows · Personal AI assistant · 45 funnel frameworks · Lifetime
                   access
                 </p>
-                <Cta className="!border-ivory !bg-ivory !text-ink hover:!border-slate hover:!bg-slate hover:!text-ivory" />
+                <Cta className="!border-ivory !bg-ivory [color:var(--ink)!important] hover:!border-slate hover:!bg-slate" />
                 <p className="label-xs mt-6 normal-case !tracking-[0.1em]">
                   Less noise. More context. Better marketing decisions.
                 </p>

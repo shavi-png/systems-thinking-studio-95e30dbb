@@ -169,34 +169,24 @@ function Index() {
           </div>
         </section>
 
-        {/* ——— TRANSITION — statement + spiral ——— */}
-        <section className="relative overflow-hidden bg-paper">
-          <div className="mx-auto max-w-[1440px] px-6 pb-16 pt-12 md:px-10 md:pb-24 md:pt-16">
+        {/* ——— TRANSITION — the first dark room ——— */}
+        <section className="dark-room relative overflow-hidden">
+          <div className="mx-auto max-w-[1440px] px-6 pb-20 pt-20 md:px-10 md:pb-28 md:pt-28">
             <Reveal>
-              <div className="grid items-center gap-14 lg:grid-cols-3 lg:gap-10">
-                {/* left third — kicker + headline */}
-                <div className="lg:pr-6">
-                  <p className="label-xs mb-5">The idea becomes a system</p>
-                  <h2 className="display-lg text-charcoal">
-                    Marketing
+              <p className="section-num mb-8">02 / The idea becomes a system</p>
+              <div className="grid items-end gap-12 lg:grid-cols-12 lg:gap-10">
+                {/* the single biggest voice in this room */}
+                <div className="lg:col-span-7">
+                  <h2 className="display-xl !text-[clamp(2.6rem,6.4vw,5.6rem)]">
+                    Marketing is not
                     <br />
-                    is not
-                    <br />
-                    the starting point.
+                    <span className="italic">the starting point.</span>
                   </h2>
                 </div>
 
-                {/* centre third — spiral */}
-                <div className="w-full">
-                  <SpiralSystem
-                    center="Context"
-                    nodes={["Clarity", "Structure", "Decision", "Action"]}
-                  />
-                </div>
-
-                {/* right third — supporting text */}
-                <div className="lg:pl-6">
-                  <p className="body-read !max-w-[26rem]">
+                {/* restrained supporting text, strictly aligned to the grid */}
+                <div className="lg:col-span-4 lg:col-start-9">
+                  <p className="body-read !max-w-none">
                     Most problems begin before the launch. When there is no clarity about what we are
                     creating, for whom, which problem we solve, why anyone should choose us, how to
                     talk about it and how to bring it to market — advertising, content and AI do not
@@ -205,16 +195,30 @@ function Index() {
                 </div>
               </div>
             </Reveal>
+
+            {/* the shell motif, larger and cleaner, owning its own band */}
+            <div className="mt-16 border-t border-line pt-12 md:mt-20 md:pt-16">
+              <div className="mx-auto max-w-[54rem]">
+                <SpiralSystem
+                  center="Context"
+                  nodes={["Clarity", "Structure", "Decision", "Action"]}
+                />
+              </div>
+            </div>
           </div>
 
-          <div className="relative h-[42vh] w-full overflow-hidden md:h-[58vh]">
+          {/* full-bleed image moment — the visual event, not decoration */}
+          <div className="relative h-[52vh] w-full overflow-hidden md:h-[76vh]">
             <img
               src={ripple.url}
               alt="Concentric ripples spiralling across still water"
               loading="lazy"
-              className="h-full w-full object-cover [filter:saturate(0.45)_brightness(1.06)]"
+              className="h-full w-full object-cover [filter:grayscale(0.9)_brightness(0.62)_contrast(1.08)]"
             />
-            <Spiral className="pointer-events-none absolute inset-0 m-auto h-[70%] w-[70%] opacity-60" />
+            <Spiral className="pointer-events-none absolute inset-0 m-auto h-[62%] w-[62%] text-ivory opacity-50" />
+            <p className="label-xs absolute bottom-6 left-6 !text-ivory/70 md:bottom-10 md:left-10">
+              One structure, unfolding
+            </p>
           </div>
         </section>
 

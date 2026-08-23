@@ -257,7 +257,7 @@ function StrategicPartnership() {
         <section className="relative overflow-hidden">
           <div
             aria-hidden
-            className="pointer-events-none absolute -left-32 top-10 h-[26rem] w-[26rem] rounded-full bg-sky/45 blur-3xl"
+            className="pointer-events-none absolute -left-32 top-10 h-[26rem] w-[26rem] rounded-full bg-slate/40 blur-3xl"
           />
           <div
             aria-hidden
@@ -452,7 +452,7 @@ function StrategicPartnership() {
         <section className="rule-thin relative overflow-hidden">
           <div
             aria-hidden
-            className="pointer-events-none absolute right-[-10%] top-[10%] h-[24rem] w-[24rem] rounded-full bg-sky/35 blur-3xl"
+            className="pointer-events-none absolute right-[-10%] top-[10%] h-[24rem] w-[24rem] rounded-full bg-slate/30 blur-3xl"
           />
           <div className="relative mx-auto max-w-[1440px] px-6 py-20 md:px-10 md:py-28">
             <div className="grid gap-10 lg:grid-cols-12">
@@ -598,15 +598,15 @@ function StrategicPartnership() {
         </section>
 
         {/* ——— 10 EXPERIENCE ——— */}
-        <section className="rule-thin bg-paper">
-          <div className="mx-auto max-w-[1440px] px-6 py-20 md:px-10 md:py-28">
+        <section className="blue-room rule-thin">
+          <div className="mx-auto max-w-[1440px] px-6 py-24 md:px-10 md:py-32">
             <div className="grid gap-12 md:grid-cols-12 md:gap-10">
               <div className="md:col-span-5">
                 <Reveal>
                   <img
                     src={portraitImg}
                     alt="Vita Shablii"
-                    className="aspect-[4/5] w-full object-cover"
+                    className="aspect-[4/5] w-full object-cover [filter:grayscale(0.4)_contrast(1.04)]"
                     loading="lazy"
                   />
                 </Reveal>
@@ -641,11 +641,11 @@ function StrategicPartnership() {
                         <span className="font-serif-editorial text-[clamp(1.4rem,2.2vw,1.8rem)] leading-none text-charcoal">
                           {n}
                         </span>
-                        <p className="label-xs mt-2 !text-charcoal/60 !leading-tight">{l}</p>
+                        <p className="label-xs mt-2 !leading-tight">{l}</p>
                       </div>
                     ))}
                   </div>
-                  <p className="font-serif-editorial mt-10 bg-sage/55 px-7 py-8 text-[clamp(1.1rem,1.8vw,1.5rem)] italic leading-snug text-charcoal">
+                  <p className="font-serif-editorial mt-10 border-l border-line pl-7 text-[clamp(1.1rem,1.8vw,1.5rem)] italic leading-snug text-charcoal">
                     The value of that experience isn’t the number of things I’ve done. It’s the
                     ability to recognise what kind of problem I’m looking at.
                   </p>
@@ -726,12 +726,12 @@ function StrategicPartnership() {
 
 
         {/* ——— 12 FINAL CTA ——— */}
-        <section id="start" className="rule-thin relative overflow-hidden bg-paper">
+        <section id="start" className="dark-room rule-thin relative overflow-hidden">
           <img
             src={shellHero.url}
             alt=""
             aria-hidden
-            className="pointer-events-none absolute left-1/2 top-1/2 h-[110%] w-auto max-w-none -translate-x-1/2 -translate-y-1/2 select-none opacity-[0.3] [filter:sepia(0.05)_saturate(0.28)_brightness(1.26)_contrast(0.84)] [mask-image:radial-gradient(closest-side,black_52%,transparent_100%)]"
+            className="pointer-events-none absolute left-1/2 top-1/2 h-[115%] w-auto max-w-none -translate-x-1/2 -translate-y-1/2 select-none opacity-[0.22] [filter:sepia(0.2)_saturate(0.35)_brightness(1.5)_contrast(0.8)] [mask-image:radial-gradient(closest-side,black_48%,transparent_100%)]"
           />
           <div className="relative mx-auto flex max-w-[1440px] flex-col items-center px-6 py-24 text-center md:px-10 md:py-32">
             <Reveal>
@@ -748,7 +748,7 @@ function StrategicPartnership() {
             </p>
             <a
               href="mailto:hello@vitashablii.com"
-              className="label-xs mt-12 inline-flex items-center gap-3 bg-charcoal px-9 py-5 !tracking-[0.2em] !text-ivory transition-colors hover:bg-olive"
+              className="label-xs mt-12 inline-flex items-center gap-3 bg-ivory px-9 py-5 !tracking-[0.2em] !text-ink transition-colors hover:bg-slate hover:!text-ivory"
             >
               Explore working together <span aria-hidden>→</span>
             </a>

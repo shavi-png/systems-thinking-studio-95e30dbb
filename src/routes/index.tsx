@@ -225,10 +225,11 @@ function Index() {
         {/* ——— PRODUCT DISCOVERY — dense + interactive ——— */}
         <Solutions />
 
-        {/* ——— METHOD STATEMENT — editorial diptych ——— */}
-        <section id="method" className="rule-thin bg-sand/50">
+        {/* ——— METHOD STATEMENT — one image owns the section ——— */}
+        <section id="method" className="rule-thin bg-cream">
           <div className="mx-auto max-w-[1440px] px-6 py-20 md:px-10 md:py-28">
             <Reveal>
+              <p className="section-num mb-8">04 / The method</p>
               <h2 className="display-md max-w-[46rem]">
                 Not every task needs another tool.
                 <br />
@@ -236,48 +237,36 @@ function Index() {
               </h2>
             </Reveal>
 
-            <div className="mt-12 grid gap-10 md:mt-16 md:grid-cols-12 md:gap-8">
-              {/* tall image, sits high */}
-              <figure className="relative md:col-span-5 md:col-start-1">
-                <div className="grain aspect-[3/4] overflow-hidden bg-stone">
-                  <img
-                    src={seeds.url}
-                    alt="Dandelion seeds drifting in pale light"
-                    loading="lazy"
-                    className="h-full w-full object-cover"
-                  />
-                </div>
-                <figcaption className="label-xs mt-4 text-muted">Many instruments</figcaption>
-              </figure>
+            {/* one large, quiet image — the counterweight to the type */}
+            <figure className="mt-14 md:mt-20">
+              <div className="grain relative aspect-[16/9] overflow-hidden bg-stone md:aspect-[21/9]">
+                <img
+                  src={seeds.url}
+                  alt="Dandelion seeds drifting in pale light"
+                  loading="lazy"
+                  className="h-full w-full object-cover"
+                />
+              </div>
+              <figcaption className="label-xs mt-4">Many instruments — one structure</figcaption>
+            </figure>
 
-              {/* second image, dropped lower and smaller — the quiet counterweight */}
-              <figure className="relative md:col-span-3 md:col-start-6 md:mt-28">
-                <div className="grain aspect-square overflow-hidden bg-stone">
-                  <img
-                    src={ripple.url}
-                    alt="Concentric ripples spreading through still water"
-                    loading="lazy"
-                    className="h-full w-full object-cover [filter:saturate(0.55)_brightness(1.05)]"
-                  />
-                </div>
-                <figcaption className="label-xs mt-4 text-muted">One structure</figcaption>
-              </figure>
-
-              {/* text column, top-aligned with the tall image */}
-              <div className="md:col-span-4 md:col-start-10 md:mt-1">
-                <p className="body-read">
-                  There are more marketing instruments every year, and AI has made them even more
-                  accessible. But the value is less and less about how many tools you know —
-                </p>
-                <p className="body-read mt-6">
-                  and more about whether you understand what your product actually needs, why, at
-                  which moment, and how it connects to everything else. That is what I build my
-                  work, products and systems around.
-                </p>
-                <p className="font-serif-editorial mt-10 border-t border-line pt-6 text-[1.35rem] italic leading-snug text-charcoal">
+            <div className="mt-14 grid gap-10 md:mt-16 md:grid-cols-12 md:gap-8">
+              <div className="md:col-span-4">
+                <p className="font-serif-editorial text-[1.6rem] italic leading-snug text-charcoal">
                   Fewer instruments.
                   <br />
                   One structure.
+                </p>
+              </div>
+              <div className="md:col-span-7 md:col-start-6">
+                <p className="body-read !max-w-none">
+                  There are more marketing instruments every year, and AI has made them even more
+                  accessible. But the value is less and less about how many tools you know —
+                </p>
+                <p className="body-read mt-6 !max-w-none">
+                  and more about whether you understand what your product actually needs, why, at
+                  which moment, and how it connects to everything else. That is what I build my work,
+                  products and systems around.
                 </p>
               </div>
             </div>

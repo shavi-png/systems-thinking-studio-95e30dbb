@@ -603,42 +603,12 @@ function StrategicPartnership() {
             <div className="grid gap-12 md:grid-cols-12 md:gap-10">
               <div className="md:col-span-5">
                 <Reveal>
-                  <div className="relative isolate">
-                    <div
-                      aria-hidden
-                      className="absolute -left-4 -top-4 -z-10 hidden h-32 w-32 bg-sage/60 md:block"
-                    />
-                    <img
-                      src={portraitImg}
-                      alt="Vita Shablii"
-                      className="relative aspect-[4/5] w-full object-cover"
-                      loading="lazy"
-                    />
-                    <div
-                      aria-hidden
-                      className="absolute -bottom-5 -right-4 -z-10 hidden h-24 w-24 bg-clay/60 md:block"
-                    />
-                  </div>
-                </Reveal>
-                <Reveal delay={120}>
-                  <div className="mt-10 flex flex-wrap items-center gap-4">
-                    {[
-                      ["13+", "years", "bg-sky/55"],
-                      ["3", "continents", "bg-sage/65"],
-                      ["5+", "industries", "bg-clay/50"],
-                    ].map(([n, l, tint]) => (
-                      <span
-                        key={l}
-                        className={`inline-flex items-baseline gap-3 rounded-full px-6 py-3 ${tint}`}
-                      >
-                        <span className="font-serif-editorial text-[1.5rem] leading-none text-charcoal">
-                          {n}
-                        </span>
-                        <span className="label-xs !text-charcoal/60">{l}</span>
-                      </span>
-                    ))}
-                  </div>
-
+                  <img
+                    src={portraitImg}
+                    alt="Vita Shablii"
+                    className="aspect-[4/5] w-full object-cover"
+                    loading="lazy"
+                  />
                 </Reveal>
               </div>
 
@@ -652,16 +622,30 @@ function StrategicPartnership() {
                 </Reveal>
                 <Reveal delay={120}>
                   <p className="body-read mt-8">
-                    13+ years across marketing, strategy and product work, with experience spanning
-                    Europe, the US and China and businesses across consulting, IT, e-commerce,
-                    fintech and data-driven digital products.
+                    The work has crossed marketing, strategy and product roles — building
+                    functions and teams from scratch, launching products, expanding into new markets,
+                    developing positioning and go-to-market strategy, and working alongside
+                    technology and product teams.
                   </p>
                   <p className="body-read mt-5">
-                    I have built marketing functions and teams from scratch, worked on product
-                    launches and market expansion, developed positioning and go-to-market strategies
-                    and worked alongside technology and product teams.
+                    What stays the same across every context is the attempt to understand what is
+                    actually happening underneath the surface before deciding what to do next.
                   </p>
-                  <p className="font-serif-editorial mt-8 bg-sage/55 px-7 py-8 text-[clamp(1.1rem,1.8vw,1.5rem)] italic leading-snug text-charcoal">
+                  <div className="mt-10 grid grid-cols-3 gap-6 border-y border-line/60 py-7 md:gap-8">
+                    {[
+                      ["13+", "years in marketing & strategy"],
+                      ["3", "continents of experience"],
+                      ["5+", "industries in cases"],
+                    ].map(([n, l]) => (
+                      <div key={l}>
+                        <span className="font-serif-editorial text-[clamp(1.4rem,2.2vw,1.8rem)] leading-none text-charcoal">
+                          {n}
+                        </span>
+                        <p className="label-xs mt-2 !text-charcoal/60 !leading-tight">{l}</p>
+                      </div>
+                    ))}
+                  </div>
+                  <p className="font-serif-editorial mt-10 bg-sage/55 px-7 py-8 text-[clamp(1.1rem,1.8vw,1.5rem)] italic leading-snug text-charcoal">
                     The value of that experience isn’t the number of things I’ve done. It’s the
                     ability to recognise what kind of problem I’m looking at.
                   </p>

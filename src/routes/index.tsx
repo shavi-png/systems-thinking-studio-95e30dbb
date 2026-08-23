@@ -315,7 +315,7 @@ function Index() {
                     <h3 className="display-md mt-3">
                       {item.t}
                     </h3>
-                    <p className="body-read mt-4 !max-w-none !text-[0.85rem]">{item.d}</p>
+                    <p className="body-read mt-4 !max-w-none !text-[0.9rem]">{item.d}</p>
                   </div>
                 </Reveal>
               ))}

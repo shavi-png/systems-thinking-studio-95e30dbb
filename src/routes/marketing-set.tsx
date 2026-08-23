@@ -627,7 +627,7 @@ function MarketingSetPage() {
                   <li className="border-t border-line pt-6">
                     <p className="label-xs !text-olive">{String(i + 1).padStart(2, "0")}</p>
                     <h3 className="quote-serif mt-3 text-charcoal">{h.t}</h3>
-                    <p className="body-read mt-2 !max-w-none !text-[0.85rem]">{h.d}</p>
+                    <p className="body-read mt-2 !max-w-none !text-[0.9rem]">{h.d}</p>
                   </li>
                 </Reveal>
               ))}

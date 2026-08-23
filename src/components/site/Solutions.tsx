@@ -140,6 +140,7 @@ export function Solutions() {
   return (
     <section id="solutions" className="relative mx-auto max-w-[1440px] px-6 py-20 md:px-10 md:py-28">
       <div className="mx-auto max-w-[46rem] text-center">
+        <p className="section-num mb-7 justify-center">03 / Entry points</p>
         <h2 className="display-lg mx-auto max-w-[40rem]">
           Find the point
           <br />

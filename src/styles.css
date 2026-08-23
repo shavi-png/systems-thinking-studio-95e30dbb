@@ -260,9 +260,48 @@
 @utility body-read {
   font-size: clamp(0.95rem, 1.05vw, 1.0625rem);
   line-height: 1.72;
-  color: oklch(0.4 0.01 70);
+  color: var(--body-tone, oklch(0.4 0.01 70));
   max-width: 34em;
 }
+
+/* A "dark room": inverts the editorial tokens locally so all existing
+   type utilities read correctly on deep ink backgrounds. */
+@utility dark-room {
+  background-color: var(--ink);
+  --charcoal: oklch(0.975 0.004 120);
+  --smoke: oklch(0.755 0.012 128);
+  --body-tone: oklch(0.845 0.008 120);
+  --line-tone: oklch(1 0 0 / 18%);
+  color: oklch(0.975 0.004 120);
+}
+
+/* One clearly biggest display moment per page. */
+@utility display-xl {
+  font-family: var(--font-serif-editorial);
+  font-weight: 400;
+  font-size: clamp(3rem, 9vw, 8.5rem);
+  line-height: 0.9;
+  letter-spacing: -0.03em;
+  color: var(--charcoal);
+}
+
+/* Consistent 01 / 02 / 03 numbering system across sections. */
+@utility section-num {
+  font-family: var(--font-serif-editorial);
+  font-size: 0.9rem;
+  letter-spacing: 0.16em;
+  color: var(--smoke);
+  display: inline-flex;
+  align-items: center;
+  gap: 0.75rem;
+  &::after {
+    content: "";
+    width: 2.5rem;
+    height: 1px;
+    background: var(--line-tone);
+  }
+}
+
 
 @utility grain {
   position: relative;

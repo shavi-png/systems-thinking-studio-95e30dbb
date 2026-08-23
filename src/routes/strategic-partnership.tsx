@@ -614,33 +614,22 @@ function StrategicPartnership() {
                 <Reveal delay={100}>
                   <p className="label-xs">That might be because the company is</p>
                 </Reveal>
-                <div className="mt-9 flex flex-wrap items-center gap-x-4 gap-y-5">
+                <ul className="mt-9 grid gap-x-12 gap-y-5 sm:grid-cols-2">
                   {moments.map((m, i) => (
-                    <Reveal key={m} delay={100 + i * 60}>
-                      <span
-                        className={`font-serif-editorial inline-flex items-baseline gap-3 rounded-full px-6 py-3 text-[clamp(1rem,1.35vw,1.3rem)] leading-snug text-charcoal transition-transform duration-500 hover:-translate-y-1 ${
-                          [
-                            "bg-sage/70",
-                            "bg-sky/55",
-                            "bg-clay/45",
-                            "bg-stone",
-                            "bg-blush/45",
-                            "bg-sage/45",
-                          ][i % 6]
-                        }`}
-                        style={{ marginTop: `${[0, 0.9, 0.3, 1.2][i % 4]}rem` }}
-                      >
+                    <Reveal key={m} delay={100 + i * 50}>
+                      <li className="flex gap-4">
                         <span
                           aria-hidden
-                          className="text-[0.7rem] tabular-nums text-charcoal/35"
-                        >
-                          {i + 1}
+                          className="mt-[0.85rem] h-1.5 w-1.5 shrink-0 rounded-full bg-olive/60"
+                        />
+                        <span className="font-serif-editorial text-[clamp(1.05rem,1.45vw,1.35rem)] leading-snug text-charcoal">
+                          {m}
                         </span>
-                        {m}
-                      </span>
+                      </li>
                     </Reveal>
                   ))}
-                </div>
+                </ul>
+
 
               </div>
             </div>

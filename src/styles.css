@@ -18,6 +18,8 @@
   --color-olive: var(--olive);
   --color-clay: var(--clay);
   --color-sky: var(--sky);
+  --color-slate: var(--slate);
+  --color-slate-deep: var(--slate-deep);
   --color-blush: var(--blush);
   --color-charcoal: var(--charcoal);
   --color-ink: var(--ink);
@@ -177,6 +179,9 @@
   --olive: oklch(0.605 0.055 122);
   --clay: oklch(0.845 0.048 55);
   --sky: oklch(0.895 0.036 225);
+  /* muted slate-blue from the brand deck reference */
+  --slate: oklch(0.735 0.021 220);
+  --slate-deep: oklch(0.575 0.032 226);
   --blush: oklch(0.905 0.032 25);
   --charcoal: oklch(0.255 0.012 140);
   /* warm sand-taupe "rooms" instead of graphite — shell, sun, beach */

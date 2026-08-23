@@ -832,7 +832,7 @@ function AboutPage() {
                 <Reveal key={p.t} delay={i * 100}>
                   <article className="flex h-full flex-col bg-paper px-7 py-10">
                     <p className="label-xs">{p.meta}</p>
-                    <h3 className="display-md mt-4">{p.t}</h3>
+                    <h3 className="display-sm mt-4">{p.t}</h3>
                     <p className="body-read mt-6 flex-1">{p.d}</p>
                     {p.href.startsWith("/") ? (
                       <Link to={p.href} className="link-editorial mt-8 self-start">

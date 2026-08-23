@@ -312,7 +312,7 @@ function Index() {
                 <Reveal key={item.t} delay={i * 90}>
                   <div className="md:border-l md:border-line md:px-5 md:first:border-l-0 md:first:pl-0">
                     <p className="label-xs">{item.n}</p>
-                    <h3 className="display-md mt-3">
+                    <h3 className="display-sm mt-3">
                       {item.t}
                     </h3>
                     <p className="body-read mt-4 !max-w-none !text-[0.9rem]">{item.d}</p>

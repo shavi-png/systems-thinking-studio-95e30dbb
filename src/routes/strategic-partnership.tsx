@@ -614,10 +614,10 @@ function StrategicPartnership() {
                 <Reveal delay={100}>
                   <p className="label-xs">That might be because the company is</p>
                 </Reveal>
-                <ul className="mt-9 grid gap-x-12 gap-y-5 sm:grid-cols-2">
+                <div className="mt-9 grid gap-x-12 gap-y-5 sm:grid-cols-2">
                   {moments.map((m, i) => (
                     <Reveal key={m} delay={100 + i * 50}>
-                      <li className="flex gap-4">
+                      <div className="flex gap-4">
                         <span
                           aria-hidden
                           className="mt-[0.85rem] h-1.5 w-1.5 shrink-0 rounded-full bg-olive/60"
@@ -625,10 +625,10 @@ function StrategicPartnership() {
                         <span className="font-serif-editorial text-[clamp(1.05rem,1.45vw,1.35rem)] leading-snug text-charcoal">
                           {m}
                         </span>
-                      </li>
+                      </div>
                     </Reveal>
                   ))}
-                </ul>
+                </div>
 
 
               </div>

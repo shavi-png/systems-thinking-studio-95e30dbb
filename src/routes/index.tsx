@@ -59,7 +59,7 @@ function Index() {
                 <p className="label-xs mt-2">Strategist · Founder · Advisor</p>
               </Reveal>
               <Reveal delay={120}>
-                <h1 className="display-xl mt-10 md:mt-12">
+                <h1 className="display-xl mt-10 !text-[clamp(2.6rem,5.1vw,4.7rem)] md:mt-12">
                   Ideas do not
                   <br />
                   need complexity.

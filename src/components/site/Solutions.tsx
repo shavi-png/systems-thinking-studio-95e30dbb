@@ -76,14 +76,8 @@ function ShellField() {
       preserveAspectRatio="xMidYMid slice"
       aria-hidden
     >
-      <defs>
-        <radialGradient id="shell-core" cx="50%" cy="50%" r="50%">
-          <stop offset="0%" stopColor="var(--sage)" stopOpacity="0.5" />
-          <stop offset="100%" stopColor="var(--sage)" stopOpacity="0" />
-        </radialGradient>
-      </defs>
-      {/* the growth centre glows softly — everything unfolds from one point */}
-      <circle cx={CX} cy={CY} r="330" fill="url(#shell-core)" />
+      <defs />
+
       <path d={spiralPath(T_START, T_END)} stroke="var(--smoke)" strokeWidth="1.1" opacity="0.45" />
       {/* septa: short walls stepping out from the growth axis */}
       {septaT.map((t) => {

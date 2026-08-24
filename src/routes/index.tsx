@@ -414,13 +414,15 @@ function Index() {
 
         {/* ——— FINAL — the closing dark room ——— */}
         <section id="final" className="dark-room relative overflow-hidden">
-          {/* the shell, larger and more confident, now reading as light on ink */}
+          {/* a tilted nacre oval at the centre — the shell reads out of its core */}
+          <div className="pointer-events-none absolute left-1/2 top-1/2 h-[130%] w-[78%] -translate-x-1/2 -translate-y-1/2 -rotate-[29deg] rounded-[50%] [background-image:radial-gradient(closest-side,oklch(0.95_0.016_70/0.42),oklch(0.95_0.016_70/0.16)_58%,transparent_100%)] md:w-[44%]" />
           <img
             src={shellHero.url}
             alt=""
             aria-hidden
-            className="pointer-events-none absolute left-[68%] top-1/2 h-[100%] w-auto max-w-none -translate-x-1/2 -translate-y-1/2 select-none opacity-[0.28] [filter:grayscale(1)_brightness(1.6)_contrast(0.8)] [mask-image:radial-gradient(closest-side,black_42%,transparent_92%)] md:h-[115%] md:opacity-[0.3]"
+            className="pointer-events-none absolute left-1/2 top-1/2 h-[78%] w-auto max-w-none -translate-x-1/2 -translate-y-1/2 -rotate-[29deg] select-none opacity-[0.42] mix-blend-soft-light [filter:grayscale(1)_brightness(1.5)_contrast(0.9)] [mask-image:radial-gradient(closest-side,black_38%,transparent_88%)] md:h-[96%] md:opacity-[0.45]"
           />
+
           <div className="relative mx-auto grid min-h-[58vh] max-w-[1440px] content-center gap-12 px-6 py-20 md:grid-cols-12 md:px-10 md:py-28">
             <div className="md:col-span-7">
               <Reveal>

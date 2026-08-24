@@ -76,14 +76,8 @@ function ShellField() {
       preserveAspectRatio="xMidYMid slice"
       aria-hidden
     >
-      <defs>
-        <radialGradient id="shell-core" cx="50%" cy="50%" r="50%">
-          <stop offset="0%" stopColor="var(--sage)" stopOpacity="0.5" />
-          <stop offset="100%" stopColor="var(--sage)" stopOpacity="0" />
-        </radialGradient>
-      </defs>
-      {/* the growth centre glows softly — everything unfolds from one point */}
-      <circle cx={CX} cy={CY} r="330" fill="url(#shell-core)" />
+      <defs />
+
       <path d={spiralPath(T_START, T_END)} stroke="var(--smoke)" strokeWidth="1.1" opacity="0.45" />
       {/* septa: short walls stepping out from the growth axis */}
       {septaT.map((t) => {
@@ -157,9 +151,12 @@ export function Solutions() {
 
       {/* one shell, cut open: three chambers growing from a single centre */}
       <div className="relative mt-16 lg:mt-20">
+        {/* growth-centre glow: CSS so it fades out on every edge, never clipped */}
+        <div className="pointer-events-none absolute left-[45%] top-[60%] hidden h-[150%] w-[78%] -translate-x-1/2 -translate-y-1/2 rounded-[50%] [background-image:radial-gradient(closest-side,color-mix(in_oklab,var(--sage)_58%,transparent),transparent_100%)] lg:block" />
         <div className="pointer-events-none absolute inset-x-0 -bottom-10 -top-10 hidden lg:block">
           <ShellField />
         </div>
+
 
         <div className="relative grid gap-16 lg:grid-cols-3 lg:gap-10">
           <div className="lg:pt-40">

@@ -151,9 +151,12 @@ export function Solutions() {
 
       {/* one shell, cut open: three chambers growing from a single centre */}
       <div className="relative mt-16 lg:mt-20">
+        {/* growth-centre glow: CSS so it fades out on every edge, never clipped */}
+        <div className="pointer-events-none absolute left-[45%] top-[60%] hidden h-[150%] w-[78%] -translate-x-1/2 -translate-y-1/2 rounded-[50%] [background-image:radial-gradient(closest-side,color-mix(in_oklab,var(--sage)_58%,transparent),transparent_100%)] lg:block" />
         <div className="pointer-events-none absolute inset-x-0 -bottom-10 -top-10 hidden lg:block">
           <ShellField />
         </div>
+
 
         <div className="relative grid gap-16 lg:grid-cols-3 lg:gap-10">
           <div className="lg:pt-40">

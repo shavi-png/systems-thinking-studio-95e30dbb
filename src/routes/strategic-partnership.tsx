@@ -486,15 +486,7 @@ function StrategicPartnership() {
 
 
         {/* ——— 08 IS / ISN’T ——— */}
-        <section className="rule-thin relative overflow-hidden bg-paper">
-          <div
-            aria-hidden
-            className="pointer-events-none absolute -left-24 top-1/4 h-[30rem] w-[30rem] rounded-full bg-sage/45 blur-3xl"
-          />
-          <div
-            aria-hidden
-            className="pointer-events-none absolute -right-24 bottom-0 h-[24rem] w-[24rem] rounded-full bg-blush/40 blur-3xl"
-          />
+        <section className="teal-room rule-thin relative overflow-hidden">
           <div className="relative mx-auto max-w-[1440px] px-6 py-20 md:px-10 md:py-28">
             <div className="grid gap-16 lg:grid-cols-12 lg:gap-10">
               {/* fit */}

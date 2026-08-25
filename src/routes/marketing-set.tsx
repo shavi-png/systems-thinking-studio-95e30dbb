@@ -555,7 +555,7 @@ function MarketingSetPage() {
         </section>
 
         {/* ——— WHY NOT JUST CHATGPT ——— */}
-        <section className="rule-thin bg-paper">
+        <section className="teal-room rule-thin">
           <div className="mx-auto max-w-[1440px] px-6 py-20 md:px-10 md:py-28">
             <div className="grid gap-10 md:grid-cols-12 md:items-end">
               <div className="md:col-span-7">

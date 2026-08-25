@@ -369,7 +369,7 @@ function Index() {
         </section>
 
         {/* ——— FAQ — open questions ——— */}
-        <section id="faq" className="rule-thin bg-paper">
+        <section id="faq" className="teal-room rule-thin">
           <div className="mx-auto max-w-[1440px] px-6 py-20 md:px-10 md:py-28">
             <Reveal>
               <p className="section-num mb-6">06 / Open questions</p>
@@ -414,8 +414,8 @@ function Index() {
 
         {/* ——— FINAL — the closing dark room ——— */}
         <section id="final" className="dark-room relative overflow-hidden">
-          {/* a tilted nacre oval at the centre — the shell reads out of its core */}
-          <div className="pointer-events-none absolute left-1/2 top-1/2 h-[128%] w-[70%] -translate-x-1/2 -translate-y-1/2 -rotate-[29deg] rounded-[50%] [background-image:radial-gradient(closest-side,oklch(0.95_0.016_70/0.26),oklch(0.95_0.016_70/0.1)_60%,transparent_100%)] md:w-[32%]" />
+          {/* a tilted sage-ivory oval at the centre — cool, not red-brown */}
+          <div className="pointer-events-none absolute left-1/2 top-1/2 h-[128%] w-[70%] -translate-x-1/2 -translate-y-1/2 -rotate-[29deg] rounded-[50%] [background-image:radial-gradient(closest-side,oklch(0.95_0.012_128/0.24),oklch(0.92_0.01_128/0.08)_60%,transparent_100%)] md:w-[32%]" />
           <img
             src={shellHero.url}
             alt=""

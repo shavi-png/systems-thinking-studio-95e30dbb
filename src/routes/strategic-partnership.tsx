@@ -523,7 +523,7 @@ function StrategicPartnership() {
                   <ul className="mt-9 space-y-7">
                     {notFit.map((t) => (
                       <li key={t} className="flex gap-4">
-                        <span aria-hidden className="mt-[0.3rem] shrink-0 text-[0.8rem] text-clay">
+                        <span aria-hidden className="mt-[0.3rem] shrink-0 text-[0.8rem] text-ivory/60">
                           ×
                         </span>
                         <p className="text-[0.9rem] leading-relaxed text-charcoal/50">{t}</p>

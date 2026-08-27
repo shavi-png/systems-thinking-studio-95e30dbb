@@ -830,7 +830,7 @@ function AboutPage() {
             <div className="mt-16 grid gap-px overflow-hidden border border-line/60 bg-line/40 md:mt-20 lg:grid-cols-3">
               {products.map((p, i) => (
                 <Reveal key={p.t} delay={i * 100}>
-                  <article className="flex h-full flex-col bg-paper px-7 py-10">
+                  <article className="flex h-full flex-col bg-slate-deep/40 px-7 py-10">
                     <p className="label-xs">{p.meta}</p>
                     <h3 className="display-sm mt-4">{p.t}</h3>
                     <p className="body-read mt-6 flex-1">{p.d}</p>

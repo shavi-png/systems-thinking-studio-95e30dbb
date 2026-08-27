@@ -869,7 +869,7 @@ function MarketingSetPage() {
               </div>
               <div className="md:col-span-5 md:col-start-8">
                 <Reveal delay={100}>
-                  <div className="bg-sky/35 p-8 md:p-10">
+                  <div className="bg-slate-deep/40 p-8 md:p-10">
                     <p className="label-xs">Included</p>
                     <ul className="mt-5 border-t border-line">
                       {included.map((i) => (
@@ -887,7 +887,7 @@ function MarketingSetPage() {
                     <p className="label-xs mt-3 normal-case !tracking-[0.1em]">
                       One payment · Immediate access · Lifetime use
                     </p>
-                    <Cta className="mt-8 w-full justify-center" />
+                    <Cta invert className="mt-8 w-full justify-center" />
                     <p className="label-xs mt-5 normal-case !tracking-[0.08em]">
                       Works with ChatGPT and Claude. No marketing background required.
                     </p>

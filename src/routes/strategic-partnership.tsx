@@ -696,12 +696,12 @@ function StrategicPartnership() {
                           href={href}
                           className="group flex items-baseline gap-1"
                         >
-                          <span className="lead-serif italic text-charcoal transition-colors group-hover:text-olive">
+                          <span className="lead-serif italic text-charcoal transition-colors group-hover:text-ivory/90">
                             {a}
                           </span>
                           <span
                             aria-hidden
-                            className="shrink-0 text-olive transition-transform duration-500 group-hover:translate-x-1"
+                            className="shrink-0 text-ivory transition-transform duration-500 group-hover:translate-x-1"
                           >
                             →
                           </span>

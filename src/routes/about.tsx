@@ -811,7 +811,7 @@ function AboutPage() {
         </section>
 
         {/* ——— 11 FROM THINKING TO PRODUCTS ——— */}
-        <section id="products" className="rule-thin bg-background">
+        <section id="products" className="blue-room rule-thin">
           <div className="mx-auto max-w-[1440px] px-6 py-20 md:px-10 md:py-28">
             <Reveal>
               <div className="mx-auto max-w-[42rem] text-center">

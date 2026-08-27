@@ -132,41 +132,43 @@ function SolutionBlock({ s }: { s: Solution }) {
 
 export function Solutions() {
   return (
-    <section id="solutions" className="relative mx-auto max-w-[1440px] px-6 py-20 md:px-10 md:py-28">
-      <div className="mx-auto max-w-[46rem] text-center">
-        <p className="section-num mb-7 justify-center">03 / Entry points</p>
-        <h2 className="display-lg mx-auto max-w-[40rem]">
-          Find the point
-          <br />
-          <span className="italic">you are standing on.</span>
-        </h2>
-        <p className="body-read mx-auto mt-8 max-w-[40rem]">
-          Practical instruments and systems for working with ideas, marketing and the development of
-          your own projects. Three entry points into one way of thinking.
-        </p>
-        <p className="label-xs mx-auto mt-8 max-w-[40rem] !tracking-[0.18em]">
-          Three chambers of one shell — the same thinking at a different scale
-        </p>
-      </div>
-
-      {/* one shell, cut open: three chambers growing from a single centre */}
-      <div className="relative mt-16 lg:mt-20">
-        {/* growth-centre glow: CSS so it fades out on every edge, never clipped */}
-        <div className="pointer-events-none absolute left-[45%] top-[60%] hidden h-[150%] w-[78%] -translate-x-1/2 -translate-y-1/2 rounded-[50%] [background-image:radial-gradient(closest-side,color-mix(in_oklab,var(--sage)_58%,transparent),transparent_100%)] lg:block" />
-        <div className="pointer-events-none absolute inset-x-0 -bottom-10 -top-10 hidden lg:block">
-          <ShellField />
+    <section id="solutions" className="teal-room rule-thin relative">
+      <div className="mx-auto max-w-[1440px] px-6 py-20 md:px-10 md:py-28">
+        <div className="mx-auto max-w-[46rem] text-center">
+          <p className="section-num mb-7 justify-center">03 / Entry points</p>
+          <h2 className="display-lg mx-auto max-w-[40rem]">
+            Find the point
+            <br />
+            <span className="italic">you are standing on.</span>
+          </h2>
+          <p className="body-read mx-auto mt-8 max-w-[40rem]">
+            Practical instruments and systems for working with ideas, marketing and the development of
+            your own projects. Three entry points into one way of thinking.
+          </p>
+          <p className="label-xs mx-auto mt-8 max-w-[40rem] !tracking-[0.18em]">
+            Three chambers of one shell — the same thinking at a different scale
+          </p>
         </div>
 
+        {/* one shell, cut open: three chambers growing from a single centre */}
+        <div className="relative mt-16 lg:mt-20">
+          {/* growth-centre glow: CSS so it fades out on every edge, never clipped */}
+          <div className="pointer-events-none absolute left-[45%] top-[60%] hidden h-[150%] w-[78%] -translate-x-1/2 -translate-y-1/2 rounded-[50%] [background-image:radial-gradient(closest-side,color-mix(in_oklab,var(--sage)_58%,transparent),transparent_100%)] lg:block" />
+          <div className="pointer-events-none absolute inset-x-0 -bottom-10 -top-10 hidden lg:block">
+            <ShellField />
+          </div>
 
-        <div className="relative grid gap-16 lg:grid-cols-3 lg:gap-10">
-          <div className="lg:pt-40">
-            <SolutionBlock s={solutions[0]!} />
-          </div>
-          <div className="lg:pt-20">
-            <SolutionBlock s={solutions[1]!} />
-          </div>
-          <div>
-            <SolutionBlock s={solutions[2]!} />
+
+          <div className="relative grid gap-16 lg:grid-cols-3 lg:gap-10">
+            <div className="lg:pt-40">
+              <SolutionBlock s={solutions[0]!} />
+            </div>
+            <div className="lg:pt-20">
+              <SolutionBlock s={solutions[1]!} />
+            </div>
+            <div>
+              <SolutionBlock s={solutions[2]!} />
+            </div>
           </div>
         </div>
       </div>

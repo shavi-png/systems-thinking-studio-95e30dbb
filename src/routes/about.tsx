@@ -811,7 +811,7 @@ function AboutPage() {
         </section>
 
         {/* ——— 11 FROM THINKING TO PRODUCTS ——— */}
-        <section id="products" className="rule-thin bg-background">
+        <section id="products" className="blue-room rule-thin">
           <div className="mx-auto max-w-[1440px] px-6 py-20 md:px-10 md:py-28">
             <Reveal>
               <div className="mx-auto max-w-[42rem] text-center">
@@ -830,7 +830,7 @@ function AboutPage() {
             <div className="mt-16 grid gap-px overflow-hidden border border-line/60 bg-line/40 md:mt-20 lg:grid-cols-3">
               {products.map((p, i) => (
                 <Reveal key={p.t} delay={i * 100}>
-                  <article className="flex h-full flex-col bg-paper px-7 py-10">
+                  <article className="flex h-full flex-col bg-slate-deep/40 px-7 py-10">
                     <p className="label-xs">{p.meta}</p>
                     <h3 className="display-sm mt-4">{p.t}</h3>
                     <p className="body-read mt-6 flex-1">{p.d}</p>

@@ -651,7 +651,7 @@ function StrategicPartnership() {
         </section>
 
         {/* ——— 11 CHOOSING THE FORMAT ——— */}
-        <section className="rule-thin relative overflow-hidden">
+        <section className="blue-room rule-thin relative overflow-hidden">
           <div className="relative mx-auto max-w-[1440px] px-6 py-20 md:px-10 md:py-28">
             <div className="grid items-start gap-12 md:grid-cols-12 md:gap-x-12">
               {/* Left column: heading, intro, questions */}
@@ -696,12 +696,12 @@ function StrategicPartnership() {
                           href={href}
                           className="group flex items-baseline gap-1"
                         >
-                          <span className="lead-serif italic text-charcoal transition-colors group-hover:text-olive">
+                          <span className="lead-serif italic text-charcoal transition-colors group-hover:text-ivory/90">
                             {a}
                           </span>
                           <span
                             aria-hidden
-                            className="shrink-0 text-olive transition-transform duration-500 group-hover:translate-x-1"
+                            className="shrink-0 text-ivory transition-transform duration-500 group-hover:translate-x-1"
                           >
                             →
                           </span>

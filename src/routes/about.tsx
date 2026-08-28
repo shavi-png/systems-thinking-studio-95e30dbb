@@ -6,6 +6,7 @@ import { Reveal } from "@/components/site/Reveal";
 import { SpiralSteps, Spiral } from "@/components/site/LineArt";
 import portrait from "@/assets/vita-portrait.jpg";
 import shellHero from "@/assets/shell-hero.jpg.asset.json";
+import { ShellBackdrop } from "@/components/site/ShellBackdrop";
 import ink from "@/assets/ink-layers.jpg.asset.json";
 import chambers from "@/assets/about-chambers.jpg";
 import mist from "@/assets/about-mist.jpg";

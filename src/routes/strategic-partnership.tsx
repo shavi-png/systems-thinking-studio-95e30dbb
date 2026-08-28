@@ -5,6 +5,7 @@ import { Footer } from "@/components/site/Footer";
 import { Reveal } from "@/components/site/Reveal";
 import { ProcessOrbit } from "@/components/site/LineArt";
 import shellHero from "@/assets/shell-hero.jpg.asset.json";
+import { ShellBackdrop } from "@/components/site/ShellBackdrop";
 import advisoryImg from "@/assets/sp-advisory.jpg";
 import strategyImg from "@/assets/sp-strategy.jpg";
 import cmoImg from "@/assets/sp-cmo.jpg";

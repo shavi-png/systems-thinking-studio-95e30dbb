@@ -5,6 +5,7 @@ import { Footer } from "@/components/site/Footer";
 import { Reveal } from "@/components/site/Reveal";
 import { SpiralSystem, Spiral } from "@/components/site/LineArt";
 import { Solutions } from "@/components/site/Solutions";
+import { ShellBackdrop } from "@/components/site/ShellBackdrop";
 import portrait from "@/assets/vita-portrait.jpg";
 import shellHero from "@/assets/shell-hero.jpg.asset.json";
 import hands from "@/assets/hands-notebook.jpg";
@@ -414,14 +415,7 @@ function Index() {
 
         {/* ——— FINAL — the closing dark room ——— */}
         <section id="final" className="dark-room relative overflow-hidden">
-          {/* a tilted sage-ivory oval at the centre — cool, not red-brown */}
-          <div className="pointer-events-none absolute left-1/2 top-1/2 h-[128%] w-[70%] -translate-x-1/2 -translate-y-1/2 -rotate-[29deg] rounded-[50%] [background-image:radial-gradient(closest-side,oklch(0.95_0.012_128/0.24),oklch(0.92_0.01_128/0.08)_60%,transparent_100%)] md:w-[32%]" />
-          <img
-            src={shellHero.url}
-            alt=""
-            aria-hidden
-            className="pointer-events-none absolute left-1/2 top-1/2 h-[60%] w-auto max-w-none -translate-x-1/2 -translate-y-1/2 -rotate-[29deg] select-none opacity-[0.3] [filter:grayscale(1)_brightness(1.15)_contrast(1.1)] [mask-image:radial-gradient(closest-side,black_30%,transparent_82%)] md:h-[78%] md:opacity-[0.34]"
-          />
+          <ShellBackdrop />
 
 
           <div className="relative mx-auto grid min-h-[58vh] max-w-[1440px] content-center gap-12 px-6 py-20 md:grid-cols-12 md:px-10 md:py-28">

@@ -4,6 +4,7 @@ import { Header } from "@/components/site/Header";
 import { Footer } from "@/components/site/Footer";
 import { Reveal } from "@/components/site/Reveal";
 import { ChamberSet, ChannelLanes } from "@/components/site/LineArt";
+import { ShellBackdrop } from "@/components/site/ShellBackdrop";
 import portrait from "@/assets/vita-portrait.jpg";
 import layers from "@/assets/ms-layers.jpg";
 import desk from "@/assets/ms-desk.jpg";
@@ -847,9 +848,9 @@ function MarketingSetPage() {
         </section>
 
         {/* ——— THE OFFER ——— */}
-        <section className="blue-room rule-thin">
-          <div className="mx-auto max-w-[1440px] px-6 py-20 md:px-10 md:py-28">
-            <div className="grid gap-12 md:grid-cols-12 md:items-center">
+        <section className="blue-room rule-thin relative">
+          <div className="mx-auto max-w-[1440px] px-6 pt-20 md:px-10 md:pt-24">
+            <div className="grid gap-12 md:grid-cols-12">
               <div className="md:col-span-6">
                 <Reveal>
                   <SectionLabel>Marketing Set</SectionLabel>
@@ -864,9 +865,9 @@ function MarketingSetPage() {
                   </p>
                 </Reveal>
               </div>
-              <div className="md:col-span-5 md:col-start-8">
+              <div className="relative z-10 md:col-span-5 md:col-start-8 md:-mb-24">
                 <Reveal delay={100}>
-                  <div className="bg-slate-deep/40 p-8 md:p-10">
+                  <div className="bg-slate-deep/70 p-8 backdrop-blur-sm md:p-10">
                     <p className="label-xs">Included</p>
                     <ul className="mt-5 border-t border-line">
                       {included.map((i) => (
@@ -878,9 +879,7 @@ function MarketingSetPage() {
                         </li>
                       ))}
                     </ul>
-                    <p className="quote-serif mt-8 text-charcoal">
-                      589 UAH
-                    </p>
+                    <p className="display-sm mt-8 !text-[2.4rem] text-charcoal">589 UAH</p>
                     <p className="label-xs mt-3 normal-case !tracking-[0.1em]">
                       One payment · Immediate access · Lifetime use
                     </p>
@@ -892,20 +891,20 @@ function MarketingSetPage() {
                 </Reveal>
               </div>
             </div>
+          </div>
 
-            <Reveal delay={140}>
-              <figure className="mt-14 md:mt-20">
-                <img
-                  src={ripple.url}
-                  alt="Concentric ripples spreading from a single point"
-                  loading="lazy"
-                  className="block h-[170px] w-full object-cover md:h-[240px]"
-                />
-                <figcaption className="label-xs mt-3 !tracking-[0.14em]">
-                  One starting point · every ring after it
-                </figcaption>
-              </figure>
-            </Reveal>
+          <div className="relative -mt-16 md:-mt-56">
+            <img
+              src={ripple.url}
+              alt="Concentric ripples spreading from a single point"
+              loading="lazy"
+              className="block h-[170px] w-full object-cover md:h-[300px]"
+            />
+          </div>
+          <div className="mx-auto max-w-[1440px] px-6 pb-20 pt-4 md:px-10 md:pb-28">
+            <p className="label-xs !tracking-[0.14em]">
+              One starting point · every ring after it
+            </p>
           </div>
         </section>
 
@@ -935,8 +934,9 @@ function MarketingSetPage() {
         </section>
 
         {/* ——— FINAL CTA ——— */}
-        <section className="dark-room rule-thin">
-          <div className="mx-auto max-w-[1440px] px-6 py-24 text-center md:px-10 md:py-36">
+        <section className="dark-room rule-thin relative overflow-hidden">
+          <ShellBackdrop />
+          <div className="relative mx-auto max-w-[1440px] px-6 py-24 text-center md:px-10 md:py-36">
             <Reveal>
               <SectionLabel>One better starting point</SectionLabel>
               <h2 className="display-lg mx-auto max-w-[46rem]">
@@ -949,8 +949,8 @@ function MarketingSetPage() {
               </p>
             </Reveal>
             <Reveal delay={140}>
-              <div className="mx-auto mt-12 flex max-w-[36rem] flex-col items-center gap-6 px-8 py-12">
-                <p className="quote-serif text-charcoal">
+              <div className="mx-auto mt-6 flex max-w-[36rem] flex-col items-center gap-5">
+                <p className="display-lg !text-[clamp(2.6rem,4.4vw,3.8rem)] text-charcoal">
                   589 UAH
                 </p>
                 <p className="label-xs !tracking-[0.14em]">

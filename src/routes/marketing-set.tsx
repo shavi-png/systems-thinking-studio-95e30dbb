@@ -849,7 +849,7 @@ function MarketingSetPage() {
         {/* ——— THE OFFER ——— */}
         <section className="blue-room rule-thin">
           <div className="mx-auto max-w-[1440px] px-6 py-20 md:px-10 md:py-28">
-            <div className="grid gap-12 md:grid-cols-12">
+            <div className="grid gap-12 md:grid-cols-12 md:items-center">
               <div className="md:col-span-6">
                 <Reveal>
                   <SectionLabel>Marketing Set</SectionLabel>

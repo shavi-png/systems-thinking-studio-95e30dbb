@@ -26,6 +26,9 @@
   --color-ink: var(--ink);
   --color-ink-soft: var(--ink-soft);
   --color-line: var(--line-tone);
+  /* fixed button tones — never remapped inside dark/blue/teal rooms */
+  --color-btn-dark: var(--btn-dark);
+  --color-btn-dark-foreground: var(--btn-dark-foreground);
 }
 
 
@@ -188,6 +191,9 @@
   --teal-deep: oklch(0.42 0.05 220);
   --blush: oklch(0.905 0.032 25);
   --charcoal: oklch(0.255 0.012 140);
+  /* fixed dark button pair, immune to room remapping */
+  --btn-dark: oklch(0.255 0.012 140);
+  --btn-dark-foreground: oklch(0.991 0.002 120);
   /* tones lifted from the nautilus reference: nacre, rose chamber, umber core */
   --nacre: oklch(0.945 0.014 70);
   --shell-rose: oklch(0.865 0.038 32);

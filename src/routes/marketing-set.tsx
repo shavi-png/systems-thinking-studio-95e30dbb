@@ -31,14 +31,25 @@ export const Route = createFileRoute("/marketing-set")({
 
 const CTA_HREF = "mailto:hello@vitashablii.com?subject=Marketing%20Set";
 
-function Cta({ className = "", invert = false }: { className?: string; invert?: boolean }) {
+function Cta({
+  className = "",
+  invert = false,
+  fixed = false,
+}: {
+  className?: string;
+  invert?: boolean;
+  /** keeps the exact hero button tones even inside a colored room */
+  fixed?: boolean;
+}) {
   return (
     <a
       href={CTA_HREF}
       className={`label-xs group inline-flex items-center gap-3 border px-8 py-4 !tracking-[0.2em] transition-colors ${
-        invert
-          ? "border-ivory bg-ivory !text-slate-deep hover:border-slate hover:bg-slate hover:!text-ivory"
-          : "border-charcoal bg-charcoal !text-ivory hover:border-slate-deep hover:bg-slate-deep"
+        fixed
+          ? "border-btn-dark bg-btn-dark !text-btn-dark-foreground hover:border-slate-deep hover:bg-slate-deep"
+          : invert
+            ? "border-ivory bg-ivory !text-slate-deep hover:border-slate hover:bg-slate hover:!text-ivory"
+            : "border-charcoal bg-charcoal !text-ivory hover:border-slate-deep hover:bg-slate-deep"
       } ${className}`}
     >
       GET MARKETING SET
@@ -241,7 +252,7 @@ function MarketingSetPage() {
       <Header />
       <main>
         {/* ——— HERO ——— */}
-        <section className="relative overflow-hidden bg-paper">
+        <section className="relative overflow-hidden bg-cream">
           <div className="mx-auto grid max-w-[1440px] items-center gap-14 px-6 pt-28 pb-16 md:grid-cols-12 md:px-10 md:pt-36 md:pb-24">
             <div className="md:col-span-6">
               <Reveal>
@@ -452,7 +463,7 @@ function MarketingSetPage() {
         </section>
 
         {/* ——— THE RESULT ——— */}
-        <section className="rule-thin bg-paper">
+        <section className="teal-room rule-thin">
           <div className="mx-auto max-w-[1440px] px-6 py-20 md:px-10 md:py-28">
             <div className="grid gap-12 md:grid-cols-12">
               <div className="flex flex-col md:col-span-5">
@@ -495,7 +506,7 @@ function MarketingSetPage() {
                     </Reveal>
                   ))}
                 </ul>
-                <p className="lead-serif mt-9 border-l-2 border-olive bg-sage/40 px-7 py-6 text-charcoal">
+                <p className="lead-serif mt-9 border-l-2 border-olive bg-charcoal/10 px-7 py-6 text-charcoal">
                   The result is not five isolated AI outputs. It's{" "}
                   <span className="italic">one connected marketing context</span> you can keep
                   working from.
@@ -555,7 +566,7 @@ function MarketingSetPage() {
         </section>
 
         {/* ——— WHY NOT JUST CHATGPT ——— */}
-        <section className="teal-room rule-thin">
+        <section className="rule-thin bg-cream">
           <div className="mx-auto max-w-[1440px] px-6 py-20 md:px-10 md:py-28">
             <div className="grid gap-10 md:grid-cols-12 md:items-end">
               <div className="md:col-span-7">
@@ -838,7 +849,7 @@ function MarketingSetPage() {
         {/* ——— THE OFFER ——— */}
         <section className="blue-room rule-thin">
           <div className="mx-auto max-w-[1440px] px-6 py-20 md:px-10 md:py-28">
-            <div className="grid gap-12 md:grid-cols-12">
+            <div className="grid gap-12 md:grid-cols-12 md:items-center">
               <div className="md:col-span-6">
                 <Reveal>
                   <SectionLabel>Marketing Set</SectionLabel>
@@ -852,20 +863,6 @@ function MarketingSetPage() {
                     launches, campaigns and future decisions.
                   </p>
                 </Reveal>
-                <Reveal delay={140}>
-                  <figure className="mt-12">
-                    <img
-                      src={ripple.url}
-                      alt="Concentric ripples spreading from a single point"
-                      loading="lazy"
-                      className="block h-[150px] w-full object-cover md:h-[190px]"
-                    />
-                    <figcaption className="label-xs mt-3 !tracking-[0.14em]">
-                      One starting point · every ring after it
-                    </figcaption>
-                  </figure>
-                </Reveal>
-
               </div>
               <div className="md:col-span-5 md:col-start-8">
                 <Reveal delay={100}>
@@ -895,6 +892,20 @@ function MarketingSetPage() {
                 </Reveal>
               </div>
             </div>
+
+            <Reveal delay={140}>
+              <figure className="mt-14 md:mt-20">
+                <img
+                  src={ripple.url}
+                  alt="Concentric ripples spreading from a single point"
+                  loading="lazy"
+                  className="block h-[170px] w-full object-cover md:h-[240px]"
+                />
+                <figcaption className="label-xs mt-3 !tracking-[0.14em]">
+                  One starting point · every ring after it
+                </figcaption>
+              </figure>
+            </Reveal>
           </div>
         </section>
 
@@ -946,7 +957,7 @@ function MarketingSetPage() {
                   5 strategic AI workflows · Personal AI assistant · 45 funnel frameworks · Lifetime
                   access
                 </p>
-                <Cta invert />
+                <Cta fixed />
                 <p className="label-xs mt-6 normal-case !tracking-[0.1em]">
                   Less noise. More context. Better marketing decisions.
                 </p>

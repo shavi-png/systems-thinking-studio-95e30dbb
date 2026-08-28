@@ -5,6 +5,7 @@ import { Footer } from "@/components/site/Footer";
 import { Reveal } from "@/components/site/Reveal";
 import { SpiralSystem, Spiral } from "@/components/site/LineArt";
 import { Solutions } from "@/components/site/Solutions";
+import { ShellBackdrop } from "@/components/site/ShellBackdrop";
 import portrait from "@/assets/vita-portrait.jpg";
 import shellHero from "@/assets/shell-hero.jpg.asset.json";
 import hands from "@/assets/hands-notebook.jpg";

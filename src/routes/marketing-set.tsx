@@ -934,8 +934,9 @@ function MarketingSetPage() {
         </section>
 
         {/* ——— FINAL CTA ——— */}
-        <section className="dark-room rule-thin">
-          <div className="mx-auto max-w-[1440px] px-6 py-24 text-center md:px-10 md:py-36">
+        <section className="dark-room rule-thin relative overflow-hidden">
+          <ShellBackdrop />
+          <div className="relative mx-auto max-w-[1440px] px-6 py-24 text-center md:px-10 md:py-36">
             <Reveal>
               <SectionLabel>One better starting point</SectionLabel>
               <h2 className="display-lg mx-auto max-w-[46rem]">
@@ -948,8 +949,8 @@ function MarketingSetPage() {
               </p>
             </Reveal>
             <Reveal delay={140}>
-              <div className="mx-auto mt-12 flex max-w-[36rem] flex-col items-center gap-6 px-8 py-12">
-                <p className="quote-serif text-charcoal">
+              <div className="mx-auto mt-6 flex max-w-[36rem] flex-col items-center gap-5">
+                <p className="display-lg !text-[clamp(2.6rem,4.4vw,3.8rem)] text-charcoal">
                   589 UAH
                 </p>
                 <p className="label-xs !tracking-[0.14em]">

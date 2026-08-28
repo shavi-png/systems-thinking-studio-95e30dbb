@@ -719,12 +719,7 @@ function StrategicPartnership() {
 
         {/* ——— 12 FINAL CTA ——— */}
         <section id="start" className="dark-room rule-thin relative overflow-hidden">
-          <img
-            src={shellHero.url}
-            alt=""
-            aria-hidden
-            className="pointer-events-none absolute left-1/2 top-1/2 h-[115%] w-auto max-w-none -translate-x-1/2 -translate-y-1/2 select-none opacity-[0.22] [filter:sepia(0.2)_saturate(0.35)_brightness(1.5)_contrast(0.8)] [mask-image:radial-gradient(closest-side,black_48%,transparent_100%)]"
-          />
+          <ShellBackdrop />
           <div className="relative mx-auto flex max-w-[1440px] flex-col items-center px-6 py-24 text-center md:px-10 md:py-32">
             <Reveal>
               <p className="label-xs">Start here</p>

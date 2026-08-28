@@ -4,6 +4,7 @@ import { Header } from "@/components/site/Header";
 import { Footer } from "@/components/site/Footer";
 import { Reveal } from "@/components/site/Reveal";
 import { ChamberSet, ChannelLanes } from "@/components/site/LineArt";
+import { ShellBackdrop } from "@/components/site/ShellBackdrop";
 import portrait from "@/assets/vita-portrait.jpg";
 import layers from "@/assets/ms-layers.jpg";
 import desk from "@/assets/ms-desk.jpg";

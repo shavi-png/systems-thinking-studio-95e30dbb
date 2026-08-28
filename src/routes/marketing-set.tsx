@@ -252,7 +252,7 @@ function MarketingSetPage() {
       <Header />
       <main>
         {/* ——— HERO ——— */}
-        <section className="relative overflow-hidden bg-paper">
+        <section className="relative overflow-hidden bg-cream">
           <div className="mx-auto grid max-w-[1440px] items-center gap-14 px-6 pt-28 pb-16 md:grid-cols-12 md:px-10 md:pt-36 md:pb-24">
             <div className="md:col-span-6">
               <Reveal>
@@ -463,7 +463,7 @@ function MarketingSetPage() {
         </section>
 
         {/* ——— THE RESULT ——— */}
-        <section className="rule-thin bg-paper">
+        <section className="teal-room rule-thin">
           <div className="mx-auto max-w-[1440px] px-6 py-20 md:px-10 md:py-28">
             <div className="grid gap-12 md:grid-cols-12">
               <div className="flex flex-col md:col-span-5">
@@ -506,7 +506,7 @@ function MarketingSetPage() {
                     </Reveal>
                   ))}
                 </ul>
-                <p className="lead-serif mt-9 border-l-2 border-olive bg-sage/40 px-7 py-6 text-charcoal">
+                <p className="lead-serif mt-9 border-l-2 border-olive bg-charcoal/10 px-7 py-6 text-charcoal">
                   The result is not five isolated AI outputs. It's{" "}
                   <span className="italic">one connected marketing context</span> you can keep
                   working from.
@@ -566,7 +566,7 @@ function MarketingSetPage() {
         </section>
 
         {/* ——— WHY NOT JUST CHATGPT ——— */}
-        <section className="teal-room rule-thin">
+        <section className="rule-thin bg-cream">
           <div className="mx-auto max-w-[1440px] px-6 py-20 md:px-10 md:py-28">
             <div className="grid gap-10 md:grid-cols-12 md:items-end">
               <div className="md:col-span-7">
@@ -957,7 +957,7 @@ function MarketingSetPage() {
                   5 strategic AI workflows · Personal AI assistant · 45 funnel frameworks · Lifetime
                   access
                 </p>
-                <Cta invert />
+                <Cta fixed />
                 <p className="label-xs mt-6 normal-case !tracking-[0.1em]">
                   Less noise. More context. Better marketing decisions.
                 </p>

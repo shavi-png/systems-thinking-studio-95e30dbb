@@ -31,14 +31,25 @@ export const Route = createFileRoute("/marketing-set")({
 
 const CTA_HREF = "mailto:hello@vitashablii.com?subject=Marketing%20Set";
 
-function Cta({ className = "", invert = false }: { className?: string; invert?: boolean }) {
+function Cta({
+  className = "",
+  invert = false,
+  fixed = false,
+}: {
+  className?: string;
+  invert?: boolean;
+  /** keeps the exact hero button tones even inside a colored room */
+  fixed?: boolean;
+}) {
   return (
     <a
       href={CTA_HREF}
       className={`label-xs group inline-flex items-center gap-3 border px-8 py-4 !tracking-[0.2em] transition-colors ${
-        invert
-          ? "border-ivory bg-ivory !text-slate-deep hover:border-slate hover:bg-slate hover:!text-ivory"
-          : "border-charcoal bg-charcoal !text-ivory hover:border-slate-deep hover:bg-slate-deep"
+        fixed
+          ? "border-btn-dark bg-btn-dark !text-btn-dark-foreground hover:border-slate-deep hover:bg-slate-deep"
+          : invert
+            ? "border-ivory bg-ivory !text-slate-deep hover:border-slate hover:bg-slate hover:!text-ivory"
+            : "border-charcoal bg-charcoal !text-ivory hover:border-slate-deep hover:bg-slate-deep"
       } ${className}`}
     >
       GET MARKETING SET

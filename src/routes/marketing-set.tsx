@@ -892,6 +892,20 @@ function MarketingSetPage() {
                 </Reveal>
               </div>
             </div>
+
+            <Reveal delay={140}>
+              <figure className="mt-14 md:mt-20">
+                <img
+                  src={ripple.url}
+                  alt="Concentric ripples spreading from a single point"
+                  loading="lazy"
+                  className="block h-[170px] w-full object-cover md:h-[240px]"
+                />
+                <figcaption className="label-xs mt-3 !tracking-[0.14em]">
+                  One starting point · every ring after it
+                </figcaption>
+              </figure>
+            </Reveal>
           </div>
         </section>
 

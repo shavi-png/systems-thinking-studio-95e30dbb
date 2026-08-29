@@ -946,7 +946,7 @@ export function ProcessOrbit({
             }}
           >
             <p className="label-xs !tracking-[0.2em] !text-charcoal">
-              <span className="text-olive">{n.n}</span> {n.label}
+              <span className="!text-charcoal">{n.n}</span> {n.label}
             </p>
             <p className="mt-1 text-[0.7rem] leading-snug text-charcoal/55">{n.note}</p>
           </div>
@@ -978,7 +978,7 @@ export function ProcessOrbit({
                   />
                 </svg>
                 <span
-                  className="label-xs absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 bg-background px-1.5 !tracking-[0.16em] text-olive"
+                  className="label-xs absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 !tracking-[0.16em] !text-charcoal"
                   style={{ opacity: shown ? 1 : 0, transition: `opacity 700ms ease ${i * 120}ms` }}
                 >
                   {s.n}

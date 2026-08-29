@@ -258,10 +258,6 @@ function StrategicPartnership() {
         <section className="relative overflow-hidden bg-cream">
           <div
             aria-hidden
-            className="pointer-events-none absolute -left-32 top-10 h-[26rem] w-[26rem] rounded-full bg-slate/40 blur-3xl"
-          />
-          <div
-            aria-hidden
             className="pointer-events-none absolute right-[18%] top-[58%] h-[20rem] w-[20rem] rounded-full bg-sage/50 blur-3xl"
           />
           <img
@@ -415,7 +411,7 @@ function StrategicPartnership() {
 
 
         {/* ——— 04 LEVEL OF INVOLVEMENT + THE THREE SERVICES ——— */}
-        <section id="involvement" className="rule-thin bg-paper">
+        <section id="involvement" className="rule-thin blue-room">
           <div className="mx-auto max-w-[1440px] px-6 pt-20 md:px-10 md:pt-28">
             <div className="grid gap-10 md:grid-cols-12">
               <div className="md:col-span-6">

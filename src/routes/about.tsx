@@ -442,13 +442,17 @@ function AboutPage() {
                   <dl className="grid gap-x-10 gap-y-8 sm:grid-cols-2">
                     {numbers.map((n) => (
                       <div key={n.k} className="border-t border-slate-deep/30 pt-5">
-                        <dt className="font-serif-editorial text-3xl text-charcoal">{n.k}</dt>
-                        <dd className="mt-2 text-sm leading-relaxed text-charcoal/70">{n.v}</dd>
+                        <dt className="font-serif-editorial text-2xl leading-tight text-charcoal">
+                          {n.k}
+                        </dt>
+                        <dd className="label-xs mt-3 !tracking-[0.16em]">{n.meta}</dd>
+                        <dd className="mt-3 text-sm leading-relaxed text-charcoal/70">{n.v}</dd>
                       </div>
                     ))}
                   </dl>
                 </Reveal>
-                <ul className="mt-10 flex-1 divide-y divide-line/60 border-t border-line/60">
+                <p className="label-xs mt-12">Selected outcomes</p>
+                <ul className="mt-4 flex-1 divide-y divide-line/60 border-t border-line/60">
                   {cases.map((c) => (
                     <li key={c.t} className="flex flex-col gap-2 py-5 sm:flex-row sm:gap-8">
                       <p className="label-xs !text-charcoal sm:w-40 sm:shrink-0">
@@ -458,6 +462,7 @@ function AboutPage() {
                     </li>
                   ))}
                 </ul>
+
               </div>
             </div>
           </div>

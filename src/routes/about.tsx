@@ -719,9 +719,7 @@ function AboutPage() {
                       moved past.
                     </p>
                     <p className="body-read">
-                      I like understanding why something works — not only knowing that it does. And I
-                      am comfortable staying with a question long enough for the obvious answer to
-                      stop being obvious.
+                      I like understanding why something works — not only knowing that it does.
                     </p>
                   </div>
                 </Reveal>
@@ -730,8 +728,8 @@ function AboutPage() {
                 <Reveal delay={120}>
                   <div className="grain relative aspect-[4/3] overflow-hidden bg-stone">
                     <img
-                      src={light}
-                      alt="Afternoon light falling across an open notebook"
+                      src={mist}
+                      alt="Mist settling over still water"
                       loading="lazy"
                       width={1408}
                       height={1056}
@@ -744,21 +742,41 @@ function AboutPage() {
 
             <div className="mt-16 space-y-16 md:mt-20 md:space-y-20">
               {beyond.map((b, i) => {
-                const img = i === 0 ? leaves : i === 2 ? ink.url : null;
+                const img = i === 0 ? light : i === 1 ? leaves : ink.url;
+                const flip = i % 2 === 1;
                 return (
-                  <Reveal key={b.t} delay={60}>
+                  <Reveal key={b.kicker} delay={60}>
                     <article className="grid gap-10 border-t border-line/60 pt-12 md:grid-cols-12 md:items-start">
                       <div
                         className={
-                          img
-                            ? "md:col-span-6"
-                            : "md:col-span-8 md:col-start-3"
+                          flip
+                            ? "md:col-span-5 md:col-start-8 md:row-start-1"
+                            : "md:col-span-5"
                         }
                       >
-                        <p className="quote-serif text-2xl text-charcoal md:">
-                          {b.lead}
+                        <div className="grain relative aspect-[4/3] overflow-hidden bg-stone">
+                          <img
+                            src={img}
+                            alt=""
+                            aria-hidden
+                            loading="lazy"
+                            className="h-full w-full object-cover"
+                          />
+                        </div>
+                      </div>
+                      <div
+                        className={
+                          flip
+                            ? "md:col-span-6 md:row-start-1"
+                            : "md:col-span-6 md:col-start-7"
+                        }
+                      >
+                        <p className="label-xs">
+                          {b.n} / {b.kicker}
                         </p>
-                        <ul className="mt-7 space-y-2">
+                        <h3 className="display-sm mt-4 max-w-[16em]">{b.t}</h3>
+                        <p className="body-read mt-7">{b.lead}</p>
+                        <ul className="mt-6 space-y-2">
                           {b.items.map((x) => (
                             <li key={x} className="body-read !text-base">
                               {x}
@@ -769,41 +787,14 @@ function AboutPage() {
                           {b.close}
                         </p>
                       </div>
-                      {img ? (
-                        <div className="md:col-span-5 md:col-start-8">
-                          <div className="grain relative aspect-[4/3] overflow-hidden bg-stone">
-                            <img
-                              src={img}
-                              alt=""
-                              aria-hidden
-                              loading="lazy"
-                              className="h-full w-full object-cover"
-                            />
-                          </div>
-                        </div>
-                      ) : null}
                     </article>
                   </Reveal>
                 );
               })}
             </div>
-
-            <Reveal>
-              <div className="mx-auto mt-20 max-w-[46rem] space-y-6 text-center">
-                <p className="label-xs">What I keep returning to</p>
-                <p className="display-md">
-                  Context. <span className="italic">Always context.</span>
-                </p>
-                <p className="body-read">
-                  Because a brilliant solution in the wrong context is still the wrong solution. The
-                  same product can mean something different in another market. The same message can
-                  work for one audience and disappear for another. The same growth tactic can create
-                  leverage in one business and destroy margin in the next.
-                </p>
-              </div>
-            </Reveal>
           </div>
         </section>
+
 
         {/* ——— 10 PRINCIPLES ——— */}
         <section className="rule-thin bg-paper">

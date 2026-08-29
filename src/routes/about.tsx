@@ -41,9 +41,9 @@ const markets = [
     t: "Across markets",
     meta: "Europe · United States · China",
     body: [
-      "Working across different markets taught me that a strategy cannot simply be transported from one context into another.",
-      "People change. Competition changes. Culture changes. The perception of value changes.",
-      "I have worked with product launches, positioning, go-to-market decisions and market adaptation across different international contexts.",
+      "Working across different markets taught me that strategy cannot simply be transported from one context into another.",
+      "Culture changes. Competition changes. Customer expectations change. The perception of value changes.",
+      "I have worked with product launches, positioning, go-to-market decisions and market adaptation across very different international environments.",
     ],
     qA: "How do we replicate what already worked?",
     qB: "What should remain — and what needs to change?",
@@ -53,9 +53,9 @@ const markets = [
     t: "Across business models",
     meta: "Technology · IT · Consulting · E-commerce · Fintech · Consumer",
     body: [
-      "Different industries use different language, channels and business models. But underneath them are often remarkably similar questions.",
-      "Where is value created? Who captures it? Why does someone choose? What makes the economics work? Where is the constraint?",
-      "Moving between industries trained me not to rely too heavily on category conventions. I would rather understand the logic of the business first.",
+      "Different industries use different language, channels and business models. But underneath them are often remarkably similar questions:",
+      "Where is value created? Why does someone choose? What makes the economics work? Where is the constraint?",
+      "Moving between industries taught me not to begin with category conventions.",
     ],
     qA: "Which conventions does this category follow?",
     qB: "What is the actual logic of this business?",
@@ -65,9 +65,9 @@ const markets = [
     t: "Building systems",
     meta: "From disconnected activity to connected decisions",
     body: [
-      "A significant part of my experience has been building marketing functions, teams and processes from the ground up. That changes how you see marketing.",
-      "Content cannot be separated from positioning. Acquisition cannot be separated from economics. Growth cannot be separated from product.",
-      "Automation cannot fix a process that does not make sense. And a team cannot execute clearly when the decisions behind the work remain unclear.",
+      "A significant part of my experience has been building brands, marketing functions, teams and processes from the ground up.",
+      "That changes how you see marketing. Content cannot be separated from positioning. Acquisition cannot be separated from economics. Growth cannot be separated from product.",
+      "Automation cannot fix a process that does not make sense.",
     ],
     qA: "Which activity should we add next?",
     qB: "Which decisions are still missing?",
@@ -75,10 +75,26 @@ const markets = [
 ];
 
 const numbers = [
-  { k: "13+", v: "years across marketing, strategy and products" },
-  { k: "500+", v: "projects & events" },
-  { k: "Global", v: "experience across Europe, the United States and China" },
-  { k: "Multiple", v: "industries, business models and stages of growth" },
+  {
+    k: "13+ years",
+    meta: "Across marketing, strategy, products and business transformation.",
+    v: "More than thirteen years working not only with execution, but with the decisions behind it — product, positioning, market entry, commercial strategy, teams and systems.",
+  },
+  {
+    k: "500+ projects & events",
+    meta: "Across different industries, markets and stages of business.",
+    v: "Hundreds of different contexts mean hundreds of opportunities to see what changes — and what keeps repeating. The real value of that number is pattern recognition.",
+  },
+  {
+    k: "15+ brands built from zero",
+    meta: "From concept to marketing management.",
+    v: "Brands built from the original idea and market logic through positioning, identity, communication, launch and ongoing marketing management.",
+  },
+  {
+    k: "Global market experience",
+    meta: "Europe · United States · China",
+    v: "Experience working across very different cultural, competitive and commercial environments.",
+  },
 ];
 
 const cases = [
@@ -97,11 +113,6 @@ const cases = [
     t: "Zero to market",
     d: "Marketing strategy for a product launched from scratch in the United States.",
   },
-  {
-    k: "15",
-    t: "Digital products",
-    d: "Approximately fifteen websites developed across different business categories within one year.",
-  },
 ];
 
 const model = [
@@ -118,8 +129,10 @@ const model = [
 
 const beyond = [
   {
-    t: "What I notice",
-    lead: "I notice the missing link between two things people assume are connected.",
+    n: "Story 01",
+    kicker: "What I notice",
+    t: "The space between cause and effect.",
+    lead: "I notice the missing link between things people assume are automatically connected.",
     items: [
       "Traffic and sales.",
       "Revenue and profit.",
@@ -127,47 +140,41 @@ const beyond = [
       "Activity and actual progress.",
       "A decision and the behaviour it creates.",
     ],
-    close: "I am often most interested in the part of the system that is easiest to overlook.",
+    close:
+      "The interesting part is often somewhere between the two. That is usually where I start looking.",
   },
   {
-    t: "What I value",
-    lead: "I value independent thinking.",
+    n: "Story 02",
+    kicker: "What I value",
+    t: "Independent thinking without the need to always agree.",
+    lead: "I value people who can hold their own point of view and still remain curious.",
     items: [
       "People who can disagree without turning disagreement into conflict.",
-      "People curious enough to change their mind when reality gives better information.",
+      "People willing to change their mind when reality gives them better information.",
       "People who take responsibility for the decisions they make.",
     ],
     close:
       "Good collaboration doesn't require permanent agreement. It requires honesty, curiosity and enough trust to challenge each other's thinking.",
   },
   {
-    t: "What keeps me curious",
-    lead: "Situations where something already exists, but the full logic has not yet revealed itself.",
+    n: "Story 03",
+    kicker: "What keeps me curious",
+    t: "The moment before something fully reveals what it is.",
+    lead: "I am drawn to situations where something already exists, but the full logic has not yet become visible.",
     items: [
       "A product has customers — but its strongest value may be somewhere nobody is looking.",
       "A business is growing — but the obvious growth lever may not be the right one.",
-      "An idea feels intuitively right — but still needs a structure able to survive the market.",
+      "An idea feels intuitively right — but still needs a structure capable of surviving contact with the market.",
     ],
     close:
-      "That space between “something is here” and “now I understand what it is” is probably where I am most curious.",
-  },
-  {
-    t: "What I don't believe in",
-    lead: "I don't believe that more is automatically better.",
-    items: [
-      "More traffic. More content. More tools.",
-      "More features. More automation. More complexity.",
-    ],
-    close:
-      "Sometimes more is exactly what is needed. Sometimes it is simply what we reach for when we haven't understood the problem yet.",
+      "That space between “something is here” and “now I understand what this could become” is probably where I am most curious.",
   },
 ];
 
 const principles = [
   "Clarity before complexity.",
   "Context before tactics.",
-  "The problem before the solution.",
-  "Understand before deciding.",
+  "Understand the problem before choosing the solution.",
   "Structure before scale.",
   "Technology where it creates leverage.",
   "Evidence without losing intuition.",
@@ -175,29 +182,39 @@ const principles = [
   "Enough openness to learn.",
 ];
 
+const useful = [
+  "The product exists — but its position isn't clear.",
+  "The business is moving — but the next growth decision isn't.",
+  "Marketing is active — but nobody is completely sure what it should be built around.",
+  "The market has changed — and the old logic no longer fits.",
+  "There is an idea — but too many assumptions around what it should become.",
+  "Or the situation simply refuses to fit neatly into one function or framework.",
+];
+
 const products = [
   {
     t: "Marketing Set",
     meta: "For building the marketing foundation",
-    d: "For when the product, business or expertise already exists — but the marketing around it needs more structure. A guided AI-powered system for understanding value, market, customers, positioning and communication.",
+    d: "For when the product, business or expertise already exists — but the marketing around it needs structure. A guided AI-powered system for understanding value, market, customers, positioning and communication.",
     cta: "Explore Marketing Set",
     href: "/marketing-set",
   },
   {
     t: "Synthesis",
     meta: "For going deeper",
-    d: "For questions that require a wider view of the product, market, positioning and the system around them. A growing ecosystem of strategic frameworks and AI-supported tools that turn complexity into connected decisions.",
+    d: "For questions that require a wider view of the product, market, positioning and the system around them. A growing ecosystem of strategic frameworks and AI-supported tools for turning complexity into connected decisions.",
     cta: "Explore Synthesis",
     href: "/#solutions",
   },
   {
     t: "Consulting",
     meta: "For the problems that don't fit",
-    d: "For situations where the answer is not obvious, the problem does not fit neatly into a framework — or the first question itself needs to be challenged. We look at the context together and define what deserves attention next.",
+    d: "For situations where the answer isn't obvious — or where the first question itself needs to be challenged. We look at the context together and define what actually deserves attention next.",
     cta: "Work with me",
     href: "mailto:hello@vitashablii.com?subject=Consulting",
   },
 ];
+
 
 function AboutPage() {
   return (
@@ -229,29 +246,26 @@ function AboutPage() {
                     intersection of business, marketing, technology and human behaviour.
                   </p>
                   <p className="body-read">
-                    Her work is less about adding more marketing — and more about understanding what
-                    is actually happening underneath it.
+                    Her work begins before execution — with understanding what is actually happening
+                    underneath the visible task.
                   </p>
                 </div>
               </Reveal>
               <Reveal delay={260}>
-                <ul className="mt-10 border-l border-olive/40 bg-sage/25 px-7 py-6 md:mt-12">
+                <ul className="mt-10 space-y-1 border-l border-olive/40 bg-sage/25 px-7 py-6 md:mt-12">
                   {[
-                    "What is being built?",
-                    "For whom?",
-                    "Where does the value really come from?",
-                    "What is preventing growth?",
-                    "And which decision needs to become clear before anything else moves forward?",
+                    "What are we really trying to build?",
+                    "Where does the value come from?",
+                    "What is preventing the system from moving?",
+                    "And which decision needs to become clear before anything else does?",
                   ].map((q) => (
-                    <li
-                      key={q}
-                      className="quote-serif text-xl text-charcoal md:"
-                    >
+                    <li key={q} className="quote-serif text-xl text-charcoal">
                       {q}
                     </li>
                   ))}
                 </ul>
               </Reveal>
+
               <Reveal delay={340}>
                 <p className="label-xs mt-10 !tracking-[0.28em]">
                   Strategy × Marketing × Product × AI
@@ -296,16 +310,17 @@ function AboutPage() {
                       and the people behind them.
                     </p>
                     <p className="body-read">
-                      That curiosity took me across industries, business models and markets:
-                      technology, IT, consulting, e-commerce, fintech and consumer businesses;
-                      products and launches across Europe, the United States and China. I built
-                      marketing functions and teams, worked alongside developers, entered unfamiliar
-                      markets and repeatedly found myself inside problems that did not fit neatly
-                      into a marketing brief.
+                      That curiosity took me across technology, IT, consulting, e-commerce, fintech
+                      and consumer businesses — and across markets in Europe, the United States and
+                      China.
                     </p>
                     <p className="body-read">
-                      And the more different businesses I saw, the more familiar the underlying
-                      questions became.
+                      I built brands, products, marketing functions and teams. Worked alongside
+                      developers. Entered unfamiliar markets. Launched products from zero.
+                    </p>
+                    <p className="body-read">
+                      And again and again I found myself inside problems that didn't fit neatly into
+                      a marketing brief.
                     </p>
                   </div>
                 </Reveal>
@@ -313,13 +328,25 @@ function AboutPage() {
             </div>
 
             <Reveal delay={80}>
-              <ul className="mt-16 grid gap-8 sm:grid-cols-2 lg:grid-cols-5">
+              <div className="mt-16 flex flex-col items-start gap-6 border-t border-line/60 pt-10 md:flex-row md:items-baseline md:gap-16">
+                <Spiral className="h-12 w-12 shrink-0 opacity-60" accent />
+                <p className="quote-serif max-w-[26em]">
+                  Different contexts kept changing the surface.{" "}
+                  <span className="italic">
+                    The questions underneath became increasingly familiar.
+                  </span>
+                </p>
+              </div>
+            </Reveal>
+
+            <Reveal delay={120}>
+              <ul className="mt-12 grid gap-8 sm:grid-cols-2 lg:grid-cols-5">
                 {[
                   "Why does this product work?",
-                  "Why isn't this one growing?",
-                  "Where is the value actually created?",
+                  "Where is value actually created?",
                   "What are customers really responding to?",
-                  "Which part of the system is creating the result — and which part are we simply assuming does?",
+                  "What is preventing growth?",
+                  "And are we solving the real problem — or simply its most visible symptom?",
                 ].map((q) => (
                   <li
                     key={q}
@@ -331,15 +358,6 @@ function AboutPage() {
               </ul>
             </Reveal>
 
-            <Reveal delay={140}>
-              <div className="mt-20 flex flex-col items-center gap-8 border-t border-line/60 pt-16 text-center md:mt-24">
-                <Spiral className="h-16 w-16 opacity-60" accent />
-                <p className="display-md mx-auto max-w-[34em]">
-                  Eventually, marketing stopped being the category.{" "}
-                  <span className="italic">Understanding the system became the work.</span>
-                </p>
-              </div>
-            </Reveal>
           </div>
         </section>
 
@@ -353,9 +371,10 @@ function AboutPage() {
                   Different contexts taught me to look for{" "}
                   <span className="italic">what remains true.</span>
                 </h2>
-                <p className="body-read mt-8">
-                  Not the tactics. Not the channels. The system underneath them.
+                <p className="body-read mx-auto mt-8">
+                  Not the tactics. Not the channels. The logic underneath them.
                 </p>
+
               </div>
             </Reveal>
 
@@ -425,13 +444,17 @@ function AboutPage() {
                   <dl className="grid gap-x-10 gap-y-8 sm:grid-cols-2">
                     {numbers.map((n) => (
                       <div key={n.k} className="border-t border-slate-deep/30 pt-5">
-                        <dt className="font-serif-editorial text-3xl text-charcoal">{n.k}</dt>
-                        <dd className="mt-2 text-sm leading-relaxed text-charcoal/70">{n.v}</dd>
+                        <dt className="font-serif-editorial text-2xl leading-tight text-charcoal">
+                          {n.k}
+                        </dt>
+                        <dd className="label-xs mt-3 !tracking-[0.16em]">{n.meta}</dd>
+                        <dd className="mt-3 text-sm leading-relaxed text-charcoal/70">{n.v}</dd>
                       </div>
                     ))}
                   </dl>
                 </Reveal>
-                <ul className="mt-10 flex-1 divide-y divide-line/60 border-t border-line/60">
+                <p className="label-xs mt-12">Selected outcomes</p>
+                <ul className="mt-4 flex-1 divide-y divide-line/60 border-t border-line/60">
                   {cases.map((c) => (
                     <li key={c.t} className="flex flex-col gap-2 py-5 sm:flex-row sm:gap-8">
                       <p className="label-xs !text-charcoal sm:w-40 sm:shrink-0">
@@ -441,12 +464,52 @@ function AboutPage() {
                     </li>
                   ))}
                 </ul>
+
               </div>
             </div>
           </div>
         </section>
 
+        {/* ——— 04b TRANSITION STATEMENT ——— */}
+        <section className="dark-room rule-thin relative overflow-hidden">
+          <ShellBackdrop />
+          <div className="relative mx-auto max-w-[1440px] px-6 py-24 md:px-10 md:py-32">
+            <Reveal>
+              <div className="mx-auto max-w-[46rem] text-center">
+                <Kicker>What all that experience eventually revealed</Kicker>
+                <p className="display-lg">
+                  Eventually, marketing stopped being the category.{" "}
+                  <span className="italic">Understanding the system became the work.</span>
+                </p>
+              </div>
+            </Reveal>
+            <Reveal delay={140}>
+              <div className="mx-auto mt-14 max-w-[40rem] space-y-6 text-center">
+                <p className="body-read mx-auto">
+                  After enough products, markets and business models, it becomes difficult to look at
+                  marketing in isolation.
+                </p>
+                <ul className="mx-auto space-y-2 font-serif-editorial text-xl leading-snug text-charcoal">
+                  {[
+                    "A marketing decision changes the product.",
+                    "A product decision changes positioning.",
+                    "Positioning changes perception.",
+                    "Pricing changes behaviour.",
+                    "Technology changes processes.",
+                  ].map((x) => (
+                    <li key={x}>{x}</li>
+                  ))}
+                </ul>
+                <p className="body-read mx-auto italic">
+                  Sometimes the problem everyone calls marketing began somewhere else entirely.
+                </p>
+              </div>
+            </Reveal>
+          </div>
+        </section>
+
         {/* ——— 05 THE SHIFT ——— */}
+
         <section className="rule-thin bg-background">
           <div className="mx-auto max-w-[1440px] px-6 py-20 md:px-10 md:py-28">
             <Reveal>
@@ -476,7 +539,7 @@ function AboutPage() {
                         "product mix",
                         "positioning",
                         "margin",
-                        "a design that should come first",
+                        "something that should be redesigned before it is scaled",
                       ].map((x) => (
                         <li
                           key={x}
@@ -510,9 +573,10 @@ function AboutPage() {
                       ))}
                     </ul>
                     <p className="body-read">
-                      And sometimes the thing everyone is trying to optimise is not the thing
-                      creating the result at all.
+                      The first version of a problem is often only its most visible version.
                     </p>
+
+
                   </div>
                 </Reveal>
               </div>
@@ -612,8 +676,8 @@ function AboutPage() {
                   </h2>
                   <div className="mt-10 space-y-6">
                     <p className="body-read">
-                      There is a reason the shell keeps appearing throughout my work. Not because I
-                      needed a symbol — because its logic felt familiar.
+                      There is a reason the shell keeps appearing throughout my work. Its logic feels
+                      familiar.
                     </p>
                     <p className="body-read">
                       A shell is not assembled from unrelated parts and forced into shape. Its
@@ -621,20 +685,20 @@ function AboutPage() {
                       what already exists.
                     </p>
                     <p className="body-read">
-                      Order, but not rigidity. Growth, but not randomness. Complexity, with an
-                      underlying logic holding it together. That is close to how I think about good
-                      products, businesses and brands.
+                      Order without rigidity. Growth without randomness. Complexity held together by
+                      an underlying logic. Good products, businesses and brands often work the same
+                      way.
                     </p>
                     <p className="body-read">
-                      Often the structure is already there in fragments: in the product, in customer
-                      behaviour, in the economics, in the founder's intuition, in the market
-                      response. The work is to see the relationships between them.
+                      Their structure already exists in fragments: the product, customer behaviour,
+                      economics, the founder's intuition, market response.
                     </p>
-                    <p className="mt-4 border-t border-line/60 pt-8 quote-serif text-2xl italic text-charcoal md:">
-                      The goal isn't always to add more. Sometimes it is to understand the logic
+                    <p className="mt-4 border-t border-line/60 pt-8 quote-serif text-2xl italic text-charcoal">
+                      The work is not always to add more. Sometimes it is to understand the logic
                       already there — and help it take form.
                     </p>
                   </div>
+
                 </Reveal>
               </div>
             </div>
@@ -658,20 +722,22 @@ function AboutPage() {
                   <div className="space-y-6">
                     <p className="body-read">
                       I have always been interested in technology when it removes unnecessary work
-                      rather than creates another layer of it. Working alongside IT teams gradually
-                      moved me beyond marketing briefs and deeper into processes, automation and the
-                      logic behind digital products. AI is a continuation of that thinking for me —
-                      a way to analyse faster, connect information, challenge assumptions, generate
-                      possibilities and move from information to iteration.
+                      rather than creates another layer of it. Working alongside IT teams moved me
+                      beyond marketing briefs and deeper into processes, automation and the logic
+                      behind digital products.
                     </p>
                     <p className="body-read">
-                      But speed only becomes valuable when there is direction. More output is not
-                      automatically better thinking. More automation is not automatically a better
-                      system. And a powerful tool cannot decide what matters unless we give it the
-                      right context.
+                      AI is a continuation of that thinking. It can analyse faster, connect
+                      information, challenge assumptions and remove repetitive work. But speed only
+                      becomes valuable when there is direction.
+                    </p>
+                    <p className="body-read">
+                      More output isn't automatically better thinking. More automation isn't
+                      automatically a better system.
                     </p>
                   </div>
                 </Reveal>
+
               </div>
             </div>
 
@@ -702,9 +768,7 @@ function AboutPage() {
                       moved past.
                     </p>
                     <p className="body-read">
-                      I like understanding why something works — not only knowing that it does. And I
-                      am comfortable staying with a question long enough for the obvious answer to
-                      stop being obvious.
+                      I like understanding why something works — not only knowing that it does.
                     </p>
                   </div>
                 </Reveal>
@@ -713,8 +777,8 @@ function AboutPage() {
                 <Reveal delay={120}>
                   <div className="grain relative aspect-[4/3] overflow-hidden bg-stone">
                     <img
-                      src={light}
-                      alt="Afternoon light falling across an open notebook"
+                      src={mist}
+                      alt="Mist settling over still water"
                       loading="lazy"
                       width={1408}
                       height={1056}
@@ -727,21 +791,41 @@ function AboutPage() {
 
             <div className="mt-16 space-y-16 md:mt-20 md:space-y-20">
               {beyond.map((b, i) => {
-                const img = i === 0 ? leaves : i === 2 ? ink.url : null;
+                const img = i === 0 ? light : i === 1 ? leaves : ink.url;
+                const flip = i % 2 === 1;
                 return (
-                  <Reveal key={b.t} delay={60}>
+                  <Reveal key={b.kicker} delay={60}>
                     <article className="grid gap-10 border-t border-line/60 pt-12 md:grid-cols-12 md:items-start">
                       <div
                         className={
-                          img
-                            ? "md:col-span-6"
-                            : "md:col-span-8 md:col-start-3"
+                          flip
+                            ? "md:col-span-5 md:col-start-8 md:row-start-1"
+                            : "md:col-span-5"
                         }
                       >
-                        <p className="quote-serif text-2xl text-charcoal md:">
-                          {b.lead}
+                        <div className="grain relative aspect-[4/3] overflow-hidden bg-stone">
+                          <img
+                            src={img}
+                            alt=""
+                            aria-hidden
+                            loading="lazy"
+                            className="h-full w-full object-cover"
+                          />
+                        </div>
+                      </div>
+                      <div
+                        className={
+                          flip
+                            ? "md:col-span-6 md:row-start-1"
+                            : "md:col-span-6 md:col-start-7"
+                        }
+                      >
+                        <p className="label-xs">
+                          {b.n} / {b.kicker}
                         </p>
-                        <ul className="mt-7 space-y-2">
+                        <h3 className="display-sm mt-4 max-w-[16em]">{b.t}</h3>
+                        <p className="body-read mt-7">{b.lead}</p>
+                        <ul className="mt-6 space-y-2">
                           {b.items.map((x) => (
                             <li key={x} className="body-read !text-base">
                               {x}
@@ -752,41 +836,14 @@ function AboutPage() {
                           {b.close}
                         </p>
                       </div>
-                      {img ? (
-                        <div className="md:col-span-5 md:col-start-8">
-                          <div className="grain relative aspect-[4/3] overflow-hidden bg-stone">
-                            <img
-                              src={img}
-                              alt=""
-                              aria-hidden
-                              loading="lazy"
-                              className="h-full w-full object-cover"
-                            />
-                          </div>
-                        </div>
-                      ) : null}
                     </article>
                   </Reveal>
                 );
               })}
             </div>
-
-            <Reveal>
-              <div className="mx-auto mt-20 max-w-[46rem] space-y-6 text-center">
-                <p className="label-xs">What I keep returning to</p>
-                <p className="display-md">
-                  Context. <span className="italic">Always context.</span>
-                </p>
-                <p className="body-read">
-                  Because a brilliant solution in the wrong context is still the wrong solution. The
-                  same product can mean something different in another market. The same message can
-                  work for one audience and disappear for another. The same growth tactic can create
-                  leverage in one business and destroy margin in the next.
-                </p>
-              </div>
-            </Reveal>
           </div>
         </section>
+
 
         {/* ——— 10 PRINCIPLES ——— */}
         <section className="rule-thin bg-paper">
@@ -811,7 +868,42 @@ function AboutPage() {
           </div>
         </section>
 
+        {/* ——— 10b WHERE THINKING BECOMES WORK ——— */}
+        <section className="rule-thin bg-background">
+          <div className="mx-auto max-w-[1440px] px-6 py-20 md:px-10 md:py-28">
+            <div className="grid gap-14 md:grid-cols-12">
+              <div className="md:col-span-6">
+                <Reveal>
+                  <Kicker>Where thinking becomes work</Kicker>
+                  <h2 className="display-md">
+                    Usually, people come to me when something{" "}
+                    <span className="italic">doesn't quite connect.</span>
+                  </h2>
+                </Reveal>
+              </div>
+              <div className="md:col-span-5 md:col-start-8">
+                <Reveal delay={120}>
+                  <ul className="divide-y divide-line/60 border-y border-line/60">
+                    {useful.map((u) => (
+                      <li
+                        key={u}
+                        className="py-5 font-serif-editorial text-xl leading-snug text-charcoal"
+                      >
+                        {u}
+                      </li>
+                    ))}
+                  </ul>
+                  <p className="body-read mt-8">
+                    These are the kinds of problems I like working with.
+                  </p>
+                </Reveal>
+              </div>
+            </div>
+          </div>
+        </section>
+
         {/* ——— 11 FROM THINKING TO PRODUCTS ——— */}
+
         <section id="products" className="blue-room rule-thin">
           <div className="mx-auto max-w-[1440px] px-6 py-20 md:px-10 md:py-28">
             <Reveal>

@@ -255,7 +255,7 @@ function StrategicPartnership() {
       <Header />
       <main>
         {/* ——— 01 HERO ——— */}
-        <section className="relative overflow-hidden">
+        <section className="relative overflow-hidden bg-cream">
           <div
             aria-hidden
             className="pointer-events-none absolute -left-32 top-10 h-[26rem] w-[26rem] rounded-full bg-slate/40 blur-3xl"
@@ -390,7 +390,7 @@ function StrategicPartnership() {
                     <span
                       aria-hidden
                       className={`mt-[0.7rem] h-3 w-3 shrink-0 rounded-full ${
-                        ["bg-olive/70", "bg-sky", "bg-clay", "bg-sage", "bg-blush", "bg-taupe"][
+                        ["bg-olive/70", "bg-slate", "bg-sage", "bg-olive/50", "bg-taupe", "bg-slate-deep/60"][
                           i % 6
                         ]
                       }`}
@@ -450,10 +450,10 @@ function StrategicPartnership() {
 
 
         {/* ——— 07 HOW I WORK ——— */}
-        <section className="rule-thin relative overflow-hidden">
+        <section className="teal-room rule-thin relative overflow-hidden">
           <div
             aria-hidden
-            className="pointer-events-none absolute right-[-10%] top-[10%] h-[24rem] w-[24rem] rounded-full bg-slate/30 blur-3xl"
+            className="pointer-events-none absolute right-[-10%] top-[10%] h-[24rem] w-[24rem] rounded-full bg-ivory/10 blur-3xl"
           />
           <div className="relative mx-auto max-w-[1440px] px-6 py-20 md:px-10 md:py-28">
             <div className="grid gap-10 lg:grid-cols-12">
@@ -487,7 +487,7 @@ function StrategicPartnership() {
 
 
         {/* ——— 08 IS / ISN’T ——— */}
-        <section className="teal-room rule-thin relative overflow-hidden">
+        <section className="teal-room relative overflow-hidden">
           <div className="relative mx-auto max-w-[1440px] px-6 py-20 md:px-10 md:py-28">
             <div className="grid gap-16 lg:grid-cols-12 lg:gap-10">
               {/* fit */}

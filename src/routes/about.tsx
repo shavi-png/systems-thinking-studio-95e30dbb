@@ -828,7 +828,42 @@ function AboutPage() {
           </div>
         </section>
 
+        {/* ——— 10b WHERE THINKING BECOMES WORK ——— */}
+        <section className="rule-thin bg-background">
+          <div className="mx-auto max-w-[1440px] px-6 py-20 md:px-10 md:py-28">
+            <div className="grid gap-14 md:grid-cols-12">
+              <div className="md:col-span-6">
+                <Reveal>
+                  <Kicker>Where thinking becomes work</Kicker>
+                  <h2 className="display-md">
+                    Usually, people come to me when something{" "}
+                    <span className="italic">doesn't quite connect.</span>
+                  </h2>
+                </Reveal>
+              </div>
+              <div className="md:col-span-5 md:col-start-8">
+                <Reveal delay={120}>
+                  <ul className="divide-y divide-line/60 border-y border-line/60">
+                    {useful.map((u) => (
+                      <li
+                        key={u}
+                        className="py-5 font-serif-editorial text-xl leading-snug text-charcoal"
+                      >
+                        {u}
+                      </li>
+                    ))}
+                  </ul>
+                  <p className="body-read mt-8">
+                    These are the kinds of problems I like working with.
+                  </p>
+                </Reveal>
+              </div>
+            </div>
+          </div>
+        </section>
+
         {/* ——— 11 FROM THINKING TO PRODUCTS ——— */}
+
         <section id="products" className="blue-room rule-thin">
           <div className="mx-auto max-w-[1440px] px-6 py-20 md:px-10 md:py-28">
             <Reveal>

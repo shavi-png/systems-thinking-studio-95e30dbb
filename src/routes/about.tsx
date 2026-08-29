@@ -463,7 +463,46 @@ function AboutPage() {
           </div>
         </section>
 
+        {/* ——— 04b TRANSITION STATEMENT ——— */}
+        <section className="dark-room rule-thin relative overflow-hidden">
+          <ShellBackdrop />
+          <div className="relative mx-auto max-w-[1440px] px-6 py-24 md:px-10 md:py-32">
+            <Reveal>
+              <div className="mx-auto max-w-[46rem] text-center">
+                <Kicker>What all that experience eventually revealed</Kicker>
+                <p className="display-lg">
+                  Eventually, marketing stopped being the category.{" "}
+                  <span className="italic">Understanding the system became the work.</span>
+                </p>
+              </div>
+            </Reveal>
+            <Reveal delay={140}>
+              <div className="mx-auto mt-14 max-w-[40rem] space-y-6 text-center">
+                <p className="body-read mx-auto">
+                  After enough products, markets and business models, it becomes difficult to look at
+                  marketing in isolation.
+                </p>
+                <ul className="mx-auto space-y-2 font-serif-editorial text-xl leading-snug text-charcoal">
+                  {[
+                    "A marketing decision changes the product.",
+                    "A product decision changes positioning.",
+                    "Positioning changes perception.",
+                    "Pricing changes behaviour.",
+                    "Technology changes processes.",
+                  ].map((x) => (
+                    <li key={x}>{x}</li>
+                  ))}
+                </ul>
+                <p className="body-read mx-auto italic">
+                  Sometimes the problem everyone calls marketing began somewhere else entirely.
+                </p>
+              </div>
+            </Reveal>
+          </div>
+        </section>
+
         {/* ——— 05 THE SHIFT ——— */}
+
         <section className="rule-thin bg-background">
           <div className="mx-auto max-w-[1440px] px-6 py-20 md:px-10 md:py-28">
             <Reveal>

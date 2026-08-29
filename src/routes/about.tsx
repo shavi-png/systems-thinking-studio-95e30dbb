@@ -493,7 +493,7 @@ function AboutPage() {
                         "product mix",
                         "positioning",
                         "margin",
-                        "a design that should come first",
+                        "something that should be redesigned before it is scaled",
                       ].map((x) => (
                         <li
                           key={x}

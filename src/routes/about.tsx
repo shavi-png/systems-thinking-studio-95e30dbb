@@ -370,9 +370,10 @@ function AboutPage() {
                   Different contexts taught me to look for{" "}
                   <span className="italic">what remains true.</span>
                 </h2>
-                <p className="body-read mt-8">
-                  Not the tactics. Not the channels. The system underneath them.
+                <p className="body-read mx-auto mt-8">
+                  Not the tactics. Not the channels. The logic underneath them.
                 </p>
+
               </div>
             </Reveal>
 

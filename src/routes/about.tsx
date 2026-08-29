@@ -527,9 +527,9 @@ function AboutPage() {
                       ))}
                     </ul>
                     <p className="body-read">
-                      And sometimes the thing everyone is trying to optimise is not the thing
-                      creating the result at all.
+                      A communication problem may begin with a decision nobody has made yet.
                     </p>
+
                   </div>
                 </Reveal>
               </div>

@@ -313,16 +313,17 @@ function AboutPage() {
                       and the people behind them.
                     </p>
                     <p className="body-read">
-                      That curiosity took me across industries, business models and markets:
-                      technology, IT, consulting, e-commerce, fintech and consumer businesses;
-                      products and launches across Europe, the United States and China. I built
-                      marketing functions and teams, worked alongside developers, entered unfamiliar
-                      markets and repeatedly found myself inside problems that did not fit neatly
-                      into a marketing brief.
+                      That curiosity took me across technology, IT, consulting, e-commerce, fintech
+                      and consumer businesses — and across markets in Europe, the United States and
+                      China.
                     </p>
                     <p className="body-read">
-                      And the more different businesses I saw, the more familiar the underlying
-                      questions became.
+                      I built brands, products, marketing functions and teams. Worked alongside
+                      developers. Entered unfamiliar markets. Launched products from zero.
+                    </p>
+                    <p className="body-read">
+                      And again and again I found myself inside problems that didn't fit neatly into
+                      a marketing brief.
                     </p>
                   </div>
                 </Reveal>
@@ -330,13 +331,25 @@ function AboutPage() {
             </div>
 
             <Reveal delay={80}>
-              <ul className="mt-16 grid gap-8 sm:grid-cols-2 lg:grid-cols-5">
+              <div className="mt-16 flex flex-col items-start gap-6 border-t border-line/60 pt-10 md:flex-row md:items-baseline md:gap-16">
+                <Spiral className="h-12 w-12 shrink-0 opacity-60" accent />
+                <p className="quote-serif max-w-[26em]">
+                  Different contexts kept changing the surface.{" "}
+                  <span className="italic">
+                    The questions underneath became increasingly familiar.
+                  </span>
+                </p>
+              </div>
+            </Reveal>
+
+            <Reveal delay={120}>
+              <ul className="mt-12 grid gap-8 sm:grid-cols-2 lg:grid-cols-5">
                 {[
                   "Why does this product work?",
-                  "Why isn't this one growing?",
-                  "Where is the value actually created?",
+                  "Where is value actually created?",
                   "What are customers really responding to?",
-                  "Which part of the system is creating the result — and which part are we simply assuming does?",
+                  "What is preventing growth?",
+                  "And are we solving the real problem — or simply its most visible symptom?",
                 ].map((q) => (
                   <li
                     key={q}
@@ -348,15 +361,6 @@ function AboutPage() {
               </ul>
             </Reveal>
 
-            <Reveal delay={140}>
-              <div className="mt-20 flex flex-col items-center gap-8 border-t border-line/60 pt-16 text-center md:mt-24">
-                <Spiral className="h-16 w-16 opacity-60" accent />
-                <p className="display-md mx-auto max-w-[34em]">
-                  Eventually, marketing stopped being the category.{" "}
-                  <span className="italic">Understanding the system became the work.</span>
-                </p>
-              </div>
-            </Reveal>
           </div>
         </section>
 

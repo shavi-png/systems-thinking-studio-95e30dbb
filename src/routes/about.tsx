@@ -675,20 +675,22 @@ function AboutPage() {
                   <div className="space-y-6">
                     <p className="body-read">
                       I have always been interested in technology when it removes unnecessary work
-                      rather than creates another layer of it. Working alongside IT teams gradually
-                      moved me beyond marketing briefs and deeper into processes, automation and the
-                      logic behind digital products. AI is a continuation of that thinking for me —
-                      a way to analyse faster, connect information, challenge assumptions, generate
-                      possibilities and move from information to iteration.
+                      rather than creates another layer of it. Working alongside IT teams moved me
+                      beyond marketing briefs and deeper into processes, automation and the logic
+                      behind digital products.
                     </p>
                     <p className="body-read">
-                      But speed only becomes valuable when there is direction. More output is not
-                      automatically better thinking. More automation is not automatically a better
-                      system. And a powerful tool cannot decide what matters unless we give it the
-                      right context.
+                      AI is a continuation of that thinking. It can analyse faster, connect
+                      information, challenge assumptions and remove repetitive work. But speed only
+                      becomes valuable when there is direction.
+                    </p>
+                    <p className="body-read">
+                      More output isn't automatically better thinking. More automation isn't
+                      automatically a better system.
                     </p>
                   </div>
                 </Reveal>
+
               </div>
             </div>
 

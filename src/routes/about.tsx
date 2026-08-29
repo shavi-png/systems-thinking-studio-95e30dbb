@@ -527,8 +527,9 @@ function AboutPage() {
                       ))}
                     </ul>
                     <p className="body-read">
-                      A communication problem may begin with a decision nobody has made yet.
+                      The first version of a problem is often only its most visible version.
                     </p>
+
 
                   </div>
                 </Reveal>

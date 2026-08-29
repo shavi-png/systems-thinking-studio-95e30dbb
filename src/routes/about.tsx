@@ -350,7 +350,7 @@ function AboutPage() {
                 ].map((q) => (
                   <li
                     key={q}
-                    className="border-t border-slate-deep/25 pt-5 font-serif-editorial text-lg leading-snug text-charcoal"
+                    className="border-t border-line/60 pt-5 font-serif-editorial text-lg leading-snug text-charcoal"
                   >
                     {q}
                   </li>
@@ -362,7 +362,7 @@ function AboutPage() {
         </section>
 
         {/* ——— 03 EXPERIENCE IN CONTEXT ——— */}
-        <section className="rule-thin bg-background">
+        <section className="rule-thin teal-room">
           <div className="mx-auto max-w-[1440px] px-6 py-20 md:px-10 md:py-28">
             <Reveal>
               <div className="mx-auto max-w-[42rem] text-center">

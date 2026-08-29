@@ -629,8 +629,8 @@ function AboutPage() {
                   </h2>
                   <div className="mt-10 space-y-6">
                     <p className="body-read">
-                      There is a reason the shell keeps appearing throughout my work. Not because I
-                      needed a symbol — because its logic felt familiar.
+                      There is a reason the shell keeps appearing throughout my work. Its logic feels
+                      familiar.
                     </p>
                     <p className="body-read">
                       A shell is not assembled from unrelated parts and forced into shape. Its
@@ -638,20 +638,20 @@ function AboutPage() {
                       what already exists.
                     </p>
                     <p className="body-read">
-                      Order, but not rigidity. Growth, but not randomness. Complexity, with an
-                      underlying logic holding it together. That is close to how I think about good
-                      products, businesses and brands.
+                      Order without rigidity. Growth without randomness. Complexity held together by
+                      an underlying logic. Good products, businesses and brands often work the same
+                      way.
                     </p>
                     <p className="body-read">
-                      Often the structure is already there in fragments: in the product, in customer
-                      behaviour, in the economics, in the founder's intuition, in the market
-                      response. The work is to see the relationships between them.
+                      Their structure already exists in fragments: the product, customer behaviour,
+                      economics, the founder's intuition, market response.
                     </p>
-                    <p className="mt-4 border-t border-line/60 pt-8 quote-serif text-2xl italic text-charcoal md:">
-                      The goal isn't always to add more. Sometimes it is to understand the logic
+                    <p className="mt-4 border-t border-line/60 pt-8 quote-serif text-2xl italic text-charcoal">
+                      The work is not always to add more. Sometimes it is to understand the logic
                       already there — and help it take form.
                     </p>
                   </div>
+
                 </Reveal>
               </div>
             </div>

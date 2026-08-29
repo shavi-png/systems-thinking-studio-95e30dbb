@@ -246,29 +246,26 @@ function AboutPage() {
                     intersection of business, marketing, technology and human behaviour.
                   </p>
                   <p className="body-read">
-                    Her work is less about adding more marketing — and more about understanding what
-                    is actually happening underneath it.
+                    Her work begins before execution — with understanding what is actually happening
+                    underneath the visible task.
                   </p>
                 </div>
               </Reveal>
               <Reveal delay={260}>
-                <ul className="mt-10 border-l border-olive/40 bg-sage/25 px-7 py-6 md:mt-12">
+                <ul className="mt-10 space-y-1 border-l border-olive/40 bg-sage/25 px-7 py-6 md:mt-12">
                   {[
-                    "What is being built?",
-                    "For whom?",
-                    "Where does the value really come from?",
-                    "What is preventing growth?",
-                    "And which decision needs to become clear before anything else moves forward?",
+                    "What are we really trying to build?",
+                    "Where does the value come from?",
+                    "What is preventing the system from moving?",
+                    "And which decision needs to become clear before anything else does?",
                   ].map((q) => (
-                    <li
-                      key={q}
-                      className="quote-serif text-xl text-charcoal md:"
-                    >
+                    <li key={q} className="quote-serif text-xl text-charcoal">
                       {q}
                     </li>
                   ))}
                 </ul>
               </Reveal>
+
               <Reveal delay={340}>
                 <p className="label-xs mt-10 !tracking-[0.28em]">
                   Strategy × Marketing × Product × AI

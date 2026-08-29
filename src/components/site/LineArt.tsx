@@ -857,7 +857,7 @@ export function ProcessOrbit({
       .map((n, i, arr) => {
         const span = 300; // vertical range in viewBox units
         const ly = arr.length === 1 ? 0 : -span / 2 + (span * i) / (arr.length - 1);
-        return { ...n, ly, lx: n.right ? 200 : -200 };
+        return { ...n, ly, lx: n.right ? 148 : -148 };
       });
 
   const nodes = [...slot(raw.filter((n) => n.right)), ...slot(raw.filter((n) => !n.right))];
@@ -936,7 +936,7 @@ export function ProcessOrbit({
         {nodes.map((n, i) => (
           <div
             key={n.label}
-            className={`absolute hidden w-[10.5rem] lg:block ${n.right ? "text-left" : "text-right"}`}
+            className={`absolute hidden w-[9rem] lg:block ${n.right ? "text-left" : "text-right"}`}
             style={{
               left: `calc(50% + ${(((n.lx + (n.right ? 6 : -6)) / VB_W) * 100).toFixed(2)}%)`,
               top: `calc(50% + ${((n.ly / VB_H) * 100).toFixed(2)}% - 1.1rem)`,

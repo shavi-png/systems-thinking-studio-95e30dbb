@@ -41,9 +41,9 @@ const markets = [
     t: "Across markets",
     meta: "Europe · United States · China",
     body: [
-      "Working across different markets taught me that a strategy cannot simply be transported from one context into another.",
-      "People change. Competition changes. Culture changes. The perception of value changes.",
-      "I have worked with product launches, positioning, go-to-market decisions and market adaptation across different international contexts.",
+      "Working across different markets taught me that strategy cannot simply be transported from one context into another.",
+      "Culture changes. Competition changes. Customer expectations change. The perception of value changes.",
+      "I have worked with product launches, positioning, go-to-market decisions and market adaptation across very different international environments.",
     ],
     qA: "How do we replicate what already worked?",
     qB: "What should remain — and what needs to change?",
@@ -53,9 +53,9 @@ const markets = [
     t: "Across business models",
     meta: "Technology · IT · Consulting · E-commerce · Fintech · Consumer",
     body: [
-      "Different industries use different language, channels and business models. But underneath them are often remarkably similar questions.",
-      "Where is value created? Who captures it? Why does someone choose? What makes the economics work? Where is the constraint?",
-      "Moving between industries trained me not to rely too heavily on category conventions. I would rather understand the logic of the business first.",
+      "Different industries use different language, channels and business models. But underneath them are often remarkably similar questions:",
+      "Where is value created? Why does someone choose? What makes the economics work? Where is the constraint?",
+      "Moving between industries taught me not to begin with category conventions.",
     ],
     qA: "Which conventions does this category follow?",
     qB: "What is the actual logic of this business?",
@@ -65,9 +65,9 @@ const markets = [
     t: "Building systems",
     meta: "From disconnected activity to connected decisions",
     body: [
-      "A significant part of my experience has been building marketing functions, teams and processes from the ground up. That changes how you see marketing.",
-      "Content cannot be separated from positioning. Acquisition cannot be separated from economics. Growth cannot be separated from product.",
-      "Automation cannot fix a process that does not make sense. And a team cannot execute clearly when the decisions behind the work remain unclear.",
+      "A significant part of my experience has been building brands, marketing functions, teams and processes from the ground up.",
+      "That changes how you see marketing. Content cannot be separated from positioning. Acquisition cannot be separated from economics. Growth cannot be separated from product.",
+      "Automation cannot fix a process that does not make sense.",
     ],
     qA: "Which activity should we add next?",
     qB: "Which decisions are still missing?",
@@ -75,10 +75,26 @@ const markets = [
 ];
 
 const numbers = [
-  { k: "13+", v: "years across marketing, strategy and products" },
-  { k: "500+", v: "projects & events" },
-  { k: "Global", v: "experience across Europe, the United States and China" },
-  { k: "Multiple", v: "industries, business models and stages of growth" },
+  {
+    k: "13+ years",
+    meta: "Across marketing, strategy, products and business transformation.",
+    v: "More than thirteen years working not only with execution, but with the decisions behind it — product, positioning, market entry, commercial strategy, teams and systems.",
+  },
+  {
+    k: "500+ projects & events",
+    meta: "Across different industries, markets and stages of business.",
+    v: "Hundreds of different contexts mean hundreds of opportunities to see what changes — and what keeps repeating. The real value of that number is pattern recognition.",
+  },
+  {
+    k: "15+ brands built from zero",
+    meta: "From concept to marketing management.",
+    v: "Brands built from the original idea and market logic through positioning, identity, communication, launch and ongoing marketing management.",
+  },
+  {
+    k: "Global market experience",
+    meta: "Europe · United States · China",
+    v: "Experience working across very different cultural, competitive and commercial environments.",
+  },
 ];
 
 const cases = [
@@ -97,11 +113,6 @@ const cases = [
     t: "Zero to market",
     d: "Marketing strategy for a product launched from scratch in the United States.",
   },
-  {
-    k: "15",
-    t: "Digital products",
-    d: "Approximately fifteen websites developed across different business categories within one year.",
-  },
 ];
 
 const model = [
@@ -118,8 +129,10 @@ const model = [
 
 const beyond = [
   {
-    t: "What I notice",
-    lead: "I notice the missing link between two things people assume are connected.",
+    n: "Story 01",
+    kicker: "What I notice",
+    t: "The space between cause and effect.",
+    lead: "I notice the missing link between things people assume are automatically connected.",
     items: [
       "Traffic and sales.",
       "Revenue and profit.",
@@ -127,47 +140,41 @@ const beyond = [
       "Activity and actual progress.",
       "A decision and the behaviour it creates.",
     ],
-    close: "I am often most interested in the part of the system that is easiest to overlook.",
+    close:
+      "The interesting part is often somewhere between the two. That is usually where I start looking.",
   },
   {
-    t: "What I value",
-    lead: "I value independent thinking.",
+    n: "Story 02",
+    kicker: "What I value",
+    t: "Independent thinking without the need to always agree.",
+    lead: "I value people who can hold their own point of view and still remain curious.",
     items: [
       "People who can disagree without turning disagreement into conflict.",
-      "People curious enough to change their mind when reality gives better information.",
+      "People willing to change their mind when reality gives them better information.",
       "People who take responsibility for the decisions they make.",
     ],
     close:
       "Good collaboration doesn't require permanent agreement. It requires honesty, curiosity and enough trust to challenge each other's thinking.",
   },
   {
-    t: "What keeps me curious",
-    lead: "Situations where something already exists, but the full logic has not yet revealed itself.",
+    n: "Story 03",
+    kicker: "What keeps me curious",
+    t: "The moment before something fully reveals what it is.",
+    lead: "I am drawn to situations where something already exists, but the full logic has not yet become visible.",
     items: [
       "A product has customers — but its strongest value may be somewhere nobody is looking.",
       "A business is growing — but the obvious growth lever may not be the right one.",
-      "An idea feels intuitively right — but still needs a structure able to survive the market.",
+      "An idea feels intuitively right — but still needs a structure capable of surviving contact with the market.",
     ],
     close:
-      "That space between “something is here” and “now I understand what it is” is probably where I am most curious.",
-  },
-  {
-    t: "What I don't believe in",
-    lead: "I don't believe that more is automatically better.",
-    items: [
-      "More traffic. More content. More tools.",
-      "More features. More automation. More complexity.",
-    ],
-    close:
-      "Sometimes more is exactly what is needed. Sometimes it is simply what we reach for when we haven't understood the problem yet.",
+      "That space between “something is here” and “now I understand what this could become” is probably where I am most curious.",
   },
 ];
 
 const principles = [
   "Clarity before complexity.",
   "Context before tactics.",
-  "The problem before the solution.",
-  "Understand before deciding.",
+  "Understand the problem before choosing the solution.",
   "Structure before scale.",
   "Technology where it creates leverage.",
   "Evidence without losing intuition.",
@@ -175,29 +182,39 @@ const principles = [
   "Enough openness to learn.",
 ];
 
+const useful = [
+  "The product exists — but its position isn't clear.",
+  "The business is moving — but the next growth decision isn't.",
+  "Marketing is active — but nobody is completely sure what it should be built around.",
+  "The market has changed — and the old logic no longer fits.",
+  "There is an idea — but too many assumptions around what it should become.",
+  "Or the situation simply refuses to fit neatly into one function or framework.",
+];
+
 const products = [
   {
     t: "Marketing Set",
     meta: "For building the marketing foundation",
-    d: "For when the product, business or expertise already exists — but the marketing around it needs more structure. A guided AI-powered system for understanding value, market, customers, positioning and communication.",
+    d: "For when the product, business or expertise already exists — but the marketing around it needs structure. A guided AI-powered system for understanding value, market, customers, positioning and communication.",
     cta: "Explore Marketing Set",
     href: "/marketing-set",
   },
   {
     t: "Synthesis",
     meta: "For going deeper",
-    d: "For questions that require a wider view of the product, market, positioning and the system around them. A growing ecosystem of strategic frameworks and AI-supported tools that turn complexity into connected decisions.",
+    d: "For questions that require a wider view of the product, market, positioning and the system around them. A growing ecosystem of strategic frameworks and AI-supported tools for turning complexity into connected decisions.",
     cta: "Explore Synthesis",
     href: "/#solutions",
   },
   {
     t: "Consulting",
     meta: "For the problems that don't fit",
-    d: "For situations where the answer is not obvious, the problem does not fit neatly into a framework — or the first question itself needs to be challenged. We look at the context together and define what deserves attention next.",
+    d: "For situations where the answer isn't obvious — or where the first question itself needs to be challenged. We look at the context together and define what actually deserves attention next.",
     cta: "Work with me",
     href: "mailto:hello@vitashablii.com?subject=Consulting",
   },
 ];
+
 
 function AboutPage() {
   return (

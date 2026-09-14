@@ -715,7 +715,7 @@ function StrategicPartnership() {
 
 
         {/* ——— 12 FINAL CTA ——— */}
-        <section id="start" className="dark-room rule-thin relative overflow-hidden">
+        <section id="start" className="olive-room rule-thin relative overflow-hidden">
           <ShellBackdrop />
           <div className="relative mx-auto flex max-w-[1440px] flex-col items-center px-6 py-24 text-center md:px-10 md:py-32">
             <Reveal>

@@ -16,6 +16,7 @@
   --color-smoke: var(--smoke);
   --color-sage: var(--sage);
   --color-olive: var(--olive);
+  --color-olive-deep: var(--olive-deep);
   --color-umber: var(--umber);
   --color-sky: var(--sky);
   --color-slate: var(--slate);
@@ -181,6 +182,8 @@
   --smoke: oklch(0.635 0.01 130);
   --sage: oklch(0.9 0.028 128);
   --olive: oklch(0.605 0.055 122);
+  /* Olive Haze, deepened for full-width rooms with light typography */
+  --olive-deep: oklch(0.455 0.04 116);
   --clay: oklch(0.845 0.048 55);
   --sky: oklch(0.895 0.036 225);
   /* muted slate-blue from the brand deck reference */
@@ -339,6 +342,21 @@
   --body-tone: oklch(0.945 0.018 90);
   --line-tone: oklch(1 0 0 / 32%);
   color: oklch(0.985 0.014 92);
+}
+
+/* A soft olive room drawn from the natural Soft Sage / Olive Haze references. */
+@utility olive-room {
+  background-color: var(--olive-deep);
+  --color-charcoal: oklch(0.985 0.008 100);
+  --color-smoke: oklch(0.9 0.018 108);
+  --color-olive: oklch(0.88 0.032 112);
+  --color-line: oklch(0.985 0.008 100 / 34%);
+  --charcoal: oklch(0.985 0.008 100);
+  --smoke: oklch(0.9 0.018 108);
+  --olive: oklch(0.88 0.032 112);
+  --body-tone: oklch(0.955 0.012 104);
+  --line-tone: oklch(0.985 0.008 100 / 34%);
+  color: oklch(0.985 0.008 100);
 }
 
 /* A "teal room": deep teal-blue from the reference deck.

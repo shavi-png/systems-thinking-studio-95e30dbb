@@ -170,9 +170,10 @@ function Index() {
           </div>
         </section>
 
-        {/* ——— TRANSITION — the first dark room ——— */}
-        <section className="dark-room relative overflow-hidden">
-          <div className="mx-auto max-w-[1440px] px-6 pb-20 pt-20 md:px-10 md:pb-28 md:pt-28">
+        {/* ——— TRANSITION — the first olive room ——— */}
+        <section className="olive-room relative overflow-hidden">
+          <ShellBackdrop />
+          <div className="relative mx-auto max-w-[1440px] px-6 pb-20 pt-20 md:px-10 md:pb-28 md:pt-28">
             <Reveal>
               <p className="section-num mb-8">02 / The idea becomes a system</p>
               <div className="grid items-end gap-12 lg:grid-cols-12 lg:gap-10">
@@ -413,8 +414,8 @@ function Index() {
           </div>
         </section>
 
-        {/* ——— FINAL — the closing dark room ——— */}
-        <section id="final" className="dark-room relative overflow-hidden">
+        {/* ——— FINAL — the closing olive room ——— */}
+        <section id="final" className="olive-room relative overflow-hidden">
           <ShellBackdrop />
 
 

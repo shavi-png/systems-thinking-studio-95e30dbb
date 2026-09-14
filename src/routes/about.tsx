@@ -471,7 +471,7 @@ function AboutPage() {
         </section>
 
         {/* ——— 04b TRANSITION STATEMENT ——— */}
-        <section className="dark-room rule-thin relative overflow-hidden">
+        <section className="olive-room rule-thin relative overflow-hidden">
           <ShellBackdrop />
           <div className="relative mx-auto max-w-[1440px] px-6 py-24 md:px-10 md:py-32">
             <Reveal>
@@ -944,7 +944,7 @@ function AboutPage() {
         </section>
 
         {/* ——— 12 FINAL ——— */}
-        <section className="dark-room rule-thin relative overflow-hidden">
+        <section className="olive-room rule-thin relative overflow-hidden">
           <ShellBackdrop />
           <div className="relative mx-auto max-w-[1440px] px-6 py-20 md:px-10 md:py-28">
             <Reveal>

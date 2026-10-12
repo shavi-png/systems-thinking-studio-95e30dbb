@@ -8,3 +8,5 @@
 > Commits you push to the connected branch sync back to Lovable and show up in
 > the editor, so keep the branch in a working state.
 <!-- LOVABLE:END -->
+
+- Generate additive brand-document releases by preserving the existing PDF pages and appending a separately namespaced extension; this prevents unrequested changes to the core identity and layout.

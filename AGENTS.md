@@ -10,3 +10,4 @@
 <!-- LOVABLE:END -->
 
 - Generate additive brand-document releases by preserving the existing PDF pages and appending a separately namespaced extension; this prevents unrequested changes to the core identity and layout.
+- Keep Marketing Set 2 as an independent route with scoped Cyrillic typography and shared offer data; this preserves the original English site and makes product rules testable.

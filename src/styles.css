@@ -480,3 +480,75 @@
     transition-duration: 0.001ms !important;
   }
 }
+
+/* Marketing Set 2: Cyrillic extension, scoped to the new product page. */
+@font-face {
+  font-family: "MS2 Roslindale";
+  src: url("/__l5e/assets-v1/92b80c73-3ee7-4f24-b4a4-15c090de3138/ms2-roslindale-regular.ttf") format("truetype");
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+}
+@font-face {
+  font-family: "MS2 Roslindale";
+  src: url("/__l5e/assets-v1/3d4eb33a-0548-4517-9514-234be9d4c68e/ms2-roslindale-italic.ttf") format("truetype");
+  font-weight: 400;
+  font-style: italic;
+  font-display: swap;
+}
+@font-face {
+  font-family: "MS2 Montserrat";
+  src: url("/__l5e/assets-v1/1def281d-e296-46e1-a58d-be037317b0d4/ms2-montserrat-regular.ttf") format("truetype");
+  font-weight: 300 600;
+  font-style: normal;
+  font-display: swap;
+}
+.ms2-page {
+  --font-serif-editorial: "MS2 Roslindale", Georgia, serif;
+  --font-sans-neutral: "MS2 Montserrat", sans-serif;
+  font-family: var(--font-sans-neutral);
+  font-size: 14px;
+  letter-spacing: 0;
+  line-height: 1.75;
+}
+.ms2-page h1, .ms2-page h2, .ms2-page h3, .ms2-serif {
+  font-family: var(--font-serif-editorial);
+  font-weight: 400;
+  letter-spacing: 0;
+}
+.ms2-page h2 { font-size: 40px; line-height: 1.16; text-wrap: balance; }
+.ms2-page h3 { font-size: 25px; line-height: 1.25; }
+.ms2-page .label-xs, .ms2-page .section-num { letter-spacing: 0; }
+.ms2-wrap { width: 100%; max-width: 1280px; margin-inline: auto; padding-inline: 40px; }
+.ms2-section { padding-block: 88px; scroll-margin-top: 100px; }
+.ms2-cta { min-height: 52px; height: auto; padding: 16px 24px; border-radius: 0; box-shadow: none; font-size: 11px; letter-spacing: 0; white-space: normal; }
+.ms2-hero { min-height: 730px; padding-top: 150px; padding-bottom: 64px; }
+.ms2-hero h1 { font-size: 76px; line-height: 1.08; }
+.ms2-hero-subtitle { font-size: 35px; line-height: 1.3; }
+.ms2-copy { font-size: 15px; line-height: 1.85; }
+.ms2-tabs { height: auto; width: 100%; justify-content: flex-start; gap: 24px; padding: 0; border-bottom: 1px solid var(--line-tone); background: transparent; border-radius: 0; }
+.ms2-tab { min-height: 56px; border-bottom: 2px solid transparent; padding: 14px 0; border-radius: 0; font-size: 12px; white-space: normal; }
+.ms2-tab[data-state="active"] { background: transparent; color: var(--charcoal); border-color: var(--olive); box-shadow: none; }
+.ms2-process { display: grid; grid-template-columns: repeat(5,minmax(0,1fr)); gap: 28px; }
+.ms2-process article { min-width: 0; }
+.ms2-process h3 { font-size: 24px; }
+.ms2-passport { box-shadow: none; }
+.ms2-page button:focus-visible, .ms2-page a:focus-visible { outline: 2px solid var(--olive); outline-offset: 4px; }
+@media (max-width: 1023px) {
+  .ms2-wrap { padding-inline: 28px; }
+  .ms2-process { grid-template-columns: repeat(2,minmax(0,1fr)); gap: 40px; }
+  .ms2-hero h1 { font-size: 64px; }
+}
+@media (max-width: 639px) {
+  .ms2-wrap { padding-inline: 22px; }
+  .ms2-section { padding-block: 60px; }
+  .ms2-hero { min-height: 700px; padding-top: 118px; padding-bottom: 46px; }
+  .ms2-hero h1 { font-size: 42px; }
+  .ms2-hero-subtitle { font-size: 25px; }
+  .ms2-page h2 { font-size: 30px; }
+  .ms2-page h3 { font-size: 23px; }
+  .ms2-copy { font-size: 14px; }
+  .ms2-tabs { gap: 16px; }
+  .ms2-tab { font-size: 10px; }
+  .ms2-process { grid-template-columns: 1fr; gap: 32px; }
+}

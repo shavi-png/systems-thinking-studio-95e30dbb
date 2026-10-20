@@ -51,18 +51,30 @@ function MarketingSetTwo() {
       </div>
     </header>
     <main>
-      <section className="ms2-hero relative isolate overflow-hidden">
-        <img src={shell.url} alt="" aria-hidden className="pointer-events-none absolute right-0 top-20 -z-10 h-[570px] w-[650px] max-w-none object-contain opacity-[0.13] sm:right-[7%]" />
-        <div className="ms2-wrap relative text-center">
-          <p className="label-xs mb-7">Маркетинг-сет · платформа</p>
-          <h1>Маркетинг-сет</h1>
-          <p className="ms2-serif ms2-hero-subtitle mx-auto mt-5 max-w-[790px]">Маркетингова стратегія вашого бренду.<br /><em className="text-olive">За один вечір.</em></p>
-          <p className="ms2-copy mx-auto mt-7 max-w-[650px] text-charcoal/75">Ви відповідаєте на питання про свій продукт. Платформа разом зі штучним інтелектом збирає з цього унікальність, ринок, аудиторію й ядро бренду.</p>
-          <div className="mt-8 flex flex-wrap items-center justify-center gap-x-6 gap-y-3 text-[10px] uppercase text-smoke"><span>{offer.strategySteps} кроків</span><span className="h-1 w-1 rounded-full bg-olive" /><span>Одна кнопка на крок</span><span className="h-1 w-1 rounded-full bg-olive" /><span>Без копіювання промптів</span></div>
-          <div className="mt-9 flex flex-wrap items-center justify-center gap-6">{cta()}<div className="text-left"><p className="ms2-serif text-3xl">{offer.priceUAH} грн</p><p className="text-[10px] text-smoke">Один платіж · доступ назавжди</p></div></div>
-          <p className="mx-auto mt-5 max-w-[500px] text-[11px] text-smoke">Потрібен платний тариф Claude. Тексти створюються у вашому акаунті — дані й ліміти лишаються вашими.</p>
+      <section className="ms2-hero ms2-hero-color relative isolate overflow-hidden">
+        <div aria-hidden className="pointer-events-none absolute -right-[10%] top-1/2 -z-10 h-[120%] w-[70%] -translate-y-1/2 rounded-[50%] [background-image:radial-gradient(closest-side,oklch(0.99_0.01_100/0.9),transparent)]" />
+        <div className="ms2-wrap relative grid items-center gap-10 lg:grid-cols-[1.05fr_0.95fr]">
+          <div className="text-center lg:text-left">
+            <p className="label-xs mb-7 text-olive">Маркетинг-сет · платформа</p>
+            <h1>Маркетинг-сет</h1>
+            <p className="ms2-serif ms2-hero-subtitle mt-5 max-w-[620px] max-lg:mx-auto">Маркетингова стратегія вашого бренду.<br /><em className="text-olive">За один вечір.</em></p>
+            <p className="ms2-copy mt-7 max-w-[560px] text-charcoal/80 max-lg:mx-auto">Ви відповідаєте на питання про свій продукт. Платформа разом зі штучним інтелектом збирає з цього унікальність, ринок, аудиторію й ядро бренду.</p>
+            <div className="mt-8 flex flex-wrap items-center gap-x-6 gap-y-3 text-[10px] uppercase text-charcoal/70 max-lg:justify-center"><span>{offer.strategySteps} кроків</span><span className="h-1 w-1 rounded-full bg-olive" /><span>Одна кнопка на крок</span><span className="h-1 w-1 rounded-full bg-olive" /><span>Без копіювання промптів</span></div>
+            <div className="mt-9 flex flex-wrap items-center gap-6 max-lg:justify-center">{cta()}<div className="text-left"><p className="ms2-serif text-3xl">{offer.priceUAH} грн</p><p className="text-[10px] text-charcoal/70">Один платіж · доступ назавжди</p></div></div>
+            <p className="mt-5 max-w-[500px] text-[11px] text-charcoal/70 max-lg:mx-auto">Потрібен платний тариф Claude. Тексти створюються у вашому акаунті — дані й ліміти лишаються вашими.</p>
+          </div>
+          <div className="relative mx-auto aspect-square w-full max-w-[560px]">
+            <img src={shell.url} alt="Мушля наутілуса — символ системи, що росте з центру" className="absolute inset-0 h-full w-full -rotate-[8deg] object-contain mix-blend-multiply [filter:contrast(1.15)_saturate(1.1)] [mask-image:radial-gradient(closest-side,black_70%,transparent_100%)]" />
+          </div>
         </div>
       </section>
+
+      <section className="ms2-section border-t border-line"><div className="ms2-wrap"><p className="section-num mb-6">Усередині платформи</p><h2>Так виглядає<br /><em>ваша робота на платформі.</em></h2><p className="mt-5 max-w-xl text-sm text-smoke">Ілюстрація інтерфейсу: одна кнопка на крок, уточнюючі питання від ШІ й готові файли наприкінці.</p>
+        <div className="mt-10 grid gap-6 lg:grid-cols-3">
+          <MockWindow title="Крок 02 · Точка росту"><p className="text-[10px] uppercase text-olive">Натисніть кнопку, і система все зробить сама</p><div className="mt-4 space-y-2">{["Анкета","Точка росту","Конкуренти"].map((t,i)=><div key={t} className={`flex items-center justify-between border px-3 py-2 text-xs ${i===1?"border-olive bg-sage/40":"border-line"}`}><span>{t}</span>{i===0?<Check className="size-3.5 text-olive"/>:i===1?<span className="text-[9px] text-olive">Працює…</span>:<span className="text-[9px] text-smoke">Далі</span>}</div>)}</div><div className="mt-5 bg-btn-dark px-4 py-3 text-center text-[11px] text-btn-dark-foreground">Запустити крок у Claude →</div></MockWindow>
+          <MockWindow title="Уточнюючі питання"><p className="text-[10px] uppercase text-olive">Claude склав питання під вашу нішу</p>{["Що клієнти найчастіше кажуть після першого заняття?","За що вам дякують, хоча ви цього не рекламуєте?"].map(q=><div key={q} className="mt-4"><p className="ms2-serif text-[15px] leading-snug">{q}</p><div className="mt-2 h-9 border border-line bg-ivory px-3 py-2 text-[11px] text-smoke">Ваша відповідь…</div></div>)}</MockWindow>
+          <MockWindow title="Висновок · Забрати файли"><p className="text-[10px] uppercase text-olive">Суперсила</p><p className="ms2-serif mt-2 text-lg leading-snug">Перший виріб своїми руками за два вечори, без досвіду.</p><div className="mt-5 space-y-2">{["passport-brand.md","market-map.md","audience.md"].map(f=><div key={f} className="flex items-center gap-2 border border-line px-3 py-2 text-[11px]"><FileText className="size-3.5 text-olive"/>{f}<Download className="ml-auto size-3.5 text-smoke"/></div>)}</div></MockWindow>
+        </div></div></section>
 
       <section className="ms2-section border-t border-line">
         <div className="ms2-wrap grid items-start gap-12 lg:grid-cols-[1fr_1fr] lg:gap-20">

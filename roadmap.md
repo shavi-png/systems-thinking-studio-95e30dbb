@@ -4,6 +4,6 @@
 - [x] Deliver corrected manual and presentation; inspect all pages and verify unchanged core.
 
 # Marketing Set 2
-- [ ] Create a separate Ukrainian product page from supplied HTML/PDF, preserving the original site pages.
-- [ ] Balance typography, shell imagery, audience tabs, process, passport example, pricing and FAQ.
-- [ ] Verify desktop/mobile layout and interactions; disclose missing payment link.
+- [x] Create a separate Ukrainian product page from supplied HTML/PDF, preserving the original site pages.
+- [x] Balance typography, shell imagery, audience tabs, process, passport example, pricing and FAQ.
+- [x] Verify desktop/mobile layout and interactions; disclose missing payment link through an honest access dialog.

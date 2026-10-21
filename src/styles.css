@@ -572,7 +572,7 @@
 }
 .ms2-payoff-result { background: color-mix(in oklab, var(--olive) 8%, var(--paper)); }
 .ms2-payoff-kicker { font-size: 10px; letter-spacing: 0.16em; text-transform: uppercase; color: var(--olive); }
-.ms2-payoff-title { font-family: var(--font-serif-editorial); font-weight: 400; font-size: 31px; line-height: 1.2; }
+.ms2-page .ms2-payoff-title { font-family: var(--font-serif-editorial); font-weight: 400; font-size: 31px; line-height: 1.2; }
 .ms2-payoff-body { font-size: 14px; line-height: 1.8; }
 .ms2-payoff-foot { margin-top: auto; padding-top: 16px; border-top: 1px solid var(--line-tone); font-size: 11px; }
 .ms2-payoff-mark { position: absolute; z-index: -1; right: -34px; bottom: -46px; width: 180px; height: 180px; opacity: 0.5; pointer-events: none; }
@@ -596,6 +596,6 @@
 @media (max-width: 639px) {
   .ms2-payoffs { padding-block: 48px; }
   .ms2-payoff { padding: 26px 22px 20px; }
-  .ms2-payoff-title { font-size: 25px; }
+  .ms2-page .ms2-payoff-title { font-size: 25px; }
   .ms2-payoff-mark { width: 140px; height: 140px; right: -26px; bottom: -36px; }
 }

@@ -64,8 +64,8 @@ function MarketingSetTwo() {
             <div className="mt-9 flex flex-wrap items-center gap-6 max-lg:justify-center">{cta()}<div className="text-left"><p className="ms2-serif text-3xl">{offer.priceUAH} грн</p><p className="text-[10px] text-charcoal/70">Один платіж · доступ назавжди</p></div></div>
             <p className="mt-5 max-w-[500px] text-[11px] text-charcoal/70 max-lg:mx-auto">Потрібен платний тариф Claude. Тексти створюються у вашому акаунті — дані й ліміти лишаються вашими.</p>
           </div>
-          <div className="relative mx-auto aspect-square w-full max-w-[560px]">
-            <img src={shell.url} alt="Мушля наутілуса — символ системи, що росте з центру" className="absolute inset-0 h-full w-full -rotate-[8deg] object-contain mix-blend-multiply [filter:contrast(1.15)_saturate(1.1)] [mask-image:radial-gradient(closest-side,black_70%,transparent_100%)]" />
+          <div className="relative mx-auto aspect-[9/16] h-[380px] sm:h-[460px] lg:h-[600px]">
+            <img src={shell.url} alt="Мушля наутілуса — символ системи, що росте з центру" className="absolute inset-0 h-full w-full -rotate-[8deg] object-cover mix-blend-multiply [filter:contrast(1.15)_saturate(1.1)] [mask-image:radial-gradient(closest-side,black_62%,transparent_100%)]" />
           </div>
         </div>
       </section>

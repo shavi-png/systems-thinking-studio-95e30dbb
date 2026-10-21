@@ -6,6 +6,7 @@ import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from "@/components/ui/accordion";
 import { Dialog, DialogContent, DialogDescription, DialogHeader, DialogTitle } from "@/components/ui/dialog";
 import { ShellBackdrop } from "@/components/site/ShellBackdrop";
+import { Spiral } from "@/components/site/LineArt";
 import { offer, personas, steps, assistants, faq, comparisons, passport } from "@/components/marketing-set-2/content";
 import shell from "@/assets/shell-hero.jpg.asset.json";
 import portrait from "@/assets/vita-portrait.jpg";

@@ -567,7 +567,7 @@
   padding: 34px 34px 26px;
   border: 1px solid var(--line-tone);
   border-top: 2px solid var(--olive);
-  border-radius: 0;
+  overflow: hidden;
   box-shadow: none;
 }
 .ms2-payoff-result { background: color-mix(in oklab, var(--olive) 8%, var(--paper)); }

@@ -53,7 +53,7 @@ function MarketingSetTwo() {
     </header>
     <main>
       <section className="ms2-hero ms2-hero-color relative isolate overflow-hidden">
-        <div aria-hidden className="pointer-events-none absolute -right-[10%] top-1/2 -z-10 h-[120%] w-[70%] -translate-y-1/2 rounded-[50%] [background-image:radial-gradient(closest-side,oklch(0.99_0.01_100/0.9),transparent)]" />
+        <div aria-hidden className="ms2-hero-glow" />
         <div className="ms2-wrap relative grid items-center gap-10 lg:grid-cols-[1.05fr_0.95fr]">
           <div className="text-center lg:text-left">
             <p className="label-xs mb-7 text-olive">Маркетинг-сет · платформа</p>

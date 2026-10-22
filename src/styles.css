@@ -555,11 +555,12 @@
 }
 
 :root {
-  /* Screenshot-confirmed supplementary Slide Blue: sRGB #BBDBE7. */
-  --ms2-hero-blue: oklch(0.87191161 0.03771553 222.472153);
+  /* Hero background: soft sage from the brand palette, chosen to sit
+     harmoniously beside the warm rose tones of the nautilus shell photo. */
+  --ms2-hero-sage: var(--sage);
   --ms2-hero-glow: radial-gradient(closest-side, var(--paper) 0%, color-mix(in srgb, var(--paper) 75%, transparent) 42%, transparent 100%);
 }
-.ms2-hero-color { background-color: var(--ms2-hero-blue); }
+.ms2-hero-color { background-color: var(--ms2-hero-sage); }
 .ms2-hero-glow { position: absolute; right: -10%; top: 50%; z-index: -1; height: 120%; width: 70%; transform: translateY(-50%); pointer-events: none; background-image: var(--ms2-hero-glow); }
 @media (max-width: 1023px) {
   .ms2-hero-glow { right: -20%; top: auto; bottom: -12%; height: 65%; width: 140%; transform: none; }

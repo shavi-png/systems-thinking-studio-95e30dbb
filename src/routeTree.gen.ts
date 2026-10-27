@@ -16,6 +16,7 @@ import { Route as MarketingSet2RouteImport } from './routes/marketing-set-2'
 import { Route as StrategicPartnershipRouteImport } from './routes/strategic-partnership'
 import { Route as UaIndexRouteImport } from './routes/ua.index'
 import { Route as UaAboutRouteImport } from './routes/ua.about'
+import { Route as UaMarketingSetRouteImport } from './routes/ua.marketing-set'
 
 const IndexRoute = IndexRouteImport.update({
   id: '/',
@@ -52,6 +53,11 @@ const UaAboutRoute = UaAboutRouteImport.update({
   path: '/ua/about',
   getParentRoute: () => rootRouteImport,
 } as any)
+const UaMarketingSetRoute = UaMarketingSetRouteImport.update({
+  id: '/ua/marketing-set',
+  path: '/ua/marketing-set',
+  getParentRoute: () => rootRouteImport,
+} as any)
 
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
@@ -60,6 +66,7 @@ export interface FileRoutesByFullPath {
   '/marketing-set-2': typeof MarketingSet2Route
   '/strategic-partnership': typeof StrategicPartnershipRoute
   '/ua/about': typeof UaAboutRoute
+  '/ua/marketing-set': typeof UaMarketingSetRoute
   '/ua/': typeof UaIndexRoute
 }
 export interface FileRoutesByTo {
@@ -69,6 +76,7 @@ export interface FileRoutesByTo {
   '/marketing-set-2': typeof MarketingSet2Route
   '/strategic-partnership': typeof StrategicPartnershipRoute
   '/ua/about': typeof UaAboutRoute
+  '/ua/marketing-set': typeof UaMarketingSetRoute
   '/ua': typeof UaIndexRoute
 }
 export interface FileRoutesById {
@@ -79,6 +87,7 @@ export interface FileRoutesById {
   '/marketing-set-2': typeof MarketingSet2Route
   '/strategic-partnership': typeof StrategicPartnershipRoute
   '/ua/about': typeof UaAboutRoute
+  '/ua/marketing-set': typeof UaMarketingSetRoute
   '/ua/': typeof UaIndexRoute
 }
 export interface FileRouteTypes {
@@ -90,6 +99,7 @@ export interface FileRouteTypes {
     | '/marketing-set-2'
     | '/strategic-partnership'
     | '/ua/about'
+    | '/ua/marketing-set'
     | '/ua/'
   fileRoutesByTo: FileRoutesByTo
   to:
@@ -99,6 +109,7 @@ export interface FileRouteTypes {
     | '/marketing-set-2'
     | '/strategic-partnership'
     | '/ua/about'
+    | '/ua/marketing-set'
     | '/ua'
   id:
     | '__root__'
@@ -108,6 +119,7 @@ export interface FileRouteTypes {
     | '/marketing-set-2'
     | '/strategic-partnership'
     | '/ua/about'
+    | '/ua/marketing-set'
     | '/ua/'
   fileRoutesById: FileRoutesById
 }
@@ -118,6 +130,7 @@ export interface RootRouteChildren {
   MarketingSet2Route: typeof MarketingSet2Route
   StrategicPartnershipRoute: typeof StrategicPartnershipRoute
   UaAboutRoute: typeof UaAboutRoute
+  UaMarketingSetRoute: typeof UaMarketingSetRoute
   UaIndexRoute: typeof UaIndexRoute
 }
 
@@ -172,6 +185,13 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof UaAboutRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/ua/marketing-set': {
+      id: '/ua/marketing-set'
+      path: '/ua/marketing-set'
+      fullPath: '/ua/marketing-set'
+      preLoaderRoute: typeof UaMarketingSetRouteImport
+      parentRoute: typeof rootRouteImport
+    }
   }
 }
 
@@ -182,6 +202,7 @@ const rootRouteChildren: RootRouteChildren = {
   MarketingSet2Route: MarketingSet2Route,
   StrategicPartnershipRoute: StrategicPartnershipRoute,
   UaAboutRoute: UaAboutRoute,
+  UaMarketingSetRoute: UaMarketingSetRoute,
   UaIndexRoute: UaIndexRoute,
 }
 export const routeTree = rootRouteImport

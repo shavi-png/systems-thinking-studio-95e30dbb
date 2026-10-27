@@ -11,3 +11,4 @@
 
 - Generate additive brand-document releases by preserving the existing PDF pages and appending a separately namespaced extension; this prevents unrequested changes to the core identity and layout.
 - Keep Marketing Set 2 as an independent route with scoped Cyrillic typography and shared offer data; this preserves the original English site and makes product rules testable.
+- Ukrainian site lives under /ua as separate route files (ua.*.tsx) wrapped in .ua-page for Cyrillic fonts; shared Header/Footer/Solutions pick language from the URL via src/lib/lang.ts, so English pages stay untouched.

@@ -620,4 +620,5 @@
 .ua-page {
   --font-serif-editorial: "MS2 Roslindale", Georgia, serif;
   --font-sans-neutral: "MS2 Montserrat", sans-serif;
+  font-family: var(--font-sans-neutral);
 }

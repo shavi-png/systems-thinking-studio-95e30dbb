@@ -615,3 +615,9 @@
   .ms2-page .ms2-payoff-title { font-size: 25px; }
   .ms2-payoff-mark { width: 140px; height: 140px; right: -26px; bottom: -36px; }
 }
+
+/* Ukrainian site version: same layout, Cyrillic-capable brand fonts. */
+.ua-page {
+  --font-serif-editorial: "MS2 Roslindale", Georgia, serif;
+  --font-sans-neutral: "MS2 Montserrat", sans-serif;
+}

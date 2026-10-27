@@ -1,3 +1,19 @@
+import { localize, useLang } from "@/lib/lang";
+
+const ukLabels: Record<string, string> = {
+  "Get to know me →": "Про мене →",
+  "Marketing Set": "Маркетинг-сет",
+  Solutions: "Рішення",
+  Method: "Метод",
+  Contact: "Контакт",
+  Index: "Зміст",
+  Elsewhere: "Деінде",
+  "Hong Kong": "Гонконг",
+  "Privacy Policy": "Політика конфіденційності",
+  "Terms of Service": "Умови використання",
+  "Legal Disclaimer": "Правові застереження",
+};
+
 const links = [
   { label: "Get to know me →", href: "/about" },
   { label: "Marketing Set", href: "/marketing-set" },
@@ -7,6 +23,8 @@ const links = [
 ];
 
 export function Footer() {
+  const lang = useLang();
+  const t = (x: string) => (lang === "uk" ? (ukLabels[x] ?? x) : x);
   return (
     <footer className="rule-thin bg-sand/40">
       <div className="mx-auto max-w-[1440px] px-6 py-14 md:px-10 md:py-20">
@@ -25,25 +43,25 @@ export function Footer() {
                   hello@vitashablii.com
                 </a>
               </p>
-              <p>Hong Kong</p>
+              <p>{t("Hong Kong")}</p>
             </div>
           </div>
 
           <nav className="flex flex-col gap-3">
-            <p className="label-xs mb-2">Index</p>
+            <p className="label-xs mb-2">{t("Index")}</p>
             {links.map((l) => (
               <a
-                key={l.label}
-                href={l.href}
+                key={t(l.label)}
+                href={localize(l.href, lang)}
                 className="text-sm text-charcoal/70 transition-colors hover:text-charcoal"
               >
-                {l.label}
+                {t(l.label)}
               </a>
             ))}
           </nav>
 
           <div className="flex flex-col gap-3">
-            <p className="label-xs mb-2">Elsewhere</p>
+            <p className="label-xs mb-2">{t("Elsewhere")}</p>
             <a
               href="https://instagram.com"
               className="text-sm text-charcoal/70 transition-colors hover:text-charcoal"
@@ -61,9 +79,9 @@ export function Footer() {
 
         <div className="rule-thin mt-14 flex flex-col justify-between gap-4 pt-6 sm:flex-row">
           <div className="flex flex-wrap gap-x-4 gap-y-1 text-[0.65rem] uppercase tracking-[0.12em] text-charcoal/50">
-            <span>Privacy Policy</span>
-            <span>Terms of Service</span>
-            <span>Legal Disclaimer</span>
+            <span>{t("Privacy Policy")}</span>
+            <span>{t("Terms of Service")}</span>
+            <span>{t("Legal Disclaimer")}</span>
           </div>
           <p className="label-xs !tracking-[0.14em]">© 2026 Vita Shablii</p>
         </div>

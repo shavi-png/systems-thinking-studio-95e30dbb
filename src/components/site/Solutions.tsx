@@ -1,3 +1,5 @@
+import { localize, useLang, type Lang } from "@/lib/lang";
+
 type Solution = {
   index: string;
   label: string;
@@ -9,7 +11,7 @@ type Solution = {
   gravity?: boolean;
 };
 
-const solutions: Solution[] = [
+const solutionsEn: Solution[] = [
   {
     index: "01",
     label: "01 / Product",
@@ -38,6 +40,41 @@ const solutions: Solution[] = [
     href: "/strategic-partnership",
   },
 ];
+
+const solutionsUk: Solution[] = [
+  {
+    index: "01",
+    label: "01 / Продукт",
+    title: ["Маркетинг-", "сет"],
+    lede: "Для тих, у кого вже є продукт чи проєкт, але маркетинг поки що — набір розрізнених дій.",
+    transform: "хаотичний маркетинг → зрозуміла система",
+    cta: "Дивитися Маркетинг-сет",
+    href: "/marketing-set",
+  },
+  {
+    index: "02",
+    label: "02 / Екосистема",
+    title: ["Syntez"],
+    lede: "Перш ніж вкладатися в зростання, варто зрозуміти, що саме заслуговує рости. Не ще один курс, а екосистема рішень для ідей, продуктів і ринків.",
+    transform: "ідея → перевірка → ринок → позиціонування → система → зростання",
+    cta: "Увійти в Syntez",
+    gravity: true,
+  },
+  {
+    index: "03",
+    label: "03 / Особисто",
+    title: ["Стратегічне", "партнерство"],
+    lede: "Буває, що бракує не інструмента чи фреймворку, а погляду з іншої точки — на ваш продукт, ринок і контекст.",
+    transform: "60 хв / онлайн",
+    cta: "Працювати разом",
+    href: "/strategic-partnership",
+  },
+];
+
+const intro = {
+  en: { num: "03 / Entry points", h1: "Find the point", h2: "you are standing on.", body: "Practical instruments and systems for working with ideas, marketing and the development of your own projects. Three entry points into one way of thinking.", note: "Three chambers of one shell — the same thinking at a different scale" },
+  uk: { num: "03 / Точки входу", h1: "Знайдіть точку,", h2: "де ви зараз.", body: "Практичні інструменти й системи для роботи з ідеями, маркетингом і розвитком власних проєктів. Три входи в один спосіб мислення.", note: "Три камери однієї мушлі — те саме мислення в різному масштабі" },
+} satisfies Record<Lang, Record<string, string>>;
 
 /* ---- shell geometry: chambers of one nautilus ---- */
 const CX = 560;
@@ -103,7 +140,7 @@ function ShellField() {
   );
 }
 
-function SolutionBlock({ s }: { s: Solution }) {
+function SolutionBlock({ s, lang }: { s: Solution; lang: Lang }) {
   return (
     <article className="group relative">
       <div
@@ -123,7 +160,7 @@ function SolutionBlock({ s }: { s: Solution }) {
       <p className="mt-5 max-w-[22rem] font-serif-editorial text-base italic text-charcoal/80">
         {s.transform}
       </p>
-      <a href={s.href ?? "#final"} className="link-editorial mt-7">
+      <a href={s.href ? localize(s.href, lang) : "#final"} className="link-editorial mt-7">
         {s.cta} <span aria-hidden>→</span>
       </a>
     </article>
@@ -131,23 +168,21 @@ function SolutionBlock({ s }: { s: Solution }) {
 }
 
 export function Solutions() {
+  const lang = useLang();
+  const solutions = lang === "uk" ? solutionsUk : solutionsEn;
+  const i = intro[lang];
   return (
     <section id="solutions" className="teal-room rule-thin relative">
       <div className="mx-auto max-w-[1440px] px-6 py-20 md:px-10 md:py-28">
         <div className="mx-auto max-w-[46rem] text-center">
-          <p className="section-num mb-7 justify-center">03 / Entry points</p>
+          <p className="section-num mb-7 justify-center">{i.num}</p>
           <h2 className="display-lg mx-auto max-w-[40rem]">
-            Find the point
+            {i.h1}
             <br />
-            <span className="italic">you are standing on.</span>
+            <span className="italic">{i.h2}</span>
           </h2>
-          <p className="body-read mx-auto mt-8 max-w-[40rem]">
-            Practical instruments and systems for working with ideas, marketing and the development of
-            your own projects. Three entry points into one way of thinking.
-          </p>
-          <p className="label-xs mx-auto mt-8 max-w-[40rem] !tracking-[0.18em]">
-            Three chambers of one shell — the same thinking at a different scale
-          </p>
+          <p className="body-read mx-auto mt-8 max-w-[40rem]">{i.body}</p>
+          <p className="label-xs mx-auto mt-8 max-w-[40rem] !tracking-[0.18em]">{i.note}</p>
         </div>
 
         {/* one shell, cut open: three chambers growing from a single centre */}
@@ -161,13 +196,13 @@ export function Solutions() {
 
           <div className="relative grid gap-16 lg:grid-cols-3 lg:gap-10">
             <div className="lg:pt-40">
-              <SolutionBlock s={solutions[0]!} />
+              <SolutionBlock s={solutions[0]!} lang={lang} />
             </div>
             <div className="lg:pt-20">
-              <SolutionBlock s={solutions[1]!} />
+              <SolutionBlock s={solutions[1]!} lang={lang} />
             </div>
             <div>
-              <SolutionBlock s={solutions[2]!} />
+              <SolutionBlock s={solutions[2]!} lang={lang} />
             </div>
           </div>
         </div>

@@ -123,13 +123,13 @@ export function Header() {
           <a href="/#solutions" className="link-editorial !text-[0.6875rem]">
             Choose a solution <span aria-hidden>→</span>
           </a>
-          <button
-            type="button"
+          <a
+            href="/marketing-set-2"
             className="label-xs shrink-0 rounded-full border border-charcoal/25 px-3.5 py-1.5 !tracking-[0.18em] transition-colors hover:border-olive hover:!text-charcoal"
-            title="Ukrainian version — coming soon"
+            title="Marketing Set 2 — українська версія"
           >
             UA
-          </button>
+          </a>
         </nav>
 
         <button
@@ -146,7 +146,39 @@ export function Header() {
       {open && (
         <div className="rule-thin bg-ivory px-6 pb-10 pt-6 lg:hidden">
           <ul className="flex flex-col gap-6">
-            {nav.map((n) => (
+            {nav.slice(0, 1).map((n) => (
+              <li key={n.label}>
+                <a
+                  href={n.href}
+                  onClick={() => setOpen(false)}
+                  className="display-md !text-[2rem]"
+                >
+                  {n.label}
+                </a>
+              </li>
+            ))}
+            <li>
+              <p className="display-md !text-[2rem]">Marketing Set</p>
+              <ul className="mt-3 flex flex-col gap-3 border-l border-charcoal/20 pl-5">
+                {marketingSetVersions.map((v) => (
+                  <li key={v.href}>
+                    <a
+                      href={v.href}
+                      onClick={() => setOpen(false)}
+                      className="flex items-center gap-3 text-base text-charcoal/70 transition-colors hover:text-charcoal"
+                    >
+                      {v.label}
+                      {v.tag && (
+                        <span className="label-xs !tracking-[0.14em] rounded-full border border-charcoal/25 px-2 py-0.5 text-[0.6rem]">
+                          {v.tag}
+                        </span>
+                      )}
+                    </a>
+                  </li>
+                ))}
+              </ul>
+            </li>
+            {nav.slice(1).map((n) => (
               <li key={n.label}>
                 <a
                   href={n.href}

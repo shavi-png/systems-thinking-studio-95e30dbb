@@ -712,7 +712,7 @@ function StrategicPartnership() {
               href="mailto:hello@vitashablii.com"
               className="label-xs mt-12 inline-flex items-center gap-3 bg-ivory px-9 py-5 !tracking-[0.2em] !text-ink transition-colors hover:bg-slate hover:!text-ivory"
             >
-              Як ми можемо працювати <span aria-hidden>→</span>
+              Обговорити співпрацю <span aria-hidden>→</span>
             </a>
             <p className="label-xs mt-8 !tracking-[0.18em]">
               Стратегічна консультація · Розробка стратегії · Фракційний CMO

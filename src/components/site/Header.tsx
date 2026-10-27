@@ -33,9 +33,13 @@ function SpiralLogo({ className = "" }: { className?: string }) {
 
 const nav = [
   { label: "Get to know me", href: "/about" },
-  { label: "Marketing Set", href: "/marketing-set" },
   { label: "Syntez", href: "/#solutions" },
   { label: "Strategic Partnership", href: "/strategic-partnership" },
+];
+
+const marketingSetVersions = [
+  { label: "Marketing Set", href: "/marketing-set" },
+  { label: "Marketing Set 2", href: "/marketing-set-2", tag: "UA" },
 ];
 
 export function Header() {

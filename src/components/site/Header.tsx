@@ -1,5 +1,6 @@
 import { useEffect, useState } from "react";
-import { Link } from "@tanstack/react-router";
+import { Link, useLocation } from "@tanstack/react-router";
+import { counterpart, localize, useLang } from "@/lib/lang";
 
 function SpiralLogo({ className = "" }: { className?: string }) {
   // same logarithmic shell as the section 3 spiral, three full turns, no labels
@@ -31,20 +32,59 @@ function SpiralLogo({ className = "" }: { className?: string }) {
   );
 }
 
-const nav = [
-  { label: "Get to know me", href: "/about" },
-  { label: "Syntez", href: "/#solutions" },
-  { label: "Strategic Partnership", href: "/strategic-partnership" },
-];
-
-const marketingSetVersions = [
-  { label: "Marketing Set", href: "/marketing-set" },
-  { label: "Marketing Set 2", href: "/marketing-set-2", tag: "UA" },
-];
+const copy = {
+  en: {
+    nav: [
+      { label: "Get to know me", href: "/about" },
+      { label: "Syntez", href: "/#solutions" },
+      { label: "Strategic Partnership", href: "/strategic-partnership" },
+    ],
+    set: "Marketing Set",
+    versions: [
+      { label: "Marketing Set", href: "/marketing-set" },
+      { label: "Marketing Set 2", href: "/marketing-set-2", tag: "UA" },
+    ],
+    choose: "Choose a solution",
+    menu: "Menu",
+    close: "Close",
+    home: "Vita Shablii — go to homepage",
+  },
+  uk: {
+    nav: [
+      { label: "Про мене", href: "/about" },
+      { label: "Syntez", href: "/#solutions" },
+      { label: "Стратегічне партнерство", href: "/strategic-partnership" },
+    ],
+    set: "Маркетинг-сет",
+    versions: [
+      { label: "Маркетинг-сет", href: "/marketing-set" },
+      { label: "Маркетинг-сет 2", href: "/marketing-set-2", tag: "NEW" },
+    ],
+    choose: "Обрати рішення",
+    menu: "Меню",
+    close: "Закрити",
+    home: "Віта Шаблій — на головну",
+  },
+} as const;
 
 export function Header() {
   const [solid, setSolid] = useState(false);
   const [open, setOpen] = useState(false);
+  const lang = useLang();
+  const { pathname } = useLocation();
+  const c = copy[lang];
+  const L = (h: string) => localize(h, lang);
+  const nav = c.nav.map((n) => ({ ...n, href: L(n.href) }));
+  const marketingSetVersions: { label: string; href: string; tag?: string }[] = c.versions.map((v) => ({ ...v, href: L(v.href) }));
+  const langSwitch = (
+    <a
+      href={counterpart(pathname)}
+      className="label-xs shrink-0 rounded-full border border-charcoal/25 px-3.5 py-1.5 !tracking-[0.18em] transition-colors hover:border-olive hover:!text-charcoal"
+      title={lang === "en" ? "Українська версія" : "English version"}
+    >
+      {lang === "en" ? "UA" : "EN"}
+    </a>
+  );
 
   useEffect(() => {
     const onScroll = () => setSolid(window.scrollY > 80);
@@ -61,9 +101,9 @@ export function Header() {
     >
       <div className="mx-auto grid max-w-[1440px] grid-cols-[minmax(0,1fr)_auto] items-center gap-6 px-6 py-5 md:px-10">
         <Link
-          to="/"
+          to={lang === "uk" ? "/ua" : "/"}
           className="inline-flex items-center text-charcoal transition-colors hover:text-olive"
-          aria-label="Vita Shablii — go to homepage"
+          aria-label={c.home}
         >
           <SpiralLogo className="h-11 w-11" />
         </Link>
@@ -82,11 +122,11 @@ export function Header() {
           {/* Marketing Set — dropdown with both versions */}
           <div className="group relative">
             <a
-              href="/marketing-set"
+              href={L("/marketing-set")}
               className="label-xs inline-flex items-center gap-1.5 transition-colors duration-300 hover:!text-charcoal"
               aria-haspopup="true"
             >
-              Marketing Set
+              {c.set}
               <span aria-hidden className="text-[0.6em] transition-transform duration-300 group-hover:translate-y-0.5">
                 ▾
               </span>
@@ -120,18 +160,14 @@ export function Header() {
               {n.label}
             </a>
           ))}
-          <a href="/#solutions" className="link-editorial !text-[0.6875rem]">
-            Choose a solution <span aria-hidden>→</span>
+          <a href={L("/#solutions")} className="link-editorial !text-[0.6875rem]">
+            {c.choose} <span aria-hidden>→</span>
           </a>
-          <a
-            href="/marketing-set-2"
-            className="label-xs shrink-0 rounded-full border border-charcoal/25 px-3.5 py-1.5 !tracking-[0.18em] transition-colors hover:border-olive hover:!text-charcoal"
-            title="Marketing Set 2 — українська версія"
-          >
-            UA
-          </a>
+          {langSwitch}
         </nav>
 
+        <div className="flex items-center gap-4 lg:hidden">
+        {langSwitch}
         <button
           type="button"
           onClick={() => setOpen((v) => !v)}
@@ -139,8 +175,9 @@ export function Header() {
           aria-expanded={open}
           aria-label="Toggle navigation"
         >
-          {open ? "Close" : "Menu"}
+          {open ? c.close : c.menu}
         </button>
+        </div>
       </div>
 
       {open && (
@@ -158,7 +195,7 @@ export function Header() {
               </li>
             ))}
             <li>
-              <p className="display-md !text-[2rem]">Marketing Set</p>
+              <p className="display-md !text-[2rem]">{c.set}</p>
               <ul className="mt-3 flex flex-col gap-3 border-l border-charcoal/20 pl-5">
                 {marketingSetVersions.map((v) => (
                   <li key={v.href}>
@@ -191,11 +228,11 @@ export function Header() {
             ))}
           </ul>
           <a
-            href="/#solutions"
+            href={L("/#solutions")}
             onClick={() => setOpen(false)}
             className="link-editorial mt-10"
           >
-            Choose a solution <span aria-hidden>→</span>
+            {c.choose} <span aria-hidden>→</span>
           </a>
         </div>
       )}

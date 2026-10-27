@@ -69,7 +69,49 @@ export function Header() {
         </Link>
 
         <nav className="hidden items-center gap-9 lg:flex">
-          {nav.map((n) => (
+          {nav.slice(0, 1).map((n) => (
+            <a
+              key={n.label}
+              href={n.href}
+              className="label-xs transition-colors duration-300 hover:!text-charcoal"
+            >
+              {n.label}
+            </a>
+          ))}
+
+          {/* Marketing Set — dropdown with both versions */}
+          <div className="group relative">
+            <a
+              href="/marketing-set"
+              className="label-xs inline-flex items-center gap-1.5 transition-colors duration-300 hover:!text-charcoal"
+              aria-haspopup="true"
+            >
+              Marketing Set
+              <span aria-hidden className="text-[0.6em] transition-transform duration-300 group-hover:translate-y-0.5">
+                ▾
+              </span>
+            </a>
+            <div className="pointer-events-none absolute left-1/2 top-full z-10 -translate-x-1/2 pt-3 opacity-0 transition-opacity duration-300 group-focus-within:pointer-events-auto group-focus-within:opacity-100 group-hover:pointer-events-auto group-hover:opacity-100">
+              <div className="rule-thin min-w-[13rem] bg-ivory/95 px-5 py-3 shadow-[0_1px_24px_rgba(28,28,24,0.08)] backdrop-blur-[2px]">
+                {marketingSetVersions.map((v) => (
+                  <a
+                    key={v.href}
+                    href={v.href}
+                    className="flex items-center justify-between gap-4 py-2 text-sm text-charcoal/70 transition-colors hover:text-charcoal"
+                  >
+                    <span>{v.label}</span>
+                    {v.tag && (
+                      <span className="label-xs !tracking-[0.14em] rounded-full border border-charcoal/25 px-2 py-0.5">
+                        {v.tag}
+                      </span>
+                    )}
+                  </a>
+                ))}
+              </div>
+            </div>
+          </div>
+
+          {nav.slice(1).map((n) => (
             <a
               key={n.label}
               href={n.href}

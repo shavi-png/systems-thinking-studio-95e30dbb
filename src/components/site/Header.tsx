@@ -75,7 +75,7 @@ export function Header() {
   const c = copy[lang];
   const L = (h: string) => localize(h, lang);
   const nav = c.nav.map((n) => ({ ...n, href: L(n.href) }));
-  const marketingSetVersions = c.versions.map((v) => ({ ...v, href: L(v.href) }));
+  const marketingSetVersions: { label: string; href: string; tag?: string }[] = c.versions.map((v) => ({ ...v, href: L(v.href) }));
   const langSwitch = (
     <a
       href={counterpart(pathname)}

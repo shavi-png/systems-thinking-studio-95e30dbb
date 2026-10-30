@@ -13,7 +13,7 @@ import ripple from "@/assets/ripple.jpg.asset.json";
 import shell from "@/assets/shell.jpg.asset.json";
 import seeds from "@/assets/seeds.jpg.asset.json";
 
-const title = "Vita Shablii — Strategist · Founder · Advisor";
+const title = "Vita Shablii — Strategist · Founder · Visionary";
 const description =
   "Clarity before complexity. Strategy, marketing, product thinking and AI — ideas turned into structure, systems and decisions.";
 
@@ -57,7 +57,7 @@ function Index() {
             <div className="flex flex-col md:col-span-6">
               <Reveal>
                 <p className="label-xs !text-charcoal !tracking-[0.3em]">Vita Shablii</p>
-                <p className="label-xs mt-2">Strategist · Founder · Advisor</p>
+                <p className="label-xs mt-2">Strategist · Founder · Visionary</p>
               </Reveal>
               <Reveal delay={120}>
                 <h1 className="display-lg mt-10 md:mt-12">

@@ -13,7 +13,7 @@ import ripple from "@/assets/ripple.jpg.asset.json";
 import shell from "@/assets/shell.jpg.asset.json";
 import seeds from "@/assets/seeds.jpg.asset.json";
 
-const title = "Віта Шаблій — стратегиня · засновниця · радниця";
+const title = "Віта Шаблій — стратегиня · засновниця · візіонерка";
 const description =
   "Clarity before complexity. Стратегія, маркетинг, продуктове мислення та ШІ — щоб ідея стала структурою, системою і рішенням.";
 
@@ -57,7 +57,7 @@ function Index() {
             <div className="flex flex-col md:col-span-6">
               <Reveal>
                 <p className="label-xs !text-charcoal !tracking-[0.3em]">Vita Shablii</p>
-                <p className="label-xs mt-2">Стратегиня · Засновниця · Радниця</p>
+                <p className="label-xs mt-2">Стратегиня · Засновниця · Візіонерка</p>
               </Reveal>
               <Reveal delay={120}>
                 <h1 className="display-lg mt-10 md:mt-12">

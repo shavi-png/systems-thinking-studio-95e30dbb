@@ -13,4 +13,7 @@
 
 # Personal photographs
 - [x] Replace reference portraits with the three supplied photographs on all English and Ukrainian pages.
-- [ ] Verify photographs load and remain well framed on desktop and mobile.
+- [x] Verify photographs load and remain well framed on desktop and mobile.
+
+# GoDaddy domain
+- [x] Explain how to connect an existing GoDaddy domain without moving the site or email.

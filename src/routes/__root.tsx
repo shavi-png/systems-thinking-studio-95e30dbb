@@ -78,10 +78,10 @@ export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()(
     meta: [
       { charSet: "utf-8" },
       { name: "viewport", content: "width=device-width, initial-scale=1" },
-      { title: "Vita Shablii — Strategist · Founder · Advisor" },
+      { title: "Vita Shablii — Strategist · Founder · Visionary" },
       { name: "description", content: "Clarity before complexity. Strategy, brand and advisory with Vita Shablii." },
       { name: "author", content: "Vita Shablii" },
-      { property: "og:title", content: "Vita Shablii — Strategist · Founder · Advisor" },
+      { property: "og:title", content: "Vita Shablii — Strategist · Founder · Visionary" },
       { property: "og:description", content: "Clarity before complexity. Strategy, brand and advisory with Vita Shablii." },
       { property: "og:type", content: "website" },
       { name: "twitter:card", content: "summary_large_image" },

@@ -589,7 +589,9 @@
   content: ""; position: absolute; inset: -20%; z-index: -1;
   background: radial-gradient(closest-side at 70% 60%, var(--ivory), transparent 75%);
 }
-.ms2-payoff-next { border-color: transparent; color: var(--ivory); }
+.ms2-payoff-next { border-color: transparent; color: var(--ivory); background: var(--olive-deep, var(--olive)); }
+.ms2-payoff-result { color: var(--charcoal); }
+.ms2-payoff-result .ms2-payoff-kicker { color: var(--charcoal); }
 .ms2-payoff-next .ms2-payoff-kicker { color: var(--ivory); border-color: color-mix(in oklab, var(--ivory) 35%, transparent); }
 .ms2-payoff-next .ms2-payoff-foot { border-color: color-mix(in oklab, var(--ivory) 35%, transparent); color: color-mix(in oklab, var(--ivory) 80%, transparent); }
 .ms2-payoff-shell { position: absolute; z-index: -1; right: -60px; bottom: -80px; width: 300px; opacity: 0.45; mix-blend-mode: multiply; pointer-events: none; mask-image: radial-gradient(closest-side, black 55%, transparent 100%); }

@@ -579,11 +579,22 @@
   flex-direction: column;
   gap: 14px;
   min-width: 0;
-  padding: 8px 0;
+  min-height: 420px;
+  padding: 40px 36px;
   overflow: hidden;
-  box-shadow: none;
+  border: 1px solid var(--line-tone);
+  background: var(--paper);
 }
-.ms2-payoff-result { background: transparent; }
+.ms2-payoff-result::before {
+  content: ""; position: absolute; inset: -20%; z-index: -1;
+  background: radial-gradient(closest-side at 70% 60%, var(--ivory), transparent 75%);
+}
+.ms2-payoff-next { border-color: transparent; color: var(--ivory); background: var(--olive-deep, var(--olive)); }
+.ms2-payoff-result { --charcoal: oklch(0.255 0.012 140); --smoke: oklch(0.635 0.01 130); --line-tone: oklch(0.855 0.014 128); --color-charcoal: var(--charcoal); --color-smoke: var(--smoke); color: var(--charcoal); }
+.ms2-payoff-result .ms2-payoff-kicker { color: var(--charcoal); }
+.ms2-payoff-next .ms2-payoff-kicker { color: var(--ivory); border-color: color-mix(in oklab, var(--ivory) 35%, transparent); }
+.ms2-payoff-next .ms2-payoff-foot { border-color: color-mix(in oklab, var(--ivory) 35%, transparent); color: color-mix(in oklab, var(--ivory) 80%, transparent); }
+.ms2-payoff-shell { position: absolute; z-index: -1; right: -60px; bottom: -80px; width: 300px; opacity: 0.45; mix-blend-mode: multiply; pointer-events: none; mask-image: radial-gradient(closest-side, black 55%, transparent 100%); }
 .ms2-payoff-kicker { font-size: 18px; font-weight: 600; line-height: 1.4; letter-spacing: 0; text-transform: uppercase; color: var(--charcoal); padding-bottom: 16px; border-bottom: 1px solid var(--line-tone); }
 .ms2-page .ms2-payoff-title { font-family: var(--font-serif-editorial); font-weight: 400; font-size: 31px; line-height: 1.2; }
 .ms2-payoff-body { font-size: 14px; line-height: 1.8; }

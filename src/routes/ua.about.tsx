@@ -4,7 +4,7 @@ import { Header } from "@/components/site/Header";
 import { Footer } from "@/components/site/Footer";
 import { Reveal } from "@/components/site/Reveal";
 import { SpiralSteps, Spiral } from "@/components/site/LineArt";
-import portrait from "@/assets/vita-portrait.jpg";
+import portrait from "@/assets/vita-black-white-portrait.png.asset.json";
 import shellHero from "@/assets/shell-hero.jpg.asset.json";
 import { ShellBackdrop } from "@/components/site/ShellBackdrop";
 import ink from "@/assets/ink-layers.jpg.asset.json";
@@ -274,7 +274,7 @@ function AboutPage() {
             <div className="md:col-span-4 md:col-start-9">
               <div className="grain relative aspect-[3/4] overflow-hidden bg-stone">
                 <img
-                  src={portrait}
+                  src={portrait.url}
                   alt="Портрет Віти Шаблій"
                   width={1200}
                   height={1600}

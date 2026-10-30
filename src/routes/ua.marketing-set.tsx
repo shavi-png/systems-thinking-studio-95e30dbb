@@ -5,7 +5,7 @@ import { Footer } from "@/components/site/Footer";
 import { Reveal } from "@/components/site/Reveal";
 import { ChamberSet, ChannelLanes } from "@/components/site/LineArt";
 import { ShellBackdrop } from "@/components/site/ShellBackdrop";
-import portrait from "@/assets/vita-portrait.jpg";
+import portrait from "@/assets/vita-at-work.png.asset.json";
 import layers from "@/assets/ms-layers.jpg";
 import desk from "@/assets/ms-desk.jpg";
 import ink from "@/assets/ink-layers.jpg.asset.json";
@@ -767,10 +767,10 @@ function MarketingSetPage() {
             <div className="flex flex-col md:col-span-4">
               <Reveal>
                 <img
-                  src={portrait}
+                  src={portrait.url}
                   alt="Віта Шаблій"
                   loading="lazy"
-                  className="block aspect-[4/5] w-full object-cover object-top"
+                  className="block aspect-[9/13] w-full object-cover"
                 />
 
               </Reveal>

@@ -9,7 +9,8 @@ import { ShellBackdrop } from "@/components/site/ShellBackdrop";
 import advisoryImg from "@/assets/sp-advisory.jpg";
 import strategyImg from "@/assets/sp-strategy.jpg";
 import cmoImg from "@/assets/sp-cmo.jpg";
-import portraitImg from "@/assets/vita-portrait.jpg";
+import portraitImg from "@/assets/vita-black-white-portrait.png.asset.json";
+import workPortrait from "@/assets/vita-at-work.png.asset.json";
 
 const title = "Стратегічне партнерство — Віта Шаблій";
 const description =
@@ -302,7 +303,7 @@ function StrategicPartnership() {
               <Reveal delay={220}>
                 <div className="ml-auto max-w-[26rem] md:max-w-none">
                   <img
-                    src={portraitImg}
+                    src={portraitImg.url}
                     alt="Віта Шаблій"
                     className="aspect-[4/5] w-full object-cover"
                   />
@@ -578,9 +579,9 @@ function StrategicPartnership() {
               <div className="md:col-span-5">
                 <Reveal>
                   <img
-                    src={portraitImg}
+                    src={workPortrait.url}
                     alt="Віта Шаблій"
-                    className="aspect-[4/5] w-full object-cover [filter:grayscale(0.4)_contrast(1.04)]"
+                    className="aspect-[9/13] w-full object-cover"
                     loading="lazy"
                   />
                 </Reveal>

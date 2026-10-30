@@ -6,7 +6,8 @@ import { Reveal } from "@/components/site/Reveal";
 import { SpiralSystem, Spiral } from "@/components/site/LineArt";
 import { Solutions } from "@/components/site/Solutions";
 import { ShellBackdrop } from "@/components/site/ShellBackdrop";
-import portrait from "@/assets/vita-portrait.jpg";
+import portrait from "@/assets/vita-warm-portrait.png.asset.json";
+import personalPortrait from "@/assets/vita-black-white-portrait.png.asset.json";
 import shellHero from "@/assets/shell-hero.jpg.asset.json";
 import hands from "@/assets/hands-notebook.jpg";
 import ripple from "@/assets/ripple.jpg.asset.json";
@@ -95,11 +96,11 @@ function Index() {
               </p>
               <div className="grain relative aspect-[3/4] w-full overflow-hidden bg-stone">
                 <img
-                  src={portrait}
+                  src={portrait.url}
                   alt="Портрет Віти Шаблій"
                   width={1200}
                   height={1600}
-                  className="h-full w-full object-cover"
+                  className="h-full w-full object-cover object-[60%_center]"
                 />
               </div>
               <p className="label-xs mt-6 md:hidden">
@@ -329,7 +330,7 @@ function Index() {
             <div className="grain relative md:col-span-5 md:col-start-1">
               <div className="aspect-[4/5] overflow-hidden bg-stone">
                 <img
-                  src={portrait}
+                  src={personalPortrait.url}
                   alt="Портрет Віти Шаблій"
                   loading="lazy"
                   width={1200}

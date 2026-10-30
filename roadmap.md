@@ -9,3 +9,8 @@
 - [x] Verify desktop/mobile layout and interactions; disclose missing payment link through an honest access dialog.
 - [x] Present the result and the next level as two separate highlighted blocks that stand out from neighbouring sections.
 - [x] Emphasize payoff labels and audience subsection selectors; replace the hero gradient with brand blue and pure-white glow, then verify both screen sizes.- [x] Розрядити сторінку marketing-set-2: менше тексту, більше якісних зображень
+
+
+# Personal photographs
+- [x] Replace reference portraits with the three supplied photographs on all English and Ukrainian pages.
+- [ ] Verify photographs load and remain well framed on desktop and mobile.

@@ -566,11 +566,11 @@
   .ms2-hero-glow { right: -20%; top: auto; bottom: -12%; height: 65%; width: 140%; transform: none; }
 }
 
-/* Two payoff blocks: the result, then the next level — read as one step forward. */
+/* The outcomes continue the process on its own background. */
 .ms2-payoffs {
-  padding-block: 58px;
-  background: color-mix(in oklab, var(--sage) 30%, var(--paper));
-  border-block: 1px solid var(--line-tone);
+  margin-top: 56px;
+  padding-top: 36px;
+  border-top: 1px solid var(--line-tone);
 }
 .ms2-payoff {
   position: relative;
@@ -579,13 +579,11 @@
   flex-direction: column;
   gap: 14px;
   min-width: 0;
-  padding: 34px 34px 26px;
-  border: 1px solid var(--line-tone);
-  border-top: 2px solid var(--olive);
+  padding: 8px 0;
   overflow: hidden;
   box-shadow: none;
 }
-.ms2-payoff-result { background: var(--paper); }
+.ms2-payoff-result { background: transparent; }
 .ms2-payoff-kicker { font-size: 18px; font-weight: 600; line-height: 1.4; letter-spacing: 0; text-transform: uppercase; color: var(--charcoal); padding-bottom: 16px; border-bottom: 1px solid var(--line-tone); }
 .ms2-page .ms2-payoff-title { font-family: var(--font-serif-editorial); font-weight: 400; font-size: 31px; line-height: 1.2; }
 .ms2-payoff-body { font-size: 14px; line-height: 1.8; }
@@ -609,12 +607,19 @@
   }
 }
 @media (max-width: 639px) {
-  .ms2-payoffs { padding-block: 44px; }
-  .ms2-payoff { padding: 26px 22px 20px; }
+  .ms2-payoffs { margin-top: 36px; padding-top: 28px; }
+  .ms2-payoff { padding: 8px 0; }
   .ms2-payoff-kicker { font-size: 16px; }
   .ms2-page .ms2-payoff-title { font-size: 25px; }
   .ms2-payoff-mark { width: 140px; height: 140px; right: -26px; bottom: -36px; }
 }
+
+.ms2-product-preview { position: relative; display: block; width: 100%; height: auto; padding: 0; overflow: hidden; border: 1px solid var(--line-tone); border-radius: 4px; background: var(--paper); }
+.ms2-product-preview:hover { background: var(--paper); }
+.ms2-product-preview img { display: block; width: 100%; height: auto; }
+.ms2-product-preview-compact { aspect-ratio: 4 / 5; }
+.ms2-product-preview-compact img { height: 100%; object-fit: cover; object-position: top; }
+.ms2-preview-zoom { position: absolute; right: 12px; bottom: 12px; display: grid; place-items: center; width: 36px; height: 36px; background: var(--btn-dark); color: var(--btn-dark-foreground); border-radius: 4px; }
 
 /* Ukrainian site version: same layout, Cyrillic-capable brand fonts. */
 .ua-page {

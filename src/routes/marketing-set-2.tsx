@@ -1,13 +1,13 @@
 import { createFileRoute, Link } from "@tanstack/react-router";
 import { useState, type ReactNode } from "react";
-import { ArrowRight, ArrowUpRight, Check, Copy, Download, FileText, Sparkles } from "lucide-react";
+import { ArrowRight, ArrowUpRight, Check, Sparkles } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from "@/components/ui/accordion";
 import { Dialog, DialogContent, DialogDescription, DialogHeader, DialogTitle } from "@/components/ui/dialog";
 import { ShellBackdrop } from "@/components/site/ShellBackdrop";
-import { Spiral } from "@/components/site/LineArt";
-import { offer, personas, steps, assistants, faq, comparisons, passport } from "@/components/marketing-set-2/content";
+import { ProductPreview } from "@/components/marketing-set-2/ProductPreview";
+import { offer, personas, steps, assistants, faq } from "@/components/marketing-set-2/content";
 import shell from "@/assets/shell-hero.jpg.asset.json";
 import portrait from "@/assets/vita-at-work.png.asset.json";
 import mist from "@/assets/about-mist.jpg";
@@ -26,21 +26,9 @@ function Label({ n, children }: { n: string; children: ReactNode }) {
 function Bullets({ items }: { items: readonly string[] }) {
   return <ul className="space-y-4">{items.map(item => <li key={item} className="flex gap-3"><ArrowRight className="mt-1.5 size-4 shrink-0 text-olive" /><span>{item}</span></li>)}</ul>;
 }
-const sampleText = "# Паспорт бренду\n\nКерамічна студія «Глина і вечір»\n\n" + passport.map(x => `## ${x.label}\n${x.value}`).join("\n\n") + "\n\nВигаданий приклад для ілюстрації.";
-
 function MarketingSetTwo() {
   const [buyOpen, setBuyOpen] = useState(false);
-  const [copied, setCopied] = useState(false);
-  const [copyError, setCopyError] = useState(false);
   const cta = (light = false) => <Button className={`ms2-cta ${light ? "bg-ivory text-btn-dark hover:bg-ivory/90" : "bg-btn-dark text-btn-dark-foreground hover:bg-btn-dark/90"}`} onClick={() => setBuyOpen(true)}>Отримати Маркетинг-сет <ArrowRight /></Button>;
-  function downloadSample() {
-    const url = URL.createObjectURL(new Blob([sampleText], { type: "text/markdown;charset=utf-8" }));
-    const a = document.createElement("a"); a.href = url; a.download = "passport-brand-example.md"; a.click(); URL.revokeObjectURL(url);
-  }
-  async function copySample() {
-    try { await navigator.clipboard.writeText(sampleText); setCopied(true); setCopyError(false); }
-    catch { setCopyError(true); }
-  }
   return <div className="ms2-page bg-ivory text-charcoal" lang="uk">
     <header className="fixed inset-x-0 top-0 z-40 border-b border-line/60 bg-ivory/95 backdrop-blur-sm">
       <div className="ms2-wrap flex h-20 items-center justify-between gap-4">
@@ -72,12 +60,10 @@ function MarketingSetTwo() {
         </div>
       </section>
 
-      <section className="ms2-section border-t border-line"><div className="ms2-wrap"><p className="section-num mb-6">Усередині платформи</p><h2>Так виглядає<br /><em>ваша робота на платформі.</em></h2><p className="mt-5 max-w-xl text-sm text-smoke">Ілюстрація інтерфейсу: одна кнопка на крок, уточнюючі питання від ШІ й готові файли наприкінці.</p>
-        <div className="mt-10 grid gap-6 lg:grid-cols-3">
-          <MockWindow title="Крок 02 · Точка росту"><p className="text-[10px] uppercase text-olive">Натисніть кнопку, і система все зробить сама</p><div className="mt-4 space-y-2">{["Анкета","Точка росту","Конкуренти"].map((t,i)=><div key={t} className={`flex items-center justify-between border px-3 py-2 text-xs ${i===1?"border-olive bg-sage/40":"border-line"}`}><span>{t}</span>{i===0?<Check className="size-3.5 text-olive"/>:i===1?<span className="text-[9px] text-olive">Працює…</span>:<span className="text-[9px] text-smoke">Далі</span>}</div>)}</div><div className="mt-5 bg-btn-dark px-4 py-3 text-center text-[11px] text-btn-dark-foreground">Запустити крок у Claude →</div></MockWindow>
-          <MockWindow title="Уточнюючі питання"><p className="text-[10px] uppercase text-olive">Claude склав питання під вашу нішу</p>{["Що клієнти найчастіше кажуть після першого заняття?","За що вам дякують, хоча ви цього не рекламуєте?"].map(q=><div key={q} className="mt-4"><p className="ms2-serif text-[15px] leading-snug">{q}</p><div className="mt-2 h-9 border border-line bg-ivory px-3 py-2 text-[11px] text-smoke">Ваша відповідь…</div></div>)}</MockWindow>
-          <MockWindow title="Висновок · Забрати файли"><p className="text-[10px] uppercase text-olive">Суперсила</p><p className="ms2-serif mt-2 text-lg leading-snug">Перший виріб своїми руками за два вечори, без досвіду.</p><div className="mt-5 space-y-2">{["passport-brand.md","market-map.md","audience.md"].map(f=><div key={f} className="flex items-center gap-2 border border-line px-3 py-2 text-[11px]"><FileText className="size-3.5 text-olive"/>{f}<Download className="ml-auto size-3.5 text-smoke"/></div>)}</div></MockWindow>
-        </div></div></section>
+      <section className="ms2-section border-t border-line"><div className="ms2-wrap"><p className="section-num mb-6">Усередині платформи</p><h2>Від ваших відповідей<br /><em>до матеріалів для бренду.</em></h2>
+        <div className="mt-10 grid gap-8 lg:grid-cols-3"><ProductPreview screen="questions" compact /><ProductPreview screen="passport" compact /><ProductPreview screen="assistant" compact /></div>
+        <p className="mt-6 text-[11px] text-smoke">Екрани з розгортки продукту. Дані на них — приклад заповнення.</p>
+      </div></section>
 
       <section className="ms2-section border-t border-line">
         <div className="ms2-wrap grid items-start gap-12 lg:grid-cols-[1fr_1fr] lg:gap-20">
@@ -86,20 +72,27 @@ function MarketingSetTwo() {
         </div>
       </section>
 
-      <section id="for-whom" className="ms2-section bg-stone/60"><div className="ms2-wrap"><Label n="02">Це Вам знайомо?</Label><h2>Три ситуації.<br /><em>Одна й та сама причина.</em></h2><Tabs defaultValue="expert" className="mt-10"><TabsList className="ms2-tabs" aria-label="Хто ви">{personas.map(p => <TabsTrigger key={p.id} value={p.id} className="ms2-tab">{p.label}</TabsTrigger>)}</TabsList>{personas.map(p => <TabsContent key={p.id} value={p.id} className="mt-10"><div className="grid gap-10 lg:grid-cols-2 lg:gap-20"><dl>{[{label:"Коли",value:p.when},{label:"Я хочу",value:p.want},{label:"Щоб",value:p.so}].map(x => <div key={x.label} className="grid gap-2 border-b border-line py-5 sm:grid-cols-[76px_1fr]"><dt className="text-[10px] uppercase text-olive">{x.label}</dt><dd className="ms2-serif text-xl leading-relaxed">{x.value}</dd></div>)}</dl><div><blockquote className="ms2-serif border-l-2 border-olive pl-6 text-2xl italic leading-relaxed">{p.quote}</blockquote><p className="label-xs mb-5 mt-8">Що ви отримаєте</p><Bullets items={p.gets} /></div></div></TabsContent>)}</Tabs></div></section>
+      <section id="for-whom" className="ms2-section bg-stone/60"><div className="ms2-wrap"><Label n="02">Це Вам знайомо?</Label><h2>Три ситуації.<br /><em>Одна й та сама причина.</em></h2><Tabs defaultValue="expert" className="mt-10"><TabsList className="ms2-tabs" aria-label="Хто ви">{personas.map(p => <TabsTrigger key={p.id} value={p.id} className="ms2-tab">{p.label}</TabsTrigger>)}</TabsList>{personas.map(p => <TabsContent key={p.id} value={p.id} className="mt-10"><div className="grid gap-10 lg:grid-cols-2 lg:gap-20"><dl>{[{label:"Коли",value:p.when},{label:"Хочете",value:p.want},{label:"Щоб",value:p.so}].map(x => <div key={x.label} className="grid gap-2 border-b border-line py-5 sm:grid-cols-[88px_1fr]"><dt className="text-[10px] uppercase text-olive">{x.label}</dt><dd className="ms2-serif text-xl leading-relaxed">{x.value}</dd></div>)}</dl><div><blockquote className="ms2-serif border-l-2 border-olive pl-6 text-2xl italic leading-relaxed">{p.quote}</blockquote><p className="label-xs mb-5 mt-8">Що ви отримаєте</p><Bullets items={p.gets} /></div></div></TabsContent>)}</Tabs></div></section>
 
       <figure className="relative h-[300px] overflow-hidden md:h-[420px]">
         <img src={mist} alt="Тихий ранковий туман над водою — метафора ясності" loading="lazy" className="absolute inset-0 h-full w-full object-cover" />
         <figcaption className="absolute inset-0 flex items-center justify-center bg-olive/20 px-6"><p className="ms2-serif max-w-md text-center text-2xl italic leading-snug text-ivory md:text-3xl">Ясність раніше за складність.</p></figcaption>
       </figure>
 
-      <section className="ms2-section"><div className="ms2-wrap"><Label n="03">В чому особливість сету?</Label><h2>Не чат із ШІ.<br /><em>І не агенція.</em></h2><p className="mt-5 max-w-xl text-sm text-smoke">Це середина між двома способами, які зазвичай обирають.</p><div className="mt-10 hidden gap-9 md:grid md:grid-cols-3">{["Чат із ШІ","Агенція чи консультант","Маркетинг-сет"].map((name,i) => <article key={name} className={`border-t-2 pt-6 ${i===2 ? "border-olive" : "border-line"}`}><div className="flex items-center justify-between"><h3>{name}</h3>{i===2 && <Sparkles className="size-5 text-olive" />}</div><dl className="mt-6 space-y-6">{comparisons.map(row => <div key={row.label}><dt className="mb-1 text-[10px] uppercase text-smoke">{row.label}</dt><dd className="text-sm">{row.values[i]}</dd></div>)}</dl></article>)}</div><dl className="mt-10 space-y-10 md:hidden">{comparisons.map(row => <div key={row.label} className="border-t-2 border-line pt-5"><dt className="mb-4 text-[10px] uppercase text-olive">{row.label}</dt><div className="space-y-3">{["Чат із ШІ","Агенція","Маркетинг-сет"].map((name,i) => <dd key={name} className={`grid grid-cols-[96px_1fr] items-baseline gap-3 px-3 py-2.5 ${i===2 ? "border-l-2 border-olive bg-sage/40" : "border-l-2 border-line"}`}><span className={`text-[10px] uppercase ${i===2 ? "text-olive" : "text-smoke"}`}>{name}</span><span className="text-sm leading-snug">{row.values[i]}</span></dd>)}</div></div>)}</dl></div></section>
+      <section className="ms2-section"><div className="ms2-wrap"><Label n="03">В чому особливість сету?</Label><h2>Не шукати наступний промпт.<br /><em>Продовжувати свою стратегію.</em></h2><p className="mt-5 max-w-2xl text-sm text-smoke">ШІ вже є і в агенціях, і у вашій щоденній роботі. Тут важлива не сама генерація, а те, з якими даними вона працює.</p><div className="mt-10 grid gap-9 md:grid-cols-3">{[
+        ["Ваші відповіді → точніші питання", "В анкеті описуєте продукт. На наступному кроці система ставить уточнювальні питання саме про нього."],
+        ["Попередні висновки → наступний крок", "Аналіз конкурентів, аудиторії та ядро бренду використовують уже зібрану інформацію. Переносити її між чатами не потрібно."],
+        ["Паспорт бренду → робота асистентів", "Після стратегії відкриваєте асистента й ставите завдання. Він уже має паспорт вашого бренду."]
+      ].map(([t,b],i)=><article key={t} className="border-t border-line pt-6"><p className="mb-4 text-xs text-olive">0{i+1}</p><h3>{t}</h3><p className="mt-4 text-sm text-smoke">{b}</p></article>)}</div></div></section>
 
-      <section id="how" className="ms2-section teal-room relative overflow-hidden"><div className="ms2-wrap relative"><Label n="04">Як це працює</Label><div className="grid gap-6 lg:grid-cols-[1.2fr_1fr] lg:gap-20"><h2>П’ять кроків.<br /><em>Одна зв’язана система.</em></h2><p className="self-end text-sm text-charcoal/85">Кожен крок робить наступний точнішим. Платформа сама складає завдання для ШІ з ваших відповідей — нічого копіювати й вставляти не треба.</p></div><div className="ms2-process mt-14">{steps.slice(0,5).map(s => <article key={s.n}><p className="ms2-serif mb-5 border-b border-line pb-4 text-4xl text-olive">{s.n}</p><h3>{s.title}</h3><p className="mt-4 text-[13px] leading-relaxed text-charcoal/85">{s.body}</p><p className="mt-5 text-[10px] uppercase text-olive">{s.out}</p></article>)}</div></div></section>
+      <section id="how" className="ms2-section teal-room relative overflow-hidden"><div className="ms2-wrap relative"><Label n="04">Як це працює</Label><div className="grid gap-6 lg:grid-cols-[1.2fr_1fr] lg:gap-20"><h2>П’ять кроків,<br /><em>з яких складається стратегія.</em></h2><p className="self-end text-sm text-charcoal/85">Ви заповнюєте анкету й відповідаєте на питання. Система використовує ці відповіді для аналізу конкурентів, аудиторії та позиціонування.</p></div><div className="ms2-process mt-14">{steps.slice(0,5).map(s => <article key={s.n}><p className="ms2-serif mb-5 border-b border-line pb-4 text-4xl text-olive">{s.n}</p><h3>{s.title}</h3><p className="mt-4 text-[13px] leading-relaxed text-charcoal/85">{s.body}</p></article>)}</div>
+        <div className="ms2-payoffs"><p className="ms2-serif mb-8 text-2xl">Пройшли п’ять кроків. Що далі?</p><div className="grid gap-10 md:grid-cols-2 md:gap-16">
+          <article className="ms2-payoff"><p className="ms2-payoff-kicker">Результат</p><h3 className="ms2-payoff-title">Паспорт бренду</h3><p className="ms2-payoff-body">Система збирає висновки всіх п’яти кроків в один документ: ваш продукт, відмінність, клієнти, позиціонування й меседжі.</p><p className="ms2-payoff-foot text-smoke">Завантажуєте файл для команди або будь-якого ШІ.</p></article>
+          <article className="ms2-payoff"><p className="ms2-payoff-kicker">Наступний рівень</p><h3 className="ms2-payoff-title">Ваші асистенти</h3><p className="ms2-payoff-body">Готовий паспорт стає їхньою базою знань. Тепер ставите завдання для контенту, сценаріїв чи реклами — без повторного пояснення бренду.</p><p className="ms2-payoff-foot text-smoke">Копірайтер у комплекті · решта — за потреби.</p></article>
+        </div></div>
+      </div></section>
 
-      <section className="ms2-payoffs"><div className="ms2-wrap relative grid gap-6 md:grid-cols-2 md:gap-16">{steps.slice(5).map((s, i) => <article key={s.n} className={`ms2-payoff ${i === 0 ? "ms2-payoff-result" : "ms2-payoff-next olive-room"}`}><Spiral className="ms2-payoff-mark" strokeWidth={1.1} accent /><p className="ms2-payoff-kicker">{i === 0 ? "Результат" : "Наступний рівень"}</p><h3 className="ms2-payoff-title">{s.title}</h3><p className="ms2-payoff-body text-charcoal/80">{s.body}</p><p className="ms2-payoff-foot text-smoke">{i === 0 ? "Один файл · працює в будь-якому ШІ" : "Копірайтер у комплекті · решта — за потреби"}</p></article>)}<div className="ms2-payoff-arrow" aria-hidden><ArrowRight className="size-4" /></div></div></section>
-
-      <section className="ms2-section"><div className="ms2-wrap grid items-start gap-12 lg:grid-cols-[0.9fr_1.1fr] lg:gap-20"><div><Label n="05">Що буде на виході</Label><h2>Не ще один документ,<br /><em>який забудеться в папці.</em></h2><p className="ms2-copy mt-7 text-charcoal/75">Паспорт бренду стисло описує, хто ви, для кого, чим сильні й як говорите. Його вставляєте в будь-який ШІ або віддаєте дизайнеру — і всі працюють у вашому тоні.</p><div className="mt-8"><Bullets items={["Цінність і відмінність: чому обирати вас", "Карта ринку й вільне місце для позиціонування", "Сегменти клієнтів і логіка їхнього вибору", "Меседжі, тон і заборонені слова"]} /></div></div><div><div className="ms2-passport border border-line bg-paper"><div className="flex justify-between gap-3 border-b border-line px-6 py-4 text-[10px] uppercase text-smoke"><span>passport-brand.md</span><span>Приклад</span></div><div className="p-6 sm:p-8"><h3>Керамічна студія<br /><em>«Глина і вечір»</em></h3><dl className="mt-6">{passport.map(row => <div key={row.label} className="border-t border-line py-4"><dt className="mb-2 text-[9px] uppercase text-olive">{row.label}</dt><dd className="text-[13px] leading-relaxed">{row.value}</dd></div>)}</dl></div><div className="flex flex-wrap gap-3 border-t border-line p-5"><Button variant="outline" className="rounded-none shadow-none text-xs" onClick={downloadSample}><Download />Завантажити приклад</Button><Button variant="ghost" className="rounded-none text-xs" onClick={copySample}>{copied ? <Check /> : <Copy />}{copied ? "Скопійовано" : "Скопіювати текст"}</Button></div></div><p className="mt-4 text-[11px] text-smoke" role="status">{copyError ? "Не вдалося скопіювати. Завантажте приклад файлом." : "Вигаданий приклад для ілюстрації. Ваш паспорт буде про ваш бренд."}</p></div></div></section>
+      <section className="ms2-section"><div className="ms2-wrap grid items-start gap-12 lg:grid-cols-[0.9fr_1.1fr] lg:gap-20"><div><Label n="05">Що буде на виході</Label><h2>Ваша стратегія.<br /><em>В одному файлі.</em></h2><p className="ms2-copy mt-7 text-charcoal/75">У паспорті — висновки про продукт, конкурентів, клієнтів і комунікацію. Передаєте його SMM-фахівцю, таргетологу чи дизайнеру або завантажуєте в ШІ як базу знань.</p><div className="mt-8"><Bullets items={["Паспорт бренду — спільна основа для подальшої роботи", "Чотири окремі файли: точка росту, конкуренти, аудиторія та ядро бренду", "Результати можна редагувати прямо на платформі", "Окремі файли або весь пакет у ZIP"]} /></div></div><ProductPreview screen="passport" /></div></section>
 
       <section className="ms2-section bg-stone/60"><div className="ms2-wrap"><Label n="06">Це більше ніж просто паспорт</Label><h2>Асистенти, які<br /><em>вже знають ваш бренд.</em></h2><p className="mt-5 max-w-xl text-sm text-smoke">Копірайтер входить у Маркетинг-сет. Решту підключаєте тільки тоді, коли вони вам потрібні.</p><div className="mt-10 grid gap-x-10 gap-y-8 sm:grid-cols-2 lg:grid-cols-4">{assistants.map(a => <article key={a.title} className="border-t border-line pt-5"><h3>{a.title}</h3><p className="mt-3 text-[13px] text-charcoal/75">{a.body}</p></article>)}</div><div className="mt-10 flex flex-wrap items-baseline justify-between gap-5 border-t border-line pt-7"><p className="ms2-serif text-2xl">Усі 8 асистентів за <em>{offer.bundleEUR} €</em></p><p className="text-xs text-smoke">Окремо в сумі 40 € · доступ лишається у вас</p></div></div></section>
 
@@ -120,7 +113,4 @@ function MarketingSetTwo() {
     <footer className="ms2-wrap flex flex-wrap items-center justify-between gap-5 py-10 text-xs text-smoke"><Link to="/">© 2026 Vita Shablii</Link><Link to="/marketing-set">Marketing Set — original edition <ArrowUpRight className="ml-1 inline size-3" /></Link><a href="mailto:hello@vitashablii.com">hello@vitashablii.com</a></footer>
     <Dialog open={buyOpen} onOpenChange={setBuyOpen}><DialogContent className="ms2-page rounded-none shadow-none"><DialogHeader><DialogTitle className="ms2-serif text-3xl">Маркетинг-сет · {offer.priceUAH} грн</DialogTitle><DialogDescription className="mt-4 text-sm leading-relaxed">Оплату на цій сторінці ще не підключено. Щоб дізнатися про доступ, напишіть Віті.</DialogDescription></DialogHeader><Button asChild className="ms2-cta mt-3 bg-btn-dark text-btn-dark-foreground"><a href="mailto:hello@vitashablii.com?subject=Marketing%20Set%202">Запитати про доступ <ArrowUpRight /></a></Button></DialogContent></Dialog>
   </div>;
-}
-function MockWindow({ title, children }: { title: string; children: ReactNode }) {
-  return <div className="border border-line bg-paper"><div className="flex items-center gap-1.5 border-b border-line px-4 py-3"><span className="size-2 rounded-full bg-line" /><span className="size-2 rounded-full bg-line" /><span className="size-2 rounded-full bg-olive/60" /><span className="ml-3 text-[10px] uppercase text-smoke">{title}</span></div><div className="p-5">{children}</div></div>;
 }

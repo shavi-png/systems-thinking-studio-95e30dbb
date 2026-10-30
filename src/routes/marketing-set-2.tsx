@@ -21,9 +21,6 @@ export const Route = createFileRoute("/marketing-set-2")({
   component: MarketingSetTwo,
 });
 
-function Label({ n, children }: { n: string; children: ReactNode }) {
-  return <p className="section-num mb-6">{n} / {children}</p>;
-}
 function Bullets({ items }: { items: readonly string[] }) {
   return <ul className="space-y-4">{items.map(item => <li key={item} className="flex gap-3"><ArrowRight className="mt-1.5 size-4 shrink-0 text-olive" /><span>{item}</span></li>)}</ul>;
 }

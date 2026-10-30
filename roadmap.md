@@ -19,7 +19,7 @@
 - [x] Explain how to connect an existing GoDaddy domain without moving the site or email.
 
 # Marketing Set 2 product trailer
-- [ ] Replace unnatural audience copy and agency comparison with concrete product benefits.
-- [ ] Connect five steps, passport and assistants in one visual sequence.
-- [ ] Replace invented ceramics example and mock screens with supplied product visuals.
-- [ ] Verify desktop/mobile layout, tabs, image preview and existing access dialog.
+- [x] Replace unnatural audience copy and agency comparison with concrete product benefits.
+- [x] Connect five steps, passport and assistants in one visual sequence.
+- [x] Replace invented ceramics example and mock screens with supplied product visuals.
+- [x] Verify desktop/mobile layout, tabs, image preview and existing access dialog.

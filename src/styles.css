@@ -590,7 +590,7 @@
   background: radial-gradient(closest-side at 70% 60%, var(--ivory), transparent 75%);
 }
 .ms2-payoff-next { border-color: transparent; color: var(--ivory); background: var(--olive-deep, var(--olive)); }
-.ms2-payoff-result { color: var(--charcoal); }
+.ms2-payoff-result { --charcoal: oklch(0.255 0.012 140); --smoke: oklch(0.635 0.01 130); --line-tone: oklch(0.855 0.014 128); --color-charcoal: var(--charcoal); --color-smoke: var(--smoke); color: var(--charcoal); }
 .ms2-payoff-result .ms2-payoff-kicker { color: var(--charcoal); }
 .ms2-payoff-next .ms2-payoff-kicker { color: var(--ivory); border-color: color-mix(in oklab, var(--ivory) 35%, transparent); }
 .ms2-payoff-next .ms2-payoff-foot { border-color: color-mix(in oklab, var(--ivory) 35%, transparent); color: color-mix(in oklab, var(--ivory) 80%, transparent); }

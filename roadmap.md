@@ -25,6 +25,7 @@
 - [x] Verify desktop/mobile layout, tabs, image preview and existing access dialog.
 
 # Marketing Set 3
+- [x] Match prototype document compositions and assistant spiral; soften hero and final shells; verify desktop/mobile.
 - [x] Build /marketing-set-3 from the brief and prototype with real document pages, nautilus spiral of 8 assistants, approved texts.
 - [x] Add it to the header dropdown and footer.
 - [ ] Real payment link — waiting on the link from Vita.

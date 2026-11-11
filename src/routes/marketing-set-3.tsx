@@ -5,8 +5,9 @@ import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from "@/
 import { Dialog, DialogContent, DialogDescription, DialogTitle } from "@/components/ui/dialog";
 import { offer3, stages, assistants3, benefits, situations, opportunities, faq3 } from "@/components/marketing-set-3/content";
 import portrait from "@/assets/ms3/vita-portrait.png.asset.json";
-import portraitWarm from "@/assets/vita-warm-portrait.png.asset.json";
-import nautilus from "@/assets/ms3/nautilus-pearl.png";
+import audienceEditorial from "@/assets/ms3/audience-editorial.jpg";
+import { Button } from "@/components/ui/button";
+import nautilus from "@/assets/ms3/nautilus-soft-ivory.jpg";
 import oliveCover from "@/assets/ms3/olive-cover.jpg";
 
 const title = "Маркетинг-сет — маркетингова стратегія та Action-навігатор за 39 € | Vita Shablii";
@@ -44,28 +45,36 @@ function DocModal({ pages, label, open, onOpenChange }: { pages: string[]; label
   </Dialog>;
 }
 
-/* Document mockup composition used in hero and strategy section. */
+/* Prototype-style layered presentation covers; source documents remain in the gallery. */
 function DocStack({ variant, front }: { variant: "hero" | "plan"; front?: { img: string; label: string } | undefined }) {
   return <div className={`ms3p-stack is-${variant}`}>
     <div className="ms3p-doc ms3p-doc-main">
-      <div className="ms3p-doc-text"><p className="ms3p-brand"><Spiral className="size-3.5" /> Маркетинг-сет</p><p className="ms3p-serif ms3p-doc-title">Маркетингова<br />стратегія</p><p className="ms3p-doc-sub">Індивідуальний план<br />розвитку бізнесу</p></div>
+      <div className="ms3p-doc-text"><p className="ms3p-brand"><Spiral className="size-3.5" /> Маркетинг-сет</p><p className="ms3p-serif ms3p-doc-title">Маркетингова<br />стратегія</p>{variant === "hero" && <p className="ms3p-doc-sub">Індивідуальний план<br />розвитку бізнесу</p>}</div>
       <img src={oliveCover} alt="" width={768} height={1024} className="ms3p-doc-art" />
     </div>
-    <div className="ms3p-doc ms3p-doc-plan"><p className="ms3p-serif text-[1.05em]">План дій</p>{[1, 2, 3, 4].map((k) => <p key={k} className="ms3p-line"><span />{k % 2 ? <i /> : <i className="w-1/2" />}</p>)}</div>
-    {variant === "hero" ? <div className="ms3p-doc ms3p-doc-aud"><p className="ms3p-brand"><Spiral className="size-3" /> Маркетинг-сет</p><p className="ms3p-serif mt-[0.4em] text-[1.05em]">Цільова аудиторія</p><div className="mt-[0.5em] flex gap-[0.6em]"><img src={portraitWarm.url} alt="" className="aspect-[4/3] w-[55%] rounded-[3px] object-cover" /><div className="flex-1 space-y-[0.45em] pt-1">{[1, 2, 3].map((k) => <p key={k} className="ms3p-line"><span /><i /></p>)}</div></div></div>
-      : <div className="ms3p-doc ms3p-doc-aud is-plan">{front ? <img src={front.img} alt={front.label} className="h-full w-full object-cover object-top" /> : <><p className="ms3p-serif text-[1.05em]">Стратегічний план дій</p><div className="mt-[0.8em] grid grid-cols-3 gap-[0.5em] text-center">{["Пріоритет", "Канали", "Завдання"].map((x) => <div key={x}><Spiral className="mx-auto size-[1.6em] text-olive" /><p className="mt-1 text-[0.5em] text-muted">{x}</p></div>)}</div><div className="mt-[0.8em] space-y-[0.2em]">{[1, 2, 3].map((k) => <p key={k} className="ms3p-line"><span /><i /></p>)}</div></>}</div>}
+    <div className="ms3p-doc ms3p-doc-plan"><p className="ms3p-serif ms3p-plan-title">План дій</p>{[1, 2, 3, 4].map((k) => <div key={k} className="ms3p-plan-row"><span className="ms3p-plan-dot" /><div><i /><i /><i /></div></div>)}</div>
+    {variant === "hero" ? <div className="ms3p-doc ms3p-doc-aud"><p className="ms3p-brand"><Spiral className="size-3" /> Маркетинг-сет</p><p className="ms3p-serif ms3p-aud-title">Цільова аудиторія</p><div className="ms3p-aud-content"><img src={audienceEditorial} alt="Ілюстрація портрета аудиторії" width={992} height={672} /><div>{[1, 2, 3].map((k) => <div key={k} className="ms3p-plan-row"><span className="ms3p-plan-dot" /><div><i /><i /></div></div>)}</div></div></div>
+      : <div className="ms3p-doc ms3p-doc-aud is-plan">{front ? <img src={front.img} alt={front.label} className="ms3p-source-page" /> : <><p className="ms3p-serif ms3p-plan-heading">Стратегічний план дій</p><div className="ms3p-plan-columns">{["Пріоритети", "Канали", "Завдання"].map((x, i) => { const I = icons[i] ?? Spiral; return <div key={x}><I className="ms3p-plan-icon" /><p>{x}</p><i /><i /></div>; })}</div></>}</div>}
   </div>;
 }
+
+const assistantPositions: Record<string, { left: string; top: string }> = {
+  lead: { left: "28%", top: "7%" }, landing: { left: "72%", top: "7%" },
+  content: { left: "88%", top: "27%" }, target: { left: "90%", top: "52%" },
+  funnel: { left: "83%", top: "77%" }, email: { left: "21%", top: "79%" },
+  direct: { left: "9%", top: "44%" },
+};
 
 function MarketingSetThree() {
   const [buyOpen, setBuyOpen] = useState(false);
   const [stage, setStage] = useState(0);
   const [zoom, setZoom] = useState(false);
   const [asst, setAsst] = useState("nav");
-  const s = stages[stage]!;
-  const a = assistants3.find((x) => x.id === asst)!;
+  const s = stages[stage] ?? stages[0];
+  const a = assistants3.find((x) => x.id === asst) ?? assistants3[0];
   const extras = assistants3.filter((x) => !x.included);
   const ring = assistants3.filter((x) => !x.included);
+  if (!s || !a) return null;
   const cta = (cls = "") => <button type="button" className={`ms3p-btn ${cls}`} onClick={() => setBuyOpen(true)}>Отримати доступ <ArrowRight className="size-4" /></button>;
 
   return <div className="ms3p" lang="uk">
@@ -105,7 +114,7 @@ function MarketingSetThree() {
       <section id="benefits" className="ms3p-sec">
         <div className="ms3p-wrap">
           <h2 className="ms3p-serif ms3p-h2">Чому Маркетинг-сет вартий уваги?</h2>
-          <div className="mt-8 grid gap-8 md:grid-cols-3 md:gap-0">{benefits.map(([t, b], i) => { const I = icons[i]!; return <div key={t} className="ms3p-benefit"><I className="size-11 shrink-0 text-olive" /><div><h3 className="font-semibold leading-snug">{t}</h3><p className="mt-2 text-sm text-muted">{b}</p></div></div>; })}</div>
+          <div className="mt-8 grid gap-8 md:grid-cols-3 md:gap-0">{benefits.map(([t, b], i) => { const I = icons[i] ?? Spiral; return <div key={t} className="ms3p-benefit"><I className="size-11 shrink-0 text-olive" /><div><h3 className="font-semibold leading-snug">{t}</h3><p className="mt-2 text-sm text-muted">{b}</p></div></div>; })}</div>
         </div>
       </section>
 
@@ -122,7 +131,7 @@ function MarketingSetThree() {
         <img src={nautilus} alt="" className="ms3p-band-shell" />
         <div className="ms3p-wrap relative py-12 md:py-14">
           <h2 className="ms3p-serif ms3p-h2 flex items-center gap-4">Ось як Маркетинг-сет допомагає побачити можливості <Fan className="hidden size-9 shrink-0 md:block" /></h2>
-          <div className="mt-8 grid gap-8 sm:grid-cols-2 lg:grid-cols-4 lg:gap-0">{opportunities.map(([t, b], i) => { const I = icons[i]!; return <div key={t} className="ms3p-opp"><I className="size-10" /><h3 className="mt-3 text-[15px] font-medium leading-snug">{t}</h3><p className="mt-2 text-sm opacity-75">{b}</p></div>; })}</div>
+          <div className="mt-8 grid gap-8 sm:grid-cols-2 lg:grid-cols-4 lg:gap-0">{opportunities.map(([t, b], i) => { const I = icons[i] ?? Spiral; return <div key={t} className="ms3p-opp"><I className="size-10" /><h3 className="mt-3 text-[15px] font-medium leading-snug">{t}</h3><p className="mt-2 text-sm opacity-75">{b}</p></div>; })}</div>
         </div>
       </section>
 
@@ -162,12 +171,12 @@ function MarketingSetThree() {
               <div className="ms3p-asst-card mt-8" aria-live="polite"><p className="text-[11px] font-medium uppercase tracking-[0.16em] text-olive">{a.included ? "Входить у вартість" : "Можна додати за потреби"}</p><h3 className="ms3p-serif mt-2 text-2xl">{a.name}</h3><p className="mt-2 text-sm text-muted">{a.body}</p></div>
             </div>
             <div className="ms3p-ring" role="group" aria-label="AI-асистенти">
-              <div className="ms3p-ring-circle" aria-hidden />
+              <svg className="ms3p-ring-spiral" viewBox="0 0 520 520" fill="none" aria-hidden><path d="M 397 428 C 464 348 467 231 413 148 C 354 57 209 36 130 116 C 53 194 62 329 143 394 C 219 454 326 423 354 341 C 382 262 341 184 273 172 C 211 160 164 207 171 263" /></svg>
               <button type="button" onClick={() => setAsst("nav")} aria-pressed={asst === "nav"} className="ms3p-ring-center"><span className="ms3p-serif text-[clamp(18px,2.2vw,24px)] leading-tight">Action-<br />навігатор</span><span className="ms3p-pill">Входить у вартість</span></button>
-              {ring.map((x, i) => { const ang = (-140 + (i * 280) / (ring.length - 1)) * (Math.PI / 180); return <button key={x.id} type="button" onClick={() => setAsst(x.id)} onMouseEnter={() => setAsst(x.id)} aria-pressed={asst === x.id} className={`ms3p-ring-node ${asst === x.id ? "is-active" : ""}`} style={{ left: `${50 + 38 * Math.sin(ang)}%`, top: `${50 - 38 * Math.cos(ang)}%` }}><span>{x.name}</span></button>; })}
+              {ring.map((x) => <Button key={x.id} variant="ghost" type="button" onClick={() => setAsst(x.id)} aria-pressed={asst === x.id} className={`ms3p-ring-node ${asst === x.id ? "is-active" : ""}`} style={assistantPositions[x.id]}><span>{x.name}</span></Button>)}
             </div>
           </div>
-          <ul className="ms3p-asst-grid mt-12">{extras.map((x, i) => { const I = icons[i % 4]!; return <li key={x.id}><button type="button" onClick={() => setAsst(x.id)} aria-pressed={asst === x.id} className={asst === x.id ? "is-active" : ""}><I className="size-8 text-olive" /><span className="mt-2 block text-[13px] font-semibold leading-tight">{x.name}</span><span className="mt-1.5 block text-xs text-muted">{x.body.split(/[:.]/)[0]}.</span></button></li>; })}</ul>
+          <ul className="ms3p-asst-grid mt-12">{extras.map((x, i) => { const I = icons[i % 4] ?? Spiral; return <li key={x.id}><button type="button" onClick={() => setAsst(x.id)} aria-pressed={asst === x.id} className={asst === x.id ? "is-active" : ""}><I className="size-8 text-olive" /><span className="mt-2 block text-[13px] font-semibold leading-tight">{x.name}</span><span className="mt-1.5 block text-xs text-muted">{x.body.split(/[:.]/)[0]}.</span></button></li>; })}</ul>
         </div>
       </section>
 
@@ -178,7 +187,7 @@ function MarketingSetThree() {
             <h2 className="ms3p-serif ms3p-h2">Чому можна довіряти стратегії, яку створює ця AI-платформа?</h2>
             <div>
               <p className="text-sm opacity-80">Вона поєднує ваші дані, перевірені підходи в маркетингу та практичну логіку прийняття рішень.</p>
-              <ol className="mt-6 grid grid-cols-2 gap-6 md:flex md:items-start md:justify-between">{["Дані про бізнес", "Дослідження", "Стратегічні рекомендації", "Перевірка на практиці"].map((t, i) => { const I = icons[i]!; return <li key={t} className="flex items-start gap-3 md:flex-1 md:flex-col md:items-center md:text-center"><I className="size-11 shrink-0" /><span className="text-[13px] font-medium leading-snug">{t}</span>{i < 3 && <ArrowRight className="mt-4 hidden size-4 opacity-60 md:absolute" aria-hidden />}</li>; })}</ol>
+              <ol className="mt-6 grid grid-cols-2 gap-6 md:flex md:items-start md:justify-between">{["Дані про бізнес", "Дослідження", "Стратегічні рекомендації", "Перевірка на практиці"].map((t, i) => { const I = icons[i] ?? Spiral; return <li key={t} className="flex items-start gap-3 md:flex-1 md:flex-col md:items-center md:text-center"><I className="size-11 shrink-0" /><span className="text-[13px] font-medium leading-snug">{t}</span>{i < 3 && <ArrowRight className="mt-4 hidden size-4 opacity-60 md:absolute" aria-hidden />}</li>; })}</ol>
             </div>
           </div>
           <div className="mt-10 grid gap-6 border-t border-cream/20 pt-6 text-sm opacity-80 md:grid-cols-2"><p>Чим точніше й повніше ви опишете свій бізнес, тим кориснішими й конкретнішими будуть гіпотези й рекомендації.</p><p>Маркетинг — це про обґрунтовані гіпотези, перевірку і розвиток, а не про хибні гарантії. Саме так працює ця платформа.</p></div>
@@ -192,7 +201,7 @@ function MarketingSetThree() {
           <img src={portrait.url} alt="Віта Шаблій — авторка Маркетинг-сету" loading="lazy" className="mx-auto aspect-[4/5] w-full max-w-[320px] object-cover grayscale" />
           <div className="self-center pb-8">
             <h3 className="ms3p-serif text-3xl">Віта Шаблій</h3>
-            <ul className="mt-5 space-y-4">{["13 років у практичному маркетингу.", "Засновниця «Анатомія маркетингу» та «Синтез».", "Інтегрую AI в маркетинг і бізнес-процеси з 2020 року.", "Попередні версії інструментів використовують понад 200 людей."].map((x, i) => { const I = icons[i]!; return <li key={x} className="flex items-center gap-3 text-sm"><I className="size-8 shrink-0 text-olive" />{x}</li>; })}</ul>
+            <ul className="mt-5 space-y-4">{["13 років у практичному маркетингу.", "Засновниця «Анатомія маркетингу» та «Синтез».", "Інтегрую AI в маркетинг і бізнес-процеси з 2020 року.", "Попередні версії інструментів використовують понад 200 людей."].map((x, i) => { const I = icons[i] ?? Spiral; return <li key={x} className="flex items-center gap-3 text-sm"><I className="size-8 shrink-0 text-olive" />{x}</li>; })}</ul>
           </div>
         </div>
       </section>

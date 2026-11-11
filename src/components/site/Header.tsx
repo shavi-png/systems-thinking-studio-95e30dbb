@@ -43,6 +43,7 @@ const copy = {
     versions: [
       { label: "Marketing Set", href: "/marketing-set" },
       { label: "Marketing Set 2", href: "/marketing-set-2", tag: "UA" },
+      { label: "Marketing Set 3", href: "/marketing-set-3", tag: "NEW" },
     ],
     choose: "Choose a solution",
     menu: "Menu",
@@ -58,7 +59,8 @@ const copy = {
     set: "Маркетинг-сет",
     versions: [
       { label: "Маркетинг-сет", href: "/marketing-set" },
-      { label: "Маркетинг-сет 2", href: "/marketing-set-2", tag: "NEW" },
+      { label: "Маркетинг-сет 2", href: "/marketing-set-2" },
+      { label: "Маркетинг-сет 3", href: "/marketing-set-3", tag: "NEW" },
     ],
     choose: "Обрати рішення",
     menu: "Меню",

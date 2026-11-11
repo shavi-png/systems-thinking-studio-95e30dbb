@@ -23,3 +23,8 @@
 - [x] Connect five steps, passport and assistants in one visual sequence.
 - [x] Replace invented ceramics example and mock screens with supplied product visuals.
 - [x] Verify desktop/mobile layout, tabs, image preview and existing access dialog.
+
+# Marketing Set 3
+- [x] Build /marketing-set-3 from the brief and prototype with real document pages, nautilus spiral of 8 assistants, approved texts.
+- [x] Add it to the header dropdown and footer.
+- [ ] Real payment link — waiting on the link from Vita.

@@ -3,6 +3,8 @@ import { localize, useLang } from "@/lib/lang";
 const ukLabels: Record<string, string> = {
   "Get to know me →": "Про мене →",
   "Marketing Set": "Маркетинг-сет",
+  "Marketing Set 2": "Маркетинг-сет 2",
+  "Marketing Set 3": "Маркетинг-сет 3",
   Solutions: "Рішення",
   Method: "Метод",
   Contact: "Контакт",
@@ -17,6 +19,8 @@ const ukLabels: Record<string, string> = {
 const links = [
   { label: "Get to know me →", href: "/about" },
   { label: "Marketing Set", href: "/marketing-set" },
+  { label: "Marketing Set 2", href: "/marketing-set-2" },
+  { label: "Marketing Set 3", href: "/marketing-set-3" },
   { label: "Solutions", href: "/#solutions" },
   { label: "Method", href: "/#method" },
   { label: "Contact", href: "mailto:hello@vitashablii.com" },

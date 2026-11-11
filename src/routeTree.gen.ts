@@ -13,6 +13,7 @@ import { Route as IndexRouteImport } from './routes/index'
 import { Route as AboutRouteImport } from './routes/about'
 import { Route as MarketingSetRouteImport } from './routes/marketing-set'
 import { Route as MarketingSet2RouteImport } from './routes/marketing-set-2'
+import { Route as MarketingSet3RouteImport } from './routes/marketing-set-3'
 import { Route as StrategicPartnershipRouteImport } from './routes/strategic-partnership'
 import { Route as UaIndexRouteImport } from './routes/ua.index'
 import { Route as UaAboutRouteImport } from './routes/ua.about'
@@ -37,6 +38,11 @@ const MarketingSetRoute = MarketingSetRouteImport.update({
 const MarketingSet2Route = MarketingSet2RouteImport.update({
   id: '/marketing-set-2',
   path: '/marketing-set-2',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const MarketingSet3Route = MarketingSet3RouteImport.update({
+  id: '/marketing-set-3',
+  path: '/marketing-set-3',
   getParentRoute: () => rootRouteImport,
 } as any)
 const StrategicPartnershipRoute = StrategicPartnershipRouteImport.update({
@@ -70,6 +76,7 @@ export interface FileRoutesByFullPath {
   '/about': typeof AboutRoute
   '/marketing-set': typeof MarketingSetRoute
   '/marketing-set-2': typeof MarketingSet2Route
+  '/marketing-set-3': typeof MarketingSet3Route
   '/strategic-partnership': typeof StrategicPartnershipRoute
   '/ua/about': typeof UaAboutRoute
   '/ua/marketing-set': typeof UaMarketingSetRoute
@@ -81,6 +88,7 @@ export interface FileRoutesByTo {
   '/about': typeof AboutRoute
   '/marketing-set': typeof MarketingSetRoute
   '/marketing-set-2': typeof MarketingSet2Route
+  '/marketing-set-3': typeof MarketingSet3Route
   '/strategic-partnership': typeof StrategicPartnershipRoute
   '/ua/about': typeof UaAboutRoute
   '/ua/marketing-set': typeof UaMarketingSetRoute
@@ -93,6 +101,7 @@ export interface FileRoutesById {
   '/about': typeof AboutRoute
   '/marketing-set': typeof MarketingSetRoute
   '/marketing-set-2': typeof MarketingSet2Route
+  '/marketing-set-3': typeof MarketingSet3Route
   '/strategic-partnership': typeof StrategicPartnershipRoute
   '/ua/about': typeof UaAboutRoute
   '/ua/marketing-set': typeof UaMarketingSetRoute
@@ -106,6 +115,7 @@ export interface FileRouteTypes {
     | '/about'
     | '/marketing-set'
     | '/marketing-set-2'
+    | '/marketing-set-3'
     | '/strategic-partnership'
     | '/ua/about'
     | '/ua/marketing-set'
@@ -117,6 +127,7 @@ export interface FileRouteTypes {
     | '/about'
     | '/marketing-set'
     | '/marketing-set-2'
+    | '/marketing-set-3'
     | '/strategic-partnership'
     | '/ua/about'
     | '/ua/marketing-set'
@@ -128,6 +139,7 @@ export interface FileRouteTypes {
     | '/about'
     | '/marketing-set'
     | '/marketing-set-2'
+    | '/marketing-set-3'
     | '/strategic-partnership'
     | '/ua/about'
     | '/ua/marketing-set'
@@ -140,6 +152,7 @@ export interface RootRouteChildren {
   AboutRoute: typeof AboutRoute
   MarketingSetRoute: typeof MarketingSetRoute
   MarketingSet2Route: typeof MarketingSet2Route
+  MarketingSet3Route: typeof MarketingSet3Route
   StrategicPartnershipRoute: typeof StrategicPartnershipRoute
   UaAboutRoute: typeof UaAboutRoute
   UaMarketingSetRoute: typeof UaMarketingSetRoute
@@ -175,6 +188,13 @@ declare module '@tanstack/react-router' {
       path: '/marketing-set-2'
       fullPath: '/marketing-set-2'
       preLoaderRoute: typeof MarketingSet2RouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/marketing-set-3': {
+      id: '/marketing-set-3'
+      path: '/marketing-set-3'
+      fullPath: '/marketing-set-3'
+      preLoaderRoute: typeof MarketingSet3RouteImport
       parentRoute: typeof rootRouteImport
     }
     '/strategic-partnership': {
@@ -220,6 +240,7 @@ const rootRouteChildren: RootRouteChildren = {
   AboutRoute: AboutRoute,
   MarketingSetRoute: MarketingSetRoute,
   MarketingSet2Route: MarketingSet2Route,
+  MarketingSet3Route: MarketingSet3Route,
   StrategicPartnershipRoute: StrategicPartnershipRoute,
   UaAboutRoute: UaAboutRoute,
   UaMarketingSetRoute: UaMarketingSetRoute,

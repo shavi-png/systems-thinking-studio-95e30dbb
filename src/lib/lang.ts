@@ -3,7 +3,7 @@ import { useLocation } from "@tanstack/react-router";
 export type Lang = "en" | "uk";
 
 /** Pages that exist only in one language and have no counterpart. */
-const NO_COUNTERPART = ["/marketing-set-2"];
+const NO_COUNTERPART = ["/marketing-set-2", "/marketing-set-3"];
 
 export function langFromPath(pathname: string): Lang {
   return pathname === "/ua" || pathname.startsWith("/ua/") ? "uk" : "en";

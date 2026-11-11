@@ -1,11 +1,13 @@
 import { createFileRoute, Link } from "@tanstack/react-router";
 import { useState } from "react";
-import { ArrowRight, ArrowUpRight, ChevronLeft, ChevronRight, Maximize2 } from "lucide-react";
+import { ArrowRight, ArrowUpRight, Check, ChevronLeft, ChevronRight, FileText, Maximize2, Plus, Presentation } from "lucide-react";
 import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from "@/components/ui/accordion";
 import { Dialog, DialogContent, DialogDescription, DialogTitle } from "@/components/ui/dialog";
-import { offer3, stages, assistants3, benefits, situations, opportunities, howSteps, faq3, docPages } from "@/components/marketing-set-3/content";
-import shell from "@/assets/shell-hero.jpg.asset.json";
+import { offer3, stages, assistants3, benefits, situations, opportunities, faq3 } from "@/components/marketing-set-3/content";
 import portrait from "@/assets/ms3/vita-portrait.png.asset.json";
+import portraitWarm from "@/assets/vita-warm-portrait.png.asset.json";
+import nautilus from "@/assets/ms3/nautilus-pearl.png";
+import oliveCover from "@/assets/ms3/olive-cover.jpg";
 
 const title = "Маркетинг-сет — маркетингова стратегія та Action-навігатор за 39 € | Vita Shablii";
 const description = "AI-платформа для підприємців, експертів і маркетологів: індивідуальна маркетингова стратегія, готові PDF і Action-навігатор, який допоможе перейти до реалізації.";
@@ -14,228 +16,220 @@ export const Route = createFileRoute("/marketing-set-3")({
   component: MarketingSetThree,
 });
 
-/* Nautilus log spiral r = a·e^(b·t), b = 0.1784 — brand formula */
-const B = 0.1784;
-const A = 9;
-const C = 300;
-const pt = (t: number) => { const r = A * Math.exp(B * t); return [C + r * Math.cos(-t), C + r * Math.sin(-t)] as const; };
-const spiralPath = (() => { const p: string[] = []; for (let t = 0; t <= 6.1 * Math.PI; t += 0.04) { const [x, y] = pt(t); p.push(`${x.toFixed(1)} ${y.toFixed(1)}`); } return `M${p.join(" L")}`; })();
-const nodeT = [0, 14.2, 15.0, 15.8, 16.6, 17.5, 18.35, 19.15];
-const VB = (() => { let x0 = 1e9, y0 = 1e9, x1 = -1e9, y1 = -1e9; for (let t = 0; t <= 6.1 * Math.PI; t += 0.04) { const [x, y] = pt(t); x0 = Math.min(x0, x); y0 = Math.min(y0, y); x1 = Math.max(x1, x); y1 = Math.max(y1, y); } const pad = 30; return { x: x0 - pad, y: y0 - pad, w: x1 - x0 + 2 * pad, h: y1 - y0 + 2 * pad }; })();
+/* Line icons in the spirit of the prototype: nautilus spiral and scallop fan. */
+function Spiral({ className = "" }: { className?: string }) {
+  const p: string[] = [];
+  for (let t = 0; t <= 5.6 * Math.PI; t += 0.08) { const r = 0.9 * Math.exp(0.1784 * t); p.push(`${(24 + r * Math.cos(t)).toFixed(2)} ${(24 + r * Math.sin(t)).toFixed(2)}`); }
+  return <svg viewBox="0 0 48 48" className={className} fill="none" aria-hidden><path d={`M${p.join(" L")}`} stroke="currentColor" strokeWidth="1.3" strokeLinecap="round" /></svg>;
+}
+function Fan({ className = "" }: { className?: string }) {
+  return <svg viewBox="0 0 48 48" className={className} fill="none" aria-hidden stroke="currentColor" strokeWidth="1.3" strokeLinecap="round">
+    <path d="M6 30 A18 18 0 0 1 42 30 Z" />{[-60, -36, -12, 12, 36, 60].map((a) => { const r = (a * Math.PI) / 180; return <line key={a} x1="24" y1="30" x2={(24 + 17 * Math.sin(r)).toFixed(1)} y2={(30 - 17 * Math.cos(r)).toFixed(1)} />; })}<path d="M20 30 L20 36 L28 36 L28 30" />
+  </svg>;
+}
+const icons = [Fan, Spiral, Fan, Spiral];
 
-function DocModal({ pages, start, label, open, onOpenChange }: { pages: string[]; start: number; label: string; open: boolean; onOpenChange: (v: boolean) => void }) {
-  const [i, setI] = useState(start);
-  return <Dialog open={open} onOpenChange={(v) => { if (v) setI(start); onOpenChange(v); }}>
-    <DialogContent className="ms3-page ms3-modal max-h-[94dvh] max-w-3xl overflow-y-auto rounded-none bg-paper p-4 shadow-none sm:p-8">
-      <DialogTitle className="ms3-serif pr-8 text-xl">{label}</DialogTitle>
-      <DialogDescription className="text-xs text-smoke">Приклад створено під час тестування Маркетинг-сету · сторінка {i + 1} з {pages.length}</DialogDescription>
-      <img src={pages[i]} alt={`${label} — сторінка ${i + 1}`} className="mt-2 h-auto w-full border border-line" />
-      {pages.length > 1 && <div className="mt-3 flex justify-between">
-        <button type="button" className="ms3-link" disabled={i === 0} onClick={() => setI(i - 1)}><ChevronLeft className="size-4" /> Попередня</button>
-        <button type="button" className="ms3-link" disabled={i === pages.length - 1} onClick={() => setI(i + 1)}>Наступна <ChevronRight className="size-4" /></button>
+function DocModal({ pages, label, open, onOpenChange }: { pages: string[]; label: string; open: boolean; onOpenChange: (v: boolean) => void }) {
+  const [i, setI] = useState(0);
+  return <Dialog open={open} onOpenChange={(v) => { if (v) setI(0); onOpenChange(v); }}>
+    <DialogContent className="ms3p max-h-[94dvh] max-w-3xl overflow-y-auto bg-cream p-4 sm:p-8">
+      <DialogTitle className="ms3p-serif pr-8 text-2xl">{label}</DialogTitle>
+      <DialogDescription className="text-xs text-muted">Приклад створено під час тестування Маркетинг-сету · сторінка {i + 1} з {pages.length}</DialogDescription>
+      <img src={pages[i]} alt={`${label} — сторінка ${i + 1}`} className="mt-2 h-auto w-full rounded-md" />
+      {pages.length > 1 && <div className="mt-3 flex justify-between text-sm">
+        <button type="button" className="ms3p-link" disabled={i === 0} onClick={() => setI(i - 1)}><ChevronLeft className="size-4" /> Попередня</button>
+        <button type="button" className="ms3p-link" disabled={i === pages.length - 1} onClick={() => setI(i + 1)}>Наступна <ChevronRight className="size-4" /></button>
       </div>}
     </DialogContent>
   </Dialog>;
 }
 
+/* Document mockup composition used in hero and strategy section. */
+function DocStack({ variant, front }: { variant: "hero" | "plan"; front?: { img: string; label: string } | undefined }) {
+  return <div className={`ms3p-stack is-${variant}`}>
+    <div className="ms3p-doc ms3p-doc-main">
+      <div className="ms3p-doc-text"><p className="ms3p-brand"><Spiral className="size-3.5" /> Маркетинг-сет</p><p className="ms3p-serif ms3p-doc-title">Маркетингова<br />стратегія</p><p className="ms3p-doc-sub">Індивідуальний план<br />розвитку бізнесу</p></div>
+      <img src={oliveCover} alt="" width={768} height={1024} className="ms3p-doc-art" />
+    </div>
+    <div className="ms3p-doc ms3p-doc-plan"><p className="ms3p-serif text-[1.05em]">План дій</p>{[1, 2, 3, 4].map((k) => <p key={k} className="ms3p-line"><span />{k % 2 ? <i /> : <i className="w-1/2" />}</p>)}</div>
+    {variant === "hero" ? <div className="ms3p-doc ms3p-doc-aud"><p className="ms3p-brand"><Spiral className="size-3" /> Маркетинг-сет</p><p className="ms3p-serif mt-[0.4em] text-[1.05em]">Цільова аудиторія</p><div className="mt-[0.5em] flex gap-[0.6em]"><img src={portraitWarm.url} alt="" className="aspect-[4/3] w-[55%] rounded-[3px] object-cover" /><div className="flex-1 space-y-[0.45em] pt-1">{[1, 2, 3].map((k) => <p key={k} className="ms3p-line"><span /><i /></p>)}</div></div></div>
+      : <div className="ms3p-doc ms3p-doc-aud is-plan">{front ? <img src={front.img} alt={front.label} className="h-full w-full object-cover object-top" /> : <><p className="ms3p-serif text-[1.05em]">Стратегічний план дій</p><div className="mt-[0.8em] grid grid-cols-3 gap-[0.5em] text-center">{["Пріоритет", "Канали", "Завдання"].map((x) => <div key={x}><Spiral className="mx-auto size-[1.6em] text-olive" /><p className="mt-1 text-[0.5em] text-muted">{x}</p></div>)}</div><div className="mt-[0.8em] space-y-[0.2em]">{[1, 2, 3].map((k) => <p key={k} className="ms3p-line"><span /><i /></p>)}</div></>}</div>}
+  </div>;
+}
+
 function MarketingSetThree() {
   const [buyOpen, setBuyOpen] = useState(false);
-  const [stage, setStage] = useState(1);
+  const [stage, setStage] = useState(0);
   const [zoom, setZoom] = useState(false);
   const [asst, setAsst] = useState("nav");
   const s = stages[stage]!;
   const a = assistants3.find((x) => x.id === asst)!;
-  const cta = (cls = "") => <button type="button" className={`ms3-cta ${cls}`} onClick={() => setBuyOpen(true)}>Отримати доступ <ArrowRight className="size-4" /></button>;
+  const extras = assistants3.filter((x) => !x.included);
+  const ring = assistants3.filter((x) => !x.included);
+  const cta = (cls = "") => <button type="button" className={`ms3p-btn ${cls}`} onClick={() => setBuyOpen(true)}>Отримати доступ <ArrowRight className="size-4" /></button>;
 
-  return <div className="ms3-page" lang="uk">
-    <header className="fixed inset-x-0 top-0 z-40 border-b border-line bg-paper/95 backdrop-blur-sm">
-      <div className="ms3-wrap flex h-[72px] items-center justify-between gap-4">
-        <Link to="/" className="ms3-serif text-xl" aria-label="Vita Shablii — головна">Маркетинг-сет</Link>
+  return <div className="ms3p" lang="uk">
+    <header className="ms3p-top">
+      <div className="ms3p-wrap flex h-16 items-center justify-between gap-4">
+        <Link to="/" className="flex items-center gap-2.5 text-[12px] font-medium uppercase tracking-[0.18em]" aria-label="Vita Shablii — головна"><span className="grid size-8 place-items-center rounded-full border border-ink/30"><Spiral className="size-5" /></span><span className="whitespace-nowrap">Маркетинг-сет</span></Link>
         <nav className="flex items-center gap-7" aria-label="Розділи сторінки">
-          {[["#docs", "Що входить"], ["#how", "Як працює"], ["#assistants", "AI-асистенти"], ["#author", "Про авторку"], ["#faq", "FAQ"]].map(([h, l]) => <a key={h} href={h} className="hidden text-[13px] text-charcoal/75 hover:text-teal lg:block">{l}</a>)}
-          <a href="#buy" className="ms3-cta ms3-cta-sm">Отримати доступ <ArrowRight className="size-4" /></a>
+          {[["#benefits", "Що входить"], ["#how", "Як працює"], ["#assistants", "AI-асистенти"], ["#author", "Про авторку"], ["#faq", "FAQ"]].map(([h, l]) => <a key={h} href={h} className="hidden text-[13px] hover:text-olive lg:block">{l}</a>)}
+          {cta("is-sm")}
         </nav>
       </div>
     </header>
 
     <main>
-      {/* 01 Hero */}
-      <section className="ms3-hero bg-paper">
-        <div className="ms3-wrap grid items-center gap-14 lg:grid-cols-[1fr_1fr]">
-          <div>
-            <p className="ms3-kicker">Маркетинг-сет</p>
-            <p className="mt-2 text-sm text-charcoal/70">AI-платформа для підприємців, експертів і маркетологів</p>
-            <h1 className="mt-6">Маркетингова стратегія, яка допомагає заробляти більше</h1>
-            <p className="ms3-copy mt-6 max-w-[560px]">Зрозумійте, кому продавати свій продукт, чим вирізнятися серед конкурентів та куди вкладати гроші й зусилля в просування.</p>
-            <p className="ms3-copy mt-4 max-w-[560px]">Маркетинг-сет створить індивідуальну стратегію та план дій для вашого бізнесу. А 8 AI-асистентів допоможуть перейти до реалізації.</p>
-            <div className="mt-9 grid items-center gap-6 border-y border-line py-6 sm:grid-cols-[auto_1fr]">
-              <p className="ms3-serif text-[64px] leading-none text-teal">{offer3.priceEUR} €</p>
-              <div className="border-olive-soft sm:border-l sm:pl-6"><p className="ms3-serif text-lg italic">Маркетингова стратегія + Action-навігатор — в одному наборі.</p><p className="mt-2 text-sm text-charcoal/70">Ви отримуєте не лише рекомендації, а й персонального AI-помічника, який складе покроковий план їх реалізації. Action-навігатор уже входить у вартість.</p></div>
+      {/* Hero */}
+      <section className="ms3p-hero">
+        <img src={nautilus} alt="" width={1024} height={1024} className="ms3p-hero-shell" />
+        <div className="ms3p-wrap relative grid items-center gap-10 py-14 lg:grid-cols-[1fr_1.05fr] lg:py-20">
+          <div className="relative z-10">
+            <p className="ms3p-eyebrow">Маркетинг-сет <span /></p>
+            <p className="mt-3 text-sm font-medium">AI-платформа для підприємців, експертів і маркетологів</p>
+            <h1 className="ms3p-serif ms3p-h1 mt-4">Маркетингова стратегія, яка допомагає заробляти більше</h1>
+            <p className="mt-6 max-w-xl">Зрозумійте, кому продавати свій продукт, чим вирізнятися серед конкурентів та куди вкладати гроші й зусилля в просування.</p>
+            <p className="mt-3 max-w-xl">Маркетинг-сет створить індивідуальну стратегію та план дій для вашого бізнесу. А 8 AI-асистентів допоможуть перейти до реалізації.</p>
+            <div className="mt-8 flex flex-wrap items-center gap-x-6 gap-y-3">
+              <p className="ms3p-serif text-[56px] leading-none">{offer3.priceEUR} €</p>
+              <div className="border-l border-ink/25 pl-5"><p className="ms3p-serif ms3p-hl italic">Маркетинг-сет + Action-навігатор — в одному наборі</p><p className="mt-1 text-xs text-muted">Action-навігатор уже входить у вартість.</p></div>
             </div>
-            <div className="mt-8 flex flex-wrap items-center gap-x-8 gap-y-4">{cta()}<a href="#docs" className="ms3-link">Подивитися приклад результату <ArrowUpRight className="size-4" /></a></div>
-            <p className="mt-6 text-sm text-charcoal/70">+ 7 окремих AI-асистентів під різні задачі маркетингу</p>
+            <div className="mt-8 flex flex-wrap items-center gap-6">{cta()}<a href="#process" className="inline-flex items-center gap-1.5 text-sm font-medium underline-offset-4 hover:underline">Подивитися приклад результату <ArrowUpRight className="size-4" /></a></div>
+            <p className="mt-6 flex items-center gap-2 text-xs text-muted"><Plus className="size-3.5" /> 7 окремих AI-асистентів під різні задачі маркетингу</p>
           </div>
-          <div className="ms3-hero-visual" aria-label="Приклади документів Маркетинг-сету">
-            <img src={shell.url} alt="" aria-hidden className="ms3-hero-shell" />
-            <figure className="ms3-doc ms3-doc-a"><img src={docPages.strategy} alt="Обкладинка документа «Маркетинговий паспорт бренду»" /></figure>
-            <figure className="ms3-doc ms3-doc-b"><img src={docPages.audience} alt="Сторінка аналізу цільової аудиторії" loading="lazy" /></figure>
-            <figure className="ms3-doc ms3-doc-c"><img src={docPages.ads} alt="Рекламний план від асистента Таргетолог" loading="lazy" /></figure>
-            <p className="ms3-hero-note">Реальні документи з тестування платформи</p>
-          </div>
+          <DocStack variant="hero" />
         </div>
       </section>
 
-      {/* 02 Why */}
-      <section className="ms3-section bg-sand">
-        <div className="ms3-wrap">
-          <div className="grid gap-8 lg:grid-cols-[1fr_1fr] lg:gap-20"><h2>Чому Маркетинг-сет вартий уваги?</h2><div className="ms3-copy space-y-4"><p>Перед тим як вкладати гроші в рекламу, наймати маркетолога, запускати нову послугу або витрачати ще більше часу на контент, варто розібратися, що саме може допомогти вашому продукту продаватися краще.</p><p>Маркетинг-сет допомагає знайти відповіді на основі інформації про ваш бізнес.</p></div></div>
-          <div className="mt-14 grid md:grid-cols-3">{benefits.map(([t, b], i) => <article key={t} className="ms3-col"><p className="ms3-num">0{i + 1}</p><h3 className="mt-5">{t}</h3><p className="mt-4 text-charcoal/75">{b}</p></article>)}</div>
-          <p className="ms3-serif mt-12 max-w-3xl text-2xl italic text-olive-soft">І все це — на основі дослідження саме вашого продукту, його покупців і конкурентного середовища.</p>
+      {/* Benefits */}
+      <section id="benefits" className="ms3p-sec">
+        <div className="ms3p-wrap">
+          <h2 className="ms3p-serif ms3p-h2">Чому Маркетинг-сет вартий уваги?</h2>
+          <div className="mt-8 grid gap-8 md:grid-cols-3 md:gap-0">{benefits.map(([t, b], i) => { const I = icons[i]!; return <div key={t} className="ms3p-benefit"><I className="size-11 shrink-0 text-olive" /><div><h3 className="font-semibold leading-snug">{t}</h3><p className="mt-2 text-sm text-muted">{b}</p></div></div>; })}</div>
         </div>
       </section>
 
-      {/* 03 Familiar */}
-      <section className="ms3-section bg-paper">
-        <div className="ms3-wrap"><h2>Вам це знайомо?</h2>
-          <ul className="mt-12 grid gap-x-16 md:grid-cols-2">{situations.map((q) => <li key={q} className="ms3-situation"><span aria-hidden className="ms3-tick" />{q}</li>)}</ul>
-        </div>
-      </section>
-      <section className="ms3-section bg-sand">
-        <div className="ms3-wrap"><h2 className="max-w-3xl">Ось як Маркетинг-сет допомагає побачити можливості</h2>
-          <div className="mt-14 grid md:grid-cols-2 lg:grid-cols-4">{opportunities.map(([t, b], i) => <article key={t} className="ms3-col"><svg viewBox="0 0 600 600" className="size-10" aria-hidden><path d={spiralPath} fill="none" stroke="var(--ms3-olive-soft)" strokeWidth="14" /></svg><h3 className="mt-5 !text-[21px]">{t}</h3><p className="mt-4 text-charcoal/75">{b}</p></article>)}</div>
-          <p className="mt-12 max-w-2xl text-charcoal/75">Усе це збирається в індивідуальну маркетингову стратегію, на яку ви можете спиратися під час просування свого продукту.</p>
+      {/* Situations */}
+      <section className="ms3p-sec pt-0">
+        <div className="ms3p-wrap">
+          <h2 className="ms3p-serif ms3p-h2">Вам це знайомо?</h2>
+          <ul className="mt-8 grid gap-x-14 gap-y-5 md:grid-cols-2">{situations.map((x) => <li key={x} className="flex gap-3 text-[15px]"><span className="ms3p-bullet" aria-hidden />{x}</li>)}</ul>
         </div>
       </section>
 
-      {/* 04 Docs gallery */}
-      <section id="docs" className="ms3-section bg-paper">
-        <div className="ms3-wrap">
-          <div className="grid gap-6 lg:grid-cols-[1fr_1fr] lg:gap-20"><h2>Подивіться, як створюється ваша маркетингова стратегія</h2><p className="ms3-copy self-end">Маркетинг-сет проводить вас через послідовне дослідження бізнесу. Кожен етап допомагає краще зрозуміти продукт і підготувати основу для наступних маркетингових рішень.</p></div>
-          <div className="mt-14 grid gap-10 lg:grid-cols-[0.9fr_1.1fr] lg:gap-16">
-            <ol className="ms3-stages" aria-label="Етапи дослідження">{stages.map((st, i) => <li key={st.n}>
-              <button type="button" aria-expanded={i === stage} className={`ms3-stage ${i === stage ? "is-active" : ""}`} onClick={() => setStage(i)}><span className="ms3-stage-n">{st.n}</span><span className="ms3-serif text-xl">{st.title}</span></button>
-              {i === stage && <div className="ms3-stage-body">{st.lead && <p className="font-medium">{st.lead}</p>}{st.body.map((p) => <p key={p} className="mt-3 text-charcoal/75">{p}</p>)}
-                {st.pages.length > 0 && <button type="button" className="ms3-link mt-4" onClick={() => setZoom(true)}>{st.cta} <Maximize2 className="size-4" /></button>}
-                {st.pages.length > 0 && <button type="button" className="ms3-doc-mobile lg:hidden" onClick={() => setZoom(true)} aria-label={`Відкрити на весь екран: ${st.title}`}><img src={st.pages[1] ?? st.pages[0]} alt={`${st.title} — приклад документа`} loading="lazy" /></button>}
+      {/* Opportunities band */}
+      <section className="ms3p-band">
+        <img src={nautilus} alt="" className="ms3p-band-shell" />
+        <div className="ms3p-wrap relative py-12 md:py-14">
+          <h2 className="ms3p-serif ms3p-h2 flex items-center gap-4">Ось як Маркетинг-сет допомагає побачити можливості <Fan className="hidden size-9 shrink-0 md:block" /></h2>
+          <div className="mt-8 grid gap-8 sm:grid-cols-2 lg:grid-cols-4 lg:gap-0">{opportunities.map(([t, b], i) => { const I = icons[i]!; return <div key={t} className="ms3p-opp"><I className="size-10" /><h3 className="mt-3 text-[15px] font-medium leading-snug">{t}</h3><p className="mt-2 text-sm opacity-75">{b}</p></div>; })}</div>
+        </div>
+      </section>
+
+      {/* Process */}
+      <section id="process" className="ms3p-sec">
+        <div className="ms3p-wrap grid gap-12 lg:grid-cols-[1fr_1.1fr] lg:items-start">
+          <div>
+            <h2 className="ms3p-serif ms3p-h2">Подивіться, як створюється ваша маркетингова стратегія</h2>
+            <ol className="ms3p-timeline mt-8">{stages.map((x, i) => <li key={x.n} className={i === stage ? "is-active" : ""}>
+              <button type="button" onClick={() => setStage(i)} aria-expanded={i === stage} className="flex w-full gap-4 text-left">
+                <span className="ms3p-num">{x.n}</span>
+                <span className="min-w-0 flex-1"><span className="block font-semibold">{x.title}</span><span className="mt-0.5 block text-[13px] text-muted">{x.lead ?? x.body[0]}</span></span>
+              </button>
+              {i === stage && <div className="ms3p-stage-body">{(x.lead ? x.body : x.body.slice(1)).map((p) => <p key={p}>{p}</p>)}{x.pages.length > 0 && <button type="button" className="ms3p-link mt-1" onClick={() => setZoom(true)}><Maximize2 className="size-3.5" /> {x.cta}</button>}
+                {x.pages.length > 0 && <button type="button" className="mt-4 block w-full lg:hidden" onClick={() => setZoom(true)} aria-label={`Збільшити: ${x.title}`}><img src={x.pages[0]} alt={`${x.title} — приклад документа`} loading="lazy" className="w-full rounded-md shadow-[0_18px_40px_-20px_rgba(40,40,20,0.45)]" /></button>}
               </div>}
             </li>)}</ol>
-            <div className="hidden lg:block">
-              {s.pages.length > 0 ? <button type="button" className="ms3-gallery" onClick={() => setZoom(true)} aria-label={`Збільшити документ: ${s.title}`}>
-                <img src={s.pages[0]} alt="" aria-hidden className="ms3-gallery-back" loading="lazy" />
-                <img src={s.pages[1] ?? s.pages[0]} alt={`${s.title} — приклад документа`} className="ms3-gallery-front" />
-                <span className="ms3-zoom"><Maximize2 className="size-4" /> Збільшити</span>
-              </button> : <div className="ms3-brief"><p className="ms3-kicker">Бриф</p>{["Що ви продаєте?", "Кому?", "На якому ринку працюєте?", "Які маєте цілі?", "Що вже пробували в маркетингу?"].map((q, i) => <p key={q} className="ms3-brief-row"><span className="ms3-num">0{i + 1}</span><span className="ms3-serif text-2xl">{q}</span></p>)}</div>}
-            </div>
           </div>
-          <div className="mt-16 grid gap-8 border-t border-line pt-10 lg:grid-cols-[1fr_1fr] lg:gap-20">
-            <div><h3>Ваші дослідження — у готових документах</h3><p className="mt-4 text-charcoal/75">Результати кожного змістового етапу можна завантажити у PDF та у вигляді оформлених презентацій. Ви можете повертатися до них, використовувати для власної роботи, обговорювати з командою або передавати маркетинговим спеціалістам.</p></div>
-            <p className="self-end text-sm text-smoke">Приклади на сторінці створені під час тестування Маркетинг-сету. Модельні висновки та неперевірені припущення потребують підтвердження реальними даними.</p>
+          <div className="hidden lg:block lg:sticky lg:top-24">
+            <button type="button" className="block w-full" onClick={() => s.pages.length && setZoom(true)} aria-label={s.pages.length ? `Збільшити документ: ${s.title}` : undefined} disabled={!s.pages.length}>
+              <DocStack variant="plan" front={s.pages[0] ? { img: s.pages[0], label: `${s.title} — приклад документа` } : undefined} />
+            </button>
+            <div className="mt-6 flex flex-wrap justify-center gap-x-10 gap-y-2 text-xs text-muted"><span className="flex items-center gap-2"><FileText className="size-4" /> Готова стратегія у PDF</span><span className="flex items-center gap-2"><Presentation className="size-4" /> Презентація з ключовими висновками</span></div>
           </div>
         </div>
-        {s.pages.length > 0 && <DocModal key={stage} pages={s.pages} start={s.pages.length > 1 ? 1 : 0} label={s.title} open={zoom} onOpenChange={setZoom} />}
+        {s.pages.length > 0 && <DocModal key={stage} pages={s.pages} label={s.title} open={zoom} onOpenChange={setZoom} />}
       </section>
 
-      {/* 05 Assistants on the nautilus spiral */}
-      <section id="assistants" className="ms3-section bg-sand overflow-hidden">
-        <div className="ms3-wrap">
-          <div className="grid gap-12 lg:grid-cols-[0.85fr_1.15fr] lg:gap-14">
+      {/* Assistants */}
+      <section id="assistants" className="ms3p-sec ms3p-asst-sec">
+        <img src={nautilus} alt="" className="ms3p-asst-shell" />
+        <div className="ms3p-wrap relative">
+          <div className="grid items-center gap-10 lg:grid-cols-[0.8fr_1.2fr]">
             <div>
-              <h2>8 AI-асистентів допоможуть рухатися далі, щоб стратегія не лягла в шухляду</h2>
-              <p className="ms3-copy mt-6">Стратегія допомагає визначити напрямок. Але щоб рухатися далі, потрібно підготувати матеріали, організувати роботу й перевіряти заплановане на практиці.</p>
-              <p className="ms3-copy mt-4">Для цього в Маркетинг-сеті є 8 AI-асистентів. Вони використовують інформацію про ваш бренд, аудиторію та позиціонування, зібрану під час дослідження.</p>
-              <div className="ms3-asst-card mt-10" aria-live="polite">
-                <p className={`ms3-badge ${a.included ? "is-included" : ""}`}>{a.included ? "Входить у вартість Маркетинг-сету" : "Можна додати за потреби"}</p>
-                <h3 className="mt-4">{a.name}</h3><p className="mt-3 text-charcoal/80">{a.body}</p>
-              </div>
+              <h2 className="ms3p-serif ms3p-h2">8 AI-асистентів допоможуть реалізувати стратегію, щоб вона не лягла в шухляду</h2>
+              <p className="mt-5 text-[15px]">Action-навігатор уже входить у вартість. За бажанням ви можете додати ще 7 спеціалізованих AI-асистентів.</p>
+              <div className="ms3p-asst-card mt-8" aria-live="polite"><p className="text-[11px] font-medium uppercase tracking-[0.16em] text-olive">{a.included ? "Входить у вартість" : "Можна додати за потреби"}</p><h3 className="ms3p-serif mt-2 text-2xl">{a.name}</h3><p className="mt-2 text-sm text-muted">{a.body}</p></div>
             </div>
+            <div className="ms3p-ring" role="group" aria-label="AI-асистенти">
+              <div className="ms3p-ring-circle" aria-hidden />
+              <button type="button" onClick={() => setAsst("nav")} aria-pressed={asst === "nav"} className="ms3p-ring-center"><span className="ms3p-serif text-[clamp(18px,2.2vw,24px)] leading-tight">Action-<br />навігатор</span><span className="ms3p-pill">Входить у вартість</span></button>
+              {ring.map((x, i) => { const ang = (-140 + (i * 280) / (ring.length - 1)) * (Math.PI / 180); return <button key={x.id} type="button" onClick={() => setAsst(x.id)} onMouseEnter={() => setAsst(x.id)} aria-pressed={asst === x.id} className={`ms3p-ring-node ${asst === x.id ? "is-active" : ""}`} style={{ left: `${50 + 38 * Math.sin(ang)}%`, top: `${50 - 38 * Math.cos(ang)}%` }}><span>{x.name}</span></button>; })}
+            </div>
+          </div>
+          <ul className="ms3p-asst-grid mt-12">{extras.map((x, i) => { const I = icons[i % 4]!; return <li key={x.id}><button type="button" onClick={() => setAsst(x.id)} aria-pressed={asst === x.id} className={asst === x.id ? "is-active" : ""}><I className="size-8 text-olive" /><span className="mt-2 block text-[13px] font-semibold leading-tight">{x.name}</span><span className="mt-1.5 block text-xs text-muted">{x.body.split(/[:.]/)[0]}.</span></button></li>; })}</ul>
+        </div>
+      </section>
+
+      {/* Trust / how it works */}
+      <section id="how" className="ms3p-band">
+        <div className="ms3p-wrap relative py-12 md:py-14">
+          <div className="grid gap-10 lg:grid-cols-[0.8fr_1.4fr] lg:items-center">
+            <h2 className="ms3p-serif ms3p-h2">Чому можна довіряти стратегії, яку створює ця AI-платформа?</h2>
             <div>
-              <div className="ms3-spiral" style={{ aspectRatio: `${VB.w} / ${VB.h}` }}>
-                <svg viewBox={`${VB.x} ${VB.y} ${VB.w} ${VB.h}`} aria-hidden className="h-full w-full"><path d={spiralPath} fill="none" stroke="var(--ms3-olive-soft)" strokeWidth="1.3" />{nodeT.slice(1).map((t, i) => { const [x, y] = pt(t); return <line key={i} x1={C} y1={C} x2={x} y2={y} stroke="var(--ms3-olive-soft)" strokeOpacity="0.22" strokeWidth="0.8" />; })}</svg>
-                {assistants3.map((x, i) => { const [px, py] = pt(nodeT[i] ?? 0); return <button key={x.id} type="button" onClick={() => setAsst(x.id)} onMouseEnter={() => setAsst(x.id)} aria-pressed={asst === x.id} className={`ms3-node ${x.included ? "is-main" : ""} ${py < C ? "is-up" : ""} ${asst === x.id ? "is-active" : ""}`} style={{ left: `${((px - VB.x) / VB.w) * 100}%`, top: `${((py - VB.y) / VB.h) * 100}%` }}><span className="ms3-dot" aria-hidden />{x.included ? <span className="ms3-node-main"><span className="ms3-serif text-lg">{x.name}</span><span className="ms3-badge is-included mt-1 !text-[9px]">Входить у вартість</span></span> : <span className="ms3-node-label">{x.name}</span>}</button>; })}
-              </div>
-              <ul className="ms3-asst-list" aria-label="AI-асистенти">{assistants3.map((x) => <li key={x.id}><button type="button" aria-pressed={asst === x.id} onClick={() => setAsst(x.id)} className={asst === x.id ? "is-active" : ""}><span>{x.name}</span><span className="text-xs text-smoke">{x.included ? "У вартості" : "За потреби"}</span></button></li>)}</ul>
+              <p className="text-sm opacity-80">Вона поєднує ваші дані, перевірені підходи в маркетингу та практичну логіку прийняття рішень.</p>
+              <ol className="mt-6 grid grid-cols-2 gap-6 md:flex md:items-start md:justify-between">{["Дані про бізнес", "Дослідження", "Стратегічні рекомендації", "Перевірка на практиці"].map((t, i) => { const I = icons[i]!; return <li key={t} className="flex items-start gap-3 md:flex-1 md:flex-col md:items-center md:text-center"><I className="size-11 shrink-0" /><span className="text-[13px] font-medium leading-snug">{t}</span>{i < 3 && <ArrowRight className="mt-4 hidden size-4 opacity-60 md:absolute" aria-hidden />}</li>; })}</ol>
             </div>
           </div>
-          <div className="mt-16 grid gap-8 border-t border-line pt-10 lg:grid-cols-[1fr_1fr] lg:gap-20">
-            <div><h3>Усі вони вже знають ваш бренд</h3><p className="mt-4 text-charcoal/75">Наприклад, якщо стратегія рекомендує протестувати рекламу, Action-навігатор допоможе визначити необхідні завдання, а Таргетолог — підготувати рекламний план з урахуванням вашої аудиторії та позиціонування. Вам не потрібно щоразу пояснювати новому асистенту, що саме ви продаєте і кому.</p></div>
-            <div className="self-end space-y-3"><p className="ms3-serif text-xl italic text-olive-soft">Ви самі вирішуєте, які завдання виконувати самостійно, а для яких додати спеціалізованого AI-асистента.</p><p className="text-sm text-charcoal/70">Action-навігатор входить у вартість Маркетинг-сету. Ще 7 AI-асистентів можна додати за потреби, за додаткову оплату.</p></div>
+          <div className="mt-10 grid gap-6 border-t border-cream/20 pt-6 text-sm opacity-80 md:grid-cols-2"><p>Чим точніше й повніше ви опишете свій бізнес, тим кориснішими й конкретнішими будуть гіпотези й рекомендації.</p><p>Маркетинг — це про обґрунтовані гіпотези, перевірку і розвиток, а не про хибні гарантії. Саме так працює ця платформа.</p></div>
+        </div>
+      </section>
+
+      {/* Author */}
+      <section id="author" className="ms3p-sec pb-0">
+        <div className="ms3p-wrap grid items-end gap-8 md:grid-cols-[1fr_1fr_1.2fr]">
+          <h2 className="ms3p-serif ms3p-h2 self-start">Хто створив Маркетинг-сет?</h2>
+          <img src={portrait.url} alt="Віта Шаблій — авторка Маркетинг-сету" loading="lazy" className="mx-auto aspect-[4/5] w-full max-w-[320px] object-cover grayscale" />
+          <div className="self-center pb-8">
+            <h3 className="ms3p-serif text-3xl">Віта Шаблій</h3>
+            <ul className="mt-5 space-y-4">{["13 років у практичному маркетингу.", "Засновниця «Анатомія маркетингу» та «Синтез».", "Інтегрую AI в маркетинг і бізнес-процеси з 2020 року.", "Попередні версії інструментів використовують понад 200 людей."].map((x, i) => { const I = icons[i]!; return <li key={x} className="flex items-center gap-3 text-sm"><I className="size-8 shrink-0 text-olive" />{x}</li>; })}</ul>
           </div>
         </div>
       </section>
 
-      {/* 06 How */}
-      <section id="how" className="ms3-section bg-paper">
-        <div className="ms3-wrap">
-          <div className="grid gap-6 lg:grid-cols-[1fr_1fr] lg:gap-20"><h2>Як працює Маркетинг-сет?</h2><p className="ms3-copy self-end">Щоб створити стратегію, вам не потрібно знати маркетингові методології або вміти писати складні запити до AI. Достатньо розповісти про свій продукт.</p></div>
-          <ol className="mt-14 grid md:grid-cols-2 lg:grid-cols-4">{howSteps.map(([t, b], i) => <li key={t} className="ms3-step"><p className="ms3-serif text-[56px] leading-none text-teal">{i + 1}</p><p className="mt-2 text-xs uppercase tracking-[0.14em] text-smoke">Крок {i + 1}</p><h3 className="mt-4 !text-[21px]">{t}</h3><p className="mt-3 text-charcoal/75">{b}</p></li>)}</ol>
+      {/* Offer */}
+      <section id="buy" className="ms3p-band">
+        <div className="ms3p-wrap py-10 md:py-12">
+          <div className="grid items-center gap-8 md:grid-cols-[1.2fr_1fr_1.2fr]">
+            <p className="ms3p-serif text-center text-[clamp(26px,3vw,36px)] leading-tight md:text-left">Маркетинг-сет +<br />Action-навігатор</p>
+            <div className="text-center"><p className="ms3p-serif text-[64px] leading-none">{offer3.priceEUR} €</p>{cta("is-light mt-5")}</div>
+            <ul className="space-y-2.5 text-sm">{["Індивідуальна маркетингова стратегія", "Готові PDF та презентації", "Action-навігатор — уже у вашому наборі", `Доступ ${offer3.accessDays} днів, одноразова оплата`].map((x) => <li key={x} className="flex gap-2.5"><Check className="mt-0.5 size-4 shrink-0" />{x}</li>)}</ul>
+          </div>
+          <p className="mt-8 text-center text-sm opacity-80">За бажанням ви можете додати ще 7 спеціалізованих AI-асистентів — по одному або всі разом за {offer3.allSevenAssistantsEUR} €.</p>
         </div>
       </section>
 
-      {/* 07 Method */}
-      <section className="ms3-section bg-sand">
-        <div className="ms3-wrap">
-          <h2 className="max-w-3xl">Стратегія з AI, в основі якої — реальна маркетингова методологія</h2>
-          <div className="mt-10 grid gap-10 lg:grid-cols-[1fr_1fr] lg:gap-20">
-            <div className="ms3-copy space-y-4"><p>Маркетинг-сет побудований на підходах, які використовуються у практичній роботі маркетологів із бізнесами.</p><p>В основі платформи — дослідження продукту, аналіз конкурентного середовища, сегментація аудиторії, формування ціннісної пропозиції, позиціонування, вибір маркетингових каналів і визначення пріоритетів.</p><p>Ці підходи описані в професійній маркетинговій літературі та застосовуються під час роботи над реальними проєктами. У Маркетинг-сеті вони об'єднані в послідовний процес дослідження з використанням AI.</p></div>
-            <div className="ms3-copy space-y-4"><p>Спочатку платформа збирає інформацію про бізнес. Потім допомагає дослідити продукт, аудиторію та конкурентне середовище. На основі цих результатів формує позиціонування та рекомендації щодо просування.</p><p>Кожен наступний етап спирається на контекст, зібраний раніше.</p></div>
-          </div>
-          <ol className="ms3-flow mt-14" aria-label="Схема методології">{["Дані про бізнес", "Дослідження", "Стратегічні рекомендації", "Перевірка на практиці"].map((x, i) => <li key={x}><svg viewBox="0 0 60 60" className="size-14" aria-hidden><circle cx="30" cy="30" r={8 + i * 6} fill="none" stroke="var(--ms3-olive-soft)" strokeWidth="1" />{i > 0 && <circle cx="30" cy="30" r="6" fill="none" stroke="var(--ms3-olive-soft)" strokeWidth="1" />}<circle cx="30" cy="30" r="2.5" fill="var(--ms3-teal)" /></svg><span className="ms3-serif text-xl">{x}</span></li>)}</ol>
-          <div className="mt-14 grid gap-10 border-t border-line pt-10 lg:grid-cols-[1fr_1fr] lg:gap-20">
-            <div><h3>Від чого залежить якість вашої стратегії?</h3><p className="ms3-serif mt-4 text-2xl italic text-teal">Чим повніше й точніше ви розповісте про свій бізнес, тим більше корисного контексту отримає Маркетинг-сет для дослідження.</p></div>
-            <div className="space-y-4 text-charcoal/80"><p>Наприклад, інформація про ваших покупців, ціни, ринок, попередні рекламні кампанії та результати продажів допомагає формувати конкретніші гіпотези й рекомендації.</p><p>Якщо ви тільки запускаєте продукт і частини цих даних ще немає, платформа все одно допоможе визначити можливі напрямки розвитку. Просто деякі висновки потребуватимуть перевірки на реальних покупцях.</p><p>Так працюють і маркетингові дослідження: вони допомагають приймати більш обґрунтовані рішення, а результати цих рішень перевіряються на практиці.</p><p className="font-medium text-charcoal">Маркетинг-сет дає вам основу для таких рішень і допомагає зрозуміти, що варто перевірити насамперед.</p></div>
-          </div>
+      {/* FAQ */}
+      <section id="faq" className="ms3p-sec">
+        <div className="ms3p-wrap grid gap-8 lg:grid-cols-[0.6fr_1.4fr]">
+          <h2 className="ms3p-serif text-[28px]">Популярні запитання</h2>
+          <Accordion type="single" collapsible className="w-full">{faq3.map(([q, ans], i) => <AccordionItem key={q} value={`f${i}`} className="border-ink/15"><AccordionTrigger className="text-left text-sm font-medium hover:no-underline">{q}</AccordionTrigger><AccordionContent className="text-sm text-muted">{ans}</AccordionContent></AccordionItem>)}</Accordion>
         </div>
       </section>
 
-      {/* 08 Author */}
-      <section id="author" className="ms3-section bg-paper">
-        <div className="ms3-wrap grid gap-12 lg:grid-cols-[0.8fr_1.2fr] lg:gap-20">
-          <figure><img src={portrait.url} alt="Віта Шаблій — авторка Маркетинг-сету, чорно-білий портрет" loading="lazy" className="aspect-[4/5] w-full object-cover grayscale" /><figcaption className="mt-3 text-xs text-smoke">Віта Шаблій</figcaption></figure>
-          <div>
-            <h2>Хто створив Маркетинг-сет?</h2>
-            <dl className="mt-10 grid grid-cols-2 border-t border-line">{[["13", "років практичного маркетингу"], ["2", "проєкти: «Анатомія маркетингу» та «Синтез»"], ["2020", "з цього року інтегрую AI у бізнес-процеси"], ["200+", "людей працювали з попередніми версіями"]].map(([n, l]) => <div key={l} className="border-b border-line py-6 pr-4 odd:border-r odd:pr-6 even:pl-6"><dt className="ms3-serif text-[44px] leading-none text-teal">{n}</dt><dd className="mt-2 text-sm text-charcoal/75">{l}</dd></div>)}</dl>
-            <div className="ms3-copy mt-10 space-y-4"><p>Привіт! Мене звати Віта Шаблій. Я маркетологиня-практик, засновниця проєктів «Анатомія маркетингу» та «Синтез» і авторка Маркетинг-сету.</p><p>Я вже 13 років працюю в маркетингу. За цей час працювала з різними бізнесами та IT-проєктами, досліджувала ринки, займалася позиціонуванням, стратегіями просування й реалізацією маркетингових рішень. З 2020 року також інтегрую AI у маркетингові та бізнес-процеси.</p><p>За роки роботи я переконалася, що до вибору реклами, контенту та інструментів продажу важливо розібратися в самому продукті. Хто його покупець? Чому він має обрати саме цю пропозицію? Що вже працює, а які рішення ще потрібно перевірити?</p><p>Саме з цих запитань я починаю маркетингову роботу. Таку логіку я заклала й у Маркетинг-сет.</p><p>Із попередніми версіями продукту вже працювали понад 200 людей. З часом я вдосконалила підхід до досліджень, додала нові інструменти та перетворила Маркетинг-сет на повноцінну AI-платформу. У ній я об'єднала частину своїх практичних напрацювань із можливостями технологій, щоб підприємці, експерти та маркетологи могли самостійно досліджувати свої продукти, створювати стратегії та переходити до їх реалізації.</p></div>
-          </div>
-        </div>
-      </section>
-
-      {/* 09 Offer */}
-      <section id="buy" className="ms3-section ms3-teal">
-        <div className="ms3-wrap grid gap-12 lg:grid-cols-[1fr_1fr] lg:gap-20">
-          <div><h2>Маркетинг-сет + Action-навігатор</h2><p className="ms3-serif mt-5 text-2xl italic">Ваша маркетингова стратегія та персональний план її реалізації — в одному наборі</p><p className="ms3-serif mt-10 text-[88px] leading-none">{offer3.priceEUR} €</p><p className="mt-6 max-w-md">Ви розповідаєте про свій продукт, а Маркетинг-сет допомагає пройти дослідження й отримати:</p></div>
-          <div>
-            <ul className="border-t border-current/30">{[["Індивідуальну маркетингову стратегію", "Із висновками про продукт, потенційних покупців, конкурентне середовище, позиціонування та перспективні канали просування."], ["Готові PDF та презентації", "Щоб користуватися результатами у власній роботі, обговорювати їх із командою або передавати спеціалістам."], ["Action-навігатор — уже у вашому наборі", "Ваш персональний AI-помічник складе план реалізації стратегії, допоможе визначити послідовність завдань і відстежувати їх виконання."]].map(([t, b]) => <li key={t} className="border-b border-current/30 py-6"><h3 className="!text-[22px]">{t}</h3><p className="mt-2 opacity-85">{b}</p></li>)}</ul>
-            <p className="mt-6 font-medium">Усе це входить у {offer3.priceEUR} €.</p>
-            <div className="mt-8">{cta("ms3-cta-light")}</div>
-            <div className="mt-12 border-t border-current/30 pt-8"><h3 className="!text-[22px]">А якщо знадобиться допомога з реалізацією?</h3><p className="mt-3 opacity-85">Ви можете доповнити свій Маркетинг-сет ще {offer3.extraAssistantsCount} спеціалізованими AI-асистентами — для контенту, реклами, email, продажів, лід-магнітів, лендингів і воронок. Додавайте потрібних асистентів окремо за додаткову оплату або оберіть комплект усіх 7 за {offer3.allSevenAssistantsEUR} €.</p></div>
-          </div>
-        </div>
-      </section>
-
-      {/* 10 FAQ */}
-      <section id="faq" className="ms3-section bg-paper">
-        <div className="ms3-wrap grid gap-10 lg:grid-cols-[0.7fr_1.3fr] lg:gap-20"><h2>Часті запитання</h2>
-          <Accordion type="single" collapsible>{faq3.map(([q, ans], i) => <AccordionItem key={q} value={`f${i}`} className="border-line"><AccordionTrigger className="ms3-serif py-6 text-left text-xl font-normal hover:no-underline">{q}</AccordionTrigger><AccordionContent className="pb-6 text-base leading-relaxed text-charcoal/80">{ans}</AccordionContent></AccordionItem>)}</Accordion>
-        </div>
-      </section>
-
-      {/* 11 Final CTA */}
-      <section className="ms3-section ms3-final bg-sand relative overflow-hidden">
-        <img src={shell.url} alt="" aria-hidden className="ms3-final-shell" loading="lazy" />
-        <div className="ms3-wrap relative">
-          <div className="max-w-[640px]"><h2>Почніть із рішень, які справді потрібні вашому проєкту чи ідеї</h2>
-            <p className="ms3-copy mt-6">Зрозумійте, кому потрібен ваш продукт, чим він може вирізнятися серед конкурентів та куди варто спрямовувати гроші й зусилля.</p>
-            <p className="ms3-copy mt-4">Маркетинг-сет допоможе створити індивідуальну маркетингову стратегію, а Action-навігатор — перейти до конкретних завдань.</p>
-            <div className="mt-9 flex flex-wrap items-center gap-8"><p className="ms3-serif text-[56px] leading-none text-teal">{offer3.priceEUR} €</p>{cta()}</div>
-            <p className="mt-6 text-sm text-charcoal/75">Маркетингова стратегія та Action-навігатор входять у вартість.</p>
-            <p className="mt-1 text-sm text-charcoal/75">+ 7 окремих AI-асистентів під різні задачі маркетингу</p>
-          </div>
+      {/* Final */}
+      <section className="ms3p-final">
+        <img src={nautilus} alt="" className="ms3p-final-shell" />
+        <div className="ms3p-wrap relative py-16 md:py-20">
+          <h2 className="ms3p-serif ms3p-h2 max-w-2xl">Почніть із рішень, які справді потрібні вашому проєкту чи ідеї</h2>
+          <p className="mt-4 max-w-lg text-[15px]">Отримайте індивідуальну маркетингову стратегію та план дій, а також Action-навігатор — уже у вашому наборі.</p>
+          <div className="mt-8">{cta()}</div>
         </div>
       </section>
     </main>
 
-    <footer className="border-t border-line bg-paper"><div className="ms3-wrap flex flex-wrap items-center justify-between gap-5 py-10 text-xs text-smoke"><Link to="/">© 2026 Vita Shablii</Link><div className="flex flex-wrap gap-6"><Link to="/ua/marketing-set">Маркетинг-сет</Link><Link to="/marketing-set-2">Маркетинг-сет 2</Link></div><a href="mailto:hello@vitashablii.com">hello@vitashablii.com</a></div></footer>
+    <footer className="border-t border-ink/10"><div className="ms3p-wrap flex flex-wrap items-center justify-between gap-5 py-8 text-xs text-muted"><Link to="/">© 2026 Vita Shablii</Link><div className="flex flex-wrap gap-6"><Link to="/ua/marketing-set">Маркетинг-сет</Link><Link to="/marketing-set-2">Маркетинг-сет 2</Link></div><a href="mailto:hello@vitashablii.com">hello@vitashablii.com</a></div></footer>
 
-    <Dialog open={buyOpen} onOpenChange={setBuyOpen}><DialogContent className="ms3-page rounded-none bg-paper shadow-none"><DialogTitle className="ms3-serif text-3xl">Маркетинг-сет · {offer3.priceEUR} €</DialogTitle><DialogDescription className="mt-3 text-sm leading-relaxed text-charcoal/80">Оплату на цій сторінці ще не підключено. Напишіть нам — і ми надішлемо посилання на доступ до платформи.</DialogDescription><a className="ms3-cta mt-4 justify-center" href="mailto:hello@vitashablii.com?subject=Маркетинг-сет%20—%20доступ">Написати на hello@vitashablii.com <ArrowRight className="size-4" /></a></DialogContent></Dialog>
+    <Dialog open={buyOpen} onOpenChange={setBuyOpen}><DialogContent className="ms3p bg-cream"><DialogTitle className="ms3p-serif text-3xl">Маркетинг-сет · {offer3.priceEUR} €</DialogTitle><DialogDescription className="mt-2 text-sm leading-relaxed text-muted">Оплату на цій сторінці ще не підключено. Напишіть нам — і ми надішлемо посилання на доступ до платформи.</DialogDescription><a className="ms3p-btn mt-4 justify-center" href="mailto:hello@vitashablii.com?subject=Маркетинг-сет%20—%20доступ">Написати на hello@vitashablii.com <ArrowRight className="size-4" /></a></DialogContent></Dialog>
   </div>;
 }

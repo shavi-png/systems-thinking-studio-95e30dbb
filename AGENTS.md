@@ -13,4 +13,4 @@
 - Keep Marketing Set 2 as an independent route with scoped Cyrillic typography and shared offer data; this preserves the original English site and makes product rules testable.
 - Use a shared ProductPreview for Marketing Set 2 document-derived screen images and accessible enlargement dialogs; this keeps product evidence consistent without simulating a working platform.
 - Ukrainian site lives under /ua as separate route files (ua.*.tsx) wrapped in .ua-page for Cyrillic fonts; shared Header/Footer/Solutions pick language from the URL via src/lib/lang.ts, so English pages stay untouched.
-- Keep Marketing Set 3 as an independent route with its own .ms3-page palette scope and offer data in src/components/marketing-set-3/content.ts; document pages are pre-rendered images, not live PDFs.
+- Keep Marketing Set 3 as an independent route styled by its own .ms3p scope (follows the user-supplied prototype) with offer data in src/components/marketing-set-3/content.ts; document pages are pre-rendered images, not live PDFs.
